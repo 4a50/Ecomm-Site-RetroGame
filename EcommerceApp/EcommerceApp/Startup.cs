@@ -1,4 +1,6 @@
 using EcommerceApp.Data;
+using EcommerceApp.Models.Interfaces;
+using EcommerceApp.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +28,11 @@ namespace EcommerceApp
         options.UseSqlServer(connectionString);
       });
       services.AddMvc();
+
+      services.AddTransient<IGame, GameRepository>();
+      services.AddTransient<ICart, CartRepository>();
+      services.AddTransient<IGenre, GenreRepository>();
+      services.AddTransient<IGameConsole, GameConsole>();      
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
