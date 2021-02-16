@@ -1,0 +1,27 @@
+﻿@model EcommerceApp.Models.Vm.CheckoutVm
+<!-->Nav Bar <-->
+<p><a href="/Home/Index">Home</a></p>
+<p><a href="/Home/Shop">Shop</a></p>
+
+<h1>Checkout Page</h1>
+
+<ul>
+    @foreach (var game in Model.Cart.Games)
+    {
+        <li>
+            <div>Name: @game.Name</div>
+            <div>Price: @game.ItemPrice</div>
+        </li>
+    }
+</ul>
+<p>Quantity Total: @Model.Cart.QuantityTotal</p>
+<p>Price Total: 130.00</p>
+<p>Quantity Total</p>
+<p>Price Total</p>
+
+<p>Enter Payment Information (CC, @Model.User.FirstName @Model.User.LastName, Address, CVV, etc...</p>
+
+<p><a href="/Home/Receipt">Receipt for Purchase</a></p>
+
+
+<!-- User will checkout and pay for their cart on this page  -->

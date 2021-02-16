@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EcommerceApp.Models.Vm.ShopVm>
+<!-->Nav Bar <-->
+<p><a href="/Home/Index">Home</a></p>
+<p><a href="/Home/Checkout">Checkout</a></p>
+<p><a href="/Home/Shop">Shop</a></p>
+
+<h1>Category Details</h1>
+
+<h2>Category Name (<b>System</b> or <b>Genre</b></h2>
+
+<h3>Genres List</h3>
+<ul>
+    @foreach (var genre in Model)
+    {
+        <li>
+            @genre.GenreGame.Genre.GenreName
+        </li>
+    }
+</ul>
+
+<h3>Systems List</h3>
+<ul>
+    @foreach (var sys in Model)
+    {
+        <li>
+            @sys.SystemGame.System.SystemName
+        </li>
+    }
+</ul>
+
+<!-->Based of selection of Category a list of games will be generated via LINQ<-->
+<!-->Select the game here to go to it's detail.<-->
+<li><a href="/Home/GameDetail">Game Detail</a></li>
+
+<!--> add editable dropdown forms to modify or delete category AND view all of the associated games</!-->
