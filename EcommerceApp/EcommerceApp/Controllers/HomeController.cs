@@ -1,4 +1,5 @@
 ﻿using EcommerceApp.Models;
+using EcommerceApp.Models.Vm;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,13 @@ namespace EcommerceApp.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+      User user = new User
+      {
+        FirstName = "Bob's",
+        LastName = "You're Uncle"
+
+      };
+          return View(user);
         }
 
         public IActionResult Game()
@@ -31,7 +38,18 @@ namespace EcommerceApp.Controllers
 
         public IActionResult CategoryDetail()
         {
-            return View();
+      List<ShopVm> shopVms = new List<ShopVm>{
+        new ShopVm
+      {
+        GenreGame = new GenreGame { Genre = new Genre {GenreName = "Adventure" } },
+        SystemGame = new SystemGame { System = new Models.System {SystemName = "Super Nintendo" } },
+      },
+        new ShopVm
+      {
+        GenreGame = new GenreGame { Genre = new Genre {GenreName = "RPG" } },
+        SystemGame = new SystemGame { System = new Models.System {SystemName = "Genesis" } },
+      } };
+        return View(shopVms);
         }
         public IActionResult Checkout()
         {
@@ -43,7 +61,13 @@ namespace EcommerceApp.Controllers
         }
         public IActionResult Login()
         {
-            return View();
+      User user = new User
+      {
+        FirstName = "Luigi",
+        LastName = "Mario",
+        Password = "Mar!0SuckS"
+      };
+            return View(user);
         }
         public IActionResult Receipt()
         {
@@ -55,7 +79,27 @@ namespace EcommerceApp.Controllers
         }
         public IActionResult Shop()
         {
-            return View();
+      ShopVm shopVm = new ShopVm
+      {
+        Game = new Game
+        {
+          Name = "Super Metroid",
+          Description = "Samus Kicks some ass",
+          ItemPrice = 75.00f,
+          GenreGame = new GenreGame
+          {
+            Genre = new Genre
+            {
+              GenreName = "Awesome"
+            }            
+          },
+          SystemGame = new SystemGame { System = new Models.System 
+          { SystemName = "Super Nintendo" } 
+          }
+        }
+      };
+
+            return View(shopVm);
         }
 
 

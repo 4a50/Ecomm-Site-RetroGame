@@ -12,7 +12,7 @@ namespace EcommerceApp.Models
         public string  Description { get; set; }
         public float ItemPrice { get; set; }
 
-        public SystemGame systemGame { get; set; }
-        public GenreGame genreGame { get; set; }
+        public SystemGame SystemGame { get; set; }
+        public GenreGame GenreGame { get; set; }
     }
 }
