@@ -7,6 +7,6 @@ namespace EcommerceApp.Models.Interfaces
 {
   public interface IUserService
   {
-
+    public Task<UserDto> Register(RegisterUser)
   }
 }
