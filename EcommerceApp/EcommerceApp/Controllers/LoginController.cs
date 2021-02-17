@@ -1,4 +1,5 @@
-﻿using EcommerceApp.Models.Interfaces;
+﻿using EcommerceApp.Models.Dto;
+using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
