@@ -1,13 +1,14 @@
-﻿@model EcommerceApp.Models.User 
+﻿@model EcommerceApp.Models.User
 <!-->Nav Bar <-->
 <p><a href="/Home/Index">Home</a></p>
 <p><a href="/Home/Shop">Shop</a></p>
 
 <h1>Login Here</h1>
 
-<ul>
-    <li>UserName: @Model.FirstName</li>
-    <li>Password: @Model.Password</li>
-</ul>
+<form method="post" action="/login/authenticate">
+<div><input type="text" name="username" placeholder="Username" /></div>
+<div><input type="password" name="password" placeholder="Password" /></div>
+<div><input type="submit" value="Sign In" /></div>
+</form>
 <p><a href="/Home/Shop">Shop</a></p>
 <!--> add login form </!-->
