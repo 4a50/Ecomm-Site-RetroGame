@@ -3,9 +3,6 @@ using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -47,6 +44,7 @@ namespace EcommerceApp.Models.Services
         Username = user.UserName,
         Roles = await UserManager.GetRolesAsync(user)
       };
+
     }
 
     public async Task<UserDto> Register(RegisterUser data, ModelStateDictionary modelState)
@@ -67,8 +65,19 @@ namespace EcommerceApp.Models.Services
           Roles = await UserManager.GetRolesAsync(user)
         };
       }
-        return null;
+      // Modify/Delete this to handle the errors.
+      foreach (var error in result.Errors)
+      {
+        var errorKey =
+            error.Code.Contains("Password") ? nameof(data.Password) :
+            error.Code.Contains("Email") ? nameof(data.Email) :
+            error.Code.Contains("UserName") ? nameof(data.Username) :
+            "";
+        modelState.AddModelError(errorKey, error.Description);
+      }
+      return null;
     }
-
   }
+
 }
+

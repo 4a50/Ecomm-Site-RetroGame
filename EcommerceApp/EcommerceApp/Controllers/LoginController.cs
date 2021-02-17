@@ -2,9 +2,7 @@
 using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Controllers
@@ -13,7 +11,7 @@ namespace EcommerceApp.Controllers
   {
     private IUserService userService;
 
-    public LoginController (IUserService service)
+    public LoginController(IUserService service)
     {
       userService = service;
     }
@@ -28,7 +26,7 @@ namespace EcommerceApp.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult<UserDto>> Authenticate (LoginData data)
+    public async Task<ActionResult<UserDto>> Authenticate(LoginData data)
     {
       var user = await userService.Authenticate(data.Username, data.Password);
       if (user == null)
@@ -38,7 +36,7 @@ namespace EcommerceApp.Controllers
       return Redirect("/Shop");
     }
     [HttpPost]
-    public async Task<ActionResult<UserDto>> Register (RegisterUser data)
+    public async Task<ActionResult<UserDto>> Register(RegisterUser data)
     {
       data.Roles = new List<string>()
       {

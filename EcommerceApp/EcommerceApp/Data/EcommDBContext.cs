@@ -9,17 +9,17 @@ namespace EcommerceApp.Data
 {
   public class EcommDBContext : IdentityDbContext<ApplicationUser>
   {
-    
+
     public EcommDBContext(DbContextOptions options) : base(options)
     {
 
     }
-    protected override void OnModelCreating (ModelBuilder modelbuilder)
+    protected override void OnModelCreating(ModelBuilder modelbuilder)
     {
       base.OnModelCreating(modelbuilder);
       SeedRole(modelbuilder, "Administrator", "create", "read", "update", "delete");
       SeedRole(modelbuilder, "Editor", "read", "update");
-      SeedRole(modelbuilder,"Guest", "read");
+      SeedRole(modelbuilder, "Guest", "read");
     }
     private int nextId = 1;
     private void SeedRole(ModelBuilder modelbuilder, string roleName, params string[] permissions)
@@ -42,7 +42,7 @@ namespace EcommerceApp.Data
         ClaimValue = permission
       }).ToArray();
 
-      modelbuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);      
+      modelbuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
     }
 
 
