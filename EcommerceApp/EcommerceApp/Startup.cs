@@ -1,8 +1,10 @@
 using EcommerceApp.Data;
 using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Services;
+using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +14,7 @@ namespace EcommerceApp
 {
   public class Startup
   {
-    public IConfiguration Configuration { get; }
+    public IConfiguration Configuration { get; set; }
 
     public Startup(IConfiguration configuration)
     {
@@ -26,13 +28,22 @@ namespace EcommerceApp
       {
         string connectionString = Configuration.GetConnectionString("DefaultConnection");
         options.UseSqlServer(connectionString);
+
       });
       services.AddMvc();
 
       services.AddTransient<IGame, GameRepository>();
       services.AddTransient<ICart, CartRepository>();
       services.AddTransient<IGenre, GenreRepository>();
-      services.AddTransient<IGameConsole, GameConsole>();      
+      services.AddTransient<IGameConsole, GameConsole>();
+
+      services.AddTransient<IUserService, IdentityUserService>();
+
+      services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+      {
+        options.User.RequireUniqueEmail = true;
+      }).AddEntityFrameworkStores<EcommDBContext>();
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
