@@ -1,4 +1,5 @@
-﻿using EcommerceApp.Models.Users;
+﻿using EcommerceApp.Models.Dto;
+using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ namespace EcommerceApp.Data
       SeedRole(modelbuilder, "Administrator", "create", "read", "update", "delete");
       SeedRole(modelbuilder, "Editor", "read", "update");
       SeedRole(modelbuilder, "Guest", "read");
+
     }
     private int nextId = 1;
     private void SeedRole(ModelBuilder modelbuilder, string roleName, params string[] permissions)

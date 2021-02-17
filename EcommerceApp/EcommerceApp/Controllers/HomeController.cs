@@ -1,5 +1,6 @@
 ﻿using EcommerceApp.Models;
 using EcommerceApp.Models.Vm;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -7,6 +8,7 @@ namespace EcommerceApp.Controllers
 {
   public class HomeController : Controller
   {
+    [AllowAnonymous]
     public IActionResult Index()
     {
       User user = new User
@@ -17,7 +19,7 @@ namespace EcommerceApp.Controllers
       };
       return View(user);
     }
-
+    [Authorize]
     public IActionResult Game()
     {
       Game yoshi = new Game()
@@ -27,7 +29,7 @@ namespace EcommerceApp.Controllers
       };
       return View(yoshi);
     }
-
+    [Authorize]
     public IActionResult Cart()
     {
 
@@ -43,7 +45,7 @@ namespace EcommerceApp.Controllers
       };
       return View(cart);
     }
-
+    [Authorize]
     public IActionResult CategoryDetail()
     {
       List<ShopVm> shopVms = new List<ShopVm>{
@@ -59,6 +61,7 @@ namespace EcommerceApp.Controllers
       } };
       return View(shopVms);
     }
+    [Authorize]
     public IActionResult Checkout()
     {
       CheckoutVm checkout = new CheckoutVm
@@ -77,6 +80,7 @@ namespace EcommerceApp.Controllers
       };
       return View(checkout);
     }
+    [Authorize]
     public IActionResult GameDetail()
     {
 
@@ -95,6 +99,7 @@ namespace EcommerceApp.Controllers
       };
       return View(game);
     }
+    [AllowAnonymous]
     public IActionResult Login()
     {
       User user = new User
@@ -105,6 +110,7 @@ namespace EcommerceApp.Controllers
       };
       return View(user);
     }
+    [Authorize]
     public IActionResult Receipt()
     {
       User user = new User
@@ -115,10 +121,12 @@ namespace EcommerceApp.Controllers
       };
       return View(user);
     }
+    [AllowAnonymous]
     public IActionResult Register()
     {
       return View();
     }
+    [Authorize]
     public IActionResult Shop()
     {
       ShopVm shopVm = new ShopVm
@@ -145,14 +153,10 @@ namespace EcommerceApp.Controllers
 
       return View(shopVm);
     }
-
-
-
-
-
-
-
-
-
+    [Authorize(Policy="update")]
+    public IActionResult AdminDash()
+    {
+      return View();
+    }
   }
 }
