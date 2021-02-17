@@ -15,42 +15,45 @@ namespace EcommerceApp.Controllers
     {
       userService = service;
     }
+    [AllowAnonymous]
     public IActionResult Index()
     {
       return View();
     }
-
+    [AllowAnonymous]
     public IActionResult Signup()
     {
       return View();
     }
 
+    [AllowAnonymous]
     [HttpPost]
     public async Task<ActionResult<UserDto>> Authenticate(LoginData data)
     {
       var user = await userService.Authenticate(data.Username, data.Password);
       if (user == null)
       {
-        return Redirect("/Login");
+        return Redirect("/Home/Login");
       }
-      return Redirect("/Shop");
+      return Redirect("/Home/Shop");
     }
+    [AllowAnonymous]
     [HttpPost]
     public async Task<ActionResult<UserDto>> Register(RegisterUser data)
     {
       data.Roles = new List<string>()
       {
-        "guest"
+        "Guest"
       };
 
       var user = await userService.Register(data, this.ModelState);
 
       if (ModelState.IsValid)
       {
-        return Redirect("/Login");
+        return Redirect("/Home/Login");
       }
 
-      return Redirect("/Register");
+      return Redirect("/Home/Register");
     }
     [Authorize]
     public async Task<ActionResult<UserDto>> Profile()

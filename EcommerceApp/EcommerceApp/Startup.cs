@@ -44,6 +44,15 @@ namespace EcommerceApp
         options.User.RequireUniqueEmail = true;
       }).AddEntityFrameworkStores<EcommDBContext>();
 
+      services.AddAuthentication();
+      services.AddAuthorization(options => 
+      {
+        options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
+        options.AddPolicy("read", policy => policy.RequireClaim("permissions", "read"));
+        options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
+        options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
+      });
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,9 +62,10 @@ namespace EcommerceApp
       {
         app.UseDeveloperExceptionPage();
 
-      }
-
+      }      
       app.UseRouting();
+      app.UseAuthentication();
+      app.UseAuthorization();
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
