@@ -1,0 +1,16 @@
+﻿@model EcommerceApp.Models.Vm.AdminVm
+<h1>This is the admin Dashboard</h1>
+
+<div id="Genre">
+    @*Display all the Genres in a box with radio buttons.*@
+
+    @foreach (var genre in Model.GenreList)
+    {
+        <p>@genre.GenreName</p>
+    }
+    @foreach (var game in Model.GameList)
+    {
+        <p>@game.Name</p>
+    }
+
+</div>

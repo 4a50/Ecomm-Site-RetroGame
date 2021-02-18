@@ -19,7 +19,7 @@ namespace EcommerceApp.Models.Services
     public async Task<List<Genre>> GetAllGenres()
     {
       return await _context.Genre
-        .Include(s => s.GenreName)
+        
         .ToListAsync();
     }
 

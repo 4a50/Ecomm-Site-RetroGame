@@ -29,7 +29,8 @@ namespace EcommerceApp.Data
       SeedRole(modelbuilder, "Guest", "read");
 
       modelbuilder.Entity<Genre>().HasData(new Genre { Id = 1, GenreName = "Platformer" },
-        new Genre { Id = 2, GenreName = "Racing" });
+        new Genre { Id = 2, GenreName = "Racing" },
+        new Genre { Id = 3, GenreName = "Puzzle"});
       modelbuilder.Entity<Game>().HasData(new Game
       {
         Id = 1,

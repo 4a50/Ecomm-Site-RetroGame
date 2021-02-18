@@ -28,7 +28,7 @@ namespace EcommerceApp.Models.Services
     }
     public async Task<List<Game>> GetAllGames()
     {
-      throw new NotImplementedException();
+      return await _context.Game.ToListAsync();
       //return await _context.Game
     }
 
