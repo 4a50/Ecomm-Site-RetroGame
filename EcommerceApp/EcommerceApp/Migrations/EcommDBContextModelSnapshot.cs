@@ -74,14 +74,6 @@ namespace EcommerceApp.Migrations
                             GameSystem = "Super Nintendo",
                             ItemPrice = 30f,
                             Name = "Bubsy: Claws Encounters of the Furred Kind"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Kick Butt Multiplayer Racing Game",
-                            GameSystem = "Super Nintendo",
-                            ItemPrice = 40f,
-                            Name = "Rock N' Roll Racing"
                         });
                 });
 
@@ -104,11 +96,6 @@ namespace EcommerceApp.Migrations
                         {
                             Id = 1,
                             GenreName = "Platformer"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            GenreName = "Racing"
                         });
                 });
 
