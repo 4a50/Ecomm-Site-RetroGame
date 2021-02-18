@@ -32,26 +32,28 @@ namespace EcommerceApp
             });
             services.AddMvc();
 
-            services.AddTransient<IGame, GameRepository>();
-            services.AddTransient<ICart, CartRepository>();
-            services.AddTransient<IGenre, GenreRepository>();
-            services.AddTransient<IGameConsole, GameConsole>();
+      services.AddTransient<IGame, GameRepository>();
+      services.AddTransient<ICart, CartRepository>();
+      services.AddTransient<IGenre, GenreRepository>();
 
-            services.AddTransient<IUserService, IdentityUserService>();
+
+      services.AddTransient<IUserService, IdentityUserService>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<EcommDBContext>();
 
-            services.AddAuthentication();
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
-                options.AddPolicy("read", policy => policy.RequireClaim("permissions", "read"));
-                options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
-                options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
-            });
+      services.AddAuthentication();
+      services.AddAuthorization(options => 
+      {
+        options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
+        options.AddPolicy("read", policy => policy.RequireClaim("permissions", "read"));
+        options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
+        options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
+      });
+      services.AddControllers().AddNewtonsoftJson(options =>
+      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
         }
 

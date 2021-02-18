@@ -51,9 +51,8 @@ namespace EcommerceApp.Controllers
             List<ShopVm> shopVms = new List<ShopVm>{
         new ShopVm
       {
-        GenreGame = new GenreGame { Genre = new Genre {GenreName = "Adventure" } },
-        SystemGame = new SystemGame { System = new Models.System {SystemName = "Super Nintendo" } },
-      },
+        GenreGame = new GenreGame { Genre = new Genre {GenreName = "Adventure" }
+        }},
         new ShopVm
       {
         GenreGame = new GenreGame { Genre = new Genre {GenreName = "RPG" } },

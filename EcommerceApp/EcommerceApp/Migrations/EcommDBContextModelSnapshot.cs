@@ -19,6 +19,104 @@ namespace EcommerceApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<float>("CartTotal")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuantityTotal")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.Game", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CartId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameSystem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("ItemPrice")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("Game");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "A Terrible Sonic Clone",
+                            GameSystem = "Super Nintendo",
+                            ItemPrice = 30f,
+                            Name = "Bubsy: Claws Encounters of the Furred Kind"
+                        });
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.Genre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GenreName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genre");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            GenreName = "Platformer"
+                        });
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.GenreGame", b =>
+                {
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
+                    b.HasKey("GameId", "GenreId");
+
+                    b.HasIndex("GameId")
+                        .IsUnique();
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("GenreGame");
+                });
+
             modelBuilder.Entity("EcommerceApp.Models.Users.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -289,6 +387,32 @@ namespace EcommerceApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("EcommerceApp.Models.Game", b =>
+                {
+                    b.HasOne("EcommerceApp.Models.Cart", null)
+                        .WithMany("Games")
+                        .HasForeignKey("CartId");
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.GenreGame", b =>
+                {
+                    b.HasOne("EcommerceApp.Models.Game", "Game")
+                        .WithOne("GenreGame")
+                        .HasForeignKey("EcommerceApp.Models.GenreGame", "GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EcommerceApp.Models.Genre", "Genre")
+                        .WithMany()
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+
+                    b.Navigation("Genre");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -338,6 +462,16 @@ namespace EcommerceApp.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
+                {
+                    b.Navigation("Games");
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.Game", b =>
+                {
+                    b.Navigation("GenreGame");
                 });
 #pragma warning restore 612, 618
         }
