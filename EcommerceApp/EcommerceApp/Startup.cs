@@ -12,25 +12,25 @@ using Microsoft.Extensions.Hosting;
 
 namespace EcommerceApp
 {
-  public class Startup
-  {
-    public IConfiguration Configuration { get; set; }
-
-    public Startup(IConfiguration configuration)
+    public class Startup
     {
-      Configuration = configuration;
-    }
-    // This method gets called by the runtime. Use this method to add services to the container.
-    // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-    public void ConfigureServices(IServiceCollection services)
-    {
-      services.AddDbContext<EcommDBContext>(options =>
-      {
-        string connectionString = Configuration.GetConnectionString("DefaultConnection");
-        options.UseSqlServer(connectionString);
+        public IConfiguration Configuration { get; set; }
 
-      });
-      services.AddMvc();
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+        // This method gets called by the runtime. Use this method to add services to the container.
+        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<EcommDBContext>(options =>
+            {
+                string connectionString = Configuration.GetConnectionString("DefaultConnection");
+                options.UseSqlServer(connectionString);
+
+            });
+            services.AddMvc();
 
       services.AddTransient<IGame, GameRepository>();
       services.AddTransient<ICart, CartRepository>();
@@ -39,10 +39,10 @@ namespace EcommerceApp
 
       services.AddTransient<IUserService, IdentityUserService>();
 
-      services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-      {
-        options.User.RequireUniqueEmail = true;
-      }).AddEntityFrameworkStores<EcommDBContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<EcommDBContext>();
 
       services.AddAuthentication();
       services.AddAuthorization(options => 
@@ -55,23 +55,24 @@ namespace EcommerceApp
       services.AddControllers().AddNewtonsoftJson(options =>
       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-    }
+        }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-      if (env.IsDevelopment())
-      {
-        app.UseDeveloperExceptionPage();
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
 
-      }      
-      app.UseRouting();
-      app.UseAuthentication();
-      app.UseAuthorization();
-      app.UseEndpoints(endpoints =>
-      {
-        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
-      });
+            }
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+            });
+        }
     }
-  }
 }

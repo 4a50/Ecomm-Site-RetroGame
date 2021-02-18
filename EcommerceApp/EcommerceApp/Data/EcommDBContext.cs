@@ -21,13 +21,13 @@ namespace EcommerceApp.Data
     public EcommDBContext(DbContextOptions options) : base(options)
     {
 
-    }
-    protected override void OnModelCreating(ModelBuilder modelbuilder)
-    {
-      base.OnModelCreating(modelbuilder);
-      SeedRole(modelbuilder, "Administrator", "create", "read", "update", "delete");
-      SeedRole(modelbuilder, "Editor", "read", "update");
-      SeedRole(modelbuilder, "Guest", "read");
+        }
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            base.OnModelCreating(modelbuilder);
+            SeedRole(modelbuilder, "Administrator", "create", "read", "update", "delete");
+            SeedRole(modelbuilder, "Editor", "read", "update");
+            SeedRole(modelbuilder, "Guest", "read");
 
       modelbuilder.Entity<Genre>().HasData(new Genre { Id = 1, GenreName = "Platformer" },
         new Genre { Id = 2, GenreName = "Racing"});
@@ -66,18 +66,18 @@ namespace EcommerceApp.Data
       };
       modelbuilder.Entity<IdentityRole>().HasData(role);
 
-      var roleClaims = permissions.Select(permission =>
-      new IdentityRoleClaim<string>
-      {
-        Id = nextId++,
-        RoleId = role.Id,
-        ClaimType = "permissions",
-        ClaimValue = permission
-      }).ToArray();
+            var roleClaims = permissions.Select(permission =>
+            new IdentityRoleClaim<string>
+            {
+                Id = nextId++,
+                RoleId = role.Id,
+                ClaimType = "permissions",
+                ClaimValue = permission
+            }).ToArray();
 
-      modelbuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
+            modelbuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
+        }
+
+
     }
-
-
-  }
 }
