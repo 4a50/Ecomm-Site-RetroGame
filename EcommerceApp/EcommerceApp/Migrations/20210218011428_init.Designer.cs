@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceApp.Migrations
 {
     [DbContext(typeof(EcommDBContext))]
-    [Migration("20210217012545_userRoleSeed")]
-    partial class userRoleSeed
+    [Migration("20210218011428_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
