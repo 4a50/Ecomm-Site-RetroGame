@@ -51,14 +51,15 @@ namespace EcommerceApp.Controllers
       List<ShopVm> shopVms = new List<ShopVm>{
         new ShopVm
       {
-        GenreGame = new GenreGame { Genre = new Genre {GenreName = "Adventure" } },
-        SystemGame = new SystemGame { System = new Models.System {SystemName = "Super Nintendo" } },
-      },
+        GenreGame = new GenreGame { Genre = new Genre {GenreName = "Adventure" }
+        }},
         new ShopVm
       {
-        GenreGame = new GenreGame { Genre = new Genre {GenreName = "RPG" } },
-        SystemGame = new SystemGame { System = new Models.System {SystemName = "Genesis" } },
-      } };
+        GenreGame = new GenreGame { Genre = new Genre {GenreName = "RPG" } }
+      } 
+      
+      };
+
       return View(shopVms);
     }
     [Authorize]
@@ -91,11 +92,7 @@ namespace EcommerceApp.Controllers
         GenreGame = new GenreGame
         {
           Genre = new Genre { GenreName = "Space Simulator" }
-        },
-        SystemGame = new SystemGame
-        {
-          System = new Models.System { SystemName = "Super Nintendo" }
-        }
+        }        
       };
       return View(game);
     }
@@ -142,12 +139,7 @@ namespace EcommerceApp.Controllers
             {
               GenreName = "Awesome"
             }
-          },
-          SystemGame = new SystemGame
-          {
-            System = new Models.System
-            { SystemName = "Super Nintendo" }
-          }
+          }          
         }
       };
 

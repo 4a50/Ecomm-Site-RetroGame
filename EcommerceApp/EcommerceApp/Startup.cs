@@ -35,7 +35,7 @@ namespace EcommerceApp
       services.AddTransient<IGame, GameRepository>();
       services.AddTransient<ICart, CartRepository>();
       services.AddTransient<IGenre, GenreRepository>();
-      services.AddTransient<IGameConsole, GameConsole>();
+
 
       services.AddTransient<IUserService, IdentityUserService>();
 
@@ -52,6 +52,8 @@ namespace EcommerceApp
         options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
         options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
       });
+      services.AddControllers().AddNewtonsoftJson(options =>
+      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
     }
 
