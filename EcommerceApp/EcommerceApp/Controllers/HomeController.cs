@@ -55,8 +55,7 @@ namespace EcommerceApp.Controllers
         }},
         new ShopVm
       {
-        GenreGame = new GenreGame { Genre = new Genre {GenreName = "RPG" } },
-        SystemGame = new SystemGame { System = new Models.System {SystemName = "Genesis" } },
+        GenreGame = new GenreGame { Genre = new Genre {GenreName = "RPG" } },        
       } };
             return View(shopVms);
         }
@@ -90,10 +89,6 @@ namespace EcommerceApp.Controllers
                 GenreGame = new GenreGame
                 {
                     Genre = new Genre { GenreName = "Space Simulator" }
-                },
-                SystemGame = new SystemGame
-                {
-                    System = new Models.System { SystemName = "Super Nintendo" }
                 }
             };
             return View(game);
@@ -141,12 +136,7 @@ namespace EcommerceApp.Controllers
                         {
                             GenreName = "Awesome"
                         }
-                    },
-                    SystemGame = new SystemGame
-                    {
-                        System = new Models.System
-                        { SystemName = "Super Nintendo" }
-                    }
+                    }                   
                 }
             };
 
