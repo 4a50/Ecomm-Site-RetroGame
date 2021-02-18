@@ -33,7 +33,7 @@ namespace EcommerceApp.Controllers
       return View(adminVm);
     }
     [HttpPost]
-    public async Task<IActionResult> Add(AdminVm adminvm) 
+    public async Task<IActionResult> AddGame(AdminVm adminvm) 
     {
      if (!ModelState.IsValid)
       {
@@ -49,6 +49,22 @@ namespace EcommerceApp.Controllers
       await _game.CreateGame(game);
 
       return Content("Game Added");
+    }
+    [HttpPost]
+    public async Task<IActionResult> AddGenre(AdminVm adminvm)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(adminvm);
+      }
+      Genre genre = new Genre
+      {
+        GenreName = adminvm.Genre.GenreName
+        
+      };
+      await _genre.CreateGenre(genre);
+
+      return Content("Genre Added");
     }
   }
 }

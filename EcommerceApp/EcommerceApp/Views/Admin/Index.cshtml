@@ -30,7 +30,7 @@
     </form>
 
     <h2>Add A Game</h2>
-    <form asp-controller="Admin" asp-action="Add" method="post">
+    <form asp-controller="Admin" asp-action="AddGame" method="post">
         <label>
             <span>Game Title</span>
             <input asp-for="@Model.Game.Name" />
@@ -49,6 +49,16 @@
         </label>
         <button type="submit">Add To Inventory</button>
     </form>
+
+    <h2>Add A Genre</h2>
+    <form asp-controller="Admin" asp-action="AddGenre" method="post">
+        <label>
+            <span>Genre</span>
+            <input asp-for="@Model.Genre.GenreName" />
+        </label>
+        <button type="submit">Add Genre</button>
+    </form>
+
 
 
 </div>
