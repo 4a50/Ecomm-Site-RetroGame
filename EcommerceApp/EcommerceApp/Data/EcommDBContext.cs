@@ -1,5 +1,4 @@
 ﻿using EcommerceApp.Models;
-using EcommerceApp.Models.Dto;
 using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -15,22 +14,22 @@ namespace EcommerceApp.Data
     public DbSet<Game> Game { get; set; }
     public DbSet<Genre> Genre { get; set; }
     public DbSet<GenreGame> GenreGame { get; set; }
-      
+
 
 
     public EcommDBContext(DbContextOptions options) : base(options)
     {
 
-        }
-        protected override void OnModelCreating(ModelBuilder modelbuilder)
-        {
-            base.OnModelCreating(modelbuilder);
-            SeedRole(modelbuilder, "Administrator", "create", "read", "update", "delete");
-            SeedRole(modelbuilder, "Editor", "read", "update");
-            SeedRole(modelbuilder, "Guest", "read");
+    }
+    protected override void OnModelCreating(ModelBuilder modelbuilder)
+    {
+      base.OnModelCreating(modelbuilder);
+      SeedRole(modelbuilder, "Administrator", "create", "read", "update", "delete");
+      SeedRole(modelbuilder, "Editor", "read", "update");
+      SeedRole(modelbuilder, "Guest", "read");
 
       modelbuilder.Entity<Genre>().HasData(new Genre { Id = 1, GenreName = "Platformer" },
-        new Genre { Id = 2, GenreName = "Racing"});
+        new Genre { Id = 2, GenreName = "Racing" });
       modelbuilder.Entity<Game>().HasData(new Game
       {
         Id = 1,
@@ -38,7 +37,7 @@ namespace EcommerceApp.Data
         Description = "A Terrible Sonic Clone",
         GameSystem = "Super Nintendo",
         ItemPrice = 30.00f
-        
+
       },
       new Game
       {
@@ -66,18 +65,18 @@ namespace EcommerceApp.Data
       };
       modelbuilder.Entity<IdentityRole>().HasData(role);
 
-            var roleClaims = permissions.Select(permission =>
-            new IdentityRoleClaim<string>
-            {
-                Id = nextId++,
-                RoleId = role.Id,
-                ClaimType = "permissions",
-                ClaimValue = permission
-            }).ToArray();
+      var roleClaims = permissions.Select(permission =>
+      new IdentityRoleClaim<string>
+      {
+        Id = nextId++,
+        RoleId = role.Id,
+        ClaimType = "permissions",
+        ClaimValue = permission
+      }).ToArray();
 
-            modelbuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
-        }
-
-
+      modelbuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
     }
+
+
+  }
 }

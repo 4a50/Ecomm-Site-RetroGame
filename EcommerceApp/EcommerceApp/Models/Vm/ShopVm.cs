@@ -2,7 +2,7 @@
 {
   public class ShopVm
   {
-    public GenreGame GenreGame { get; set; }    
+    public GenreGame GenreGame { get; set; }
     public Game Game { get; set; }
   }
 }

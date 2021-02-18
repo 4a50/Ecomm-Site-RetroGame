@@ -8,7 +8,7 @@
     public float ItemPrice { get; set; }
     public string GameSystem { get; set; }
 
-  
+
     public GenreGame GenreGame { get; set; }
   }
 }

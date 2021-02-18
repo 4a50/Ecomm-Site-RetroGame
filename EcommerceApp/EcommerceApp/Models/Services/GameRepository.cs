@@ -1,9 +1,9 @@
 ﻿using EcommerceApp.Data;
 using EcommerceApp.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceApp.Models.Services
 {
