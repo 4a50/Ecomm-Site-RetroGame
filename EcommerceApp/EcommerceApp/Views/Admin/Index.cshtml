@@ -1,0 +1,54 @@
+﻿@model EcommerceApp.Models.Vm.AdminVm
+<h1>This is the admin Dashboard</h1>
+
+<div id="Genre">
+    @*Display all the Genres in a box with radio buttons.*@
+
+    @foreach (var genre in Model.GenreList)
+    {
+        <p>@genre.GenreName</p>
+    }
+    @foreach (var game in Model.GameList)
+    {
+        <p>@game.Name</p>
+    }
+    <form method="post">
+        @foreach (var g in Model.GameList)
+        {
+            <input type="radio" asp-for="GameList" value="@g.Id" />@g.Name<br />
+        }
+        <input type="submit" />
+    </form>
+
+
+    <form method="post">
+        @foreach (var g in Model.GenreList)
+        {
+            <input type="radio" asp-for="Genre" value="@g.Id" />@g.GenreName<br />
+        }
+        <input type="submit" />
+    </form>
+
+    <h2>Add A Game</h2>
+    <form asp-controller="Admin" asp-action="Add" method="post">
+        <label>
+            <span>Game Title</span>
+            <input asp-for="@Model.Game.Name" />
+        </label>
+        <label>
+            <span>Game Description</span>
+            <input asp-for="@Model.Game.Description" />
+        </label>
+        <label>
+            <span>Game Price</span>
+            <input asp-for="@Model.Game.ItemPrice" />
+        </label>
+        <label>
+            <span>Game System</span>
+            <input asp-for="@Model.Game.GameSystem" />
+        </label>
+        <button type="submit">Add To Inventory</button>
+    </form>
+
+
+</div>

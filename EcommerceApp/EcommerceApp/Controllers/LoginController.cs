@@ -42,9 +42,9 @@ namespace EcommerceApp.Controllers
     public async Task<ActionResult<UserDto>> Register(RegisterUser data)
     {
       data.Roles = new List<string>()
-      {
-        "Guest"
-      };
+              {
+                "Administrator"
+              };
 
       var user = await userService.Register(data, this.ModelState);
 

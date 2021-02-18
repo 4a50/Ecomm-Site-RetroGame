@@ -35,7 +35,7 @@ namespace EcommerceApp
       services.AddTransient<IGame, GameRepository>();
       services.AddTransient<ICart, CartRepository>();
       services.AddTransient<IGenre, GenreRepository>();
-      services.AddTransient<IGameConsole, GameConsole>();
+
 
       services.AddTransient<IUserService, IdentityUserService>();
 
@@ -45,13 +45,15 @@ namespace EcommerceApp
       }).AddEntityFrameworkStores<EcommDBContext>();
 
       services.AddAuthentication();
-      services.AddAuthorization(options => 
+      services.AddAuthorization(options =>
       {
         options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
         options.AddPolicy("read", policy => policy.RequireClaim("permissions", "read"));
         options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
         options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
       });
+      services.AddControllers().AddNewtonsoftJson(options =>
+      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
     }
 
@@ -62,7 +64,8 @@ namespace EcommerceApp
       {
         app.UseDeveloperExceptionPage();
 
-      }      
+      }
+      app.UseStaticFiles();
       app.UseRouting();
       app.UseAuthentication();
       app.UseAuthorization();

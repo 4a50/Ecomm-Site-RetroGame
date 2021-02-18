@@ -1,4 +1,6 @@
-﻿using EcommerceApp.Models.Interfaces;
+﻿using EcommerceApp.Data;
+using EcommerceApp.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,29 +9,46 @@ namespace EcommerceApp.Models.Services
 {
   public class GenreRepository : IGenre
   {
-    public Task DeleteGame(int id)
+    private EcommDBContext _context;
+
+    public GenreRepository(EcommDBContext context)
     {
-      throw new NotImplementedException();
+      _context = context;
     }
 
-    public Task<List<Genre>> GetAllGames()
+    public async Task<List<Genre>> GetAllGenres()
     {
-      throw new NotImplementedException();
+      return await _context.Genre
+        
+        .ToListAsync();
     }
 
-    public Task<Genre> GetGame(int id)
+    public async Task<Genre> GetGenre(int id)
     {
-      throw new NotImplementedException();
+      return await _context.Genre
+        .Include(s => s.GenreName)
+        .FirstOrDefaultAsync(s => s.Id == id);
     }
 
-    public Task<Genre> PostGame(Game game)
+    public async Task<Genre> CreateGenre(Genre genre)
     {
-      throw new NotImplementedException();
+      _context.Entry(genre).State = EntityState.Added;
+      await _context.SaveChangesAsync();
+      return genre;
     }
 
-    public Task<Genre> UpdateGame(int id, Game game)
+    public async Task<Genre> UpdateGenre(int id, Genre genre)
     {
-      throw new NotImplementedException();
+      _context.Entry(genre).State = EntityState.Modified;
+      await _context.SaveChangesAsync();
+      return genre;
     }
+    public async Task DeleteGenre(int id)
+    {
+      Genre genre = await GetGenre(id);
+      _context.Entry(genre).State = EntityState.Deleted;
+      await _context.SaveChangesAsync();
+    }
+
   }
 }
