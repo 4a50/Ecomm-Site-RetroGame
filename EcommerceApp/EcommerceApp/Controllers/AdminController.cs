@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EcommerceApp.Models.Services;
 using EcommerceApp.Models.Interfaces;
+using EcommerceApp.Models;
 
 namespace EcommerceApp.Controllers
 {
@@ -29,9 +30,25 @@ namespace EcommerceApp.Controllers
         GameList = await _game.GetAllGames()
       };
       //Pass it in the page
-
-
       return View(adminVm);
+    }
+    [HttpPost]
+    public async Task<IActionResult> Add(AdminVm adminvm) 
+    {
+     if (!ModelState.IsValid)
+      {
+        return View(adminvm);
+      }
+      Game game = new Game
+      {
+        Name = adminvm.Game.Name,
+        Description = adminvm.Game.Description,
+        ItemPrice = adminvm.Game.ItemPrice,
+        GameSystem = adminvm.Game.GameSystem
+      };
+      await _game.CreateGame(game);
+
+      return Content("Game Added");
     }
   }
 }
