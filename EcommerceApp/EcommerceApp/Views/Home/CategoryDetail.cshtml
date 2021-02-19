@@ -1,11 +1,7 @@
 ﻿
 @model IEnumerable<EcommerceApp.Models.Vm.ShopVm>
 
-<!-->Nav Bar <-->
-
-<p><a href="/Home/Index">Home</a></p>
-<p><a href="/Home/Checkout">Checkout</a></p>
-<p><a href="/Home/Shop">Shop</a></p>
+<partial name="../Shared/_NavBar.cshtml" />
 
 <h1>Category Details</h1>
 
@@ -21,15 +17,6 @@
     }
 </ul>
 
-<h3>Systems List</h3>
-<ul>
-    @foreach (var sys in Model)
-    {
-        <li>
-            @sys.SystemGame.System.SystemName
-        </li>
-    }
-</ul>
 
 
 

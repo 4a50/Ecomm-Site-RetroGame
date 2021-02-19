@@ -1,15 +1,18 @@
 ﻿@model EcommerceApp.Models.User
-<h1>Register Here!</h1>
 
-<!--> add registration form </!-->
-<form method="post" action="/login/register">
-   <div><input type="text" name="username" placeholder="Username" /></div>
-   <div><input type="password" name="password" placeholder="Password" /></div>
-   <div><input type="text" name="email" placeholder="email@here.com" /></div>
-   <div><input type="submit" value="Add Account" /></div>
+    <partial name="../Shared/_NavBar.cshtml" />
+
+    <h1>Register Here!</h1>
+
+    <!--> add registration form </!-->
+    <form method="post" action="/login/register">
+        <div><input type="text" name="username" placeholder="Username" /></div>
+        <div><input type="password" name="password" placeholder="Password" /></div>
+        <div><input type="text" name="email" placeholder="email@here.com" /></div>
+        <div><input type="submit" value="Add Account" /></div>
     </form>
 
-<a href="/Home/Index">Home</a>
+    <a href="/Home/Index">Home</a>
 
 
 

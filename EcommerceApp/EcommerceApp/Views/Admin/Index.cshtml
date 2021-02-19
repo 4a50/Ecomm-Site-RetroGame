@@ -1,0 +1,97 @@
+﻿@model EcommerceApp.Models.Vm.AdminVm
+<h1>This is the admin Dashboard</h1>
+
+<div id="Genre">
+    @*Display all the Genres in a box with radio buttons.*@
+
+    @foreach (var genre in Model.GenreList)
+    {
+        <p>@genre.GenreName</p>
+    }
+    @foreach (var game in Model.GameList)
+    {
+        <p>@game.Name</p>
+    }
+    <form asp-controller="Admin" asp-action="DeleteGame" method="post">
+        @foreach (var g in Model.GameList)
+        {
+            <input type="radio" asp-for="GameList" value="@g.Id" />@g.Name<br />
+            <p>@g.Id</p>
+        }
+        <input type="submit" value="Submit">
+        @*<button type="submit">Delete Game</button>*@
+    </form>
+    <p>Test</p>
+    @Html.RadioButtonFor(m => m.Game, "")
+    <p>EndTest</p>
+
+    <form method="post">
+        @foreach (var g in Model.GenreList)
+        {
+            <input type="radio" asp-for="Genre" value="@g.Id" />@g.GenreName<br />
+        }
+        <input type="submit" />
+    </form>
+
+    <h2>Add A Game</h2>
+    <form asp-controller="Admin" asp-action="AddGame" method="post">
+        <label>
+            <span>Game Title</span>
+            <input asp-for="@Model.Game.Name" />
+        </label>
+        <label>
+            <span>Game Description</span>
+            <input asp-for="@Model.Game.Description" />
+        </label>
+        <label>
+            <span>Game Price</span>
+            <input asp-for="@Model.Game.ItemPrice" />
+        </label>
+        <label>
+            <span>Game System</span>
+            <input asp-for="@Model.Game.GameSystem" />
+        </label>
+        <select asp-for="@Model.Genre.Id">
+            @foreach (var genre in Model.GenreList)
+            {
+                <option value="@genre.Id">@genre.GenreName</option>
+            }
+        </select>
+        <button type="submit">Add To Inventory</button>
+    </form>
+
+    <h2>Add A Genre</h2>
+    <form asp-controller="Admin" asp-action="AddGenre" method="post">
+        <label>
+            <span>Genre</span>
+            <input asp-for="@Model.Genre.GenreName" />
+        </label>
+        <button type="submit">Add Genre</button>
+    </form>
+
+    <h2>Genre DropDown</h2>
+
+    <label for="genres">Select a Genre</label>
+    <form asp-controller="Admin" asp-action="ShowMeTheIdOfGenre" method="post">
+        <select asp-for="@Model.Genre.Id">
+            @foreach (var genre in Model.GenreList)
+            {
+                <option value="@genre.Id">@genre.GenreName</option>
+            }
+        </select>
+        <button type="submit">Display Genre</button>
+    </form>
+
+    @*remove*@
+    <form asp-controller="Admin" asp-action="DeleteGame" method="post">
+        @foreach (var g in Model.GameList)
+        {
+            <input type="radio" value=@g.Id id=@g.Id name="gamelist"/>  
+            <p>@g.Id</p>
+        }
+        <input type="submit" value="Submit">
+        @*<button type="submit">Delete Game</button>*@
+    </form>
+    @*remove*@
+
+</div>

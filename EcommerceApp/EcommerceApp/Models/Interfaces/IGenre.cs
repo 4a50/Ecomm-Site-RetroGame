@@ -5,10 +5,10 @@ namespace EcommerceApp.Models.Interfaces
 {
   public interface IGenre
   {
-    Task<Genre> PostGame(Game game);
-    Task<Genre> GetGame(int id);
-    Task<List<Genre>> GetAllGames();
-    Task<Genre> UpdateGame(int id, Game game);
-    Task DeleteGame(int id);
+    Task<Genre> CreateGenre(Genre genre);
+    Task<Genre> GetGenre(int id);
+    Task<List<Genre>> GetAllGenres();
+    Task<Genre> UpdateGenre(int id, Genre genre);
+    Task DeleteGenre(int id);
   }
 }
