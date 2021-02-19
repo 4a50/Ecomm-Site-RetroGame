@@ -30,8 +30,6 @@ namespace EcommerceApp.Controllers
         GenreList = await _genre.GetAllGenres(),
         GameList = await _game.GetAllGames()
       };
-      
-      
       //Pass it in the page
       return View(adminVm);
     }
@@ -52,8 +50,6 @@ namespace EcommerceApp.Controllers
       Game saveGame = await _game.CreateGame(game);
      
       await _game.CreateGenreGame(saveGame.Id, adminvm.Genre.Id);
-      
-
       return Content("Game Added");
     }
     [HttpPost]
@@ -70,19 +66,29 @@ namespace EcommerceApp.Controllers
       };
       await _genre.CreateGenre(genre);
 
-      return Content("Genre Added");
+      return Redirect("/admin");
     }
     [HttpPost]
-    public async Task<IActionResult> DeleteGame(string adminVm)
+    public async Task<IActionResult> DeleteGame(AdminVm adminVm)
     {
-      
-     // await _game.DeleteGame(adminVm);
-      return NoContent();
+      int gameId;
+      try { gameId = int.Parse(adminVm.SelectedAnswer); }
+      catch { throw new Exception("Unable to Parse Radio Button Input For Game Select"); }
+     await _game.DeleteGame(gameId);
+      return Redirect("/admin");
+    }
+    [HttpPost]
+    public async Task<IActionResult> DeleteGenre(AdminVm adminVm)
+    {
+      int genreId;
+      try { genreId = int.Parse(adminVm.SelectedAnswer); }
+      catch { throw new Exception("Unable to Parse Radio Button Input For Game Select"); }
+      await _genre.DeleteGenre(genreId);
+      return Redirect("/admin");
     }
     [HttpPost]
     public IActionResult ShowMeTheIdOfGenre (AdminVm adminvm)
-    {
-      
+    {      
       return Content(adminvm.Genre.Id.ToString());
     }
   }

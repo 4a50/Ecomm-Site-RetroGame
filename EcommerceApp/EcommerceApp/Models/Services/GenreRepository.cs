@@ -25,8 +25,7 @@ namespace EcommerceApp.Models.Services
 
     public async Task<Genre> GetGenre(int id)
     {
-      return await _context.Genre
-        .Include(s => s.GenreName)
+      return await _context.Genre        
         .FirstOrDefaultAsync(s => s.Id == id);
     }
 
