@@ -41,20 +41,25 @@ namespace EcommerceApp.Models.Services
       _context.Entry(genreGame).State = EntityState.Added;
       await _context.SaveChangesAsync();
     }
-    public Task<Game> GetGame(int id)
+    public async Task<Game> GetGame(int id)
     {
-      throw new NotImplementedException();
+      return await _context.Game
+      .FirstOrDefaultAsync(s => s.Id == id);
     }
-    public Task DeleteGame(int id)
+    public async Task DeleteGame(int id)
     {
-      throw new NotImplementedException();
+      Game game = await GetGame(id);
+      _context.Entry(game).State = EntityState.Deleted;
+      await _context.SaveChangesAsync();
     }
 
 
 
-    public Task<Game> UpdateGame(int id, Game game)
+    public async Task<Game> UpdateGame(int id, Game game)
     {
-      throw new NotImplementedException();
+      _context.Entry(game).State = EntityState.Modified;
+      await _context.SaveChangesAsync();
+      return game;
     }
   }
 }

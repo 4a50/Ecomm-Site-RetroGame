@@ -73,6 +73,13 @@ namespace EcommerceApp.Controllers
       return Content("Genre Added");
     }
     [HttpPost]
+    public async Task<IActionResult> DeleteGame(AdminVm id)
+    {
+      
+      await _game.DeleteGame(id);
+      return NoContent();
+    }
+    [HttpPost]
     public IActionResult ShowMeTheIdOfGenre (AdminVm adminvm)
     {
       

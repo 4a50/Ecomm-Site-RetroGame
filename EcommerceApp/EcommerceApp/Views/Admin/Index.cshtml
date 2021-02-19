@@ -12,12 +12,14 @@
     {
         <p>@game.Name</p>
     }
-    <form method="post">
+    <form asp-controller="Admin" asp-action="DeleteGame" method="post">
         @foreach (var g in Model.GameList)
         {
             <input type="radio" asp-for="GameList" value="@g.Id" />@g.Name<br />
+            <p>@g.Id</p>
         }
-        <input type="submit" />
+    <input type="submit" value="Submit">
+    @*<button type="submit">Delete Game</button>*@
     </form>
 
 
@@ -66,8 +68,6 @@
     </form>
 
     <h2>Genre DropDown</h2>
-    @*@Html.DropDownListFor(g => g.Genre.GenreName, new SelectList(Model.GenreList.Genre.GenreName,"Select Genre"));*@
-    
     
     <label for="genres">Select a Genre</label>
     <form asp-controller="Admin" asp-action="ShowMeTheIdOfGenre" method="post">
