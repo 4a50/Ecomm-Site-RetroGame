@@ -59,6 +59,9 @@
         <button type="submit">Add Genre</button>
     </form>
 
+    <h2>Genre DropDown</h2>
+    @Html.DropDownListFor(g => g.Genre.GenreName, new SelectList(Model.GenreList.Genre.GenreName,"Select Genre"));
+
 
 
 </div>

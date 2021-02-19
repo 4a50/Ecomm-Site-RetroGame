@@ -29,6 +29,8 @@ namespace EcommerceApp.Controllers
         GenreList = await _genre.GetAllGenres(),
         GameList = await _game.GetAllGames()
       };
+      
+      
       //Pass it in the page
       return View(adminVm);
     }
