@@ -14,6 +14,7 @@ namespace EcommerceApp.Controllers
   {
     private readonly IGenre _genre;
     private readonly IGame _game;
+    
 
     public AdminController (IGenre genre, IGame game)
     {
@@ -48,7 +49,10 @@ namespace EcommerceApp.Controllers
         ItemPrice = adminvm.Game.ItemPrice,
         GameSystem = adminvm.Game.GameSystem
       };
-      await _game.CreateGame(game);
+      Game saveGame = await _game.CreateGame(game);
+     
+      await _game.CreateGenreGame(saveGame.Id, adminvm.Genre.Id);
+      
 
       return Content("Game Added");
     }
@@ -67,6 +71,12 @@ namespace EcommerceApp.Controllers
       await _genre.CreateGenre(genre);
 
       return Content("Genre Added");
+    }
+    [HttpPost]
+    public IActionResult ShowMeTheIdOfGenre (AdminVm adminvm)
+    {
+      
+      return Content(adminvm.Genre.Id.ToString());
     }
   }
 }
