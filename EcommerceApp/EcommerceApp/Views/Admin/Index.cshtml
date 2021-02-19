@@ -47,6 +47,12 @@
             <span>Game System</span>
             <input asp-for="@Model.Game.GameSystem" />
         </label>
+        <select asp-for="@Model.Genre.Id">
+        @foreach (var genre in Model.GenreList)
+        {
+            <option value="@genre.Id">@genre.GenreName</option>
+        }
+        </select>
         <button type="submit">Add To Inventory</button>
     </form>
 
@@ -59,6 +65,19 @@
         <button type="submit">Add Genre</button>
     </form>
 
-
+    <h2>Genre DropDown</h2>
+    @*@Html.DropDownListFor(g => g.Genre.GenreName, new SelectList(Model.GenreList.Genre.GenreName,"Select Genre"));*@
+    
+    
+    <label for="genres">Select a Genre</label>
+    <form asp-controller="Admin" asp-action="ShowMeTheIdOfGenre" method="post">
+        <select asp-for="@Model.Genre.Id">
+            @foreach (var genre in Model.GenreList)
+            {
+                <option value="@genre.Id">@genre.GenreName</option>
+            }
+        </select>
+        <button type="submit">Display Genre</button>
+    </form>
 
 </div>

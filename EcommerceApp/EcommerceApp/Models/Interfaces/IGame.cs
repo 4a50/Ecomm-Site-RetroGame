@@ -10,5 +10,6 @@ namespace EcommerceApp.Models.Interfaces
     Task<List<Game>> GetAllGames();
     Task<Game> UpdateGame(int id, Game game);
     Task DeleteGame(int id);
+    Task CreateGenreGame(int gameid, int genreid);
   }
 }

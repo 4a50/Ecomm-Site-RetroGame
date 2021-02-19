@@ -31,7 +31,16 @@ namespace EcommerceApp.Models.Services
       return await _context.Game.ToListAsync();
       //return await _context.Game
     }
-
+    public async Task CreateGenreGame(int gameid, int genreid)
+    {
+      GenreGame genreGame = new GenreGame
+      {
+        GameId = gameid,
+        GenreId = genreid
+      };
+      _context.Entry(genreGame).State = EntityState.Added;
+      await _context.SaveChangesAsync();
+    }
     public Task<Game> GetGame(int id)
     {
       throw new NotImplementedException();
