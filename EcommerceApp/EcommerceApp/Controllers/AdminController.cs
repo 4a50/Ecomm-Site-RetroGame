@@ -73,10 +73,10 @@ namespace EcommerceApp.Controllers
       return Content("Genre Added");
     }
     [HttpPost]
-    public async Task<IActionResult> DeleteGame(AdminVm id)
+    public async Task<IActionResult> DeleteGame(string adminVm)
     {
       
-      await _game.DeleteGame(id);
+     // await _game.DeleteGame(adminVm);
       return NoContent();
     }
     [HttpPost]
