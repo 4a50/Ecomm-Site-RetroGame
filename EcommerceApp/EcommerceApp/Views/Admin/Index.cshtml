@@ -15,15 +15,11 @@
     <form asp-controller="Admin" asp-action="DeleteGame" method="post">
         @foreach (var g in Model.GameList)
         {
-            <input type="radio" asp-for="GameList" value="@g.Id" />@g.Name<br />
-            <p>@g.Id</p>
+            <input type="radio" asp-for="GameList" value="@g.Id" />@g.Name<br />       
         }
         <input type="submit" value="Submit">
         @*<button type="submit">Delete Game</button>*@
-    </form>
-    <p>Test</p>
-    @Html.RadioButtonFor(m => m.Game, "")
-    <p>EndTest</p>
+    </form>  
 
     <form method="post">
         @foreach (var g in Model.GenreList)
@@ -82,16 +78,26 @@
         <button type="submit">Display Genre</button>
     </form>
 
-    @*remove*@
+    <h2> Delete A Game </h2>
     <form asp-controller="Admin" asp-action="DeleteGame" method="post">
         @foreach (var g in Model.GameList)
         {
-            <input type="radio" value=@g.Id id=@g.Id name="gamelist"/>  
-            <p>@g.Id</p>
+            @Html.RadioButtonFor(m => m.SelectedAnswer, g.Id)
+            <label>@g.Name</label>
+            <br />
         }
         <input type="submit" value="Submit">
-        @*<button type="submit">Delete Game</button>*@
     </form>
-    @*remove*@
+    <h2> Delete A Genre </h2>
+    <form asp-controller="Admin" asp-action="DeleteGenre" method="post">
+        @foreach (var g in Model.GenreList)
+        {
+            @Html.RadioButtonFor(m => m.SelectedAnswer, g.Id)
+            <label>@g.GenreName</label>
+            <br />
+        }
+        <input type="submit" value="Submit">
+    </form>
 
 </div>
+
