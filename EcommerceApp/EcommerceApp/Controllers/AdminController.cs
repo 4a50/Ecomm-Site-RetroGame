@@ -150,15 +150,15 @@ namespace EcommerceApp.Controllers
       int idNum = int.Parse(adminvm.SelectedAnswers.First());
       Game gDisp = await _game.GetGame(idNum);
       Debug.WriteLine(gDisp.Name);
-      return Redirect($"/admin?value={idNum}");
+      return Redirect($"/admin?gmid={idNum}");
     }
     [HttpPost]
     public async Task<IActionResult> SelectGenreToMod(AdminVm adminvm)
     {
       int idNum = int.Parse(adminvm.SelectedAnswers.First());
-      Game gDisp = await _game.GetGame(idNum);
-      Debug.WriteLine(gDisp.Name);
-      return Redirect($"/admin?value={idNum}");
+      Genre gDisp = await _genre.GetGenre(idNum);
+      Debug.WriteLine(gDisp.GenreName);
+      return Redirect($"/admin?gnId={idNum}");
     }
     [HttpPost]
     public async Task<IActionResult> UpdateGame(AdminVm adminvm)
@@ -171,6 +171,14 @@ namespace EcommerceApp.Controllers
       Debug.WriteLine(sb.ToString());
 
       await _game.UpdateGame(adminvm.Game.Id, adminvm.Game);
+      Debug.WriteLine("Completed Update");
+
+      return Redirect($"/admin");
+    }
+    [HttpPost]
+    public async Task<IActionResult> UpdateGenre(AdminVm adminvm)
+    {
+      await _genre.UpdateGenre(adminvm.Genre.Id, adminvm.Genre);
       Debug.WriteLine("Completed Update");
 
       return Redirect($"/admin");

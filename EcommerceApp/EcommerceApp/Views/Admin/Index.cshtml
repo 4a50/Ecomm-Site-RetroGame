@@ -33,7 +33,7 @@
     <form asp-controller="Admin" asp-action="AddGame" method="post">
         <label>
             <span>Game Title</span>
-            <input asp-for="@Model.Game.Name" />
+            <input asp-for="@Model.Game.Name"  placeholder="Enter A Title"/>
         </label>
         <label>
             <span>Game Description</span>
@@ -129,7 +129,7 @@
     </form>
     <form asp-controller="Admin" asp-action="UpdateGenre">
         <span>Genre</span>
-        <input asp-for="@Model.Genre.GenreName" />
+        <input asp-for="@Model.Genre.GenreName"/>
         <input type="hidden" asp-for="@Model.Genre.Id" />        
         <button type="submit">Click To Update</button>
     </form>
