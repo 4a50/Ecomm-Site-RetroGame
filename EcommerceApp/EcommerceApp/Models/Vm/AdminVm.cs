@@ -13,11 +13,12 @@ namespace EcommerceApp.Models.Vm
     public Genre Genre { get; set; }
     public GenreGame GenreGame { get; set; }
     public List<Genre> GenreList { get; set; }
-    public List<Game> GameList { get; set; }
+    public List<Game> GameList { get; set; }    
     //Recieve Radio Button Input.
     public string SelectedAnswer { get; set; }
     public IEnumerable<string> SelectedAnswers {get; set;}
     public IEnumerable<SelectListItem> Games { get; set; }
+    public string UrlQuery { get; set; }
 
   }
 }

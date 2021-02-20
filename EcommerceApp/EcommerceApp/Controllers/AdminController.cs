@@ -16,22 +16,39 @@ namespace EcommerceApp.Controllers
   public class AdminController : Controller
   {
     private readonly IGenre _genre;
-    private readonly IGame _game;
-    private Game currentGame { get; set; }
+    private readonly IGame _game;    
 
     public AdminController (IGenre genre, IGame game)
     {
       _genre = genre;
       _game = game;
+      //currentGame = new Game();
     }
-    public async Task<IActionResult> IndexAsync()
+    public async Task<IActionResult> Index(string value )
     {
-
+      Debug.WriteLine($"Name of CurrentGame: {value}");
       //Create a list of Genres
+      Game game = new Game();
+      if (value != "")
+      {
+        try
+        {
+          int idNum = int.Parse(value);
+          game = await _game.GetGame(idNum); 
+        }
+        catch
+        {
+          Debug.WriteLine("Unable to Parse Value for Record ID");
+        }
+      }
+  
       AdminVm adminVm = new AdminVm
       {
         GenreList = await _genre.GetAllGenres(),
         GameList = await _game.GetAllGames(),
+        Game = game
+        
+        
       };
       List<SelectListItem> listboxList = new List<SelectListItem>();
       foreach (Game g in adminVm.GameList)
@@ -46,11 +63,7 @@ namespace EcommerceApp.Controllers
       }
       adminVm.Games = listboxList;
       //To carry peristance through the Update Game Selection process
-      if (currentGame != null)
-      {
-        adminVm.Game = currentGame;
-        Debug.WriteLine("Game is Null");
-      }
+      
       //Pass it in the page
       return View(adminVm);
     }
@@ -115,32 +128,35 @@ namespace EcommerceApp.Controllers
     [HttpPost]
     public async Task<IActionResult> SelectGameToMod(AdminVm adminvm)
     {
-      Game gDisp = await _game.GetGame(int.Parse(adminvm.SelectedAnswers.First()));
+      int idNum = int.Parse(adminvm.SelectedAnswers.First());
+      Game gDisp = await _game.GetGame(idNum);
       Debug.WriteLine(gDisp.Name);
-      adminvm.Game =      
-        new Game
-        {
-          Name = gDisp.Name,
-          Description = gDisp.Description,
-          ItemPrice = gDisp.ItemPrice,
-          GameSystem = gDisp.GameSystem
-        };
-      
-      //adminvm.Game.Name = gameToDisplay.Name;
-      //adminvm.Game.Description = gameToDisplay.Description;
-      //adminvm.Game.ItemPrice = gameToDisplay.ItemPrice;
-      //adminvm.Game.GameSystem = gameToDisplay.GameSystem;
+      //currentGame =      
+      //  new Game
+      //  {
+      //    Id = gDisp.Id,
+      //    Name = gDisp.Name,
+      //    Description = gDisp.Description,
+      //    ItemPrice = gDisp.ItemPrice,
+      //    GameSystem = gDisp.GameSystem
+      //  };
 
-      return Redirect("/admin");
+      return Redirect($"/admin?value={idNum}");
     }
     [HttpPost]
-    public IActionResult UpdateGame(AdminVm adminvm)
+    public async Task<IActionResult> UpdateGame(AdminVm adminvm)
     {
       StringBuilder sb = new StringBuilder();
+      sb.Append($"{adminvm.Game.Id} ");
       sb.Append($"{adminvm.Game.Name} ");
       sb.Append($"{adminvm.Game.Description} ");
       sb.Append($"{adminvm.Game.Description} ");
-      return Redirect("/admin");
+      Debug.WriteLine(sb.ToString());
+
+      await _game.UpdateGame(adminvm.Game.Id, adminvm.Game);
+      Debug.WriteLine("Completed Update");
+
+      return Redirect($"/admin");
     }
   }
 }

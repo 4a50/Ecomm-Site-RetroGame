@@ -104,13 +104,26 @@
 <div id="selectGameToEdit">
     <h2>Edit a Game</h2>
     <form asp-controller="Admin" asp-action="SelectGameToMod" method="post">
-        @Html.ListBoxFor(l => l.SelectedAnswers, Model.Games, new { size = 7 })
+        @Html.ListBoxFor(l => l.SelectedAnswers, Model.Games, new { size = 7 })        
         <button type="submit">Press to Edit</button>
     </form>
     <br/>
-    <form asp-controller="Admin" asp-action="UpdateGame">
-        <partial name="SelectGameToMod"/>
-        
+    <form asp-controller="Admin" asp-action="UpdateGame">        
+        <span>Title</span>
+        <input asp-for="@Model.Game.Name" value="@Model.Game.Name"type="text" />
+        <p>@Model.Game.Name</p>
+        <span>Description</span>
+        <input asp-for="@Model.Game.Description" />
+        <span>Price</span>
+        <input asp-for="@Model.Game.ItemPrice" />
+        <span>Game System</span>
+        <input asp-for="@Model.Game.GameSystem" />
+        <input type="hidden" asp-for="@Model.Game.Id"/>
+
+        <p>Place Holder For Genre Drop Down</p>
+
+        <button type="submit">Click To Update</button>
+
 
     </form>
     
