@@ -24,16 +24,18 @@ namespace EcommerceApp.Controllers
       _game = game;
       //currentGame = new Game();
     }
-    public async Task<IActionResult> Index(string value )
+    public async Task<IActionResult> Index(string gmId, string gnId )
     {
-      Debug.WriteLine($"Name of CurrentGame: {value}");
+      Debug.WriteLine($"Name of CurrentGame: {gmId}");
+      Debug.WriteLine($"Name of CurrentGame: {gnId}");
       //Create a list of Genres
       Game game = new Game();
-      if (value != "")
+      Genre genre = new Genre();
+      if (gmId != "")
       {
         try
         {
-          int idNum = int.Parse(value);
+          int idNum = int.Parse(gmId);
           game = await _game.GetGame(idNum); 
         }
         catch
@@ -41,14 +43,24 @@ namespace EcommerceApp.Controllers
           Debug.WriteLine("Unable to Parse Value for Record ID");
         }
       }
-  
+      if (gnId != "")
+      {
+        try
+        {
+          int idNum = int.Parse(gnId);
+          genre = await _genre.GetGenre(idNum);
+        }
+        catch
+        {
+          Debug.WriteLine("Unable to Parse Value for Record ID");
+        }
+      }
       AdminVm adminVm = new AdminVm
       {
         GenreList = await _genre.GetAllGenres(),
         GameList = await _game.GetAllGames(),
-        Game = game
-        
-        
+        Game = game,
+        Genre = genre
       };
       List<SelectListItem> listboxList = new List<SelectListItem>();
       foreach (Game g in adminVm.GameList)
@@ -62,9 +74,16 @@ namespace EcommerceApp.Controllers
           );      
       }
       adminVm.Games = listboxList;
-      //To carry peristance through the Update Game Selection process
-      
-      //Pass it in the page
+      List<SelectListItem> genreListBox = new List<SelectListItem>();
+      foreach (Genre g in adminVm.GenreList)
+      {
+        genreListBox.Add(new SelectListItem
+        {
+          Text = g.GenreName,
+          Value = g.Id.ToString()
+        });
+      }
+      adminVm.Genres = genreListBox;      
       return View(adminVm);
     }
     [HttpPost]
@@ -131,16 +150,14 @@ namespace EcommerceApp.Controllers
       int idNum = int.Parse(adminvm.SelectedAnswers.First());
       Game gDisp = await _game.GetGame(idNum);
       Debug.WriteLine(gDisp.Name);
-      //currentGame =      
-      //  new Game
-      //  {
-      //    Id = gDisp.Id,
-      //    Name = gDisp.Name,
-      //    Description = gDisp.Description,
-      //    ItemPrice = gDisp.ItemPrice,
-      //    GameSystem = gDisp.GameSystem
-      //  };
-
+      return Redirect($"/admin?value={idNum}");
+    }
+    [HttpPost]
+    public async Task<IActionResult> SelectGenreToMod(AdminVm adminvm)
+    {
+      int idNum = int.Parse(adminvm.SelectedAnswers.First());
+      Game gDisp = await _game.GetGame(idNum);
+      Debug.WriteLine(gDisp.Name);
       return Redirect($"/admin?value={idNum}");
     }
     [HttpPost]

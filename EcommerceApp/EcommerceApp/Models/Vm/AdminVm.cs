@@ -18,6 +18,7 @@ namespace EcommerceApp.Models.Vm
     public string SelectedAnswer { get; set; }
     public IEnumerable<string> SelectedAnswers {get; set;}
     public IEnumerable<SelectListItem> Games { get; set; }
+    public IEnumerable<SelectListItem> Genres { get; set; }
     public string UrlQuery { get; set; }
 
   }
