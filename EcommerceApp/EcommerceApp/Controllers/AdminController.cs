@@ -103,7 +103,7 @@ namespace EcommerceApp.Controllers
       Game saveGame = await _game.CreateGame(game);
      
       await _game.CreateGenreGame(saveGame.Id, adminvm.Genre.Id);
-      return Content("Game Added");
+      return Redirect("/admin");
     }
     [HttpPost]
     public async Task<IActionResult> AddGenre(AdminVm adminvm)

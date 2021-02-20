@@ -1,0 +1,7 @@
+﻿@model EcommerceApp.Models.Vm.AdminVm
+<select asp-for="@Model.Genre.Id">
+    @foreach (var genre in Model.GenreList)
+    {
+        <option value="@genre.Id">@genre.GenreName</option>
+    }
+</select>
