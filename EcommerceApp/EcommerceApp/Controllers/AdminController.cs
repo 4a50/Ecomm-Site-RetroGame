@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using EcommerceApp.Models.Services;
 using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text;
 
 namespace EcommerceApp.Controllers
 {
@@ -14,7 +17,7 @@ namespace EcommerceApp.Controllers
   {
     private readonly IGenre _genre;
     private readonly IGame _game;
-    
+    private Game currentGame { get; set; }
 
     public AdminController (IGenre genre, IGame game)
     {
@@ -28,8 +31,26 @@ namespace EcommerceApp.Controllers
       AdminVm adminVm = new AdminVm
       {
         GenreList = await _genre.GetAllGenres(),
-        GameList = await _game.GetAllGames()
+        GameList = await _game.GetAllGames(),
       };
+      List<SelectListItem> listboxList = new List<SelectListItem>();
+      foreach (Game g in adminVm.GameList)
+      {
+        listboxList.Add(
+          new SelectListItem
+          {
+            Text = g.Name,
+            Value = g.Id.ToString()
+          }
+          );      
+      }
+      adminVm.Games = listboxList;
+      //To carry peristance through the Update Game Selection process
+      if (currentGame != null)
+      {
+        adminVm.Game = currentGame;
+        Debug.WriteLine("Game is Null");
+      }
       //Pass it in the page
       return View(adminVm);
     }
@@ -90,6 +111,36 @@ namespace EcommerceApp.Controllers
     public IActionResult ShowMeTheIdOfGenre (AdminVm adminvm)
     {      
       return Content(adminvm.Genre.Id.ToString());
+    }
+    [HttpPost]
+    public async Task<IActionResult> SelectGameToMod(AdminVm adminvm)
+    {
+      Game gDisp = await _game.GetGame(int.Parse(adminvm.SelectedAnswers.First()));
+      Debug.WriteLine(gDisp.Name);
+      adminvm.Game =      
+        new Game
+        {
+          Name = gDisp.Name,
+          Description = gDisp.Description,
+          ItemPrice = gDisp.ItemPrice,
+          GameSystem = gDisp.GameSystem
+        };
+      
+      //adminvm.Game.Name = gameToDisplay.Name;
+      //adminvm.Game.Description = gameToDisplay.Description;
+      //adminvm.Game.ItemPrice = gameToDisplay.ItemPrice;
+      //adminvm.Game.GameSystem = gameToDisplay.GameSystem;
+
+      return Redirect("/admin");
+    }
+    [HttpPost]
+    public IActionResult UpdateGame(AdminVm adminvm)
+    {
+      StringBuilder sb = new StringBuilder();
+      sb.Append($"{adminvm.Game.Name} ");
+      sb.Append($"{adminvm.Game.Description} ");
+      sb.Append($"{adminvm.Game.Description} ");
+      return Redirect("/admin");
     }
   }
 }

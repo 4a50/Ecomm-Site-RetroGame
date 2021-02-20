@@ -101,3 +101,18 @@
 
 </div>
 
+<div id="selectGameToEdit">
+    <h2>Edit a Game</h2>
+    <form asp-controller="Admin" asp-action="SelectGameToMod" method="post">
+        @Html.ListBoxFor(l => l.SelectedAnswers, Model.Games, new { size = 7 })
+        <button type="submit">Press to Edit</button>
+    </form>
+    <br/>
+    <form asp-controller="Admin" asp-action="UpdateGame">
+        <partial name="SelectGameToMod"/>
+        
+
+    </form>
+    
+</div>
+
