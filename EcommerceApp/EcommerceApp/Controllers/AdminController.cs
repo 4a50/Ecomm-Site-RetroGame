@@ -192,7 +192,14 @@ namespace EcommerceApp.Controllers
       }
       int genreid = adminvm.GenreGame.GenreId;
       int gameid = adminvm.GenreGame.GameId;
-      await _game.CreateGenreGame(genreid, gameid);
+      try
+      {
+        await _game.CreateGenreGame(genreid, gameid);
+      }
+      catch
+      {
+        Debug.WriteLine("Conflict with Database Occured. Multiple Values?");
+      }
       return Redirect($"/admin?gmid={gameid}");
 
     }

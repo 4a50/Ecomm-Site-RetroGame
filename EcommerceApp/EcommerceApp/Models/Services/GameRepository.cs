@@ -30,7 +30,7 @@ namespace EcommerceApp.Models.Services
       return await _context.Game.ToListAsync();
       //return await _context.Game
     }
-    public async Task CreateGenreGame(int gameid, int genreid)
+    public async Task CreateGenreGame(int genreid, int gameid)
     {
       GenreGame genreGame = new GenreGame
       {

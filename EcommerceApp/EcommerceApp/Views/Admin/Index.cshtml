@@ -8,15 +8,6 @@
     <main>
         <h1>Administration Dashboard</h1>
 
-
-
-        <form method="post">
-            @foreach (var g in Model.GenreList)
-            {
-                <input type="radio" asp-for="Genre" value="@g.Id" />@g.GenreName<br />
-            }
-            <input type="submit" />
-        </form>
         @if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
         {
             <h2>Add A Game</h2>
@@ -39,20 +30,7 @@
                 </label>
                 <button type="submit">Add To Inventory</button>
             </form>
-        }
-        @if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
-        {
-            <h2>Add A Genre to an existing Game</h2>
-            <h3>Genres Available</h3>
-
-            <select asp-for="@Model.Genre.Id" placeholder="Action" value="">
-                @foreach (var genre in Model.GenreList)
-                {
-                    <option value="@genre.Id">@genre.GenreName</option>
-                }
-            </select>
-            <button type="submit">Add To Inventory</button>
-        }
+        }       
         @if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
         {
             <h2>Add A Genre</h2>
@@ -111,10 +89,23 @@
                     <input asp-for="@Model.Game.ItemPrice" />
                     <span>Game System</span>
                     <input asp-for="@Model.Game.GameSystem" />
-                    <input type="hidden" asp-for="@Model.Game.Id" />
-                    <partial name="_GenreDrop" />
+                    <ul>Genres
+                    @if (Model.Game.GenreGames != null)
+                        {
+                        @foreach (var genre in Model.Game.GenreGames)
+                        {
+                            <li>@genre.Genre.GenreName</li>
+                        }
+                    }
+                    else
+                    {
+                        <li>No Genre's Present</li>
+                    }
 
-                    <button type="submit" disabled>Click To Update</button>
+                    </ul>
+                    <br />
+                    <input type="hidden" asp-for="@Model.Game.Id" />
+                    <button type="submit">Click To Update Game</button>
                 </form>
             </div>
             <h2>Edit A Genre</h2>
@@ -129,13 +120,11 @@
                 <button type="submit">Click To Update</button>
             </form>
         }
-        @if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
+        @if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
         {
             <h2>Add A Genre To A Game</h2>
-            <partial name="_GenreList" />
             <partial name="_GameListBox" />
-            <button type="submit">Click To Update</button>
-
+            <partial name="_GenreList" />
             <form asp-controller="Admin" asp-action="AddGenreToGame">
                 <span>Enter Game Id</span>
                 <input asp-for="@Model.GenreGame.GameId" />
