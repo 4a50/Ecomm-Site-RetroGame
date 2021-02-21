@@ -88,7 +88,7 @@ namespace EcommerceApp.Controllers
       adminVm.Genres = genreListBox;
       return View(adminVm);
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> AddGame(AdminVm adminvm)
     {
