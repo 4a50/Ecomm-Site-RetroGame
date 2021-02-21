@@ -40,7 +40,13 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }*/
-
+h1 {
+    font-size: 32px;
+}
+h2{
+    font-size: 24px;
+    color:green;
+}
 input{
     display: inline-block;
     color: purple;

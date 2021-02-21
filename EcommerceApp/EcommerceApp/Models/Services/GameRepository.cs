@@ -42,8 +42,11 @@ namespace EcommerceApp.Models.Services
     }
     public async Task<Game> GetGame(int id)
     {
-      return await _context.Game
+      var gameData = await _context.Game
+        .Include(s => s.GenreGames)        
+        .ThenInclude(g => g.Genre)
       .FirstOrDefaultAsync(s => s.Id == id);
+      return gameData;
     }
     public async Task<Game> UpdateGame(int id, Game game)
     {

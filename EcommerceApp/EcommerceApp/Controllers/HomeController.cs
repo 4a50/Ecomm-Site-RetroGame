@@ -1,8 +1,10 @@
 ﻿using EcommerceApp.Models;
+using EcommerceApp.Models.Dto;
 using EcommerceApp.Models.Vm;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace EcommerceApp.Controllers
 {
@@ -141,9 +143,10 @@ namespace EcommerceApp.Controllers
       return View(shopVm);
     }
     [Authorize(Policy = "update")]
-    public IActionResult AdminDash()
+    public IActionResult AdminDash(UserDto user)
     {
-      return View();
+      Debug.Write($"User: {user.Id} Roles: {user.Roles}");
+      return RedirectToAction("Index", "Admin", user);
     }
   }
 }

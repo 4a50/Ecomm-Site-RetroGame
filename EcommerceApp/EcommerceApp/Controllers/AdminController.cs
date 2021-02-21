@@ -1,6 +1,7 @@
 ﻿using EcommerceApp.Models;
 using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Vm;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -16,6 +17,7 @@ namespace EcommerceApp.Controllers
   {
     private readonly IGenre _genre;
     private readonly IGame _game;
+    private IUserService userService;
 
     public AdminController(IGenre genre, IGame game)
     {
@@ -23,7 +25,8 @@ namespace EcommerceApp.Controllers
       _game = game;
       //currentGame = new Game();
     }
-    public async Task<IActionResult> Index(string gmId, string gnId)
+    [Authorize]
+    public async Task<IActionResult> Index(string gmId, string gnId, User user)
     {
       Debug.WriteLine($"Name of CurrentGame: {gmId}");
       Debug.WriteLine($"Name of CurrentGame: {gnId}");
@@ -85,6 +88,7 @@ namespace EcommerceApp.Controllers
       adminVm.Genres = genreListBox;
       return View(adminVm);
     }
+    
     [HttpPost]
     public async Task<IActionResult> AddGame(AdminVm adminvm)
     {
@@ -123,9 +127,7 @@ namespace EcommerceApp.Controllers
     [HttpPost]
     public async Task<IActionResult> DeleteGame(AdminVm adminVm)
     {
-      int gameId;
-      try { gameId = int.Parse(adminVm.SelectedAnswer); }
-      catch { throw new Exception("Unable to Parse Radio Button Input For Game Select"); }
+      int gameId = int.Parse(adminVm.SelectedAnswers.First());
       await _game.DeleteGame(gameId);
       return Redirect("/admin");
     }
