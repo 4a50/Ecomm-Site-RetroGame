@@ -1,8 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
-
-<nav>
-    <ul>
+<nav id="navbar">    
+    <ul class="navbar-items">
         <li><a href="/Home/Index">Home</a></li>
         <li><a href="/Home/Shop">Shop</a></li>
         <li><a href="/Home/Login">Login</a></li>
@@ -10,9 +9,9 @@
 
         @if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
         {
-            <li><a href="/Home/AdminDash">AdminDash</a></li>
+            <li><a href="/Admin/">Admin</a></li>
         }
 
         <li><button>CART</button></li>
-    </ul>
+    </ul class="navbar">
 </nav>

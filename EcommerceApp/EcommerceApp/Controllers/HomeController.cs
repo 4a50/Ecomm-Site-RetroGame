@@ -1,8 +1,10 @@
 ﻿using EcommerceApp.Models;
+using EcommerceApp.Models.Dto;
 using EcommerceApp.Models.Vm;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace EcommerceApp.Controllers
 {
@@ -86,9 +88,10 @@ namespace EcommerceApp.Controllers
       {
         Name = "Starfox",
         Description = "The mostest badass game with the FX Chip!",
-        GenreGame = new GenreGame
+        GenreGames = new List<GenreGame> { new GenreGame
         {
           Genre = new Genre { GenreName = "Space Simulator" }
+        }
         }
       };
       return View(game);
@@ -130,22 +133,20 @@ namespace EcommerceApp.Controllers
           Name = "Super Metroid",
           Description = "Samus Kicks some ass",
           ItemPrice = 75.00f,
-          GenreGame = new GenreGame
-          {
-            Genre = new Genre
-            {
-              GenreName = "Awesome"
-            }
-          }
+          GenreGames = new List<GenreGame> { new GenreGame
+        {
+          Genre = new Genre { GenreName = "Space Simulator" }
         }
-      };
-
+          }
+      }
+    };
       return View(shopVm);
     }
     [Authorize(Policy = "update")]
-    public IActionResult AdminDash()
+    public IActionResult AdminDash(UserDto user)
     {
-      return View();
+      Debug.Write($"User: {user.Id} Roles: {user.Roles}");
+      return RedirectToAction("Index", "Admin", user);
     }
   }
 }

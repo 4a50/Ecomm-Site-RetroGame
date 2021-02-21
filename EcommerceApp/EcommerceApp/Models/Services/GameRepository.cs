@@ -1,7 +1,6 @@
 ﻿using EcommerceApp.Data;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -43,23 +42,29 @@ namespace EcommerceApp.Models.Services
     }
     public async Task<Game> GetGame(int id)
     {
-      return await _context.Game
+      var gameData = await _context.Game
+        .Include(s => s.GenreGames)        
+        .ThenInclude(g => g.Genre)
       .FirstOrDefaultAsync(s => s.Id == id);
+      return gameData;
+    }
+    public async Task<Game> UpdateGame(int id, Game game)
+    {
+      _context.Entry(game).State = EntityState.Modified;
+      await _context.SaveChangesAsync();
+      return game;
+    }
+    public async Task DeleteGenreGame(int gameId, int genreId)
+    {
+      var result = await _context.GenreGame.FirstOrDefaultAsync(i => i.GameId == gameId && i.GenreId == genreId);
+      _context.Entry(result).State = EntityState.Deleted;
+      await _context.SaveChangesAsync();
     }
     public async Task DeleteGame(int id)
     {
       Game game = await GetGame(id);
       _context.Entry(game).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
-    }
-
-
-
-    public async Task<Game> UpdateGame(int id, Game game)
-    {
-      _context.Entry(game).State = EntityState.Modified;
-      await _context.SaveChangesAsync();
-      return game;
     }
   }
 }

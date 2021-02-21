@@ -1,7 +1,6 @@
 ﻿using EcommerceApp.Data;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -19,13 +18,13 @@ namespace EcommerceApp.Models.Services
     public async Task<List<Genre>> GetAllGenres()
     {
       return await _context.Genre
-        
+
         .ToListAsync();
     }
 
     public async Task<Genre> GetGenre(int id)
     {
-      return await _context.Genre        
+      return await _context.Genre
         .FirstOrDefaultAsync(s => s.Id == id);
     }
 

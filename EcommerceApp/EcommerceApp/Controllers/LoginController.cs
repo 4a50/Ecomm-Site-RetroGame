@@ -43,7 +43,7 @@ namespace EcommerceApp.Controllers
     {
       data.Roles = new List<string>()
               {
-                "Administrator"
+                "Guest"
               };
 
       var user = await userService.Register(data, this.ModelState);

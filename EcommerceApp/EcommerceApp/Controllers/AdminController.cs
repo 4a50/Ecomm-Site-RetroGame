@@ -1,30 +1,32 @@
-﻿using EcommerceApp.Models.Vm;
+﻿using EcommerceApp.Models;
+using EcommerceApp.Models.Interfaces;
+using EcommerceApp.Models.Vm;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EcommerceApp.Models.Services;
-using EcommerceApp.Models.Interfaces;
-using EcommerceApp.Models;
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EcommerceApp.Controllers
 {
   public class AdminController : Controller
   {
     private readonly IGenre _genre;
-    private readonly IGame _game;    
+    private readonly IGame _game;
+    private IUserService userService;
 
-    public AdminController (IGenre genre, IGame game)
+    public AdminController(IGenre genre, IGame game)
     {
       _genre = genre;
       _game = game;
       //currentGame = new Game();
     }
-    public async Task<IActionResult> Index(string gmId, string gnId )
+    [Authorize]
+    public async Task<IActionResult> Index(string gmId, string gnId, User user)
     {
       Debug.WriteLine($"Name of CurrentGame: {gmId}");
       Debug.WriteLine($"Name of CurrentGame: {gnId}");
@@ -36,7 +38,7 @@ namespace EcommerceApp.Controllers
         try
         {
           int idNum = int.Parse(gmId);
-          game = await _game.GetGame(idNum); 
+          game = await _game.GetGame(idNum);
         }
         catch
         {
@@ -71,7 +73,7 @@ namespace EcommerceApp.Controllers
             Text = g.Name,
             Value = g.Id.ToString()
           }
-          );      
+          );
       }
       adminVm.Games = listboxList;
       List<SelectListItem> genreListBox = new List<SelectListItem>();
@@ -83,13 +85,14 @@ namespace EcommerceApp.Controllers
           Value = g.Id.ToString()
         });
       }
-      adminVm.Genres = genreListBox;      
+      adminVm.Genres = genreListBox;
       return View(adminVm);
     }
+    
     [HttpPost]
-    public async Task<IActionResult> AddGame(AdminVm adminvm) 
+    public async Task<IActionResult> AddGame(AdminVm adminvm)
     {
-     if (!ModelState.IsValid)
+      if (!ModelState.IsValid)
       {
         return View(adminvm);
       }
@@ -101,9 +104,9 @@ namespace EcommerceApp.Controllers
         GameSystem = adminvm.Game.GameSystem
       };
       Game saveGame = await _game.CreateGame(game);
-     
+
       await _game.CreateGenreGame(saveGame.Id, adminvm.Genre.Id);
-      return Content("Game Added");
+      return Redirect("/admin");
     }
     [HttpPost]
     public async Task<IActionResult> AddGenre(AdminVm adminvm)
@@ -115,7 +118,7 @@ namespace EcommerceApp.Controllers
       Genre genre = new Genre
       {
         GenreName = adminvm.Genre.GenreName
-        
+
       };
       await _genre.CreateGenre(genre);
 
@@ -124,10 +127,8 @@ namespace EcommerceApp.Controllers
     [HttpPost]
     public async Task<IActionResult> DeleteGame(AdminVm adminVm)
     {
-      int gameId;
-      try { gameId = int.Parse(adminVm.SelectedAnswer); }
-      catch { throw new Exception("Unable to Parse Radio Button Input For Game Select"); }
-     await _game.DeleteGame(gameId);
+      int gameId = int.Parse(adminVm.SelectedAnswers.First());
+      await _game.DeleteGame(gameId);
       return Redirect("/admin");
     }
     [HttpPost]
@@ -140,8 +141,8 @@ namespace EcommerceApp.Controllers
       return Redirect("/admin");
     }
     [HttpPost]
-    public IActionResult ShowMeTheIdOfGenre (AdminVm adminvm)
-    {      
+    public IActionResult ShowMeTheIdOfGenre(AdminVm adminvm)
+    {
       return Content(adminvm.Genre.Id.ToString());
     }
     [HttpPost]
@@ -183,5 +184,31 @@ namespace EcommerceApp.Controllers
 
       return Redirect($"/admin");
     }
+    public async Task<IActionResult> AddGenreToGame(AdminVm adminvm)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(adminvm);
+      }
+      int genreid = adminvm.GenreGame.GenreId;
+      int gameid = adminvm.GenreGame.GameId;
+      await _game.CreateGenreGame(genreid, gameid);
+      return Redirect($"/admin?gmid={gameid}");
+
+    }
+    public async Task<IActionResult> RemoveGenreToGame(AdminVm adminvm)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(adminvm);
+      }
+      int genreid = adminvm.GenreGame.GenreId;
+      int gameid = adminvm.GenreGame.GameId;
+      await _game.DeleteGenreGame(gameid, genreid);
+      return Redirect($"/admin?gmid={gameid}");
+
+    }
+
   }
+
 }
