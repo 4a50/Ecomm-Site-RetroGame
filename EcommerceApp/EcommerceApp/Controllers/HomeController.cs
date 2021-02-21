@@ -138,8 +138,8 @@ namespace EcommerceApp.Controllers
           Genre = new Genre { GenreName = "Space Simulator" }
         }
           }
-      }
-    };
+        }
+      };
       return View(shopVm);
     }
     [Authorize(Policy = "update")]

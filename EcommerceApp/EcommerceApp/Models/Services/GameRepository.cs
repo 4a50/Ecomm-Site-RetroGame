@@ -30,7 +30,7 @@ namespace EcommerceApp.Models.Services
       return await _context.Game.ToListAsync();
       //return await _context.Game
     }
-    public async Task CreateGenreGame(int gameid, int genreid)
+    public async Task CreateGenreGame(int genreid, int gameid)
     {
       GenreGame genreGame = new GenreGame
       {
@@ -43,7 +43,7 @@ namespace EcommerceApp.Models.Services
     public async Task<Game> GetGame(int id)
     {
       var gameData = await _context.Game
-        .Include(s => s.GenreGames)        
+        .Include(s => s.GenreGames)
         .ThenInclude(g => g.Genre)
       .FirstOrDefaultAsync(s => s.Id == id);
       return gameData;
