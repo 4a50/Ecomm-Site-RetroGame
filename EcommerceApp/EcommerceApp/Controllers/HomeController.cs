@@ -86,9 +86,10 @@ namespace EcommerceApp.Controllers
       {
         Name = "Starfox",
         Description = "The mostest badass game with the FX Chip!",
-        GenreGame = new GenreGame
+        GenreGames = new List<GenreGame> { new GenreGame
         {
           Genre = new Genre { GenreName = "Space Simulator" }
+        }
         }
       };
       return View(game);
@@ -130,16 +131,13 @@ namespace EcommerceApp.Controllers
           Name = "Super Metroid",
           Description = "Samus Kicks some ass",
           ItemPrice = 75.00f,
-          GenreGame = new GenreGame
-          {
-            Genre = new Genre
-            {
-              GenreName = "Awesome"
-            }
-          }
+          GenreGames = new List<GenreGame> { new GenreGame
+        {
+          Genre = new Genre { GenreName = "Space Simulator" }
         }
-      };
-
+          }
+      }
+    };
       return View(shopVm);
     }
     [Authorize(Policy = "update")]

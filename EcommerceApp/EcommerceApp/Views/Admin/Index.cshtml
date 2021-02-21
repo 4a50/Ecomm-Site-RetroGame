@@ -1,23 +1,16 @@
 ﻿@model EcommerceApp.Models.Vm.AdminVm
     <body>
         <header>
-            <partial name="/Views/Shared/_NavBar" />
+            <partial name="../Shared/_NavBar.cshtml" />
         </header>
         <main>
             <h1>Administration Dashboard</h1>
 
             <div id="adminDashboard">
-            
-                <div>
-                    <h2>List of Genres</h2>
-                    <ul>
-                        @foreach (var genre in Model.GenreList)
-                        {
-                            <li>@genre.GenreName</li>
-                        }
-                    </ul>
+
+                <div>                    
                     <h2>Select Game To View Details</h2>
-                        @foreach (var game in Model.GameList)
+                    @foreach (var game in Model.GameList)
                     {
                         <p>@game.Name</p>
                     }
@@ -56,14 +49,17 @@
                         <span>Game System</span>
                         <input asp-for="@Model.Game.GameSystem" placeholder="SNES" value="" />
                     </label>
-                    <select asp-for="@Model.Genre.Id" placeholder="Action" value="">
-                        @foreach (var genre in Model.GenreList)
-                        {
-                            <option value="@genre.Id">@genre.GenreName</option>
-                        }
-                    </select>
-                    <button type="submit">Add To Inventory</button>
                 </form>
+                <h2>Add A Genre to an existing Game</h2>
+                <h3>Genres Available</h3>
+
+                <select asp-for="@Model.Genre.Id" placeholder="Action" value="">
+                    @foreach (var genre in Model.GenreList)
+                    {
+                        <option value="@genre.Id">@genre.GenreName</option>
+                    }
+                </select>
+                <button type="submit">Add To Inventory</button>
 
                 <h2>Add A Genre</h2>
                 <form asp-controller="Admin" asp-action="AddGenre" method="post">
@@ -99,8 +95,7 @@
             <div id="selectGameToEdit">
                 <h2>Edit a Game</h2>
                 <form asp-controller="Admin" asp-action="SelectGameToMod" method="post">
-                    @Html.ListBoxFor(l => l.SelectedAnswers, Model.Games, new { size = 7 })
-                    <button type="submit">Select to Edit</button>
+                    <partial name="_GameListBox" />
                 </form>
                 <br />
                 <form asp-controller="Admin" asp-action="UpdateGame">
@@ -128,6 +123,26 @@
                     <input type="hidden" asp-for="@Model.Genre.Id" />
                     <button type="submit">Click To Update</button>
                 </form>
+                <h2>Add A Genre To A Game</h2>
+                <partial name="_GenreList" />
+                <partial name="_GameListBox" />
+                <form asp-controller="Admin" asp-action="AddGenreToGame">
+                    <span>Enter Game Id</span>
+                    <input asp-for="@Model.GenreGame.GameId" />
+                    <span> Enter Genre Id</span>
+                    <input asp-for="@Model.GenreGame.GenreId" />                    
+                    <button type="submit">Click Add</button>
+                </form>
+                <h2>Remove A Genre From A Game</h2>
+                <form asp-controller="Admin" asp-action="RemoveGenreToGame">
+                    <span>Enter Game Id</span>
+                    <input asp-for="@Model.GenreGame.GameId" />
+                    <span> Enter Genre Id</span>
+                    <input asp-for="@Model.GenreGame.GenreId" />                    
+                    <button type="submit">Click Add</button>
+                </form>
+
+
             </div>
         </main>
     </body>
