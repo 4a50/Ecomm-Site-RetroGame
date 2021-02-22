@@ -17,76 +17,80 @@ namespace EcommerceApp.Controllers
   {
     private readonly IGenre _genre;
     private readonly IGame _game;
-   
+    private readonly IUploadService UploadService;
+    private readonly IAdminService AdminService;
 
-    public AdminController(IGenre genre, IGame game)
+    public AdminController(IGenre genre, IGame game, IUploadService uploadService, IAdminService adminService)
     {
       _genre = genre;
       _game = game;
+      UploadService = uploadService;
+      AdminService = adminService;
+
       
     }
     [Authorize]
     public async Task<IActionResult> Index(string gmId, string gnId, User user)
     {
-      Debug.WriteLine($"Name of CurrentGame: {gmId}");
-      Debug.WriteLine($"Name of CurrentGame: {gnId}");
+
       //Create a list of Genres
-      Game game = new Game();
-      Genre genre = new Genre();
-      if (gmId != "")
-      {
-        try
-        {
-          int idNum = int.Parse(gmId);
-          game = await _game.GetGame(idNum);
-        }
-        catch
-        {
-          Debug.WriteLine("Unable to Parse Value for Record ID");
-        }
-      }
-      if (gnId != "")
-      {
-        try
-        {
-          int idNum = int.Parse(gnId);
-          genre = await _genre.GetGenre(idNum);
-        }
-        catch
-        {
-          Debug.WriteLine("Unable to Parse Value for Record ID");
-        }
-      }
-      AdminVm adminVm = new AdminVm
-      {
-        GenreList = await _genre.GetAllGenres(),
-        GameList = await _game.GetAllGames(),
-        Game = game,
-        Genre = genre
-      };
-      List<SelectListItem> listboxList = new List<SelectListItem>();
-      foreach (Game g in adminVm.GameList)
-      {
-        listboxList.Add(
-          new SelectListItem
-          {
-            Text = g.Name,
-            Value = g.Id.ToString()
-          }
-          );
-      }
-      adminVm.Games = listboxList;
-      List<SelectListItem> genreListBox = new List<SelectListItem>();
-      foreach (Genre g in adminVm.GenreList)
-      {
-        genreListBox.Add(new SelectListItem
-        {
-          Text = g.GenreName,
-          Value = g.Id.ToString()
-        });
-      }
-      adminVm.Genres = genreListBox;
-      return View(adminVm);
+      //Game game = new Game();
+      //Genre genre = new Genre();
+      //if (gmId != "")
+      //{
+      //  try
+      //  {
+      //    int idNum = int.Parse(gmId);
+      //    game = await _game.GetGame(idNum);
+      //  }
+      //  catch
+      //  {
+      //    Debug.WriteLine("Unable to Parse Value for Record ID");
+      //  }
+      //}
+      //if (gnId != "")
+      //{
+      //  try
+      //  {
+      //    int idNum = int.Parse(gnId);
+      //    genre = await _genre.GetGenre(idNum);
+      //  }
+      //  catch
+      //  {
+      //    Debug.WriteLine("Unable to Parse Value for Record ID");
+      //  }
+      //}
+      //AdminVm adminVm = new AdminVm
+      //{
+      //  GenreList = await _genre.GetAllGenres(),
+      //  GameList = await _game.GetAllGames(),
+      //  Game = game,
+      //  Genre = genre
+      //};
+      //List<SelectListItem> listboxList = new List<SelectListItem>();
+      //foreach (Game g in adminVm.GameList)
+      //{
+      //  listboxList.Add(
+      //    new SelectListItem
+      //    {
+      //      Text = g.Name,
+      //      Value = g.Id.ToString()
+      //    }
+      //    );
+      //}
+      //adminVm.Games = listboxList;
+      //List<SelectListItem> genreListBox = new List<SelectListItem>();
+      //foreach (Genre g in adminVm.GenreList)
+      //{
+      //  genreListBox.Add(new SelectListItem
+      //  {
+      //    Text = g.GenreName,
+      //    Value = g.Id.ToString()
+      //  });
+      //}
+      //adminVm.Genres = genreListBox;
+      var adminIndex = await AdminService.IndexUpdate(gmId, gnId);
+      return View(adminIndex);
     }
 
     [HttpPost]

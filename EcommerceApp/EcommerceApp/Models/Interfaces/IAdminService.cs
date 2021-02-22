@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EcommerceApp.Models.Vm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace EcommerceApp.Models.Interfaces
 {
-  public interface IUploadService
+  public interface IAdminService
   {
-    Task<File> Upload(IFormFile file);
+    public Task<AdminVm> IndexUpdate(string gameid, string genreId);
   }
 }
