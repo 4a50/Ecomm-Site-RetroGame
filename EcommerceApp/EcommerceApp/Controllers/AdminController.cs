@@ -29,68 +29,10 @@ namespace EcommerceApp.Controllers
 
       
     }
-    [Authorize]
+    [Authorize(Roles ="update")]
     public async Task<IActionResult> Index(string gmId, string gnId, User user)
-    {
-
-      //Create a list of Genres
-      //Game game = new Game();
-      //Genre genre = new Genre();
-      //if (gmId != "")
-      //{
-      //  try
-      //  {
-      //    int idNum = int.Parse(gmId);
-      //    game = await _game.GetGame(idNum);
-      //  }
-      //  catch
-      //  {
-      //    Debug.WriteLine("Unable to Parse Value for Record ID");
-      //  }
-      //}
-      //if (gnId != "")
-      //{
-      //  try
-      //  {
-      //    int idNum = int.Parse(gnId);
-      //    genre = await _genre.GetGenre(idNum);
-      //  }
-      //  catch
-      //  {
-      //    Debug.WriteLine("Unable to Parse Value for Record ID");
-      //  }
-      //}
-      //AdminVm adminVm = new AdminVm
-      //{
-      //  GenreList = await _genre.GetAllGenres(),
-      //  GameList = await _game.GetAllGames(),
-      //  Game = game,
-      //  Genre = genre
-      //};
-      //List<SelectListItem> listboxList = new List<SelectListItem>();
-      //foreach (Game g in adminVm.GameList)
-      //{
-      //  listboxList.Add(
-      //    new SelectListItem
-      //    {
-      //      Text = g.Name,
-      //      Value = g.Id.ToString()
-      //    }
-      //    );
-      //}
-      //adminVm.Games = listboxList;
-      //List<SelectListItem> genreListBox = new List<SelectListItem>();
-      //foreach (Genre g in adminVm.GenreList)
-      //{
-      //  genreListBox.Add(new SelectListItem
-      //  {
-      //    Text = g.GenreName,
-      //    Value = g.Id.ToString()
-      //  });
-      //}
-      //adminVm.Genres = genreListBox;
-      var adminIndex = await AdminService.IndexUpdate(gmId, gnId);
-      return View(adminIndex);
+    {      
+      return View(await AdminService.IndexUpdate(gmId, gnId));
     }
 
     [HttpPost]
@@ -167,25 +109,14 @@ namespace EcommerceApp.Controllers
     }
     [HttpPost]
     public async Task<IActionResult> UpdateGame(AdminVm adminvm)
-    {
-      StringBuilder sb = new StringBuilder();
-      sb.Append($"{adminvm.Game.Id} ");
-      sb.Append($"{adminvm.Game.Name} ");
-      sb.Append($"{adminvm.Game.Description} ");
-      sb.Append($"{adminvm.Game.Description} ");
-      Debug.WriteLine(sb.ToString());
-
+    {      
       await _game.UpdateGame(adminvm.Game.Id, adminvm.Game);
-      Debug.WriteLine("Completed Update");
-
       return Redirect($"/admin");
     }
     [HttpPost]
     public async Task<IActionResult> UpdateGenre(AdminVm adminvm)
     {
       await _genre.UpdateGenre(adminvm.Genre.Id, adminvm.Genre);
-      Debug.WriteLine("Completed Update");
-
       return Redirect($"/admin");
     }
     public async Task<IActionResult> AddGenreToGame(AdminVm adminvm)
@@ -217,7 +148,6 @@ namespace EcommerceApp.Controllers
       int gameid = adminvm.GenreGame.GameId;
       await _game.DeleteGenreGame(gameid, genreid);
       return Redirect($"/admin?gmid={gameid}");
-
     }
 
   }
