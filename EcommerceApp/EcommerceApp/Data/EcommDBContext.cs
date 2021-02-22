@@ -28,28 +28,57 @@ namespace EcommerceApp.Data
       SeedRole(modelbuilder, "Editor", "read", "update");
       SeedRole(modelbuilder, "Guest", "read");
 
-      modelbuilder.Entity<Genre>().HasData(new Genre { Id = 1, GenreName = "Platformer" },
+      modelbuilder.Entity<Genre>().HasData(
+        new Genre { Id = 1, GenreName = "Platformer" },
         new Genre { Id = 2, GenreName = "Racing" },
-        new Genre { Id = 3, GenreName = "Puzzle"});
+        new Genre { Id = 3, GenreName = "Puzzle" },
+        new Genre { Id = 4, GenreName = "Side Scroll" });
+
+      modelbuilder.Entity<GenreGame>().HasKey(
+        genreGame => new { genreGame.GameId, genreGame.GenreId });
+
+      modelbuilder.Entity<GenreGame>().HasData(
+        new GenreGame
+        {
+          GameId = 1,
+          GenreId = 1
+        },
+        new GenreGame
+        {
+          GameId = 2,
+          GenreId = 2
+        },
+        new GenreGame
+        {
+          GameId = 3,
+          GenreId = 4
+        });
+
       modelbuilder.Entity<Game>().HasData(new Game
       {
         Id = 1,
         Name = "Bubsy: Claws Encounters of the Furred Kind",
         Description = "A Terrible Sonic Clone",
-        GameSystem = "Super Nintendo",
+        GameSystem = "SNES",
         ItemPrice = 30.00f
-
       },
       new Game
       {
         Id = 2,
         Name = "Rock N' Roll Racing",
         Description = "Kick Butt Multiplayer Racing Game",
-        GameSystem = "Super Nintendo",
+        GameSystem = "SNES",
+        ItemPrice = 40.00f,
+      },
+      new Game
+      {
+        Id = 3,
+        Name = "Section Z",
+        Description = "Awesome Side Scroll Action!",
+        GameSystem = "NES",
         ItemPrice = 40.00f
       });
-      modelbuilder.Entity<GenreGame>().HasKey(
-        genreGame => new { genreGame.GameId, genreGame.GenreId });
+
 
 
 

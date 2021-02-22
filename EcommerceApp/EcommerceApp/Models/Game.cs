@@ -1,4 +1,6 @@
-﻿namespace EcommerceApp.Models
+﻿using System.Collections.Generic;
+
+namespace EcommerceApp.Models
 {
   public class Game
   {
@@ -9,6 +11,6 @@
     public string GameSystem { get; set; }
 
 
-    public GenreGame GenreGame { get; set; }
+    public List<GenreGame> GenreGames { get; set; }
   }
 }
