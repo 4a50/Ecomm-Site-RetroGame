@@ -2,6 +2,7 @@
 using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Vm;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -29,10 +30,11 @@ namespace EcommerceApp.Controllers
 
       
     }
-    [Authorize(Roles ="update")]
+    [Authorize(Policy = "update")]
     public async Task<IActionResult> Index(string gmId, string gnId, User user)
-    {      
-      return View(await AdminService.IndexUpdate(gmId, gnId));
+    {
+      var adminVm = await AdminService.IndexUpdate(gmId, gnId);
+      return View(adminVm);
     }
 
     [HttpPost]
@@ -148,6 +150,13 @@ namespace EcommerceApp.Controllers
       int gameid = adminvm.GenreGame.GameId;
       await _game.DeleteGenreGame(gameid, genreid);
       return Redirect($"/admin?gmid={gameid}");
+    }
+    [HttpPost]
+    public async Task<IActionResult> UploadFile(IFormFile file)
+    {
+      await UploadService.Upload(file);
+
+      return Redirect("/admin");
     }
 
   }

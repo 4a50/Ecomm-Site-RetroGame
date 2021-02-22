@@ -101,7 +101,17 @@
                     {
                         <li>No Genre's Present</li>
                     }
-
+                    <div>
+                        <p>Image</p>
+                    </div>
+                    @if (Model.Game.Image != null)
+                    {
+                    <img href="@Model.Game.Image.Url" width="100"/>
+                    }
+                    else 
+                    {
+                    <p>No Images to Display</p>
+                    }
                     </ul>
                     <br />
                     <input type="hidden" asp-for="@Model.Game.Id" />
@@ -144,5 +154,23 @@
                 <button type="submit">Click Add</button>
             </form>
          }
+        @if((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
+        {
+            <div id="upload-image">
+                <h2>Upload An Image</h2>
+                <br />
+                <form asp-controller="Admin" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+                    <div>
+                        <span>Enter An Image Name</span>
+                        <input name="name"/>
+                    </div>
+                    <div>
+                        <span>Select File to Upload</span>
+                        <input name="file" type="file"/>
+                    </div>
+                    <button>Upload Image</button>
+                </form>
+            </div>
+        }
     </main>
 </body>
