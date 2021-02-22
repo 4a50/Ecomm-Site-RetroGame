@@ -2,6 +2,7 @@
 using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Vm;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -17,75 +18,22 @@ namespace EcommerceApp.Controllers
   {
     private readonly IGenre _genre;
     private readonly IGame _game;
-    private IUserService userService;
+    private readonly IUploadService UploadService;
+    private readonly IAdminService AdminService;
 
-    public AdminController(IGenre genre, IGame game)
+    public AdminController(IGenre genre, IGame game, IUploadService uploadService, IAdminService adminService)
     {
       _genre = genre;
       _game = game;
-      //currentGame = new Game();
+      UploadService = uploadService;
+      AdminService = adminService;
+
+      
     }
-    [Authorize]
+    [Authorize(Policy = "update")]
     public async Task<IActionResult> Index(string gmId, string gnId, User user)
     {
-      Debug.WriteLine($"Name of CurrentGame: {gmId}");
-      Debug.WriteLine($"Name of CurrentGame: {gnId}");
-      //Create a list of Genres
-      Game game = new Game();
-      Genre genre = new Genre();
-      if (gmId != "")
-      {
-        try
-        {
-          int idNum = int.Parse(gmId);
-          game = await _game.GetGame(idNum);
-        }
-        catch
-        {
-          Debug.WriteLine("Unable to Parse Value for Record ID");
-        }
-      }
-      if (gnId != "")
-      {
-        try
-        {
-          int idNum = int.Parse(gnId);
-          genre = await _genre.GetGenre(idNum);
-        }
-        catch
-        {
-          Debug.WriteLine("Unable to Parse Value for Record ID");
-        }
-      }
-      AdminVm adminVm = new AdminVm
-      {
-        GenreList = await _genre.GetAllGenres(),
-        GameList = await _game.GetAllGames(),
-        Game = game,
-        Genre = genre
-      };
-      List<SelectListItem> listboxList = new List<SelectListItem>();
-      foreach (Game g in adminVm.GameList)
-      {
-        listboxList.Add(
-          new SelectListItem
-          {
-            Text = g.Name,
-            Value = g.Id.ToString()
-          }
-          );
-      }
-      adminVm.Games = listboxList;
-      List<SelectListItem> genreListBox = new List<SelectListItem>();
-      foreach (Genre g in adminVm.GenreList)
-      {
-        genreListBox.Add(new SelectListItem
-        {
-          Text = g.GenreName,
-          Value = g.Id.ToString()
-        });
-      }
-      adminVm.Genres = genreListBox;
+      var adminVm = await AdminService.IndexUpdate(gmId, gnId);
       return View(adminVm);
     }
 
@@ -163,25 +111,14 @@ namespace EcommerceApp.Controllers
     }
     [HttpPost]
     public async Task<IActionResult> UpdateGame(AdminVm adminvm)
-    {
-      StringBuilder sb = new StringBuilder();
-      sb.Append($"{adminvm.Game.Id} ");
-      sb.Append($"{adminvm.Game.Name} ");
-      sb.Append($"{adminvm.Game.Description} ");
-      sb.Append($"{adminvm.Game.Description} ");
-      Debug.WriteLine(sb.ToString());
-
+    {      
       await _game.UpdateGame(adminvm.Game.Id, adminvm.Game);
-      Debug.WriteLine("Completed Update");
-
       return Redirect($"/admin");
     }
     [HttpPost]
     public async Task<IActionResult> UpdateGenre(AdminVm adminvm)
     {
       await _genre.UpdateGenre(adminvm.Genre.Id, adminvm.Genre);
-      Debug.WriteLine("Completed Update");
-
       return Redirect($"/admin");
     }
     public async Task<IActionResult> AddGenreToGame(AdminVm adminvm)
@@ -213,7 +150,13 @@ namespace EcommerceApp.Controllers
       int gameid = adminvm.GenreGame.GameId;
       await _game.DeleteGenreGame(gameid, genreid);
       return Redirect($"/admin?gmid={gameid}");
+    }
+    [HttpPost]
+    public async Task<IActionResult> UploadFile(IFormFile file)
+    {
+      await UploadService.Upload(file);
 
+      return Redirect("/admin");
     }
 
   }
