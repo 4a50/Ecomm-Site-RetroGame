@@ -17,13 +17,13 @@ namespace EcommerceApp.Controllers
   {
     private readonly IGenre _genre;
     private readonly IGame _game;
-    private IUserService userService;
+   
 
     public AdminController(IGenre genre, IGame game)
     {
       _genre = genre;
       _game = game;
-      //currentGame = new Game();
+      
     }
     [Authorize]
     public async Task<IActionResult> Index(string gmId, string gnId, User user)

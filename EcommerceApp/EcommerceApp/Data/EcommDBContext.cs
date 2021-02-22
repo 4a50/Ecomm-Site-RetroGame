@@ -14,6 +14,7 @@ namespace EcommerceApp.Data
     public DbSet<Game> Game { get; set; }
     public DbSet<Genre> Genre { get; set; }
     public DbSet<GenreGame> GenreGame { get; set; }
+    public DbSet<File> File { get; set; }
 
 
 
@@ -77,8 +78,7 @@ namespace EcommerceApp.Data
         Description = "Awesome Side Scroll Action!",
         GameSystem = "NES",
         ItemPrice = 40.00f
-      });
-
+      });      
 
 
 

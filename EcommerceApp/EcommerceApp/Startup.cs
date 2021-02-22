@@ -10,11 +10,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 namespace EcommerceApp
 {
   public class Startup
   {
     public IConfiguration Configuration { get; set; }
+
 
     public Startup(IConfiguration configuration)
     {
