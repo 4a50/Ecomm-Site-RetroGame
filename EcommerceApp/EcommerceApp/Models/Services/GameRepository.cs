@@ -27,8 +27,18 @@ namespace EcommerceApp.Models.Services
     }
     public async Task<List<Game>> GetAllGames()
     {
-      return await _context.Game.ToListAsync();
-      //return await _context.Game
+      return await _context.Game
+        .Include(s => s.GenreGames)
+        .ThenInclude(g => g.Genre)
+        .ToListAsync();      
+    }
+    public async Task<Game> GetGame(int id)
+    {
+      var gameData = await _context.Game
+        .Include(s => s.GenreGames)
+        .ThenInclude(g => g.Genre)
+      .FirstOrDefaultAsync(s => s.Id == id);
+      return gameData;
     }
     public async Task CreateGenreGame(int genreid, int gameid)
     {
@@ -39,14 +49,6 @@ namespace EcommerceApp.Models.Services
       };
       _context.Entry(genreGame).State = EntityState.Added;
       await _context.SaveChangesAsync();
-    }
-    public async Task<Game> GetGame(int id)
-    {
-      var gameData = await _context.Game
-        .Include(s => s.GenreGames)
-        .ThenInclude(g => g.Genre)
-      .FirstOrDefaultAsync(s => s.Id == id);
-      return gameData;
     }
     public async Task<Game> UpdateGame(int id, Game game)
     {
