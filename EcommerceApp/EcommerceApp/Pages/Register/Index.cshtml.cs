@@ -16,6 +16,7 @@ namespace EcommerceApp.Pages.Register
     {
       UserService = service;
     }
+
     public RegisterUser RegisterUser { get; set; }
 
     public void OnGet()
