@@ -12,15 +12,16 @@ namespace EcommerceApp.Pages.Login
   public class IndexModel : PageModel
   {
     private IUserService UserService;
+    [BindProperty]
     public LoginData Log { get; set; }
-    IndexModel(IUserService service)
+    public IndexModel(IUserService service)
     {
       UserService = service;
     }
     public void OnGet()
     {
     }
-    public async Task<IActionResult> OnPost()
+    public async Task<IActionResult> OnPostAsync()
     {
 
       var user = await UserService.Authenticate(Log.Username, Log.Password);
