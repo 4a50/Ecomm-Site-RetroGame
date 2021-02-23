@@ -63,3 +63,7 @@ input{
     text-decoration:none;
     color: blue;
 }
+table, th, td {
+    border: 1px solid black;
+    text-align:center;
+}
