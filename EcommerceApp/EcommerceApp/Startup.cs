@@ -71,6 +71,7 @@ namespace EcommerceApp
       app.UseAuthorization();
       app.UseEndpoints(endpoints =>
       {
+        endpoints.MapRazorPages();
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
       });
     }
