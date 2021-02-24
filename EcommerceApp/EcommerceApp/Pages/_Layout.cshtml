@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -8,7 +10,28 @@
     <link rel="stylesheet" href="/css/site.css" />
 </head>
 <body>
-    <header><h1>Retro Game Shop</h1></header>
+    <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-area="" asp-page="/index" class="navbar-brand">Home</a>
+                    <a asp-area="" asp-page="/Shop" class="navbar-brand">Shop</a>
+                    <a asp-area="" asp-page="/Login" class="navbar-brand">Login</a>
+                    <a asp-area="" asp-page="/Home/Logout" class="navbar-brand">Logout</a>
+                    <partial name="_NavBar" />
+                    
+                </div>
+                <div class="navbar-collapse collapse">
+                </div>
+            </div>
+        </nav>
+    </header>
     <main>
         <div>
             @RenderBody()

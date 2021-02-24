@@ -37,6 +37,9 @@ namespace EcommerceApp.Data
       modelbuilder.Entity<GenreGame>().HasKey(
         genreGame => new { genreGame.GameId, genreGame.GenreId });
 
+      //
+
+      //
       modelbuilder.Entity<GenreGame>().HasData(
         new GenreGame
         {

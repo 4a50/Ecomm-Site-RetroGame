@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using EcommerceApp.Models.Dto;
 using EcommerceApp.Models.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace EcommerceApp.Pages
 {
-    public class IndexModel : PageModel
-    {
+  public class IndexModel : PageModel
+  {
     private IUserService userService;
     public UserDto UserInfo { get; set; }
 
@@ -18,10 +15,10 @@ namespace EcommerceApp.Pages
     {
       userService = userserv;
     }
-
-      public async Task OnGet()
-      {
+    public async Task OnGet()
+    {
       UserInfo = await userService.GetUser(this.User);
+      if (UserInfo == null) { Debug.WriteLine("It's Gonna Break"); }
     }
-    }
+  }
 }
