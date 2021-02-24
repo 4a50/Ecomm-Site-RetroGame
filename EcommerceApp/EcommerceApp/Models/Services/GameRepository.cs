@@ -30,7 +30,7 @@ namespace EcommerceApp.Models.Services
       return await _context.Game
         .Include(s => s.GenreGames)
         .ThenInclude(g => g.Genre)
-        .ToListAsync();      
+        .ToListAsync();
     }
     public async Task<Game> GetGame(int id)
     {

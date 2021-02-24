@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceApp.Migrations
 {
     [DbContext(typeof(EcommDBContext))]
-    [Migration("20210221013147_genreGame")]
-    partial class genreGame
+    [Migration("20210224051954_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,19 +23,21 @@ namespace EcommerceApp.Migrations
 
             modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("GameId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<float>("CartTotal")
                         .HasColumnType("real");
 
-                    b.Property<int>("Quantity")
+                    b.Property<int?>("GameId1")
                         .HasColumnType("int");
 
-                    b.Property<int>("QuantityTotal")
-                        .HasColumnType("int");
+                    b.HasKey("UserId", "GameId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("GameId1");
 
                     b.ToTable("Cart");
                 });
@@ -47,13 +49,19 @@ namespace EcommerceApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CartId")
+                    b.Property<string>("CartGameId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CartUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GameSystem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("ItemPrice")
@@ -64,7 +72,7 @@ namespace EcommerceApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CartId");
+                    b.HasIndex("CartUserId", "CartGameId");
 
                     b.ToTable("Game");
 
@@ -162,6 +170,50 @@ namespace EcommerceApp.Migrations
                             GameId = 3,
                             GenreId = 4
                         });
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CartGameId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CartUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasShipped")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartUserId", "CartGameId");
+
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("EcommerceApp.Models.Users.ApplicationUser", b =>
@@ -434,11 +486,20 @@ namespace EcommerceApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
+                {
+                    b.HasOne("EcommerceApp.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId1");
+
+                    b.Navigation("Game");
+                });
+
             modelBuilder.Entity("EcommerceApp.Models.Game", b =>
                 {
                     b.HasOne("EcommerceApp.Models.Cart", null)
                         .WithMany("Games")
-                        .HasForeignKey("CartId");
+                        .HasForeignKey("CartUserId", "CartGameId");
                 });
 
             modelBuilder.Entity("EcommerceApp.Models.GenreGame", b =>
@@ -458,6 +519,15 @@ namespace EcommerceApp.Migrations
                     b.Navigation("Game");
 
                     b.Navigation("Genre");
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.Order", b =>
+                {
+                    b.HasOne("EcommerceApp.Models.Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartUserId", "CartGameId");
+
+                    b.Navigation("Cart");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

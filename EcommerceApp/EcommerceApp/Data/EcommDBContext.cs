@@ -11,11 +11,11 @@ namespace EcommerceApp.Data
   public class EcommDBContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Cart> Cart { get; set; }
+    public DbSet<Order> Order { get; set; }
     public DbSet<Game> Game { get; set; }
     public DbSet<Genre> Genre { get; set; }
     public DbSet<GenreGame> GenreGame { get; set; }
-
-
+    
 
     public EcommDBContext(DbContextOptions options) : base(options)
     {
@@ -36,6 +36,9 @@ namespace EcommerceApp.Data
 
       modelbuilder.Entity<GenreGame>().HasKey(
         genreGame => new { genreGame.GameId, genreGame.GenreId });
+
+      modelbuilder.Entity<Cart>().HasKey(
+        cart => new { cart.UserId, cart.GameId });
 
       modelbuilder.Entity<GenreGame>().HasData(
         new GenreGame
@@ -78,9 +81,6 @@ namespace EcommerceApp.Data
         GameSystem = "NES",
         ItemPrice = 40.00f
       });
-
-
-
 
     }
     private int nextId = 1;

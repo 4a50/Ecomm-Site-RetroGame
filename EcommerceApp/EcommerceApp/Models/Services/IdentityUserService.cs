@@ -33,20 +33,17 @@ namespace EcommerceApp.Models.Services
       }
       return null;
     }
-
-
     public async Task<UserDto> GetUser(ClaimsPrincipal principal)
     {
       var user = await UserManager.GetUserAsync(principal);
+      if (user == null) { return null; }
       return new UserDto
       {
         Id = user.Id,
         Username = user.UserName,
         Roles = await UserManager.GetRolesAsync(user)
       };
-
     }
-
     public async Task<UserDto> Register(RegisterUser data, ModelStateDictionary modelState)
     {
       var user = new ApplicationUser
@@ -78,6 +75,5 @@ namespace EcommerceApp.Models.Services
       return null;
     }
   }
-
 }
 
