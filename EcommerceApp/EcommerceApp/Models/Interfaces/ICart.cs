@@ -5,8 +5,8 @@ namespace EcommerceApp.Models.Interfaces
 {
   public interface ICart
   {
-    Task<Cart> AddToCart(Game game);
-    Task<Cart> GetCart(string id);        
+    Task<Cart> AddGameToCart(string userid, string gameid);
+    Task<List<Cart>> GetCart(string id);        
     Task RemoveFromCart(string id);
   }
 }

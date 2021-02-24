@@ -4,14 +4,16 @@ using EcommerceApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceApp.Migrations
 {
     [DbContext(typeof(EcommDBContext))]
-    partial class EcommDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210224051954_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,14 +29,8 @@ namespace EcommerceApp.Migrations
                     b.Property<string>("GameId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CartGameId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<float>("CartTotal")
                         .HasColumnType("real");
-
-                    b.Property<string>("CartUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("GameId1")
                         .HasColumnType("int");
@@ -42,8 +38,6 @@ namespace EcommerceApp.Migrations
                     b.HasKey("UserId", "GameId");
 
                     b.HasIndex("GameId1");
-
-                    b.HasIndex("CartUserId", "CartGameId");
 
                     b.ToTable("Cart");
                 });
@@ -498,10 +492,6 @@ namespace EcommerceApp.Migrations
                         .WithMany()
                         .HasForeignKey("GameId1");
 
-                    b.HasOne("EcommerceApp.Models.Cart", null)
-                        .WithMany("CartList")
-                        .HasForeignKey("CartUserId", "CartGameId");
-
                     b.Navigation("Game");
                 });
 
@@ -593,8 +583,6 @@ namespace EcommerceApp.Migrations
 
             modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
                 {
-                    b.Navigation("CartList");
-
                     b.Navigation("Games");
                 });
 

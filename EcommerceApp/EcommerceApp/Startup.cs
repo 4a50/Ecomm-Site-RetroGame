@@ -35,7 +35,7 @@ namespace EcommerceApp
       services.AddTransient<IGame, GameRepository>();
       services.AddTransient<ICart, CartRepository>();
       services.AddTransient<IGenre, GenreRepository>();
-
+      services.AddTransient<IOrder, OrderRepository>();
 
       services.AddTransient<IUserService, IdentityUserService>();
 

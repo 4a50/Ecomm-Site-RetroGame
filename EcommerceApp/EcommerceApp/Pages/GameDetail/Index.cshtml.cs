@@ -1,4 +1,5 @@
 using EcommerceApp.Models;
+using EcommerceApp.Models.Dto;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,14 +11,20 @@ namespace EcommerceApp.Pages.GameDetail
 {
   public class IndexModel : PageModel
   {
+    private IUserService userService;
+    public UserDto UserInfo { get; set; }
     private IGame GameRepository;
+    private ICart Cart;
+
     [BindProperty]
     public Game Game { get; set; }
     //[BindProperty]
     //public List<int> Cart { get; set; }
-    public IndexModel(IGame game)
+    public IndexModel(IGame game, IUserService service, ICart cart)
     {
       GameRepository = game;
+      Cart = cart;
+      userService = service;
     }
     public async Task OnGetAsync(string id)
     {
@@ -40,9 +47,18 @@ namespace EcommerceApp.Pages.GameDetail
         }
       }
     }
-    public IActionResult OnPost()
+    public async Task<IActionResult> OnPost()
     {
-      Debug.WriteLine("This was added to the cart: " + Game.Id);
+      string gameid = Game.Id.ToString();
+      UserInfo = await userService.GetUser(this.User);
+      string userid = UserInfo.Id;
+      var cart = await Cart.AddGameToCart(userid, gameid);
+      if (cart == null) { 
+        Debug.WriteLine("Game Already In Cart"); 
+        return Redirect("/Shop"); 
+      }
+
+      Debug.WriteLine("This was added to the cart: " + cart.GameId);
       return Redirect("/Shop");
       
     }
