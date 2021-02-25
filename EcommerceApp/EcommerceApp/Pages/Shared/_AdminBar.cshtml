@@ -2,7 +2,7 @@
 @inject IAuthorizationService AuthorizationService
 <nav id="navbar">    
     <ul class="navbar-items">
-        <li><a href="/Home/Index">Home</a></li>
+        <li><a href="/Index">Home</a></li>
         <li><a href="/Shop">Shop</a></li>
         <li><a href="/Login">Login</a></li>
         <li><a href="/Home/Logout">Logout</a></li>
@@ -11,6 +11,7 @@
         {
             <li><a href="/Admin/">Admin</a></li>
         }
-        <li><button>CART</button></li>
+
+    <li> @await Component.InvokeAsync("CartNavButton") </li>
     </ul class="navbar">
 </nav>

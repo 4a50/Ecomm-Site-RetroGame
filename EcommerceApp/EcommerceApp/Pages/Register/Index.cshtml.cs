@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using EcommerceApp.Models.Dto;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EcommerceApp.Pages.Register
 {
@@ -16,7 +14,7 @@ namespace EcommerceApp.Pages.Register
     {
       UserService = service;
     }
-
+    [BindProperty]
     public RegisterUser RegisterUser { get; set; }
 
     public void OnGet()
@@ -26,7 +24,7 @@ namespace EcommerceApp.Pages.Register
     {
       RegisterUser.Roles = new List<string>()
               {
-                "Guest"
+                "Administrator"
               };
       var user = await UserService.Register(RegisterUser, ModelState);
       if (ModelState.IsValid)

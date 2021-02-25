@@ -1,0 +1,35 @@
+﻿@page
+@model EcommerceApp.Pages.CartView.IndexModel
+
+<h1>Cart View</h1>
+<h2>Hello, @Model.UserInfo.Username these are the items you have selected.</h2>
+<br />
+<table>
+    <tr>
+        <th>Game</th>
+        <th>Console</th>
+        <th>Item Price</th>        
+    </tr>
+@foreach (var g in Model.GamesList)
+{
+    <tr>
+        <td>@g.Name</td>
+        <td>@g.GameSystem</td>
+        <td>@g.ItemPrice.ToString("0.00")</td>
+    </tr>
+}
+</table>
+<table>
+    <tr>
+        <th>Total Items</th> 
+        <td>@Model.CartContents.Quantity</td>
+    </tr>
+    <tr> 
+        <th>Total Price</th> 
+        <td>@Model.CartContents.CartTotalPrice</td>
+    </tr>
+</table>
+<form method="post">
+    @*<input type="hidden" asp-for="@Model.UserInfo.Id" value="@Model.UserInfo.Id" />*@
+    <button>Proceed to Purchase</button>
+</form>

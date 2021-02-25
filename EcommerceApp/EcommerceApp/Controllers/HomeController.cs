@@ -37,13 +37,12 @@ namespace EcommerceApp.Controllers
 
       Cart cart = new Cart
       {
-        CartTotal = 2,
-        Quantity = 2,
-        QuantityTotal = 2,
-        Games = new List<Game> {
-          new Game { Name = "Kirby's Dreamland", ItemPrice = 30.00f},
-          new Game {Name = "Chrono Trigger", ItemPrice = 100.00f}
-        }
+        //CartTotal = 2,
+
+        //Games = new List<Game> {
+        //  new Game { Name = "Kirby's Dreamland", ItemPrice = 30.00f},
+        //  new Game {Name = "Chrono Trigger", ItemPrice = 100.00f}
+        //}
       };
       return View(cart);
     }
@@ -68,13 +67,12 @@ namespace EcommerceApp.Controllers
       {
         Cart = new Cart
         {
-          CartTotal = 2,
-          Quantity = 2,
-          QuantityTotal = 2,
-          Games = new List<Game> {
-          new Game { Name = "Kirby's Dreamland", ItemPrice = 30.00f},
-          new Game {Name = "Chrono Trigger", ItemPrice = 100.00f}
-        }
+          //CartTotal = 2,
+
+          //  Games = new List<Game> {
+          //  new Game { Name = "Kirby's Dreamland", ItemPrice = 30.00f},
+          //  new Game {Name = "Chrono Trigger", ItemPrice = 100.00f}
+          //}
         },
         User = new User { FirstName = "Samus", LastName = "Aran" }
       };

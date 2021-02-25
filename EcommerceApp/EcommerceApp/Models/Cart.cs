@@ -4,11 +4,13 @@ namespace EcommerceApp.Models
 {
   public class Cart
   {
-    public string Id { get; set; }
+    public int Id { get; set; }
+    public bool CartActive { get; set; }
+    public string UserId { get; set; } //CK
+    public string GameId { get; set; }
+    public int OrderId { get; set; } //CK
     public int Quantity { get; set; }
-    public float CartTotal { get; set; }
-    public int QuantityTotal { get; set; }
-
-    public List<Game> Games { get; set; }
+    public float CartTotalPrice { get; set; } //As added or removed increment/decrement
+    public List<CartGame> CartGames { get; set; }
   }
 }

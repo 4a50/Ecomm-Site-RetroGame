@@ -9,7 +9,6 @@
     public string Password { get; set; }
     public string Email { get; set; }
 
-    public Cart Cart { get; set; }
 
   }
 }

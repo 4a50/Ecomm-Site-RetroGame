@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -8,7 +10,12 @@
     <link rel="stylesheet" href="/css/site.css" />
 </head>
 <body>
-    <header><h1>Retro Game Shop</h1></header>
+    <header>
+        <nav>
+            <partial name="_AdminBar" />
+        </nav>       
+                
+    </header>
     <main>
         <div>
             @RenderBody()

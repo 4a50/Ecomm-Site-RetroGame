@@ -11,10 +11,11 @@ namespace EcommerceApp.Data
   public class EcommDBContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Cart> Cart { get; set; }
+    public DbSet<Order> Order { get; set; }
     public DbSet<Game> Game { get; set; }
     public DbSet<Genre> Genre { get; set; }
     public DbSet<GenreGame> GenreGame { get; set; }
-
+    public DbSet<CartGame> CartGame { get; set; }
 
 
     public EcommDBContext(DbContextOptions options) : base(options)
@@ -36,6 +37,11 @@ namespace EcommerceApp.Data
 
       modelbuilder.Entity<GenreGame>().HasKey(
         genreGame => new { genreGame.GameId, genreGame.GenreId });
+      //JoinTables
+      //modelbuilder.Entity<Cart>().HasKey(
+      //  cart => new { cart.UserId, cart.OrderId });
+      modelbuilder.Entity<CartGame>().HasKey(
+        cartGame => new { cartGame.CartId, cartGame.GameId });
 
       modelbuilder.Entity<GenreGame>().HasData(
         new GenreGame
@@ -77,10 +83,15 @@ namespace EcommerceApp.Data
         Description = "Awesome Side Scroll Action!",
         GameSystem = "NES",
         ItemPrice = 40.00f
+      },
+      new Game
+      {
+        Id = 4,
+        Name = "Super Mario Bros 3",
+        Description = "First to Feature Raccoon Mario",
+        GameSystem = "NES",
+        ItemPrice = 10.00f
       });
-
-
-
 
     }
     private int nextId = 1;

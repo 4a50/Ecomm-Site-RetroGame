@@ -1,6 +1,6 @@
 ﻿@page
 @model EcommerceApp.Pages.Shop.IndexModel
-    <partial name="../../Views/Shared/_NavBar.cshtml" />
+    @*<partial name="../../Views/Shared/_NavBar.cshtml" />*@
 
 <h1>Spewing out all the Product Names in the Database</h1>
 <br />
@@ -18,7 +18,7 @@
 {
     <tr>
         <td><img src=https://via.placeholder.com/50x50 /></td>
-        <td>@g.Name</td>
+        <td><a href="/GameDetail?id=@g.Id">@g.Name</a></td>
         <td>@g.Description</td>
         <td>
             @foreach (var genre in g.GenreGames)
