@@ -2,7 +2,6 @@
 using EcommerceApp.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,15 +24,18 @@ namespace EcommerceApp.Models.Services
       {
         UserId = userid,
         IsActive = false
-        
+
       };
       _context.Entry(order).State = EntityState.Added;
       await _context.SaveChangesAsync();
       return order;
     }
-    public Task<Order> GetOrder(int id)
+    public async Task<Order> GetOrder(string userId)
     {
-      throw new NotImplementedException();
+      var order = await _context.Order
+        .Where(o => o.UserId == userId)        
+        .FirstOrDefaultAsync();
+      return order;
     }
 
     public Task<Order> RemoveOrder(int Id)
@@ -41,9 +43,11 @@ namespace EcommerceApp.Models.Services
       throw new NotImplementedException();
     }
 
-    public Task<Order> UpdateOrder(Order order)
+    public async Task UpdateOrder(Order order)
     {
-      throw new NotImplementedException();
+      _context.Entry(order).State = EntityState.Modified;
+      await _context.SaveChangesAsync();
+
     }
   }
 }

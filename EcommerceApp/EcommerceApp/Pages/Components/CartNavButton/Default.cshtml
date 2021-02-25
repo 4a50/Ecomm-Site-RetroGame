@@ -1,5 +1,7 @@
 ﻿@model EcommerceApp.Models.Cart
 
-<button>Cart(@Model.CartGames.Count)</button>
+<form method="post">
+    <a href="/CartView">Cart(@Model.CartGames.Count)</a>
+</form>
 
 

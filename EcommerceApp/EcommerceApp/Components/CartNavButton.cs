@@ -2,7 +2,7 @@
 using EcommerceApp.Models.Dto;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Components
@@ -22,22 +22,20 @@ namespace EcommerceApp.Components
     }
     public async Task<IViewComponentResult> InvokeAsync()
     {
-      UserInfo = await userService.GetUser(this.UserClaimsPrincipal);
-      CartItems = await Cart.GetCartWithId(UserInfo.Id);
-      //CartItems.CartGames = await Cart.GetCartGames()
       
-     
-      //Debug.WriteLine($"cartList: {cartList.Count}");
-      Cart cart = new Cart
+        UserInfo = await userService.GetUser(this.UserClaimsPrincipal);
+      if (UserInfo != null)
       {
-        //CartList = cartList      
-      };
-     
-
-      //Debug.WriteLine($"{cartList}");
-      //CartItems.CartList = await Cart.GetCart(UserInfo.Id);      
+        CartItems = await Cart.GetCartWithId(UserInfo.Id);
+      }else 
+      {
+        CartItems = new Cart { CartGames = new List<CartGame> ()};      
+      }
+      
+      
       return View(CartItems);
     }
+    
 
   }
 }

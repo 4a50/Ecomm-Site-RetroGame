@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceApp.Migrations
 {
     [DbContext(typeof(EcommDBContext))]
-    [Migration("20210225012718_changedCartModel")]
-    partial class changedCartModel
+    [Migration("20210225071528_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,13 +31,16 @@ namespace EcommerceApp.Migrations
                     b.Property<bool>("CartActive")
                         .HasColumnType("bit");
 
-                    b.Property<float>("CartTotal")
+                    b.Property<float>("CartTotalPrice")
                         .HasColumnType("real");
 
                     b.Property<string>("GameId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")

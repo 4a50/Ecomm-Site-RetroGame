@@ -29,13 +29,16 @@ namespace EcommerceApp.Migrations
                     b.Property<bool>("CartActive")
                         .HasColumnType("bit");
 
-                    b.Property<float>("CartTotal")
+                    b.Property<float>("CartTotalPrice")
                         .HasColumnType("real");
 
                     b.Property<string>("GameId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
