@@ -1,0 +1,34 @@
+﻿@page
+@model EcommerceApp.Pages.Shop.IndexModel
+    @*<partial name="../../Views/Shared/_NavBar.cshtml" />*@
+
+<h1>Spewing out all the Product Names in the Database</h1>
+<br />
+<div class="ShopGameList">
+    <table>
+        <tr>
+            <th>Cover Art</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Console</th>
+            <th>Item Price</th>
+        </tr>
+@foreach (var g in Model.Games)
+{
+    <tr>
+        <td><img src=https://via.placeholder.com/50x50 /></td>
+        <td><a href="/GameDetail?id=@g.Id">@g.Name</a></td>
+        <td>@g.Description</td>
+        <td>
+            @foreach (var genre in g.GenreGames)
+            {
+                <p>@genre.Genre.GenreName </p>
+            }
+        </td>
+        <td>@g.GameSystem</td>
+        <td>@g.ItemPrice</td>
+    </tr>
+}
+    </table>
+</div>

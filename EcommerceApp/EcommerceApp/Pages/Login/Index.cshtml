@@ -1,0 +1,15 @@
+﻿@page
+@model EcommerceApp.Pages.Login.IndexModel
+    @*<partial name="../../Views/Shared/_NavBar.cshtml" />*@
+    <h1>Login Here</h1>
+
+    <form method="post">
+        <div>
+            <label asp-for="Log.Username">User Name</label>
+            <input asp-for="Log.Username" placeholder="Username" />
+        </div>
+        <label asp-for="Log.Password">Password</label>    
+        <input type="password" asp-for="Log.Password" placeholder="Password" />
+        <button>Login</button>
+    </form>
+    <p><a href="/Home/Shop">Shop</a></p>

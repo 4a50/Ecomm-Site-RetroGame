@@ -10,13 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-
 namespace EcommerceApp
 {
   public class Startup
   {
     public IConfiguration Configuration { get; set; }
-
 
     public Startup(IConfiguration configuration)
     {
@@ -37,9 +35,7 @@ namespace EcommerceApp
       services.AddTransient<IGame, GameRepository>();
       services.AddTransient<ICart, CartRepository>();
       services.AddTransient<IGenre, GenreRepository>();
-      services.AddTransient<IAdminService, AdminService>();
-
-      services.AddTransient<IUploadService, UploadService>();
+      services.AddTransient<IOrder, OrderRepository>();
 
       services.AddTransient<IUserService, IdentityUserService>();
 
@@ -75,6 +71,7 @@ namespace EcommerceApp
       app.UseAuthorization();
       app.UseEndpoints(endpoints =>
       {
+        endpoints.MapRazorPages();
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
       });
     }
