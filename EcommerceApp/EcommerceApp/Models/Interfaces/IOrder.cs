@@ -7,7 +7,7 @@ namespace EcommerceApp.Models.Interfaces
     public Task<Order> CreateNewOrder(string userid);
     public Task<Order> AddOrder(Order order);
     public Task<Order> RemoveOrder(int Id);
-    public Task<Order> UpdateOrder(Order order);
-    public Task<Order> GetOrder(int id);
+    public Task UpdateOrder(Order order);
+    public Task<Order> GetOrder(string userId);
   }
 }

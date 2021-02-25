@@ -9,6 +9,7 @@
 <p>Console: @Model.Game.GameSystem</p>
 <p>Item Price: @Model.Game.ItemPrice</p>
 <form method="post" >
-@*<input type="hidden" asp-for="@Model.Game.Id"/>*@
+    <input type="hidden" asp-for="@Model.UserInfo.Id" />
+    <input type="hidden" asp-for="@Model.Game.Id"/>
     <input type="submit">Add To Cart</input>
 </form>

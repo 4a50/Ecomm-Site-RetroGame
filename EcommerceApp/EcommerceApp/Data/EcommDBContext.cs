@@ -16,7 +16,7 @@ namespace EcommerceApp.Data
     public DbSet<Genre> Genre { get; set; }
     public DbSet<GenreGame> GenreGame { get; set; }
     public DbSet<CartGame> CartGame { get; set; }
-    
+
 
     public EcommDBContext(DbContextOptions options) : base(options)
     {
@@ -90,7 +90,7 @@ namespace EcommerceApp.Data
         Name = "Super Mario Bros 3",
         Description = "First to Feature Raccoon Mario",
         GameSystem = "NES",
-        ItemPrice = 10.00f      
+        ItemPrice = 10.00f
       });
 
     }

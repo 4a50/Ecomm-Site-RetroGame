@@ -65,7 +65,7 @@ namespace EcommerceApp.Models.Services
         var order = await Order.CreateNewOrder(user.Id);
         //Add A new Cart.
         await Cart.CreateCart(user.Id, order.Id);
-        
+
         return new UserDto
         {
           Id = user.Id,

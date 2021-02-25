@@ -9,6 +9,7 @@ namespace EcommerceApp.Models.Interfaces
     Task<Cart> CreateCart(string userId, int orderId);
     Task<List<CartGame>> GetCartGames(int cartId);
     Task<Cart> GetCartWithId(string userid);
-    Task RemoveFromCart(string id);
+    Task UpdateCart(Cart cart);
+      Task RemoveFromCart(string id);
   }
 }
