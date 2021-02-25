@@ -36,7 +36,7 @@ namespace EcommerceApp.Components
 
       //Debug.WriteLine($"{cartList}");
       //CartItems.CartList = await Cart.GetCart(UserInfo.Id);      
-      return View(cart);
+      return View(CartItems);
     }
 
   }
