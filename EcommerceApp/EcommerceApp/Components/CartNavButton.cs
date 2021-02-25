@@ -23,12 +23,14 @@ namespace EcommerceApp.Components
     public async Task<IViewComponentResult> InvokeAsync()
     {
       UserInfo = await userService.GetUser(this.UserClaimsPrincipal);
-
-      var cartList = await Cart.GetCart(UserInfo.Id);
-      Debug.WriteLine($"cartList: {cartList.Count}");
+      CartItems = await Cart.GetCartWithId(UserInfo.Id);
+      //CartItems.CartGames = await Cart.GetCartGames()
+      
+     
+      //Debug.WriteLine($"cartList: {cartList.Count}");
       Cart cart = new Cart
       {
-        CartList = cartList      
+        //CartList = cartList      
       };
      
 

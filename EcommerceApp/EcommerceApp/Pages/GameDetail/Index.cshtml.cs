@@ -49,7 +49,7 @@ namespace EcommerceApp.Pages.GameDetail
     }
     public async Task<IActionResult> OnPost()
     {
-      string gameid = Game.Id.ToString();
+      int gameid = Game.Id;
       UserInfo = await userService.GetUser(this.User);
       string userid = UserInfo.Id;
       var cart = await Cart.AddGameToCart(userid, gameid);
