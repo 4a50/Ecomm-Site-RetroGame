@@ -17,7 +17,7 @@ namespace EcommerceApp.Models.Services
     {
       Configuration = config;
     }
-    public async Task Upload(IFormFile file)
+    public async Task<File> Upload(IFormFile file)
     {
       BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("StorageAccount"), "images");
 
@@ -34,14 +34,14 @@ namespace EcommerceApp.Models.Services
       {
         await blob.UploadAsync(stream, options);
       }
-      //File imageFile = new File()
-      //{
-      //  Name = file.FileName,
-      //  Size = file.Length,
-      //  Type = file.ContentType,
-      //  Url = blob.Uri.ToString()
-      //};
-      return;
+      File imageFile = new File()
+      {
+        Name = file.FileName,
+        Size = file.Length,
+        Type = file.ContentType,
+        Url = blob.Uri.ToString()
+      };
+      return imageFile;
     }
   }
 }

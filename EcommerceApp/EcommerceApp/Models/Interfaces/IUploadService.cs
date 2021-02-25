@@ -8,6 +8,6 @@ namespace EcommerceApp.Models.Interfaces
 {
   public interface IUploadService
   {
-    Task Upload(IFormFile file);
+    Task<File> Upload(IFormFile file);
   }
 }

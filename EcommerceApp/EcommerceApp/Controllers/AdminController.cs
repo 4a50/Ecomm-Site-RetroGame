@@ -53,7 +53,7 @@ namespace EcommerceApp.Controllers
       };
       Game saveGame = await _game.CreateGame(game);
 
-      await _game.CreateGenreGame(saveGame.Id, adminvm.Genre.Id);
+      //await _game.CreateGenreGame(saveGame.Id, adminvm.Genre.Id);
       return Redirect("/admin");
     }
     [HttpPost]
@@ -152,9 +152,15 @@ namespace EcommerceApp.Controllers
       return Redirect($"/admin?gmid={gameid}");
     }
     [HttpPost]
-    public async Task<IActionResult> UploadFile(IFormFile file)
+    public async Task<IActionResult> UploadFile(IFormFile file, AdminVm admin)
     {
-      await UploadService.Upload(file);
+      Debug.WriteLine(admin.SelectedAnswer);           
+     var fileUp = await UploadService.Upload(file);
+      Game getGame = await _game.GetGame(int.Parse(admin.SelectedAnswer));
+      getGame.ImageUrl = fileUp.Url;
+      await _game.UpdateGame(int.Parse(admin.SelectedAnswer), getGame);
+
+
 
       return Redirect("/admin");
     }

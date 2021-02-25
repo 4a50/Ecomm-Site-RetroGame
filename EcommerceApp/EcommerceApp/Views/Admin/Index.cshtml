@@ -104,9 +104,9 @@
                     <div>
                         <p>Image</p>
                     </div>
-                    @if (Model.Game.Image != null)
+                    @if (Model.Game.ImageUrl != null)
                     {
-                    <img href="@Model.Game.Image.Url" width="100"/>
+                    <img href="@Model.Game.ImageUrl" width="100"/>
                     }
                     else 
                     {
@@ -156,19 +156,22 @@
          }
         @if((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
         {
+            <br />
             <div id="upload-image">
                 <h2>Upload An Image</h2>
                 <br />
                 <form asp-controller="Admin" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+                    @*@Html.ListBoxFor(l => l.SelectedAnswers, Model.Games, new { size = 7 })*@
+                    <partial name="_GameDrop" />
                     <div>
                         <span>Enter An Image Name</span>
-                        <input name="name"/>
+                        <input name="name" />
                     </div>
                     <div>
                         <span>Select File to Upload</span>
-                        <input name="file" type="file"/>
+                        <input name="file" type="file" />
                     </div>
-                    <button>Upload Image</button>
+                    <button type="submit">Upload Image</button>
                 </form>
             </div>
         }

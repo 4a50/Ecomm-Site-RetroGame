@@ -39,6 +39,11 @@ namespace EcommerceApp
 
       services.AddTransient<IUserService, IdentityUserService>();
 
+      services.AddTransient<IUploadService, UploadService>();
+
+      services.AddTransient<IAdminService, AdminService>();
+
+
       services.AddIdentity<ApplicationUser, IdentityRole>(options =>
       {
         options.User.RequireUniqueEmail = true;

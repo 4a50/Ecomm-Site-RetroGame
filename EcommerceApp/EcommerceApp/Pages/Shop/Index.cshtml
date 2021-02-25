@@ -17,7 +17,13 @@
 @foreach (var g in Model.Games)
 {
     <tr>
+        @if (@g.ImageUrl == null){
         <td><img src=https://via.placeholder.com/50x50 /></td>
+        }
+        else
+        {
+        <td><img src=@g.ImageUrl width="50" height="50" /></td>
+        }
         <td><a href="/GameDetail?id=@g.Id">@g.Name</a></td>
         <td>@g.Description</td>
         <td>
