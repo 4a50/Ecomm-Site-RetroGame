@@ -47,6 +47,40 @@ namespace EcommerceApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cart",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CartActive = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GameId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CartTotal = table.Column<float>(type: "real", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cart", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Game",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ItemPrice = table.Column<float>(type: "real", nullable: false),
+                    GameSystem = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Game", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Genre",
                 columns: table => new
                 {
@@ -166,42 +200,54 @@ namespace EcommerceApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Game",
+                name: "Order",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ItemPrice = table.Column<float>(type: "real", nullable: false),
-                    GameSystem = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CartGameId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CartUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HasShipped = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Game", x => x.Id);
+                    table.PrimaryKey("PK_Order", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Order_Cart_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Cart",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cart",
+                name: "CartGame",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    GameId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CartTotal = table.Column<float>(type: "real", nullable: false),
-                    GameId1 = table.Column<int>(type: "int", nullable: true)
+                    GameId = table.Column<int>(type: "int", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cart", x => new { x.UserId, x.GameId });
+                    table.PrimaryKey("PK_CartGame", x => new { x.CartId, x.GameId });
                     table.ForeignKey(
-                        name: "FK_Cart_Game_GameId1",
-                        column: x => x.GameId1,
+                        name: "FK_CartGame_Cart_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Cart",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CartGame_Game_GameId",
+                        column: x => x.GameId,
                         principalTable: "Game",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -228,34 +274,6 @@ namespace EcommerceApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HasShipped = table.Column<bool>(type: "bit", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CartUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CartGameId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Order_Cart_CartUserId_CartGameId",
-                        columns: x => new { x.CartUserId, x.CartGameId },
-                        principalTable: "Cart",
-                        principalColumns: new[] { "UserId", "GameId" },
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
@@ -268,12 +286,13 @@ namespace EcommerceApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "Game",
-                columns: new[] { "Id", "CartGameId", "CartUserId", "Description", "GameSystem", "ImageUrl", "ItemPrice", "Name" },
+                columns: new[] { "Id", "Description", "GameSystem", "ImageUrl", "ItemPrice", "Name" },
                 values: new object[,]
                 {
-                    { 1, null, null, "A Terrible Sonic Clone", "SNES", null, 30f, "Bubsy: Claws Encounters of the Furred Kind" },
-                    { 2, null, null, "Kick Butt Multiplayer Racing Game", "SNES", null, 40f, "Rock N' Roll Racing" },
-                    { 3, null, null, "Awesome Side Scroll Action!", "NES", null, 40f, "Section Z" }
+                    { 1, "A Terrible Sonic Clone", "SNES", null, 30f, "Bubsy: Claws Encounters of the Furred Kind" },
+                    { 2, "Kick Butt Multiplayer Racing Game", "SNES", null, 40f, "Rock N' Roll Racing" },
+                    { 3, "Awesome Side Scroll Action!", "NES", null, 40f, "Section Z" },
+                    { 4, "First to Feature Raccoon Mario", "NES", null, 10f, "Super Mario Bros 3" }
                 });
 
             migrationBuilder.InsertData(
@@ -351,14 +370,9 @@ namespace EcommerceApp.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_GameId1",
-                table: "Cart",
-                column: "GameId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Game_CartUserId_CartGameId",
-                table: "Game",
-                columns: new[] { "CartUserId", "CartGameId" });
+                name: "IX_CartGame_GameId",
+                table: "CartGame",
+                column: "GameId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GenreGame_GenreId",
@@ -366,25 +380,13 @@ namespace EcommerceApp.Migrations
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_CartUserId_CartGameId",
+                name: "IX_Order_CartId",
                 table: "Order",
-                columns: new[] { "CartUserId", "CartGameId" });
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Game_Cart_CartUserId_CartGameId",
-                table: "Game",
-                columns: new[] { "CartUserId", "CartGameId" },
-                principalTable: "Cart",
-                principalColumns: new[] { "UserId", "GameId" },
-                onDelete: ReferentialAction.Restrict);
+                column: "CartId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Cart_Game_GameId1",
-                table: "Cart");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -401,6 +403,9 @@ namespace EcommerceApp.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CartGame");
+
+            migrationBuilder.DropTable(
                 name: "GenreGame");
 
             migrationBuilder.DropTable(
@@ -413,10 +418,10 @@ namespace EcommerceApp.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Genre");
+                name: "Game");
 
             migrationBuilder.DropTable(
-                name: "Game");
+                name: "Genre");
 
             migrationBuilder.DropTable(
                 name: "Cart");
