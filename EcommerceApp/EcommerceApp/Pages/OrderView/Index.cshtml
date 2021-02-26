@@ -34,6 +34,8 @@
     <div>
         <input type="hidden" asp-for="Order.UserId" />
         <input type="hidden" asp-for="Order.Id" />
+        <input type="hidden" asp-for="Order.Cart"/>
+        <input type="hidden" asp-for="Order.Cart.CartGames" />
         <div>
             <label asp-for="Order.FirstName">First Name</label>
             <input asp-for="Order.FirstName" />
@@ -64,13 +66,13 @@
         </div>
         <h2>Enter Payment Information</h2>
         <label>Credit Card Number</label>
-        <input />
+        <input asp-for="CCInfo.CCNumber"/>
         <label>CVV</label>
-        <input />
+        <input asp-for="CCInfo.CardCode"/>
         <label>Expiration Date</label>
-        <input />
+        <input asp-for="CCInfo.ExpirationDate"/>
         <label>ZipCode</label>
-        <input />
+        <input asp-for="CCInfo.Zip"/>
         <button type="submit">Complete Purchase</button>
     </div>
 

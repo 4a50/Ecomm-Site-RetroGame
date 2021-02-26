@@ -2,6 +2,7 @@
 using AuthorizeNet.Api.Controllers;
 using AuthorizeNet.Api.Controllers.Bases;
 using EcommerceApp.Models.Services.CreditCard.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,12 @@ namespace EcommerceApp.Models.Services.CreditCard.Services
 {
   public class CreditCardTransaction
   {
-
-    CCInfo creditCard { get; set; }
-      public ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount)
+    private CCInfo CCInfo { get; set; }
+    public CreditCardTransaction(CCInfo cio)
+    {
+      CCInfo = cio;
+    }
+    public ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount)
       {
         //Console.WriteLine("Charge Credit Card Sample");
 
@@ -27,20 +31,21 @@ namespace EcommerceApp.Models.Services.CreditCard.Services
           Item = ApiTransactionKey,
         };
 
-        var creditCard = new creditCardType
+          
+      var creditCard = new creditCardType
         {
-          cardNumber = "4111111111111111",
-          expirationDate = "1028",
-          cardCode = "123"
+          cardNumber = CCInfo.CCNumber,//"4111111111111111",
+          expirationDate = CCInfo.ExpirationDate,
+          cardCode = CCInfo.CardCode //123
         };
 
         var billingAddress = new customerAddressType
         {
-          firstName = "John",
-          lastName = "Doe",
-          address = "123 My St",
-          city = "OurTown",
-          zip = "98004"
+          firstName = CCInfo.FirstName,
+          lastName = CCInfo.LastName,
+          address = CCInfo.Address,
+          city = CCInfo.City,
+          zip = CCInfo.Zip
         };
 
         //standard api call to retrieve response
