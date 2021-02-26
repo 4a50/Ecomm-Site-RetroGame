@@ -45,6 +45,7 @@ namespace EcommerceApp.Models.Services
       {
         Id = user.Id,
         Username = user.UserName,
+        Email = user.Email,
         Roles = await UserManager.GetRolesAsync(user)
       };
     }
