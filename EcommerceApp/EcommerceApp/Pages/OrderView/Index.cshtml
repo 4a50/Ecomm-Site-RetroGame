@@ -2,5 +2,78 @@
 @model EcommerceApp.Pages.OrderView.IndexModel
 
 <h1>Order Summary</h1>
+<h2>Items Ordered</h2>
+<table>
+    <tr>
+        <th>Game</th>
+        <th>Console</th>
+        <th>Item Price</th>
+    </tr>
+    @foreach (var g in Model.Order.Cart.CartGames)
+    {
+        <tr>
+            <td>@g.Game.Name</td>
+            <td>@g.Game.GameSystem</td>
+            <td>@g.Game.ItemPrice.ToString("0.00")</td>
+        </tr>
+    }
+</table>
+<table>
+    <tr>
+        <th>Total Items</th>
+        <td>@Model.Order.Cart.Quantity</td>
+    </tr>
+    <tr>
+        <th>Total Price</th>
+        <td>@Model.Order.Cart.CartTotalPrice</td>
+    </tr>
+</table>
+<br />
+<h2>Enter Your Shipping and Contact Information</h2>
+<form method="post">
+    <div>
+        <input type="hidden" asp-for="Order.UserId" />
+        <input type="hidden" asp-for="Order.Id" />
+        <div>
+            <label asp-for="Order.FirstName">First Name</label>
+            <input asp-for="Order.FirstName" />
+        </div>
+        <div>
+            <label asp-for="Order.LastName">Last Name</label>
+            <input asp-for="Order.LastName" />
+        </div>
+        <div>
+            <label asp-for="Order.Address">Address</label>
+            <input asp-for="Order.Address" />
+        </div>
+        <div>
+            <label asp-for="Order.City">City</label>
+            <input asp-for="Order.City" />
+        </div>
+        <div>
+            <label asp-for="Order.State">State</label>
+            <input asp-for="Order.State" />
+        </div>
+        <div>
+            <label asp-for="Order.ZipCode">Zip Code</label>
+            <input asp-for="Order.ZipCode" />
+        </div>
+        <div>
+            <label asp-for="Order.PhoneNumber">Phone Number</label>
+            <input asp-for="Order.PhoneNumber" />
+        </div>
+        <h2>Enter Payment Information</h2>
+        <label>Credit Card Number</label>
+        <input />
+        <label>CVV</label>
+        <input />
+        <label>Expiration Date</label>
+        <input />
+        <label>ZipCode</label>
+        <input />
+        <button type="submit">Complete Purchase</button>
+    </div>
 
-<p>Proof it works.  Total Price: @Model.Order.IsActive</p>
+</form>
+
+

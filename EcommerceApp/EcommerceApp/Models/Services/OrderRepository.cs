@@ -32,8 +32,11 @@ namespace EcommerceApp.Models.Services
     }
     public async Task<Order> GetOrder(string userId)
     {
-      var order = await _context.Order
-        .Where(o => o.UserId == userId)        
+      var order = await _context.Order     
+        .Where(o => o.UserId == userId)
+        .Include(c => c.Cart)
+        .ThenInclude(c =>c.CartGames)
+        .ThenInclude(g => g.Game)
         .FirstOrDefaultAsync();
       return order;
     }
