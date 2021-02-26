@@ -14,10 +14,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="SendGrid" Version="9.22.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Models\Services\Email\Services\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
