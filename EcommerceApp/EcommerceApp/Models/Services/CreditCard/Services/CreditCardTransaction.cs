@@ -1,6 +1,7 @@
 ﻿using AuthorizeNet.Api.Contracts.V1;
 using AuthorizeNet.Api.Controllers;
 using AuthorizeNet.Api.Controllers.Bases;
+using EcommerceApp.Models.Services.CreditCard.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace EcommerceApp.Models.Services.CreditCard.Services
   public class CreditCardTransaction
   {
 
-      public static ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount)
+    CCInfo creditCard { get; set; }
+      public ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount)
       {
-        Console.WriteLine("Charge Credit Card Sample");
+        //Console.WriteLine("Charge Credit Card Sample");
 
         ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
 
@@ -45,9 +47,9 @@ namespace EcommerceApp.Models.Services.CreditCard.Services
         var paymentType = new paymentType { Item = creditCard };
 
         // Add line Items
-        var lineItems = new lineItemType[2];
-        lineItems[0] = new lineItemType { itemId = "1", name = "t-shirt", quantity = 2, unitPrice = new Decimal(15.00) };
-        lineItems[1] = new lineItemType { itemId = "2", name = "snowboard", quantity = 1, unitPrice = new Decimal(450.00) };
+        //var lineItems = new lineItemType[2];
+        //lineItems[0] = new lineItemType { itemId = "1", name = "t-shirt", quantity = 2, unitPrice = new Decimal(15.00) };
+        //lineItems[1] = new lineItemType { itemId = "2", name = "snowboard", quantity = 1, unitPrice = new Decimal(450.00) };
 
         var transactionRequest = new transactionRequestType
         {
@@ -56,7 +58,7 @@ namespace EcommerceApp.Models.Services.CreditCard.Services
           amount = amount,
           payment = paymentType,
           billTo = billingAddress,
-          lineItems = lineItems
+          //lineItems = lineItems
         };
 
         var request = new createTransactionRequest { transactionRequest = transactionRequest };
