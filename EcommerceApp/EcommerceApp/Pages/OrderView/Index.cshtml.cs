@@ -31,6 +31,8 @@ namespace EcommerceApp.Pages.OrderView
     public Order Order { get; set; }
     [BindProperty]
     public CCInfo CCInfo { get; set; }
+    [BindProperty]
+    public bool TransComplete { get; set; }
 
     public IndexModel(ICart crt, IUserService user, IOrder ord, IEmail eml, IConfiguration config)
     {
@@ -41,20 +43,21 @@ namespace EcommerceApp.Pages.OrderView
       configuration = config;
     }
 
-    public async Task OnGet()
+    public async Task OnGet(string action)
         {
+      if (action == "false") TransComplete = false;
+      else { TransComplete = true; }
+      
       UserInfo = await userService.GetUser(this.User);
-      Order = await order.GetOrder(UserInfo.Id);
+      Order = await order.GetCurrentOrder(UserInfo.Id);
       Debug.WriteLine("123");
 
         }
     public async Task<IActionResult> OnPost()
     {
-
-      UserDto userStuff = await userService.GetUser(this.User);
-      UserInfo = userStuff;
-      Order.IsActive = true;
-            
+      UserInfo = await userService.GetUser(this.User);
+      Order = await order.GetCurrentOrder(UserInfo.Id);
+      Order.IsActive = true;            
       CCInfo.FirstName = Order.FirstName;
       CCInfo.LastName = Order.LastName;
       CCInfo.Address = Order.Address;
@@ -72,7 +75,7 @@ namespace EcommerceApp.Pages.OrderView
         //UserEmail.
         Message custMsg = new Message()
         {
-          To = userStuff.Email,
+          To = UserInfo.Email,
           Subject = $"Thank you for your purchase - Order Id: {Order.Id}",
           Body = ConfEmail()
       };
@@ -90,6 +93,7 @@ namespace EcommerceApp.Pages.OrderView
           {
           await email.SendEmailAsync(new Message
           {
+            //Admin
             To = "jonpjones@hotmail.com",
             Subject = $"Failure to Send Email to Customer ID {Order.UserId}",
             Body = "Email was not sent to Customer following approved transaction."
@@ -98,21 +102,16 @@ namespace EcommerceApp.Pages.OrderView
         await email.SendEmailAsync(nonCust);
         nonCust.To = "jonpjones@hotmail.com";
         await email.SendEmailAsync(nonCust);
-        
-
-      }
+             
       
-      //SendEmails
-      //  User
-      //  Admin
-      //  Warehouse
-
-
-      //Coming Back from the RazorPage
       await order.UpdateOrder(Order);
 
-
       return Redirect("/ThankYou");
+      }
+      else
+      {
+        return Redirect("/OrderView?action=false");
+      }     
     }
 
     private string ConfEmail(bool isCustomer = true)
@@ -147,12 +146,7 @@ namespace EcommerceApp.Pages.OrderView
         sb.AppendLine($"Thank you again for your purchase {Order.FirstName}!");
         sb.AppendLine($"\n\n\nAll The Best,\n\tThe Get This Proj Done Team");
       }
-      return sb.ToString();
-
-
-
-
-      return "";
+      return sb.ToString();      
     }
   }
 }

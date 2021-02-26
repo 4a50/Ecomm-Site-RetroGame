@@ -34,8 +34,6 @@
     <div>
         <input type="hidden" asp-for="Order.UserId" />
         <input type="hidden" asp-for="Order.Id" />
-        <input type="hidden" asp-for="Order.Cart"/>
-        <input type="hidden" asp-for="Order.Cart.CartGames" />
         <div>
             <label asp-for="Order.FirstName">First Name</label>
             <input asp-for="Order.FirstName" />
@@ -64,18 +62,22 @@
             <label asp-for="Order.PhoneNumber">Phone Number</label>
             <input asp-for="Order.PhoneNumber" />
         </div>
+        @if(Model.TransComplete == false)
+        {
+            <p>Unable to Process Credit Card</p>
+        }
         <h2>Enter Payment Information</h2>
         <label>Credit Card Number</label>
-        <input asp-for="CCInfo.CCNumber"/>
+        <input asp-for="CCInfo.CCNumber" />
         <label>CVV</label>
-        <input asp-for="CCInfo.CardCode"/>
+        <input asp-for="CCInfo.CardCode" />
         <label>Expiration Date</label>
-        <input asp-for="CCInfo.ExpirationDate"/>
+        <input asp-for="CCInfo.ExpirationDate" />
         <label>ZipCode</label>
-        <input asp-for="CCInfo.Zip"/>
+        <input asp-for="CCInfo.Zip" />
         <button type="submit">Complete Purchase</button>
     </div>
-
+    <div asp-validation-summary="All"></div>
 </form>
 
 

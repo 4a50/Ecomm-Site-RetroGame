@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceApp.Migrations
 {
     [DbContext(typeof(EcommDBContext))]
-    [Migration("20210222005838_ImageFieldGame")]
-    partial class ImageFieldGame
+    [Migration("20210226071004_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,43 +23,50 @@ namespace EcommerceApp.Migrations
 
             modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<float>("CartTotal")
+                    b.Property<bool>("CartActive")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("CartTotalPrice")
                         .HasColumnType("real");
+
+                    b.Property<string>("GameId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("QuantityTotal")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
 
                     b.ToTable("Cart");
                 });
 
-            modelBuilder.Entity("EcommerceApp.Models.File", b =>
+            modelBuilder.Entity("EcommerceApp.Models.CartGame", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("Size")
-                        .HasColumnType("bigint");
+                    b.HasKey("CartId", "GameId");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasIndex("GameId");
 
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("File");
+                    b.ToTable("CartGame");
                 });
 
             modelBuilder.Entity("EcommerceApp.Models.Game", b =>
@@ -69,17 +76,14 @@ namespace EcommerceApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CartId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GameSystem")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("ItemPrice")
                         .HasColumnType("real");
@@ -88,10 +92,6 @@ namespace EcommerceApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ImageId");
 
                     b.ToTable("Game");
 
@@ -119,6 +119,14 @@ namespace EcommerceApp.Migrations
                             GameSystem = "NES",
                             ItemPrice = 40f,
                             Name = "Section Z"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "First to Feature Raccoon Mario",
+                            GameSystem = "NES",
+                            ItemPrice = 10f,
+                            Name = "Super Mario Bros 3"
                         });
                 });
 
@@ -189,6 +197,51 @@ namespace EcommerceApp.Migrations
                             GameId = 3,
                             GenreId = 4
                         });
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasShipped")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PaymentComplete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("EcommerceApp.Models.Users.ApplicationUser", b =>
@@ -461,17 +514,32 @@ namespace EcommerceApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("EcommerceApp.Models.Game", b =>
+            modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
                 {
-                    b.HasOne("EcommerceApp.Models.Cart", null)
-                        .WithMany("Games")
-                        .HasForeignKey("CartId");
+                    b.HasOne("EcommerceApp.Models.Order", null)
+                        .WithOne("Cart")
+                        .HasForeignKey("EcommerceApp.Models.Cart", "OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.HasOne("EcommerceApp.Models.File", "Image")
+            modelBuilder.Entity("EcommerceApp.Models.CartGame", b =>
+                {
+                    b.HasOne("EcommerceApp.Models.Cart", "Cart")
+                        .WithMany("CartGames")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EcommerceApp.Models.Game", "Game")
                         .WithMany()
-                        .HasForeignKey("ImageId");
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Image");
+                    b.Navigation("Cart");
+
+                    b.Navigation("Game");
                 });
 
             modelBuilder.Entity("EcommerceApp.Models.GenreGame", b =>
@@ -546,12 +614,17 @@ namespace EcommerceApp.Migrations
 
             modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
                 {
-                    b.Navigation("Games");
+                    b.Navigation("CartGames");
                 });
 
             modelBuilder.Entity("EcommerceApp.Models.Game", b =>
                 {
                     b.Navigation("GenreGames");
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.Order", b =>
+                {
+                    b.Navigation("Cart");
                 });
 #pragma warning restore 612, 618
         }

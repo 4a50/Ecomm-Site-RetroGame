@@ -13,7 +13,7 @@
     public string PhoneNumber { get; set; }
     public bool PaymentComplete {get; set;}
     public bool HasShipped { get; set; }
-    public bool IsActive { get; set; }
+    public bool IsActive { get; set; }    
     public Cart Cart { get; set; }
   }
 }

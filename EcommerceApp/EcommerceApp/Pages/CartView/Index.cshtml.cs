@@ -51,7 +51,7 @@ namespace EcommerceApp.Pages.CartView
       await PopulateProperties();
       Cart newCart = await cart.GetCartWithId(UserInfo.Id);
       //add in the cart
-      Order updateOrder = await order.GetOrder(UserInfo.Id);
+      Order updateOrder = await order.GetCurrentOrder(UserInfo.Id);
       //update the order
       updateOrder.Cart = newCart;
       //send orderId to orderpage
