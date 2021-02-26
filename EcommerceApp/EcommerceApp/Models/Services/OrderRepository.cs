@@ -23,17 +23,30 @@ namespace EcommerceApp.Models.Services
       Order order = new Order
       {
         UserId = userid,
-        IsActive = false
-
+        IsActive = false,
+        PaymentComplete = false
       };
       _context.Entry(order).State = EntityState.Added;
       await _context.SaveChangesAsync();
       return order;
     }
-    public async Task<Order> GetOrder(string userId)
+    public async Task<Order> GetCurrentOrder(string userId)
+    {
+      var order = await _context.Order     
+        .Where(o => o.UserId == userId && o.PaymentComplete == false)
+        .Include(c => c.Cart)
+        .ThenInclude(c =>c.CartGames)
+        .ThenInclude(g => g.Game)
+        .FirstOrDefaultAsync();
+      return order;
+    }
+    public async Task<Order> GetOrderAll(string userId)
     {
       var order = await _context.Order
-        .Where(o => o.UserId == userId)        
+        .Where(o => o.UserId == userId)
+        .Include(c => c.Cart)
+        .ThenInclude(c => c.CartGames)
+        .ThenInclude(g => g.Game)
         .FirstOrDefaultAsync();
       return order;
     }

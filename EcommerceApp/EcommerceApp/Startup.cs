@@ -1,6 +1,8 @@
 using EcommerceApp.Data;
 using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Services;
+using EcommerceApp.Models.Services.Email;
+using EcommerceApp.Models.Services.Email.Interfaces;
 using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,6 +50,8 @@ namespace EcommerceApp
       {
         options.User.RequireUniqueEmail = true;
       }).AddEntityFrameworkStores<EcommDBContext>();
+
+      services.AddScoped<IEmail, SendGridEmailer>();
 
       services.AddAuthentication();
       services.AddAuthorization(options =>
