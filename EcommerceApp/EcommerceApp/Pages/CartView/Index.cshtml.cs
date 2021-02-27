@@ -35,13 +35,20 @@ namespace EcommerceApp.Pages.CartView
 
     public async Task OnGet()
     {
-      await PopulateProperties();
-      foreach (CartGame cartGame in CartContents.CartGames)
+      if (this.User.Identity.IsAuthenticated)
       {
-        var gameEntry = await game.GetGame(cartGame.GameId);
-          GamesList.Add(gameEntry);       
+        await PopulateProperties();
+        foreach (CartGame cartGame in CartContents.CartGames)
+        {
+          var gameEntry = await game.GetGame(cartGame.GameId);
+          GamesList.Add(gameEntry);
+        }
+        await cart.UpdateCart(CartContents);
       }
-      await cart.UpdateCart(CartContents);
+      else
+      {
+        Redirect("/shop");
+      }
     }
     public async Task<IActionResult> OnPost()
     {

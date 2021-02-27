@@ -8,8 +8,15 @@
 <p>Description: @Model.Game.Description</p>
 <p>Console: @Model.Game.GameSystem</p>
 <p>Item Price: @Model.Game.ItemPrice</p>
-<form method="post" >
+<form method="post">
     <input type="hidden" asp-for="@Model.UserInfo.Id" />
-    <input type="hidden" asp-for="@Model.Game.Id"/>
-    <button type="submit">Add To Cart</button>
+    <input type="hidden" asp-for="@Model.Game.Id" />
+    @if (User.Identity.IsAuthenticated)
+    { 
+        <button type="submit">Add To Cart</button>
+    }
+    else
+    {
+        <button type="submit" disabled>Add To Cart</button>
+    }
 </form>
