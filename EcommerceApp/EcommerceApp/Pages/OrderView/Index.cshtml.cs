@@ -56,7 +56,7 @@ namespace EcommerceApp.Pages.OrderView
     public async Task<IActionResult> OnPost()
     {
       UserInfo = await userService.GetUser(this.User);
-      Order = await order.GetCurrentOrder(UserInfo.Id);
+      Order.Cart = await cart.GetCartWithId(UserInfo.Id);                  
       Order.IsActive = true;            
       CCInfo.FirstName = Order.FirstName;
       CCInfo.LastName = Order.LastName;
@@ -66,7 +66,7 @@ namespace EcommerceApp.Pages.OrderView
       CreditCardTransaction creditCard = new CreditCardTransaction(CCInfo);
       
       ANetApiResponse response = creditCard.Run(configuration["AuthorizeNet:ApiLogin"], configuration["AuthorizeNet:Transaction"], 1000);
-      if (response.messages.resultCode == messageTypeEnum.Ok)
+      if (response != null || response.messages.resultCode == messageTypeEnum.Ok)
       {
 
       

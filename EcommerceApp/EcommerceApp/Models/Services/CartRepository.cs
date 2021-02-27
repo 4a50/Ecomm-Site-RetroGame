@@ -62,7 +62,9 @@ namespace EcommerceApp.Models.Services
     public async Task<Cart> GetCartWithId(string userid)
     {
       var cart = await _context.Cart
-        .Where(c => c.UserId == userid && c.CartActive == true)        
+        .Where(c => c.UserId == userid && c.CartActive == true)  
+        .Include(g => g.CartGames)
+        .ThenInclude(ga => ga.Game)
         .FirstOrDefaultAsync();
       cart.CartGames = await GetCartGames(cart.Id);
       return cart;
