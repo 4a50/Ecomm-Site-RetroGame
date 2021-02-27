@@ -86,6 +86,10 @@ namespace EcommerceApp.Models.Services
       }
       return null;
     }
+    public async Task SignOut()
+    {
+      await SignInManager.SignOutAsync();
+    }
   }
 }
 
