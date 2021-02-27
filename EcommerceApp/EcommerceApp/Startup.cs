@@ -11,6 +11,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Azure;
+using Azure.Storage.Queues;
+using Azure.Storage.Blobs;
+using Azure.Core.Extensions;
+using System;
 
 namespace EcommerceApp
 {
@@ -63,6 +68,11 @@ namespace EcommerceApp
       });
       services.AddControllers().AddNewtonsoftJson(options =>
       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+      services.AddAzureClients(builder =>
+      {
+        builder.AddBlobServiceClient(Configuration["ConnectionStrings:StorageAccount:blob"], preferMsi: true);
+        builder.AddQueueServiceClient(Configuration["ConnectionStrings:StorageAccount:queue"], preferMsi: true);
+      });
 
     }
 
@@ -83,6 +93,31 @@ namespace EcommerceApp
         endpoints.MapRazorPages();
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
       });
+    }
+  }
+  internal static class StartupExtensions
+  {
+    public static IAzureClientBuilder<BlobServiceClient, BlobClientOptions> AddBlobServiceClient(this AzureClientFactoryBuilder builder, string serviceUriOrConnectionString, bool preferMsi)
+    {
+      if (preferMsi && Uri.TryCreate(serviceUriOrConnectionString, UriKind.Absolute, out Uri serviceUri))
+      {
+        return builder.AddBlobServiceClient(serviceUri);
+      }
+      else
+      {
+        return builder.AddBlobServiceClient(serviceUriOrConnectionString);
+      }
+    }
+    public static IAzureClientBuilder<QueueServiceClient, QueueClientOptions> AddQueueServiceClient(this AzureClientFactoryBuilder builder, string serviceUriOrConnectionString, bool preferMsi)
+    {
+      if (preferMsi && Uri.TryCreate(serviceUriOrConnectionString, UriKind.Absolute, out Uri serviceUri))
+      {
+        return builder.AddQueueServiceClient(serviceUri);
+      }
+      else
+      {
+        return builder.AddQueueServiceClient(serviceUriOrConnectionString);
+      }
     }
   }
 }
