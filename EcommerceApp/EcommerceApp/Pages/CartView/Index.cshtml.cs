@@ -39,9 +39,7 @@ namespace EcommerceApp.Pages.CartView
       foreach (CartGame cartGame in CartContents.CartGames)
       {
         var gameEntry = await game.GetGame(cartGame.GameId);
-          GamesList.Add(gameEntry);
-        CartContents.Quantity += 1;
-        CartContents.CartTotalPrice += gameEntry.ItemPrice;
+          GamesList.Add(gameEntry);       
       }
       await cart.UpdateCart(CartContents);
     }

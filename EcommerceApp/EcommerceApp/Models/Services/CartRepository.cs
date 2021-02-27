@@ -32,16 +32,14 @@ namespace EcommerceApp.Models.Services
     }
     public async Task<CartGame> AddGameToCart(string userid, int gameid)
     {
-      //I need UserId <-- Got it
-      //I need am OrderId (from active Order)
-
       var cart = await _context.Cart
         .Where(q => q.UserId == userid && q.CartActive == true)
         .FirstOrDefaultAsync();
-      if (cart == null)
-      {
-        return null;
-      }
+      var game = await _context.Game
+        .Where(q => q.Id == gameid)
+        .FirstOrDefaultAsync();
+      
+      if (cart == null) return null;
 
       CartGame cartGame = new CartGame
       {
@@ -50,16 +48,20 @@ namespace EcommerceApp.Models.Services
       };
       try
       {
+        //Add to the CartGame Join Table
         _context.Entry(cartGame).State = EntityState.Added;
         await _context.SaveChangesAsync();
+
+        //Add to the total price and Qty of the Cart and Update
+        cart.CartTotalPrice += game.ItemPrice;
+        cart.Quantity += 1;
+        _context.Entry(cart).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+
         return cartGame;
       }
-      catch
-      {
-        return null;
-      }
-
-
+      
+      catch { return null; }
     }
 
     public async Task<Cart> GetCartWithId(string userid)
@@ -85,6 +87,7 @@ namespace EcommerceApp.Models.Services
 
     public async Task UpdateCart(Cart cart)
     {
+      
       _context.Entry(cart).State = EntityState.Modified;
       await _context.SaveChangesAsync();
     }
