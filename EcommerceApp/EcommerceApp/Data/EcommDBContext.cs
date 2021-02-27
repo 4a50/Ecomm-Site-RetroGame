@@ -117,7 +117,5 @@ namespace EcommerceApp.Data
 
       modelbuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
     }
-
-
   }
 }

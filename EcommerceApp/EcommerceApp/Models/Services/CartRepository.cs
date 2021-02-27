@@ -17,12 +17,7 @@ namespace EcommerceApp.Models.Services
     {
       _context = context;
     }
-
-    public Task<Cart> AddToCart(Game game)
-    {
-      throw new NotImplementedException();
-    }
-
+    
     public async Task<Cart> CreateCart(string userId, int orderId)
     {
       Cart cart = new Cart { UserId = userId, OrderId = orderId, CartActive = true };

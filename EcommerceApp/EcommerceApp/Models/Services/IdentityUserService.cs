@@ -59,7 +59,7 @@ namespace EcommerceApp.Models.Services
       var result = await UserManager.CreateAsync(user, data.Password);
       if (result.Succeeded)
       {
-        data.Roles.Add("Administrator");
+        data.Roles.Add("Editor");
         await UserManager.AddToRolesAsync(user, data.Roles);
 
         //Add a new Order to the For the New ID
