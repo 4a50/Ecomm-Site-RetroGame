@@ -1,0 +1,24 @@
+﻿@page
+@model EcommerceApp.Pages.ViewArchives.IndexModel
+<h2>Order Archive Page</h2>
+<a href="/admin">return to admin page</a>
+<h3>Vomit of all the Orders</h3>
+<table>
+    <tr>
+        <th>Order Id</th>
+        <th>User Id</th>
+        <th>Shipping Name</th>
+        <th>Shipping Address</th>
+        <th>Payment Complete</th>        
+    </tr>
+        @foreach (var o in Model.Orders)
+        {
+    <tr>
+            <td>@o.Id</td>
+            <td>@o.UserId</td>
+            <td>@o.LastName, @o.FirstName</td>
+            <td>@o.Address, @o.City, @o.State, @o.ZipCode</td>
+            <td>@o.PaymentComplete</td>
+    </tr>
+        }
+</table>

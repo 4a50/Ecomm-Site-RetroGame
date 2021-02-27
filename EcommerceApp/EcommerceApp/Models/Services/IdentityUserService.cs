@@ -49,6 +49,18 @@ namespace EcommerceApp.Models.Services
         Roles = await UserManager.GetRolesAsync(user)
       };
     }
+    public async Task<UserDto> LookUpUser (string userid)
+    {
+      ApplicationUser lookupUser = await UserManager.FindByIdAsync(userid);
+      
+      return new UserDto
+      {
+        Id = lookupUser.Id,
+        Username = lookupUser.UserName,
+        Email = lookupUser.Email
+      };
+      
+    }
     public async Task<UserDto> Register(RegisterUser data, ModelStateDictionary modelState)
     {
       var user = new ApplicationUser
