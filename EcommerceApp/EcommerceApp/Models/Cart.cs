@@ -5,6 +5,7 @@ namespace EcommerceApp.Models
 {
   public class Cart
   {
+    [Required]
     public int Id { get; set; }
     public bool CartActive { get; set; }
     [Required]

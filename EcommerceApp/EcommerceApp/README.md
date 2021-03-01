@@ -109,7 +109,7 @@ dotnet run
 | Parameter | Type | Required |
 | --- | --- | --- |
 | ID  | int | YES |
-| Name | string | NO |
+| Name | string | YES |
 | Description| string | NO |
 | ItemPrice | float | NO |
 | GameSystem | string | NO |
