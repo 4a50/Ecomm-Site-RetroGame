@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
+
+
 <!DOCTYPE html>
 
 <html>
@@ -12,9 +14,10 @@
 <body>
     <header>
         <nav>
-            <partial name="_AdminBar" />
+            @*<partial name="_AdminBar" />*@
+            @await Component.InvokeAsync("NavBar")
         </nav>       
-                
+               
     </header>
     <main>
         <div>

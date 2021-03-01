@@ -163,16 +163,18 @@
                 <form asp-controller="Admin" asp-action="UploadFile" method="post" enctype="multipart/form-data">
                     @*@Html.ListBoxFor(l => l.SelectedAnswers, Model.Games, new { size = 7 })*@
                     <partial name="_GameDrop" />
-                    <div>
-                        <span>Enter An Image Name</span>
-                        <input name="name" />
-                    </div>
+                    
                     <div>
                         <span>Select File to Upload</span>
                         <input name="file" type="file" />
                     </div>
                     <button type="submit">Upload Image</button>
                 </form>
+            </div>
+            <br />
+            <div>
+                <h2>View Past Orders By User Name</h2>
+                <a href="/viewarchives/">View By Past Orders</a>
             </div>
         }
     </main>

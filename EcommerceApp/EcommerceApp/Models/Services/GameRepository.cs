@@ -2,6 +2,7 @@
 using EcommerceApp.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Models.Services
@@ -24,6 +25,22 @@ namespace EcommerceApp.Models.Services
       _context.Entry(game).State = EntityState.Added;
       await _context.SaveChangesAsync();
       return game;
+    }
+    public async Task<List<Game>> GetGamesByGenre(int genreId)
+    {
+      List<Game> allGames = await GetAllGames();
+      List<Game> filteredList = new List<Game>();
+      //TODO: Figure out the LINQ Query to Handle this.
+      foreach (Game g in allGames)
+      {
+       foreach (GenreGame gen in g.GenreGames)
+        {
+          if (gen.GenreId == genreId) filteredList.Add(g);
+        }
+      }           
+      return filteredList;
+        
+
     }
     public async Task<List<Game>> GetAllGames()
     {

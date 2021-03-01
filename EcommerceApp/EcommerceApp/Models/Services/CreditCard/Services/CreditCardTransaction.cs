@@ -35,7 +35,7 @@ namespace EcommerceApp.Models.Services.CreditCard.Services
       var creditCard = new creditCardType
         {
           cardNumber = CCInfo.CCNumber,//"4111111111111111",
-          expirationDate = CCInfo.ExpirationDate,
+          expirationDate = CCInfo.ExpirationDate, //1028
           cardCode = CCInfo.CardCode //123
         };
 

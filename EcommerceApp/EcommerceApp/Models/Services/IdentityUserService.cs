@@ -49,6 +49,18 @@ namespace EcommerceApp.Models.Services
         Roles = await UserManager.GetRolesAsync(user)
       };
     }
+    public async Task<UserDto> LookUpUser (string userid)
+    {
+      ApplicationUser lookupUser = await UserManager.FindByIdAsync(userid);
+      
+      return new UserDto
+      {
+        Id = lookupUser.Id,
+        Username = lookupUser.UserName,
+        Email = lookupUser.Email
+      };
+      
+    }
     public async Task<UserDto> Register(RegisterUser data, ModelStateDictionary modelState)
     {
       var user = new ApplicationUser
@@ -59,7 +71,7 @@ namespace EcommerceApp.Models.Services
       var result = await UserManager.CreateAsync(user, data.Password);
       if (result.Succeeded)
       {
-        data.Roles.Add("Administrator");
+        data.Roles.Add("Guest");
         await UserManager.AddToRolesAsync(user, data.Roles);
 
         //Add a new Order to the For the New ID
@@ -85,6 +97,10 @@ namespace EcommerceApp.Models.Services
         modelState.AddModelError(errorKey, error.Description);
       }
       return null;
+    }
+    public async Task SignOut()
+    {
+      await SignInManager.SignOutAsync();
     }
   }
 }

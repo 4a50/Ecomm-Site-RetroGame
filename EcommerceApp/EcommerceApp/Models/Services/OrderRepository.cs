@@ -2,6 +2,7 @@
 using EcommerceApp.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,7 +41,16 @@ namespace EcommerceApp.Models.Services
         .FirstOrDefaultAsync();
       return order;
     }
-    public async Task<Order> GetOrderAll(string userId)
+    public async Task<List<Order>> GetOrderAll()
+    {
+      var order = await _context.Order        
+        .Include(c => c.Cart)
+        .ThenInclude(c => c.CartGames)
+        .ThenInclude(g => g.Game)
+        .ToListAsync();
+      return order;
+    }
+    public async Task<Order> GetOrderArchive(string userId)
     {
       var order = await _context.Order
         .Where(o => o.UserId == userId)
@@ -50,7 +60,15 @@ namespace EcommerceApp.Models.Services
         .FirstOrDefaultAsync();
       return order;
     }
-
+    public async Task<List<Order>> GetOrderArchiveAll()
+    {
+        return await _context.Order
+        .Include(c => c.Cart)
+        .ThenInclude(c => c.CartGames)
+        .ThenInclude(g => g.Game)
+        .Where(o => o.PaymentComplete == true)
+        .ToListAsync();
+    }
     public Task<Order> RemoveOrder(int Id)
     {
       throw new NotImplementedException();

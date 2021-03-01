@@ -56,7 +56,7 @@ namespace EcommerceApp.Pages.OrderView
     public async Task<IActionResult> OnPost()
     {
       UserInfo = await userService.GetUser(this.User);
-      Order = await order.GetCurrentOrder(UserInfo.Id);
+      Order.Cart = await cart.GetCartWithId(UserInfo.Id);                  
       Order.IsActive = true;            
       CCInfo.FirstName = Order.FirstName;
       CCInfo.LastName = Order.LastName;
@@ -66,7 +66,7 @@ namespace EcommerceApp.Pages.OrderView
       CreditCardTransaction creditCard = new CreditCardTransaction(CCInfo);
       
       ANetApiResponse response = creditCard.Run(configuration["AuthorizeNet:ApiLogin"], configuration["AuthorizeNet:Transaction"], 1000);
-      if (response.messages.resultCode == messageTypeEnum.Ok)
+      if (response != null || response.messages.resultCode == messageTypeEnum.Ok)
       {
 
       
@@ -117,34 +117,42 @@ namespace EcommerceApp.Pages.OrderView
     private string ConfEmail(bool isCustomer = true)
     {
       StringBuilder sb = new StringBuilder();
-    if (isCustomer) {   
-      sb.AppendLine($"Hey {Order.FirstName}!  Thank you for your recent order with us!\nWe know you could have gone anywhere, so we are happy you went with us!"); ;
-      sb.AppendLine($"The Following items have been ordered and will be on their way shortly!");
+    if (isCustomer) {
+        sb.AppendLine($"<p>Hey <strong>{Order.FirstName}</strong>!");
+  
+          sb.AppendLine($"<p>Thank you for your recent order with us!\nWe know you could have gone anywhere, so we are happy you went with us!</p>");
+      sb.AppendLine($"<p>The Following items have been ordered and will be on their way shortly!</p>");
       sb.AppendLine("\n\n\n");
       }
       else
       {
-        sb.AppendLine($"Order Received for: {Order.LastName} {Order.FirstName} UserId: {Order.UserId}\nEmail: {UserInfo.Email}");
+        sb.AppendLine($"<h2>Order Received for: <strong>{Order.LastName} {Order.FirstName}</strong> UserId: <strong>{Order.UserId}</strong> Email: <strong>{UserInfo.Email}</strong></h2>");
               
       }
-
+      sb.AppendLine("<table>");
+      sb.AppendLine("<tr><th>Item Name</th><th>Game System</th>Item Price<th>");
       foreach (CartGame g in Order.Cart.CartGames)
       {
-        sb.AppendLine($"{g.Game.Name}\t{g.Game.GameSystem}\t{g.Game.ItemPrice}");
+        sb.AppendLine($"<tr><td>{g.Game.Name}</td><td>{g.Game.GameSystem}</td><td>{g.Game.ItemPrice}</td></tr>");
       }
-      sb.AppendLine($"\n{Order.Cart.Quantity}\t{Order.Cart.CartTotalPrice}");
-      sb.AppendLine($"Order ID: {Order.Id}");
-      sb.AppendLine("\n\n");
+      sb.AppendLine("</table>");
+      sb.AppendLine("<table>");
+      sb.AppendLine($"<tr><th>Qty</th><td>{Order.Cart.Quantity}</td><th>Total Price</th<td>{Order.Cart.CartTotalPrice}</td></tr>");
+      sb.AppendLine($"<tr><th>Order ID</th><td>{Order.Id}</td></tr>");
+      sb.AppendLine("</table>");
+      sb.AppendLine("<br /><br />");
       sb.AppendLine($"Shipping Information:");
-      sb.AppendLine($"Name: {Order.FirstName } {Order.LastName}");
-      sb.AppendLine($"Address: {Order.Address}");
-      sb.AppendLine($"City: {Order.City}  State: {Order.State}   {Order.ZipCode}");
-      sb.AppendLine($"Contact Phone: {Order.PhoneNumber}");
+      sb.AppendLine("<table>");
+      sb.AppendLine($"<tr><th>Name</th><td>{Order.FirstName } {Order.LastName}</td></tr>");
+      sb.AppendLine($"<tr><th>Address</th><td>{Order.Address}</td></tr>");
+      sb.AppendLine($"<tr><th>City</th><td>{Order.City}</td><th>State</th><td>{Order.State}</td><td>{Order.ZipCode}</td></tr>");
+      sb.AppendLine($"<tr><th>Contact Phone</th><td>{Order.PhoneNumber}</td>");
+      sb.AppendLine("</table>");
       if (isCustomer)
       {
-        sb.AppendLine($"\n\n");
-        sb.AppendLine($"Thank you again for your purchase {Order.FirstName}!");
-        sb.AppendLine($"\n\n\nAll The Best,\n\tThe Get This Proj Done Team");
+        sb.AppendLine($"<br/><br/>");
+        sb.AppendLine($"<p>Thank you again for your purchase {Order.FirstName}!<p>");
+        sb.AppendLine($"<h3>All The Best,\n\tThe Get This Proj Done Team<h4>");
       }
       return sb.ToString();      
     }
