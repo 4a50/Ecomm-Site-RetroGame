@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace EcommerceApp.Pages.Components.NavBar
 {
+  /// <summary>
+  /// Handles the Navigation Bar for site
+  /// </summary>
   public class NavBar : ViewComponent
   {
     private SignInManager<ApplicationUser> SignInManager;

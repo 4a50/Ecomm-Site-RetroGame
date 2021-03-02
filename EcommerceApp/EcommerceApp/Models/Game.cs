@@ -5,6 +5,7 @@ namespace EcommerceApp.Models
 {
   public class Game
   {
+    //Table Properties
     [Required]
     public int Id { get; set; }
     [Required]
@@ -13,8 +14,7 @@ namespace EcommerceApp.Models
     public float ItemPrice { get; set; }
     public string GameSystem { get; set; }
     public string ImageUrl { get; set; }
-
-
+    //Navigation Properties
     public List<GenreGame> GenreGames { get; set; }
   }
 }

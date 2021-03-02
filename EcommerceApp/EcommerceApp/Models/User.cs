@@ -4,6 +4,7 @@ namespace EcommerceApp.Models
 {
   public class User
   {
+    //Table Properties
     [Required]
     public string Id { get; set; }
     [Required]

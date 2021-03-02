@@ -17,6 +17,11 @@ namespace EcommerceApp.Models.Services
     {
       Configuration = config;
     }
+    /// <summary>
+    /// Performs the Upload to the Azure blob 
+    /// </summary>
+    /// <param name="file"></param>
+    /// <returns></returns>
     public async Task<File> Upload(IFormFile file)
     {
       BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("StorageAccount"), "images");

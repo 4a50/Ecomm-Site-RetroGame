@@ -17,6 +17,13 @@ namespace EcommerceApp.Models.Services.CreditCard.Services
     {
       CCInfo = cio;
     }
+    /// <summary>
+    /// Runs the Credit card through Authorize.net to secure funds
+    /// </summary>
+    /// <param name="ApiLoginID"></param>
+    /// <param name="ApiTransactionKey"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
     public ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount)
       {
         //Console.WriteLine("Charge Credit Card Sample");

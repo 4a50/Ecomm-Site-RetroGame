@@ -61,6 +61,12 @@ namespace EcommerceApp.Models.Services
       };
       
     }
+    /// <summary>
+    /// Registeres a new user in the database
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="modelState"></param>
+    /// <returns></returns>
     public async Task<UserDto> Register(RegisterUser data, ModelStateDictionary modelState)
     {
       var user = new ApplicationUser
@@ -98,6 +104,10 @@ namespace EcommerceApp.Models.Services
       }
       return null;
     }
+    /// <summary>
+    /// Signs the user out of the database
+    /// </summary>
+    /// <returns></returns>
     public async Task SignOut()
     {
       await SignInManager.SignOutAsync();

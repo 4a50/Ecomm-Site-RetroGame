@@ -26,6 +26,7 @@ namespace EcommerceApp.Pages.ThankYou
       }
       public async Task OnGet()
       {
+      //Retrieves the information needed.
         UserInfo = await userService.GetUser(this.User);
         Order = await order.GetCurrentOrder(UserInfo.Id);
         Cart = await cart.GetCartWithId(UserInfo.Id);
