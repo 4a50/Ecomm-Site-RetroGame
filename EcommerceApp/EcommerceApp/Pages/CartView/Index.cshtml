@@ -15,14 +15,23 @@ else
         <th>Game</th>
         <th>Console</th>
         <th>Item Price</th>        
+        <th>Remove From Cart</th>
     </tr>
 @foreach (var g in Model.GamesList)
 {
-    <tr>
-        <td>@g.Name</td>
-        <td>@g.GameSystem</td>
-        <td>@g.ItemPrice.ToString("0.00")</td>
-    </tr>
+<tr>
+    <td>@g.Name</td>
+    <td>@g.GameSystem</td>
+    <td>@g.ItemPrice.ToString("0.00")</td>
+    <td>
+        <form method="post">
+            <input type="hidden" asp-for="@Model.IsDeleted" value="true" />
+            <input type="hidden" asp-for="@Model.CartContents.Id" value="@Model.CartContents.Id" />
+            <input type="hidden" asp-for="@Model.CartContents.GameId" value="@g.Id" />
+            <button type="submit">Remove</button>
+        </form>
+    </td>
+</tr>
 }
 </table>
 <table>
