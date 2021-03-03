@@ -10,11 +10,13 @@ namespace EcommerceApp.Models.Services
 {
   public class CartRepository : ICart
   {
+    
 
-
+    private IGame game { get; set; }
     private EcommDBContext _context;
-    public CartRepository(EcommDBContext context)
+    public CartRepository(EcommDBContext context, IGame gme)
     {
+      game = gme;
       _context = context;
     }
     /// <summary>
@@ -85,6 +87,21 @@ namespace EcommerceApp.Models.Services
       return cart;
     }
     /// <summary>
+    /// Retrieves the Cart with a Give Cart Id.
+    /// </summary>
+    /// <param name="cartid"></param>
+    /// <returns></returns>
+    public async Task<Cart> GetCartWithCartId(int cartid)
+    {
+      var cart = await _context.Cart
+        .Where(c => c.Id == cartid)
+        .Include(g => g.CartGames)
+        .ThenInclude(ga => ga.Game)
+        .FirstOrDefaultAsync();
+      cart.CartGames = await GetCartGames(cart.Id);
+      return cart;
+    }
+    /// <summary>
     /// Retries a list of a all game associated with a cartid from the CartGame join table
     /// </summary>
     /// <param name="cartId"></param>
@@ -96,13 +113,26 @@ namespace EcommerceApp.Models.Services
         .ToListAsync();
     }
     /// <summary>
+    /// Retrieves a CartGame Entry from the Cart Game Join Table.
+    /// </summary>
+    /// <param name="cartId"></param>
+    /// <param name="gameid"></param>
+    /// <returns></returns>
+    public async Task<CartGame> GetCartGame(int cartId, int gameid)
+    {
+      return await _context.CartGame.FirstOrDefaultAsync(cg => (cg.CartId == cartId && cg.GameId == gameid));
+    }
+      
+    /// <summary>
     /// Removes a game from the Cart
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public Task RemoveFromCart(string id)
+    public async Task RemoveFromCart(int cartid, int gameid)
     {
-      throw new NotImplementedException();
+      var cartGame = await GetCartGame(cartid, gameid);      
+      _context.Entry(cartGame).State = EntityState.Deleted;
+      await _context.SaveChangesAsync();
     }
     /// <summary>
     /// Updates the cart from the supplied cart Model.
@@ -110,8 +140,7 @@ namespace EcommerceApp.Models.Services
     /// <param name="cart"></param>
     /// <returns></returns>
     public async Task UpdateCart(Cart cart)
-    {
-      
+    {      
       _context.Entry(cart).State = EntityState.Modified;
       await _context.SaveChangesAsync();
     }

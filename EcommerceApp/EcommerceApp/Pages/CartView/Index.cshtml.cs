@@ -22,6 +22,8 @@ namespace EcommerceApp.Pages.CartView
     public List<Game> GamesList { get; set; }
     [BindProperty]
     public Order CustomerOrder { get; set; }
+    [BindProperty]
+    public bool IsDeleted {get; set;}
 
 
     public IndexModel(ICart cartP, IUserService user, IGame gameI, IOrder ord)
@@ -53,6 +55,24 @@ namespace EcommerceApp.Pages.CartView
     }
     public async Task<IActionResult> OnPost()
     {
+      if (IsDeleted)
+      {
+        await cart.RemoveFromCart(CartContents.Id, int.Parse(CartContents.GameId));
+        return Redirect("/CartView");
+      }
+      else
+      {
+        await UpdateOrderForm();
+      }
+      return Redirect("/OrderView");      
+    }
+    private async Task PopulateProperties()
+    {
+      UserInfo = await userService.GetUser(this.User);
+      CartContents = await cart.GetCartWithId(UserInfo.Id);
+    }
+    private async Task UpdateOrderForm()
+    {
       //find order with userId
       await PopulateProperties();
       Cart newCart = await cart.GetCartWithId(UserInfo.Id);
@@ -62,12 +82,6 @@ namespace EcommerceApp.Pages.CartView
       updateOrder.Cart = newCart;
       //send orderId to orderpage
       await order.UpdateOrder(updateOrder);
-      return Redirect("/OrderView");
-    }
-    private async Task PopulateProperties()
-    {
-      UserInfo = await userService.GetUser(this.User);
-      CartContents = await cart.GetCartWithId(UserInfo.Id);
     }
   }
 }
