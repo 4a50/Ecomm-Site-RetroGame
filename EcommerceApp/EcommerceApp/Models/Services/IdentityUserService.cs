@@ -84,6 +84,16 @@ namespace EcommerceApp.Models.Services
         var order = await Order.CreateNewOrder(user.Id);
         //Add A new Cart.
         await Cart.CreateCart(user.Id, order.Id);
+        
+        foreach (var error in result.Errors)
+        {
+          var errorKey =
+              error.Code.Contains("Password") ? nameof(data.Password) :
+              error.Code.Contains("Email") ? nameof(data.Email) :
+              error.Code.Contains("UserName") ? nameof(data.Username) :
+              "";
+          modelState.AddModelError(errorKey, error.Description);
+        }
 
         return new UserDto
         {
