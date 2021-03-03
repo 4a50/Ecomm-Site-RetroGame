@@ -5,6 +5,10 @@
 
     <form method="post">
         <div>
+            @if (Model.FailLogin)
+            {
+            <p>Failed to Create User.  Try Again</p>
+            }
             <label asp-for="Log.Username">User Name</label>
             <input asp-for="Log.Username" placeholder="Username" />
         </div>
