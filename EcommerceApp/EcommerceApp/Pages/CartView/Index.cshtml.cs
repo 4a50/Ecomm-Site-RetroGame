@@ -38,6 +38,7 @@ namespace EcommerceApp.Pages.CartView
       if (this.User.Identity.IsAuthenticated)
       {
         await PopulateProperties();
+        //Adds all the games in the cart to a list for display
         foreach (CartGame cartGame in CartContents.CartGames)
         {
           var gameEntry = await game.GetGame(cartGame.GameId);

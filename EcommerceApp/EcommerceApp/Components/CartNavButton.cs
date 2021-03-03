@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace EcommerceApp.Components
 {
+  /// <summary>
+  /// Handles The Updates and Directs to the cart page
+  /// </summary>
   [ViewComponent]
   public class CartNavButton : ViewComponent
   {
@@ -20,6 +23,10 @@ namespace EcommerceApp.Components
       userService = userserv;
       Cart = cart;
     }
+    /// <summary>
+    /// When called this method will run.
+    /// </summary>
+    /// <returns></returns>
     public async Task<IViewComponentResult> InvokeAsync()
     {
       

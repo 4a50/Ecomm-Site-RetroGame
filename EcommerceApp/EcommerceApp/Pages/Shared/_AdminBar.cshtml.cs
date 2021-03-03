@@ -10,15 +10,12 @@ namespace EcommerceApp.Pages.Shared
 {
   public class _NavBarModel : PageModel
   {    
-    private SignInManager<ApplicationUser> SignInManager;
-    private UserManager<ApplicationUser> UserManager;
+    private SignInManager<ApplicationUser> SignInManager;    
     [BindProperty]
     public bool IsSignedIn { get; set; }
     public _NavBarModel (SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
     {
       SignInManager = signInManager;
-      UserManager = userManager;
-
   }
     public void OnGetAsync()
     {
@@ -26,7 +23,7 @@ namespace EcommerceApp.Pages.Shared
     }
     public async Task OnPost()
     {
-      Debug.WriteLine(" ");
+      
       await SignInManager.SignOutAsync();
     }
   }

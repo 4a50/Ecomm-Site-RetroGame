@@ -21,11 +21,7 @@ namespace EcommerceApp.Pages.Register
     {
     }
     public async Task<IActionResult> OnPostAsync()
-    {
-      //RegisterUser.Roles = new List<string>()
-      //        {
-      //          "Administrator"
-      //        };
+    {      
       var user = await UserService.Register(RegisterUser, ModelState);
       if (ModelState.IsValid)
       {

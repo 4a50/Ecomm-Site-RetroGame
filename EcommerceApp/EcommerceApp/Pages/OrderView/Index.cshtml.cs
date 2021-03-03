@@ -55,9 +55,12 @@ namespace EcommerceApp.Pages.OrderView
         }
     public async Task<IActionResult> OnPost()
     {
+      //Gets the user
       UserInfo = await userService.GetUser(this.User);
+      //Retrieves the Cart and adds to Order Model
       Order.Cart = await cart.GetCartWithId(UserInfo.Id);                  
       Order.IsActive = true;            
+      //Adds the Appropriate information to the CCINFO model
       CCInfo.FirstName = Order.FirstName;
       CCInfo.LastName = Order.LastName;
       CCInfo.Address = Order.Address;
@@ -66,10 +69,9 @@ namespace EcommerceApp.Pages.OrderView
       CreditCardTransaction creditCard = new CreditCardTransaction(CCInfo);
       
       ANetApiResponse response = creditCard.Run(configuration["AuthorizeNet:ApiLogin"], configuration["AuthorizeNet:Transaction"], 1000);
+      //If the message is OK and not null craft and send the appropriate email to Admin/Warehouse/Customer
       if (response != null || response.messages.resultCode == messageTypeEnum.Ok)
       {
-
-      
       Debug.WriteLine(Order.UserId);
 
         //UserEmail.
@@ -113,7 +115,11 @@ namespace EcommerceApp.Pages.OrderView
         return Redirect("/OrderView?action=false");
       }     
     }
-
+    /// <summary>
+    /// Generates the appropriate email to the either the user or Admin & Warehouse
+    /// </summary>
+    /// <param name="isCustomer"></param>
+    /// <returns></returns>
     private string ConfEmail(bool isCustomer = true)
     {
       StringBuilder sb = new StringBuilder();

@@ -30,13 +30,27 @@ namespace EcommerceApp.Controllers
 
       
     }
+    /// <summary>
+    /// To access the index page user must have the policy of "update" availible to them.
+    /// The following Roles are authorized:
+    /// Administrator
+    /// Editor
+    /// </summary>
+    /// <param name="gmId"></param>
+    /// <param name="gnId"></param>
+    /// <param name="user"></param>
+    /// <returns></returns>
     [Authorize(Policy = "update")]
     public async Task<IActionResult> Index(string gmId, string gnId, User user)
     {
       var adminVm = await AdminService.IndexUpdate(gmId, gnId);
       return View(adminVm);
     }
-
+    /// <summary>
+    /// This will add a game to the database
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> AddGame(AdminVm adminvm)
     {
@@ -56,6 +70,11 @@ namespace EcommerceApp.Controllers
       //await _game.CreateGenreGame(saveGame.Id, adminvm.Genre.Id);
       return Redirect("/admin");
     }
+    /// <summary>
+    /// Adds a Genre Category to the database
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> AddGenre(AdminVm adminvm)
     {
@@ -72,6 +91,11 @@ namespace EcommerceApp.Controllers
 
       return Redirect("/admin");
     }
+    /// <summary>
+    /// Removes a game from the database
+    /// </summary>
+    /// <param name="adminVm"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> DeleteGame(AdminVm adminVm)
     {
@@ -79,6 +103,11 @@ namespace EcommerceApp.Controllers
       await _game.DeleteGame(gameId);
       return Redirect("/admin");
     }
+    /// <summary>
+    /// Deletes a Genre from the database
+    /// </summary>
+    /// <param name="adminVm"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> DeleteGenre(AdminVm adminVm)
     {
@@ -88,11 +117,21 @@ namespace EcommerceApp.Controllers
       await _genre.DeleteGenre(genreId);
       return Redirect("/admin");
     }
+    /// <summary>
+    /// Assists with the dropdown menu for selecting a Genre for use
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     [HttpPost]
     public IActionResult ShowMeTheIdOfGenre(AdminVm adminvm)
     {
       return Content(adminvm.Genre.Id.ToString());
     }
+    /// <summary>
+    /// Works with the ListBox to send the selected Id Number as a quesry string on Redirect to populate the fields for edit.
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> SelectGameToMod(AdminVm adminvm)
     {
@@ -101,6 +140,11 @@ namespace EcommerceApp.Controllers
       Debug.WriteLine(gDisp.Name);
       return Redirect($"/admin?gmid={idNum}");
     }
+    /// <summary>
+    /// Works with the Genre ListBox to send the selected Id number as a query string on the redirect.
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> SelectGenreToMod(AdminVm adminvm)
     {
@@ -109,18 +153,33 @@ namespace EcommerceApp.Controllers
       Debug.WriteLine(gDisp.GenreName);
       return Redirect($"/admin?gnId={idNum}");
     }
+    /// <summary>
+    /// Performs the database action to update selected game in the database
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> UpdateGame(AdminVm adminvm)
     {      
       await _game.UpdateGame(adminvm.Game.Id, adminvm.Game);
       return Redirect($"/admin");
     }
+    /// <summary>
+    /// Performs the database action to update the selected genre in the database.
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> UpdateGenre(AdminVm adminvm)
     {
       await _genre.UpdateGenre(adminvm.Genre.Id, adminvm.Genre);
       return Redirect($"/admin");
     }
+    /// <summary>
+    /// Creates a new entry in the GenreGame join table.  One game may be attached to more than one genre
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     public async Task<IActionResult> AddGenreToGame(AdminVm adminvm)
     {
       if (!ModelState.IsValid)
@@ -140,6 +199,11 @@ namespace EcommerceApp.Controllers
       return Redirect($"/admin?gmid={gameid}");
 
     }
+    /// <summary>
+    /// Removes a genre attached to a game.  Deletes an entry in the GenreGame join table
+    /// </summary>
+    /// <param name="adminvm"></param>
+    /// <returns></returns>
     public async Task<IActionResult> RemoveGenreToGame(AdminVm adminvm)
     {
       if (!ModelState.IsValid)
@@ -151,6 +215,12 @@ namespace EcommerceApp.Controllers
       await _game.DeleteGenreGame(gameid, genreid);
       return Redirect($"/admin?gmid={gameid}");
     }
+    /// <summary>
+    /// Performs upload actions to send a file to the Azure Blob, updates the returning URL to the selected game.
+    /// </summary>
+    /// <param name="file"></param>
+    /// <param name="admin"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> UploadFile(IFormFile file, AdminVm admin)
     {

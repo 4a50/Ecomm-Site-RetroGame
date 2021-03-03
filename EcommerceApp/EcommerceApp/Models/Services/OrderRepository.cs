@@ -15,10 +15,11 @@ namespace EcommerceApp.Models.Services
     {
       _context = context;
     }
-    public Task<Order> AddOrder(Order order)
-    {
-      throw new NotImplementedException();
-    }
+    /// <summary>
+    /// Creates a new order entry in the database
+    /// </summary>
+    /// <param name="userid"></param>
+    /// <returns></returns>
     public async Task<Order> CreateNewOrder(string userid)
     {
       Order order = new Order
@@ -31,6 +32,12 @@ namespace EcommerceApp.Models.Services
       await _context.SaveChangesAsync();
       return order;
     }
+    /// <summary>
+    /// Gets the Current Order in progress attached to a user.
+    /// PaymentComplete == false
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
     public async Task<Order> GetCurrentOrder(string userId)
     {
       var order = await _context.Order     
@@ -41,6 +48,10 @@ namespace EcommerceApp.Models.Services
         .FirstOrDefaultAsync();
       return order;
     }
+    /// <summary>
+    /// Retrieves all orders in the database
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<Order>> GetOrderAll()
     {
       var order = await _context.Order        
@@ -50,6 +61,12 @@ namespace EcommerceApp.Models.Services
         .ToListAsync();
       return order;
     }
+    /// <summary>
+    /// Retrieves an order based of a userid that is archived
+    /// PaymentComplete == true
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
     public async Task<Order> GetOrderArchive(string userId)
     {
       var order = await _context.Order
@@ -60,6 +77,11 @@ namespace EcommerceApp.Models.Services
         .FirstOrDefaultAsync();
       return order;
     }
+    /// <summary>
+    /// Retrieves all orders that are archived in the database
+    /// PaymentComplete == true
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<Order>> GetOrderArchiveAll()
     {
         return await _context.Order

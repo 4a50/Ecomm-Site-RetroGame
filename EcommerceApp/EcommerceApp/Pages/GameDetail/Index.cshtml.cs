@@ -46,8 +46,13 @@ namespace EcommerceApp.Pages.GameDetail
         }
       }
     }
+    /// <summary>
+    /// Adds Game to the Cart
+    /// </summary>
+    /// <returns></returns>
     public async Task<IActionResult> OnPost()
     {
+     
       int gameid = Game.Id;      
       UserInfo = await userService.GetUser(this.User);
       string userid = UserInfo.Id;
