@@ -67,39 +67,53 @@ The dotnet tools will automatically restore any NuGet dependencies. Before runni
 add-migration initial
 Update-Database
 ```
-Once the database has been created, the application can be run. Options for running and debugging the application using IIS Express or Kestrel are provided within Visual Studio. From the command line, the following will start an instance of the Kestrel server to host the application:
-```
-cd YourRepo/YourProject
-dotnet run
-```
+
 ---
 
 ## Usage
-***[Provide some images of your app with brief description as title]***
 
-### Overview of Recent Posts
-![Overview of Recent Posts](https://via.placeholder.com/500x250)
+### Main Page
 
-### Creating a Post
-![Post Creation](https://via.placeholder.com/500x250)
-
-### Enriching a Post
-![Enriching Post](https://via.placeholder.com/500x250)
-
-### Viewing Post Details
-![Details of Post](https://via.placeholder.com/500x250)
+![Main Page](./Assets/EcommIndexPage.png)
 
 ---
-## Data Flow (Frontend, Backend, REST API)
-***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
-![Data Flow Diagram](/assets/img/flowchart.png)
+
+### Login Page
+
+![Login Page](./Assets/EcommLoginPage.png)
 
 ---
+
+### Admin Dashboard
+
+![Admin Dashboard 1](./Assets/EcommAdminDash1.png)
+![Admin Dashboard 1](./Assets/EcommAdminDash2.png)
+
+---
+
+### Cart Page
+
+![Details of Post](./Assets/EcommCartPage.png)
+
+---
+
+### Order Summary Page
+
+![Order Summary Page](./Assets/EcommOrderSummaryPage.png)
+
+---
+
+### Order Confirmation Email Example
+
+![Order Confirmation Email Example](./Assets/EcommOrderConfEmail.png)
+
+---
+
 ## Data Model
 
 ### Overall Project Schema
-***[Add a description of your DB schema. Explain the relationships to me.]***
-![Database Schema](/assets/img/erd.png)
+
+![Database Schema](./assets/ERD.png)
 
 ---
 ## Model Properties and Requirements
@@ -179,6 +193,14 @@ dotnet run
 ## Change Log
 
 1.0: *Initial Launch* - 27 Feb 2021
+
+2.0: *Bug Fixes* - 3 March 2021
++ README Updated
++ Able to Remove Game From Cart
++ Registration Email Sends after signing up
++ User Registration Not Functioning
++ Verify Order Confirmation/Receipt Email are sent
+
 ---
 
 ## Authors
