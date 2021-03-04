@@ -61,6 +61,12 @@ namespace EcommerceApp.Models.Services
       };
       
     }
+    /// <summary>
+    /// Registeres a new user in the database
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="modelState"></param>
+    /// <returns></returns>
     public async Task<UserDto> Register(RegisterUser data, ModelStateDictionary modelState)
     {
       var user = new ApplicationUser
@@ -78,11 +84,22 @@ namespace EcommerceApp.Models.Services
         var order = await Order.CreateNewOrder(user.Id);
         //Add A new Cart.
         await Cart.CreateCart(user.Id, order.Id);
+        
+        foreach (var error in result.Errors)
+        {
+          var errorKey =
+              error.Code.Contains("Password") ? nameof(data.Password) :
+              error.Code.Contains("Email") ? nameof(data.Email) :
+              error.Code.Contains("UserName") ? nameof(data.Username) :
+              "";
+          modelState.AddModelError(errorKey, error.Description);
+        }
 
         return new UserDto
         {
           Id = user.Id,
           Username = user.UserName,
+          Email = user.Email,
           Roles = await UserManager.GetRolesAsync(user)
         };
       }
@@ -98,6 +115,10 @@ namespace EcommerceApp.Models.Services
       }
       return null;
     }
+    /// <summary>
+    /// Signs the user out of the database
+    /// </summary>
+    /// <returns></returns>
     public async Task SignOut()
     {
       await SignInManager.SignOutAsync();

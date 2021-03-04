@@ -11,12 +11,19 @@ namespace EcommerceApp.Pages.Login
     private IUserService UserService;
     [BindProperty]
     public LoginData Log { get; set; }
+    [BindProperty]
+    public bool FailLogin { get; set; }
     public IndexModel(IUserService service)
     {
       UserService = service;
     }
-    public void OnGet()
+    public void OnGet(string retry)
     {
+      if (retry == "y")
+      {
+        FailLogin = true;
+      }
+      else { FailLogin = false; }
     }
     public async Task<IActionResult> OnPostAsync()
     {

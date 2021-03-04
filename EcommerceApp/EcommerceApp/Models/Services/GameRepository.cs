@@ -26,6 +26,11 @@ namespace EcommerceApp.Models.Services
       await _context.SaveChangesAsync();
       return game;
     }
+    /// <summary>
+    /// Selects all the games by a provided GenreId
+    /// </summary>
+    /// <param name="genreId"></param>
+    /// <returns></returns>
     public async Task<List<Game>> GetGamesByGenre(int genreId)
     {
       List<Game> allGames = await GetAllGames();
@@ -39,9 +44,11 @@ namespace EcommerceApp.Models.Services
         }
       }           
       return filteredList;
-        
-
     }
+    /// <summary>
+    /// Retrieves All Games in the database
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<Game>> GetAllGames()
     {
       return await _context.Game
@@ -49,6 +56,11 @@ namespace EcommerceApp.Models.Services
         .ThenInclude(g => g.Genre)
         .ToListAsync();
     }
+    /// <summary>
+    /// Gets a specific game using to provided game id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public async Task<Game> GetGame(int id)
     {
       var gameData = await _context.Game
@@ -57,6 +69,12 @@ namespace EcommerceApp.Models.Services
       .FirstOrDefaultAsync(s => s.Id == id);
       return gameData;
     }
+    /// <summary>
+    /// Creates an entry for the Join Table GenreGame tyind a Genre to a Game
+    /// </summary>
+    /// <param name="genreid"></param>
+    /// <param name="gameid"></param>
+    /// <returns></returns>
     public async Task CreateGenreGame(int genreid, int gameid)
     {
       GenreGame genreGame = new GenreGame
@@ -67,18 +85,35 @@ namespace EcommerceApp.Models.Services
       _context.Entry(genreGame).State = EntityState.Added;
       await _context.SaveChangesAsync();
     }
+    /// <summary>
+    /// Updates the information contained in a game from the provided object
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="game"></param>
+    /// <returns></returns>
     public async Task<Game> UpdateGame(int id, Game game)
     {
       _context.Entry(game).State = EntityState.Modified;
       await _context.SaveChangesAsync();
       return game;
     }
+    /// <summary>
+    /// Removes a genre from a desired game from the database.
+    /// </summary>
+    /// <param name="gameId"></param>
+    /// <param name="genreId"></param>
+    /// <returns></returns>
     public async Task DeleteGenreGame(int gameId, int genreId)
     {
       var result = await _context.GenreGame.FirstOrDefaultAsync(i => i.GameId == gameId && i.GenreId == genreId);
       _context.Entry(result).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
     }
+    /// <summary>
+    /// Removes a game from the database.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public async Task DeleteGame(int id)
     {
       Game game = await GetGame(id);
