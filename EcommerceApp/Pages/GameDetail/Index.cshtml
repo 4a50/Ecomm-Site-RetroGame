@@ -1,0 +1,22 @@
+﻿@page
+@model EcommerceApp.Pages.GameDetail.IndexModel
+
+<h1>GameDetailPage</h1>
+<img href="@Model.Game.ImageUrl" width="150"/>
+<p>Id: @Model.Game.Id</p>
+<p>Game: @Model.Game.Name</p>
+<p>Description: @Model.Game.Description</p>
+<p>Console: @Model.Game.GameSystem</p>
+<p>Item Price: @Model.Game.ItemPrice</p>
+<form method="post">
+    <input type="hidden" asp-for="@Model.UserInfo.Id" />
+    <input type="hidden" asp-for="@Model.Game.Id" />
+    @if (User.Identity.IsAuthenticated)
+    { 
+        <button type="submit">Add To Cart</button>
+    }
+    else
+    {
+        <button type="submit" disabled>Add To Cart</button>
+    }
+</form>

@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+<partial name ="_NavBar"></partial>
+
+    <h1>Admin Dashboard</h1>
+
+
+    @if ((await AuthorizationService.AuthorizeAsync(User, "delete")).Succeeded)
+    {
+        <p>This will enable the Admin to Delete a Genre</p>
+        <p> This will enable the Admin to Delete a GameConsole</p>
+    }
+    @if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
+    {
+        <p>This will enable the Admin/Editor to Update a Genre</p>
+        <p> This will enable the Admin/Editor to Update a GameConsole</p>
+    }
+
+    @if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
+    {
+        <p> This will enable the Admin to Create a Genre</p>
+        <p> This will enable the Admin to Create a GameConsole</p>
+    }

@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService AuthorizationService
+
+<nav id="navbar">
+    <ul class="navbar-items">
+        <li><a href="/Index">Home</a></li>
+        <li><a href="/Shop">Shop</a></li>
+        <li><a href="/Login">Login</a></li>
+        @*@if (Model.IsSignedIn)
+        {*@
+            @*<li><a href="/Home/Logout">Logout</a></li>*@
+
+            <li><button type="submit">Logout</button></li>
+
+        @*}*@
+
+        @if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
+        {
+            <li><a href="/Admin/">Admin</a></li>
+        }
+
+        <li> @await Component.InvokeAsync("CartNavButton") </li>
+    </ul>
+</nav>
