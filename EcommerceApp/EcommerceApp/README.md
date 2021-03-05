@@ -28,7 +28,7 @@ and automatic email replies.  Archived orders can be accessed with an Administra
 ---
 
 ## Tools Used
-Microsoft Visual Studio Community 2019 (Version 16.8.6)
+Microsoft Visual Studio Community 2019 (Version 16.8.6) 
 
 - C#
 - ASP.Net Core
