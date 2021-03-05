@@ -74,38 +74,38 @@ Update-Database
 
 ### Main Page
 
-![Main Page](./Assets/EcommIndexPage.png)
+![Main Page](./EcommerceApp/Assets/EcommIndexPage.png)
 
 ---
 
 ### Login Page
 
-![Login Page](./Assets/EcommLoginPage.png)
+![Login Page](./EcommerceApp/Assets/EcommLoginPage.png)
 
 ---
 
 ### Admin Dashboard
 
-![Admin Dashboard 1](./Assets/EcommAdminDash1.png)
-![Admin Dashboard 1](./Assets/EcommAdminDash2.png)
+![Admin Dashboard 1](./EcommerceApp/Assets/EcommAdminDash1.png)
+![Admin Dashboard 1](./EcommerceApp/Assets/EcommAdminDash2.png)
 
 ---
 
 ### Cart Page
 
-![Details of Post](./Assets/EcommCartPage.png)
+![Details of Post](./EcommerceApp/Assets/EcommCartPage.png)
 
 ---
 
 ### Order Summary Page
 
-![Order Summary Page](./Assets/EcommOrderSummaryPage.png)
+![Order Summary Page](./EcommerceApp/Assets/EcommOrderSummaryPage.png)
 
 ---
 
 ### Order Confirmation Email Example
 
-![Order Confirmation Email Example](./Assets/EcommOrderConfEmail.png)
+![Order Confirmation Email Example](./EcommerceApp/Assets/EcommOrderConfEmail.png)
 
 ---
 
@@ -113,7 +113,7 @@ Update-Database
 
 ### Overall Project Schema
 
-![Database Schema](./assets/ERD.png)
+![Database Schema](./EcommerceApp/assets/ERD.png)
 
 ---
 ## Model Properties and Requirements
