@@ -1,11 +1,6 @@
 ﻿## Project ECommerce Store 
 ### Retro Video Game Store!
 ---
-### Our Deployed Link
-
-[Retro Game Store](https://ecommerceappgamesell.azurewebsites.net)
-
----
 ## Web Application
 
 This is retro game store web application that contains a front-end composed using:
