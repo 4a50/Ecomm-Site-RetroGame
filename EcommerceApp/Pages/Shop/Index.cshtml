@@ -5,6 +5,7 @@
 <h1>Our Current Inventory</h1>
 <br />
 <div class="ShopGameList">
+    <div class="container-fluid">
         <h2>Select A Genre To Sort By</h2>
         <form method="post">
             <select asp-for="@Model.SelectAnswer">
@@ -16,7 +17,8 @@
             </select>
             <button type="submit">SelectGenre</button>
         </form>
-    <table>
+    </div>
+    <table class="table table-hover table-bordered">
         <tr>
             <th>Cover Art</th>
             <th>Name</th>

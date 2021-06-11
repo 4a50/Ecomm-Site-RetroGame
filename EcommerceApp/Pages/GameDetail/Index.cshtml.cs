@@ -33,6 +33,8 @@ namespace EcommerceApp.Pages.GameDetail
         try
         {
           Game = await GameRepository.GetGame(int.Parse(id));
+          if (Game.ImageUrl == "" || Game.ImageUrl == null) Game.ImageUrl = "https://via.placeholder.com/250";
+          Debug.WriteLine($"URL: {Game.ImageUrl}");
         }
         catch
         {
@@ -54,8 +56,8 @@ namespace EcommerceApp.Pages.GameDetail
     {
      
       int gameid = Game.Id;      
-      UserInfo = await userService.GetUser(this.User);
-      string userid = UserInfo.Id;
+      UserInfo = await userService.GetUser(this.User);      
+      string userid = UserInfo.Id == null ? "" : UserInfo.Id;
       var cart = await Cart.AddGameToCart(userid, gameid);
       if (cart == null)
       {

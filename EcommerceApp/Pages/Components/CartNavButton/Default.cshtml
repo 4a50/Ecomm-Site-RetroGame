@@ -1,7 +1,10 @@
 ﻿@model EcommerceApp.Models.Cart
 
-<form method="post">
-    <a href="/CartView">Cart(@Model.CartGames.Count)</a>
+@*<form class="d-flex" method="post">
+    <a class=""href="/CartView">Cart(@Model.CartGames.Count)</a>
+</form>*@
+
+
+<form class="d-flex" method="post">   
+    <button class="btn btn-outline-success" type="submit">Cart(@Model.CartGames.Count)</button>
 </form>
-
-
