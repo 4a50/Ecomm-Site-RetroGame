@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\lib\**" />
+    <Content Remove="wwwroot\lib\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
+    <None Remove="wwwroot\lib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AuthorizeNet" Version="2.0.1" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.8.0" />
     <PackageReference Include="Azure.Storage.Files.Shares" Version="12.1.0" />
@@ -28,14 +35,6 @@
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\lib\bootstrap\" />
-    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
-    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
-    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
-    <Folder Include="wwwroot\lib\jquery-validation\" />
-    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
-    <Folder Include="wwwroot\lib\jquery\" />
-    <Folder Include="wwwroot\lib\jquery\dist\" />
   </ItemGroup>
 
 </Project>

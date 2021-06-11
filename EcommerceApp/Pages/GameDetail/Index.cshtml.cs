@@ -54,7 +54,7 @@ namespace EcommerceApp.Pages.GameDetail
     {
      
       int gameid = Game.Id;      
-      UserInfo = await userService.GetUser(this.User);
+      UserInfo = await userService.GetUser(this.User);      
       string userid = UserInfo.Id;
       var cart = await Cart.AddGameToCart(userid, gameid);
       if (cart == null)
