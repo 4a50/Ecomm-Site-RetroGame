@@ -1,16 +1,15 @@
 ﻿@using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
 @model EcommerceApp.Models.Vm.AdminVm
-<body>
-    <header>
-        @*<partial name="../Shared/_NavBar.cshtml" />*@
-    </header>
-    <main>
-        <h1>Administration Dashboard</h1>
 
-        @if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
-        {
-            <h2>Add A Game</h2>
+@if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
+{
+    <div class="card">
+        <div class="card-header">
+            <h5>Add A Game</h5>
+        </div>
+        <div class="card-body">
+
             <form asp-controller="Admin" asp-action="AddGame" method="post">
                 <label>
                     <span>Game Title</span>
@@ -30,10 +29,17 @@
                 </label>
                 <button type="submit">Add To Inventory</button>
             </form>
-        }       
-        @if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
-        {
-            <h2>Add A Genre</h2>
+        </div>
+    </div>
+}
+@if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
+{
+    <div class="card">
+        <div class="card-header">
+
+            <h5>Add A Genre</h5>
+        </div>
+        <div class="card-body">
             <form asp-controller="Admin" asp-action="AddGenre" method="post">
                 <label>
                     <span>Genre</span>
@@ -41,21 +47,33 @@
                 </label>
                 <button type="submit">Add Genre</button>
             </form>
-        }
-        @if ((await AuthorizationService.AuthorizeAsync(User, "delete")).Succeeded)
-        {
-            <h2> Delete A Game </h2>
+        </div>
+    </div>
+}
+@if ((await AuthorizationService.AuthorizeAsync(User, "delete")).Succeeded)
+{
+    <div class="card">
+        <div class="card-header">
+            <h5> Delete A Game </h5>
+        </div>
+        <div class="card-body">
             <form asp-controller="Admin" asp-action="DeleteGame" method="post">
                 @*@foreach (var g in Model.GameList)
-                {
-                    @Html.RadioButtonFor(m => m.SelectedAnswer, g.Id)
-                    <label>@g.Name</label>
-                    <br />
-                }*@
+                    {
+                        @Html.RadioButtonFor(m => m.SelectedAnswer, g.Id)
+                        <label>@g.Name</label>
+                        <br />
+                    }*@
                 <partial name="_GameListBox" />
                 <button type="submit">Delete</button>
             </form>
-            <h2> Delete A Genre </h2>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5> Delete A Genre </h5>
+        </div>
+        <div class="card-body">
             <form asp-controller="Admin" asp-action="DeleteGenre" method="post">
                 @foreach (var g in Model.GenreList)
                 {
@@ -65,33 +83,37 @@
                 }
                 <input type="submit" value="Submit">
             </form>
+        </div>
+    </div>
+}
 
-        }
 
+@if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
+{
+    <div class="card">
+        <div class="card-header">
+            <h5>View/Edit a Game</h5>
+        </div>
+        <div id="selectGameToEdit" class="card-body">
+            <form asp-controller="Admin" asp-action="SelectGameToMod" method="post">
+                <partial name="_GameListBox" />
+                <button type="submit">View/Edit Game</button>
+            </form>
 
-        @if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
-        {
-            <div id="selectGameToEdit">
-                <h2>View/Edit a Game</h2>
-                <form asp-controller="Admin" asp-action="SelectGameToMod" method="post">
-                    <partial name="_GameListBox" />
-                    <button type="submit">View/Edit Game</button>
-                </form>
-
-                <br />
-                <form asp-controller="Admin" asp-action="UpdateGame">
-                    <span>Title</span>
-                    <input asp-for="@Model.Game.Name" value="@Model.Game.Name" type="text" />
-                    <p>@Model.Game.Name</p>
-                    <span>Description</span>
-                    <input asp-for="@Model.Game.Description" />
-                    <span>Price</span>
-                    <input asp-for="@Model.Game.ItemPrice" />
-                    <span>Game System</span>
-                    <input asp-for="@Model.Game.GameSystem" />
-                    <ul>Genres
+            <form asp-controller="Admin" asp-action="UpdateGame">
+                <span>Title</span>
+                <input asp-for="@Model.Game.Name" value="@Model.Game.Name" type="text" />
+                <p>@Model.Game.Name</p>
+                <span>Description</span>
+                <input asp-for="@Model.Game.Description" />
+                <span>Price</span>
+                <input asp-for="@Model.Game.ItemPrice" />
+                <span>Game System</span>
+                <input asp-for="@Model.Game.GameSystem" />
+                <ul>
+                    Genres
                     @if (Model.Game.GenreGames != null)
-                        {
+                    {
                         @foreach (var genre in Model.Game.GenreGames)
                         {
                             <li>@genre.Genre.GenreName</li>
@@ -106,33 +128,45 @@
                     </div>
                     @if (Model.Game.ImageUrl != null)
                     {
-                    <img href="@Model.Game.ImageUrl" width="100"/>
+                        <img href="@Model.Game.ImageUrl" width="100" />
                     }
-                    else 
+                    else
                     {
-                    <p>No Images to Display</p>
+                        <p>No Images to Display</p>
                     }
-                    </ul>
-                    <br />
-                    <input type="hidden" asp-for="@Model.Game.Id" />
-                    <button type="submit">Click To Update Game</button>
-                </form>
-            </div>
-            <h2>Edit A Genre</h2>
-            <form asp-controller="Admin" asp-action="SelectGenreToMod" method="post">
-                @Html.ListBoxFor(l => l.SelectedAnswers, Model.Genres, new { size = 7 })
-                <button type="submit" value="selectString">Select to Edit</button>
+                </ul>
+                <br />
+                <input type="hidden" asp-for="@Model.Game.Id" />
+                <button type="submit">Click To Update Game</button>
             </form>
-            <form asp-controller="Admin" asp-action="UpdateGenre">
-                <span>Genre</span>
-                <input asp-for="@Model.Genre.GenreName" />
-                <input type="hidden" asp-for="@Model.Genre.Id" />
-                <button type="submit">Click To Update</button>
-            </form>
-        }
-        @if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
-        {
-            <h2>Add A Genre To A Game</h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Edit A Genre</h5>
+        </div>
+        <form asp-controller="Admin" asp-action="SelectGenreToMod" method="post">
+            @Html.ListBoxFor(l => l.SelectedAnswers, Model.Genres, new { size = 7 })
+            <button type="submit" value="selectString">Select to Edit</button>
+        </form>
+        <form asp-controller="Admin" asp-action="UpdateGenre">
+            <span>Genre</span>
+            <input asp-for="@Model.Genre.GenreName" />
+            <input type="hidden" asp-for="@Model.Genre.Id" />
+            <button type="submit">Click To Update</button>
+        </form>
+    </div>
+}
+
+
+@if ((await AuthorizationService.AuthorizeAsync(User, "update")).Succeeded)
+{
+    <div class="card">
+        <div class="card-header">
+            <h5>Add A Genre To A Game</h5>
+        </div>
+        <div class="card-body">
             <partial name="_GameListBox" />
             <partial name="_GenreList" />
             <form asp-controller="Admin" asp-action="AddGenreToGame">
@@ -142,40 +176,54 @@
                 <input asp-for="@Model.GenreGame.GenreId" />
                 <button type="submit">Click Add</button>
             </form>
-        }
-        @if ((await AuthorizationService.AuthorizeAsync(User, "delete")).Succeeded)
-        {
-            <h2>Remove A Genre From A Game</h2>
-            <form asp-controller="Admin" asp-action="RemoveGenreToGame">
-                <span>Enter Game Id</span>
-                <input asp-for="@Model.GenreGame.GameId" />
-                <span> Enter Genre Id</span>
-                <input asp-for="@Model.GenreGame.GenreId" />
-                <button type="submit">Click Add</button>
-            </form>
-         }
-        @if((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
-        {
-            <br />
-            <div id="upload-image">
-                <h2>Upload An Image</h2>
-                <br />
-                <form asp-controller="Admin" asp-action="UploadFile" method="post" enctype="multipart/form-data">
-                    @*@Html.ListBoxFor(l => l.SelectedAnswers, Model.Games, new { size = 7 })*@
-                    <partial name="_GameDrop" />
-                    
-                    <div>
-                        <span>Select File to Upload</span>
-                        <input name="file" type="file" />
-                    </div>
-                    <button type="submit">Upload Image</button>
-                </form>
-            </div>
-            <br />
+        </div>
+    </div>
+}
+@if ((await AuthorizationService.AuthorizeAsync(User, "delete")).Succeeded)
+{
+<div class="card">
+    <div class="card-header">
+        <h5>Remove A Genre From A Game</h5>
+    </div>
+    <div class="card=body">
+        <form asp-controller="Admin" asp-action="RemoveGenreToGame">
+            <span>Enter Game Id</span>
+            <input asp-for="@Model.GenreGame.GameId" />
+            <span> Enter Genre Id</span>
+            <input asp-for="@Model.GenreGame.GenreId" />
+            <button type="submit">Click Add</button>
+        </form>
+    </div>
+</div>
+}
+<!--Azure Storage Blobs not configured-->
+@if ((await AuthorizationService.AuthorizeAsync(User, "create")).Succeeded)
+{
+<!--
+    <div id="upload-image">
+        <h2>Upload An Image</h2>
+        <br />
+        <form asp-controller="Admin" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+            @*@Html.ListBoxFor(l => l.SelectedAnswers, Model.Games, new { size = 7 })*@
+            <partial name="_GameDrop" />
+
             <div>
-                <h2>View Past Orders By User Name</h2>
-                <a href="/viewarchives/">View By Past Orders</a>
+                <span>Select File to Upload</span>
+                <input name="file" type="file" />
             </div>
-        }
-    </main>
-</body>
+            <button type="submit">Upload Image</button>
+        </form>
+    </div>
+    -->
+<div class="card">
+    <div class="card-header">
+        <h5>View Past Orders By User Name</h5>
+    </div>  
+    <div class="card-body">
+        <a class="card-link" href="/viewarchives/">View By Past Orders</a>    
+    </div>
+</div>
+}
+
+
+
