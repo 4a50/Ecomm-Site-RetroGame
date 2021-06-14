@@ -26,7 +26,7 @@ Features an Administrator Dashboard with restrictions implemented as either an A
 Sample Login Credentials:
 
 |User Name|Password|Email|
-|--|--|
+|--|--|--|
 |admin|P!assword123|admin@example.com|
 |editor|Ed1Tor!|editor@example.com|
 |guest|S1am!Ple|guest@notvalid.com|
