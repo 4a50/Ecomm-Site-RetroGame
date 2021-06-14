@@ -26,7 +26,7 @@ Sample Login Credentials:
 |--|--|
 |admin|P!assword123|admin@example.com|
 |editor|Ed1Tor!|editor@example.com|
-|guest|s1ample!|guest@guest.com|
+|guest|S1am!Ple|guest@notvalid.com|
 
 ---
 
