@@ -56,7 +56,7 @@ namespace EcommerceApp
         options.User.RequireUniqueEmail = true;
       }).AddEntityFrameworkStores<EcommDBContext>();
 
-      services.AddScoped<IEmail, SendGridEmailer>();
+      //services.AddScoped<IEmail, SendGridEmailer>();
 
       services.AddAuthentication();
       services.AddAuthorization(options =>

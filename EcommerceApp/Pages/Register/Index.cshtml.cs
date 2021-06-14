@@ -13,11 +13,13 @@ namespace EcommerceApp.Pages.Register
   public class IndexModel : PageModel
   {
     private IUserService UserService;
-    private IEmail email;
+    //Disabled SendGrid
+    //private IEmail email;
     public IndexModel(IUserService service, IEmail eml)
     {
       UserService = service;
-      email = eml;
+      //Disabled SendGrid
+      //email = eml;
 
 
     }
@@ -42,12 +44,13 @@ namespace EcommerceApp.Pages.Register
           Subject = $"{user.Username}, You are registered",
           Body = RegisterEmail(user.Username)
         };
-      var resp = await email.SendEmailAsync(registerMsg);
-        if (resp.WasSent == false)
-        {
-          return Redirect("/Login?retry=y");   
-          
-        }
+        //Disabled SendGrid
+        //var resp = await email.SendEmailAsync(registerMsg);
+        //  if (resp.WasSent == false)
+        //  {
+        //    return Redirect("/Login?retry=y");   
+
+        //  }
         ///
         return Redirect("/Login");
       }
