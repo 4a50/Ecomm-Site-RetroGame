@@ -10,6 +10,7 @@ namespace EcommerceApp.Models.Interfaces
     public Task<UserDto> Register(RegisterUser data, ModelStateDictionary modelState);
     public Task<UserDto> Authenticate(string username, string password);
     public Task<UserDto> GetUser(ClaimsPrincipal user);
+    public Task<UserDto> FindUserByEmail(string email);
     public Task SignOut();
   }
 }

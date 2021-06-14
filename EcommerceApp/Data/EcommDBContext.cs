@@ -1,9 +1,15 @@
 ﻿using EcommerceApp.Models;
+using EcommerceApp.Models.Dto;
+using EcommerceApp.Models.Interfaces;
+using EcommerceApp.Models.Services;
 using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace EcommerceApp.Data
@@ -16,11 +22,11 @@ namespace EcommerceApp.Data
     public DbSet<Genre> Genre { get; set; }
     public DbSet<GenreGame> GenreGame { get; set; }
     public DbSet<CartGame> CartGame { get; set; }
-
-
-    public EcommDBContext(DbContextOptions options) : base(options)
+    private readonly IConfiguration _config;
+    private readonly IUserService userManager;
+    public EcommDBContext(DbContextOptions options, IConfiguration configuration) : base(options)
     {
-
+      _config = configuration;      
     }
     protected override void OnModelCreating(ModelBuilder modelbuilder)
     {
@@ -28,6 +34,7 @@ namespace EcommerceApp.Data
       SeedRole(modelbuilder, "Administrator", "create", "read", "update", "delete");
       SeedRole(modelbuilder, "Editor", "read", "update");
       SeedRole(modelbuilder, "Guest", "read");
+      
 
       modelbuilder.Entity<Genre>().HasData(
         new Genre { Id = 1, GenreName = "Platformer" },
@@ -104,8 +111,7 @@ namespace EcommerceApp.Data
         NormalizedName = roleName.ToUpper(),
         ConcurrencyStamp = Guid.Empty.ToString()
       };
-      modelbuilder.Entity<IdentityRole>().HasData(role);
-
+      modelbuilder.Entity<IdentityRole>().HasData(role); 
       var roleClaims = permissions.Select(permission =>
       new IdentityRoleClaim<string>
       {
@@ -116,6 +122,8 @@ namespace EcommerceApp.Data
       }).ToArray();
 
       modelbuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
+    }
+    
     }
   }
 }

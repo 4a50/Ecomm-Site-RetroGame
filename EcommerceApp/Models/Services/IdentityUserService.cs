@@ -3,6 +3,7 @@ using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -12,15 +13,17 @@ namespace EcommerceApp.Models.Services
   {
     private UserManager<ApplicationUser> UserManager;
     private SignInManager<ApplicationUser> SignInManager;
+    private IConfiguration _config;
     private IOrder Order;
     private ICart Cart;
 
-    public IdentityUserService(UserManager<ApplicationUser> manager, SignInManager<ApplicationUser> signInManager, IOrder order, ICart cart)
+    public IdentityUserService(UserManager<ApplicationUser> manager, SignInManager<ApplicationUser> signInManager, IConfiguration config, IOrder order, ICart cart)
     {
       UserManager = manager;
       SignInManager = signInManager;
+      _config = config;
       Order = order;
-      Cart = cart;
+      Cart = cart;      
     }
     public async Task<UserDto> Authenticate(string username, string password)
     {
@@ -49,9 +52,9 @@ namespace EcommerceApp.Models.Services
         Roles = await UserManager.GetRolesAsync(user)
       };
     }
-    public async Task<UserDto> LookUpUser (string userid)
+    public async Task<UserDto> FindUserByEmail (string email)
     {
-      ApplicationUser lookupUser = await UserManager.FindByIdAsync(userid);
+      ApplicationUser lookupUser = await UserManager.FindByEmailAsync(email);
       
       return new UserDto
       {
@@ -60,9 +63,9 @@ namespace EcommerceApp.Models.Services
         Email = lookupUser.Email
       };
       
-    }
+    }    
     /// <summary>
-    /// Registeres a new user in the database
+    /// Registers a new user in the database
     /// </summary>
     /// <param name="data"></param>
     /// <param name="modelState"></param>

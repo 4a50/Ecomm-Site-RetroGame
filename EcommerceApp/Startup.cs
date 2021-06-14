@@ -22,21 +22,16 @@ namespace EcommerceApp
   public class Startup
   {
     public IConfiguration Configuration { get; set; }
-
+    
     public Startup(IConfiguration configuration)
     {
       Configuration = configuration;
+      
     }
     // This method gets called by the runtime. Use this method to add services to the container.
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddDbContext<EcommDBContext>(options =>
-      {
-        string connectionString = Configuration.GetConnectionString("DefaultConnection");
-        options.UseSqlServer(connectionString);
-
-      });
       services.AddMvc();
 
       services.AddTransient<IGame, GameRepository>();
@@ -45,6 +40,12 @@ namespace EcommerceApp
       services.AddTransient<IOrder, OrderRepository>();
 
       services.AddTransient<IUserService, IdentityUserService>();
+      services.AddDbContext<EcommDBContext>(options =>
+      {
+        string connectionString = Configuration.GetConnectionString("DefaultConnection");
+        options.UseSqlServer(connectionString);
+
+      });
 
       services.AddTransient<IUploadService, UploadService>();
 
@@ -73,7 +74,6 @@ namespace EcommerceApp
         builder.AddBlobServiceClient(Configuration["ConnectionStrings:StorageAccount:blob"], preferMsi: true);
         builder.AddQueueServiceClient(Configuration["ConnectionStrings:StorageAccount:queue"], preferMsi: true);
       });
-
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,7 +82,6 @@ namespace EcommerceApp
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
-
       }
       app.UseStaticFiles();
       app.UseRouting();
@@ -93,6 +92,14 @@ namespace EcommerceApp
         endpoints.MapRazorPages();
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
       });
+
+      //  using (var dbContext = new EcommDBContext(serviceProvider
+      //            .GetRequiredService<DbContextOptions<EcommDBContext>>()))
+      //  {
+      //    dbContext.Database.EnsureCreated();
+      //    SeedRoles.(dbContext);
+      //    EcommDBContext.SeedUsers(users, _config);
+      //  }
     }
   }
   internal static class StartupExtensions
@@ -117,6 +124,22 @@ namespace EcommerceApp
       else
       {
         return builder.AddQueueServiceClient(serviceUriOrConnectionString);
+      }
+    }
+    public static void SeedUsers(UserManager<ApplicationUser> userManager, IConfiguration _config)
+    {
+      if (userManager.FindByEmailAsync(_config["DefaultAdmin:Email"]) == null && _config["DefaultAdmin:SetDefault"] == "true")
+      {
+        ApplicationUser newUser = new ApplicationUser
+        {
+          UserName = _config["DefaultAdmin:UserName"],
+          Email = _config["DefaultAdmin:Email"]
+        };
+        IdentityResult result = userManager.CreateAsync(newUser, _config["DefaultAdmin:Password"]).Result;
+        if (result.Succeeded)
+        {
+          userManager.AddToRoleAsync(newUser, "Administrator").Wait();
+        }
       }
     }
   }
