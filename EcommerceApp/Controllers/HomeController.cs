@@ -146,5 +146,9 @@ namespace EcommerceApp.Controllers
       Debug.Write($"User: {user.Id} Roles: {user.Roles}");
       return RedirectToAction("Index", "Admin", user);
     }
+    public IActionResult ToCartView()
+    {
+      return Redirect("/CartView");
+    }
   }
 }

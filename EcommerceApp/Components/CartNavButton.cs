@@ -38,8 +38,6 @@ namespace EcommerceApp.Components
       {
         CartItems = new Cart { CartGames = new List<CartGame> ()};      
       }
-      
-      
       return View(CartItems);
     }
     
