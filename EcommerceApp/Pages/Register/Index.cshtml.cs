@@ -15,7 +15,7 @@ namespace EcommerceApp.Pages.Register
     private IUserService UserService;
     //Disabled SendGrid
     //private IEmail email;
-    public IndexModel(IUserService service, IEmail eml)
+    public IndexModel(IUserService service)//Disabled SendGrid, IEmail eml)
     {
       UserService = service;
       //Disabled SendGrid

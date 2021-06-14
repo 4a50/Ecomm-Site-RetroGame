@@ -23,7 +23,8 @@ namespace EcommerceApp.Pages.OrderView
     private IUserService userService;
     private ICart cart;
     private IOrder order;
-    public  IEmail email;
+    //Disabled SendGrid
+    //public  IEmail email;
     public IConfiguration configuration;
     [BindProperty]
     public UserDto UserInfo { get; set; }    
@@ -34,12 +35,13 @@ namespace EcommerceApp.Pages.OrderView
     [BindProperty]
     public bool TransComplete { get; set; }
 
-    public IndexModel(ICart crt, IUserService user, IOrder ord, IEmail eml, IConfiguration config)
+    public IndexModel(ICart crt, IUserService user, IOrder ord, IConfiguration config) //IEMail eml
     {
       userService = user;
       order = ord;
       cart = crt;
-      email = eml;
+      //Disabled SendGrid
+      //email = eml;
       configuration = config;
     }
 
@@ -66,55 +68,58 @@ namespace EcommerceApp.Pages.OrderView
       CCInfo.Address = Order.Address;
       CCInfo.City = Order.City;
       CCInfo.Zip = Order.ZipCode;
-      CreditCardTransaction creditCard = new CreditCardTransaction(CCInfo);
+      //Disabled SendGrid
+      //CreditCardTransaction creditCard = new CreditCardTransaction(CCInfo);
       
-      ANetApiResponse response = creditCard.Run(configuration["AuthorizeNet:ApiLogin"], configuration["AuthorizeNet:Transaction"], 1000);
-      //If the message is OK and not null craft and send the appropriate email to Admin/Warehouse/Customer
-      if (response != null || response.messages.resultCode == messageTypeEnum.Ok)
-      {
-      Debug.WriteLine(Order.UserId);
+      //ANetApiResponse response = creditCard.Run(configuration["AuthorizeNet:ApiLogin"], configuration["AuthorizeNet:Transaction"], 1000);
+      ////If the message is OK and not null craft and send the appropriate email to Admin/Warehouse/Customer
+      //if (response != null || response.messages.resultCode == messageTypeEnum.Ok)
+      //{
+      //Debug.WriteLine(Order.UserId);
 
+        //Disabled SendGrid
         //UserEmail.
-        Message custMsg = new Message()
-        {
-          To = UserInfo.Email,
-          Subject = $"Thank you for your purchase - Order Id: {Order.Id}",
-          Body = ConfEmail()
-      };
-        Message nonCust = new Message
-        {
-          //Warehouse
-          To = "stritian@hotmail.com",
-          Subject = $"Customer Order Placed.  Order Id: {Order.Id}",
-          Body = ConfEmail(false)
-        };
-        
-        
-        var resp = await email.SendEmailAsync(custMsg);
-        if (resp.WasSent == false)
-          {
-          await email.SendEmailAsync(new Message
-          {
-            //Admin
-            To = "jonpjones@hotmail.com",
-            Subject = $"Failure to Send Email to Customer ID {Order.UserId}",
-            Body = "Email was not sent to Customer following approved transaction."
-          });
-          }
-        await email.SendEmailAsync(nonCust);
-        nonCust.To = "jonpjones@hotmail.com";
-        await email.SendEmailAsync(nonCust);
-             
-      
-      await order.UpdateOrder(Order);
+        //  Message custMsg = new Message()
+        //  {
+        //    To = UserInfo.Email,
+        //    Subject = $"Thank you for your purchase - Order Id: {Order.Id}",
+        //    Body = ConfEmail()
+        //};
+        //  Message nonCust = new Message
+        //  {
+        //    //Warehouse
+        //    To = "stritian@hotmail.com",
+        //    Subject = $"Customer Order Placed.  Order Id: {Order.Id}",
+        //    Body = ConfEmail(false)
+        //  };
+
+
+        //  var resp = await email.SendEmailAsync(custMsg);
+        //  if (resp.WasSent == false)
+        //    {
+        //    await email.SendEmailAsync(new Message
+        //    {
+        //      //Admin
+        //      To = "jonpjones@hotmail.com",
+        //      Subject = $"Failure to Send Email to Customer ID {Order.UserId}",
+        //      Body = "Email was not sent to Customer following approved transaction."
+        //    });
+        //    }
+        //  await email.SendEmailAsync(nonCust);
+        //  nonCust.To = "jonpjones@hotmail.com";
+        //  await email.SendEmailAsync(nonCust);
+
+
+        await order.UpdateOrder(Order);
 
       return Redirect("/ThankYou");
-      }
-      else
-      {
-        return Redirect("/OrderView?action=false");
-      }     
     }
+    //Disabled SendGrid  
+    //else
+    //  {
+    //    return Redirect("/OrderView?action=false");
+    //  }     
+    //}
     /// <summary>
     /// Generates the appropriate email to the either the user or Admin & Warehouse
     /// </summary>
