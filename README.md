@@ -1,5 +1,8 @@
 ﻿## Project ECommerce Store - Demonstration of Technologies
 ### Retro Video Game Store!
+
+[Azure Deployed Site](https://ecommerceappretrogame.azurewebsites.net)
+
 ---
 ## Web Application
 
