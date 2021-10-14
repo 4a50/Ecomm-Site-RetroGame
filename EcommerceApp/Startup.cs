@@ -43,12 +43,10 @@ namespace EcommerceApp
       services.AddTransient<ICart, CartRepository>();
       services.AddTransient<IGenre, GenreRepository>();
       services.AddTransient<IOrder, OrderRepository>();
-
       services.AddTransient<IUserService, IdentityUserService>();
-
       services.AddTransient<IUploadService, UploadService>();
-
       services.AddTransient<IAdminService, AdminService>();
+
 
 
       services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -68,11 +66,21 @@ namespace EcommerceApp
       });
       services.AddControllers().AddNewtonsoftJson(options =>
       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-      services.AddAzureClients(builder =>
+
+      //SWAGGER
+      services.AddSwaggerGen(options => options.SwaggerDoc("v1.2", new Microsoft.OpenApi.Models.OpenApiInfo()
       {
-        builder.AddBlobServiceClient(Configuration["ConnectionStrings:StorageAccount:blob"], preferMsi: true);
-        builder.AddQueueServiceClient(Configuration["ConnectionStrings:StorageAccount:queue"], preferMsi: true);
-      });
+        Title = "Ecommerce Retro Game Site Template",
+        Version = "v1.2",
+      }));
+
+      //Implement when Azure Storage becomes available
+      //
+      //services.AddAzureClients(builder =>
+      //{
+      //  builder.AddBlobServiceClient(Configuration["ConnectionStrings:StorageAccount:blob"], preferMsi: true);
+      //  builder.AddQueueServiceClient(Configuration["ConnectionStrings:StorageAccount:queue"], preferMsi: true);
+      //});
 
     }
 
@@ -90,8 +98,18 @@ namespace EcommerceApp
       app.UseAuthorization();
       app.UseEndpoints(endpoints =>
       {
-        endpoints.MapRazorPages();
+        //endpoints.MapRazorPages();
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+      });
+
+      app.UseSwagger(options =>
+      {
+        options.RouteTemplate = "/api/{documentName}/swagger.json";
+      });
+      app.UseSwaggerUI(options =>
+      {
+        options.SwaggerEndpoint("api/v1/swagger.json", "Ecommerce Site Template");
+        options.RoutePrefix = "";
       });
     }
   }
