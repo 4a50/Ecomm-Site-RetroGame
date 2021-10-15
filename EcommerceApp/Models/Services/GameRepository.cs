@@ -2,7 +2,6 @@
 using EcommerceApp.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Models.Services
@@ -38,11 +37,11 @@ namespace EcommerceApp.Models.Services
       //TODO: Figure out the LINQ Query to Handle this.
       foreach (Game g in allGames)
       {
-       foreach (GenreGame gen in g.GenreGames)
+        foreach (GenreGame gen in g.GenreGames)
         {
           if (gen.GenreId == genreId) filteredList.Add(g);
         }
-      }           
+      }
       return filteredList;
     }
     /// <summary>

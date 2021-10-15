@@ -3,9 +3,6 @@ using Azure.Storage.Blobs.Models;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Models.Services
@@ -32,7 +29,7 @@ namespace EcommerceApp.Models.Services
 
       BlobUploadOptions options = new BlobUploadOptions()
       {
-        HttpHeaders = new BlobHttpHeaders{ ContentType = file.ContentType}
+        HttpHeaders = new BlobHttpHeaders { ContentType = file.ContentType }
       };
 
       if (!blob.Exists())

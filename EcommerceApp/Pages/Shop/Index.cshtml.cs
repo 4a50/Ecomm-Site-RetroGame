@@ -3,7 +3,6 @@ using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Pages.Shop
@@ -16,8 +15,8 @@ namespace EcommerceApp.Pages.Shop
     public List<Game> Games { get; set; }
     [BindProperty]
     public List<Genre> Genres { get; set; }
-    [BindProperty]      
-    public string SelectAnswer {get;set;}
+    [BindProperty]
+    public string SelectAnswer { get; set; }
 
     public IndexModel(IGame game, IGenre genre)
     {
@@ -37,7 +36,7 @@ namespace EcommerceApp.Pages.Shop
       {
         try
         {
-          Games = await Game.GetGamesByGenre(intGenreId);   
+          Games = await Game.GetGamesByGenre(intGenreId);
         }
         catch { Games = await Game.GetAllGames(); }
       }

@@ -4,9 +4,6 @@ using EcommerceApp.Models.Services.Email.Models;
 using Microsoft.Extensions.Configuration;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Models.Services.Email
@@ -16,12 +13,12 @@ namespace EcommerceApp.Models.Services.Email
     private IConfiguration Configuration { get; set; }
 
     public SendGridEmailer(IConfiguration config)
-      {
+    {
       Configuration = config;
-      }
+    }
     public async Task<EmailResponse> SendEmailAsync(Message inMessage)
     {
-      string apiKey = Configuration["SendGrid:Key" ];      
+      string apiKey = Configuration["SendGrid:Key"];
       string fromEmail = Configuration["SendGrid:DefaultFromAddress"];
       string from = Configuration["SendGrid:DefaultFromName"];
 
@@ -40,7 +37,7 @@ namespace EcommerceApp.Models.Services.Email
         WasSent = sendGridResponse.IsSuccessStatusCode
       };
       return response;
-      
+
     }
   }
 }

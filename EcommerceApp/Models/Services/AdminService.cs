@@ -1,18 +1,16 @@
 ﻿using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Vm;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Models.Services
 {
   public class AdminService : IAdminService
   {
-  private readonly IGenre _genre;
-  private readonly IGame _game;
+    private readonly IGenre _genre;
+    private readonly IGame _game;
     public AdminService(IGenre genre, IGame game)
     {
       _genre = genre;

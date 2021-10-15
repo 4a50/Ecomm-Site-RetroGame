@@ -1,13 +1,16 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using EcommerceApp.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
-namespace TestBench
+namespace EcommerceApp.APIParsing
 {
-  class Program
+  public static class TheGamesDBParse
   {
-    static void Main(string[] args)
+    public static List<Game> SearchAPI(string queryString)
     {
+
+      //From File
       string jsonResponse = System.IO.File.ReadAllText(@"E:\repos\CSharp\Ecomm-Site-RetroGame\TestBench\theGamesDbSampleResponse.json");
       List<Game> gameObjList = new List<Game>();
       JObject jsonObj = JObject.Parse(jsonResponse);
@@ -16,22 +19,23 @@ namespace TestBench
       {
         gameObjList.Add(new Game()
         {
-          GameID = (int)g["id"],
+          GameIDAPI = (int)g["id"],
           Name = (string)g["game_title"],
           Description = (string)g["overview"],
           ReleaseDate = (DateTime)g["release_date"],
           GameSystem = (string)g["platform"]
         });
+        //populates the boxartUrls
+        UpdateBoxArt(jsonObj, gameObjList);
+        UpdateGameSystem(jsonObj, gameObjList);
+
+
+        var findObj = gameObjList.Find((g) => g.Name == "Super Metroid");
+        Console.WriteLine(findObj);
       }
-
-      //populates the boxartUrls
-      UpdateBoxArt(jsonObj, gameObjList);
-      UpdateGameSystem(jsonObj, gameObjList);
-
-
-      var findObj = gameObjList.Find((g) => g.Name == "Super Metroid");
-      Console.WriteLine(findObj);
+        return gameObjList;
     }
+
     public static void UpdateBoxArt(JObject jsonObj, List<Game> gameObjList)
     {
       JObject includesItems = (JObject)jsonObj["include"]["boxart"]["data"];
@@ -41,7 +45,7 @@ namespace TestBench
       foreach (JProperty p in includesItems.Properties())
       {
         //Find the object in List to update
-        Game gamUse = gameObjList.Find((g) => g.GameID == int.Parse(p.Name));
+        Game gamUse = gameObjList.Find((g) => g.GameIDAPI == int.Parse(p.Name));
         //if the object exists then proceed to find the values
         if (gamUse != null)
         {
@@ -79,23 +83,4 @@ namespace TestBench
     }
 
   }
-
-
-  class Game
-  {
-    public int ID { get; set; }
-    public int GameID { get; set; }
-    public string Name { get; set; }
-    public string GameSystem { get; set; }
-    public string Genre { get; set; }
-    public string Description { get; set; }
-    public string Publisher { get; set; }
-    public string Developer { get; set; }
-    public string BoxArtUrlFront { get; set; }
-    public string BoxArtUrlBack { get; set; }
-    public string BoxArtUrlThumb { get; set; }
-    public string VideoUrl { get; set; }
-    public DateTime ReleaseDate { get; set; }
-  }
-
 }

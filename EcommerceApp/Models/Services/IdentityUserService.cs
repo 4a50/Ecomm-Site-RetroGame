@@ -49,17 +49,17 @@ namespace EcommerceApp.Models.Services
         Roles = await UserManager.GetRolesAsync(user)
       };
     }
-    public async Task<UserDto> LookUpUser (string userid)
+    public async Task<UserDto> LookUpUser(string userid)
     {
       ApplicationUser lookupUser = await UserManager.FindByIdAsync(userid);
-      
+
       return new UserDto
       {
         Id = lookupUser.Id,
         Username = lookupUser.UserName,
         Email = lookupUser.Email
       };
-      
+
     }
     /// <summary>
     /// Registeres a new user in the database
@@ -84,7 +84,7 @@ namespace EcommerceApp.Models.Services
         var order = await Order.CreateNewOrder(user.Id);
         //Add A new Cart.
         await Cart.CreateCart(user.Id, order.Id);
-        
+
         foreach (var error in result.Errors)
         {
           var errorKey =

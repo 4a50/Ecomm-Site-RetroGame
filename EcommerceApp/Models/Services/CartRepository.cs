@@ -1,7 +1,6 @@
 ﻿using EcommerceApp.Data;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace EcommerceApp.Models.Services
 {
   public class CartRepository : ICart
   {
-    
+
 
     private IGame game { get; set; }
     private EcommDBContext _context;
@@ -46,7 +45,7 @@ namespace EcommerceApp.Models.Services
       var game = await _context.Game
         .Where(q => q.Id == gameid)
         .FirstOrDefaultAsync();
-      
+
       if (cart == null) return null;
 
       CartGame cartGame = new CartGame
@@ -68,7 +67,7 @@ namespace EcommerceApp.Models.Services
 
         return cartGame;
       }
-      
+
       catch { return null; }
     }
     /// <summary>
@@ -79,7 +78,7 @@ namespace EcommerceApp.Models.Services
     public async Task<Cart> GetCartWithId(string userid)
     {
       var cart = await _context.Cart
-        .Where(c => c.UserId == userid && c.CartActive == true)  
+        .Where(c => c.UserId == userid && c.CartActive == true)
         .Include(g => g.CartGames)
         .ThenInclude(ga => ga.Game)
         .FirstOrDefaultAsync();
@@ -122,7 +121,7 @@ namespace EcommerceApp.Models.Services
     {
       return await _context.CartGame.FirstOrDefaultAsync(cg => (cg.CartId == cartId && cg.GameId == gameid));
     }
-      
+
     /// <summary>
     /// Removes a game from the Cart
     /// </summary>
@@ -130,7 +129,7 @@ namespace EcommerceApp.Models.Services
     /// <returns></returns>
     public async Task RemoveFromCart(int cartid, int gameid)
     {
-      var cartGame = await GetCartGame(cartid, gameid);      
+      var cartGame = await GetCartGame(cartid, gameid);
       _context.Entry(cartGame).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
     }
@@ -140,7 +139,7 @@ namespace EcommerceApp.Models.Services
     /// <param name="cart"></param>
     /// <returns></returns>
     public async Task UpdateCart(Cart cart)
-    {      
+    {
       _context.Entry(cart).State = EntityState.Modified;
       await _context.SaveChangesAsync();
     }

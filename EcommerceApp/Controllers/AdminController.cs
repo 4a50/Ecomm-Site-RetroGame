@@ -4,12 +4,9 @@ using EcommerceApp.Models.Vm;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Controllers
@@ -28,7 +25,7 @@ namespace EcommerceApp.Controllers
       UploadService = uploadService;
       AdminService = adminService;
 
-      
+
     }
     /// <summary>
     /// To access the index page user must have the policy of "update" availible to them.
@@ -160,7 +157,7 @@ namespace EcommerceApp.Controllers
     /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> UpdateGame(AdminVm adminvm)
-    {      
+    {
       await _game.UpdateGame(adminvm.Game.Id, adminvm.Game);
       return Redirect($"/admin");
     }
@@ -224,8 +221,8 @@ namespace EcommerceApp.Controllers
     [HttpPost]
     public async Task<IActionResult> UploadFile(IFormFile file, AdminVm admin)
     {
-      Debug.WriteLine(admin.SelectedAnswer);           
-     var fileUp = await UploadService.Upload(file);
+      Debug.WriteLine(admin.SelectedAnswer);
+      var fileUp = await UploadService.Upload(file);
       Game getGame = await _game.GetGame(int.Parse(admin.SelectedAnswer));
       getGame.ImageUrl = fileUp.Url;
       await _game.UpdateGame(int.Parse(admin.SelectedAnswer), getGame);

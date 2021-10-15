@@ -1,20 +1,18 @@
+using Azure.Core.Extensions;
+using Azure.Storage.Blobs;
+using Azure.Storage.Queues;
 using EcommerceApp.Data;
 using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Services;
-using EcommerceApp.Models.Services.Email;
-using EcommerceApp.Models.Services.Email.Interfaces;
 using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Azure;
-using Azure.Storage.Queues;
-using Azure.Storage.Blobs;
-using Azure.Core.Extensions;
 using System;
 
 namespace EcommerceApp

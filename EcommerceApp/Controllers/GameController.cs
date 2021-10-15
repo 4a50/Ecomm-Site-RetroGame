@@ -1,12 +1,11 @@
-﻿using EcommerceApp.Models;
+﻿using EcommerceApp.APIParsing;
+using EcommerceApp.Models;
 using EcommerceApp.Models.Interfaces;
-using EcommerceApp.Models.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -45,7 +44,7 @@ namespace EcommerceApp.Controllers
       string APIKEY = "4c9d180c15bf5fe3e896c204472a85c752dddb4fcdf0ba291b00b037af1c1910";
       string qString = "Super%20Metroid";
       string URL = $"https://api.thegamesdb.net/v1/Games/ByGameName?apikey={APIKEY}&name={qString}"
-        + $"&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor" + 
+        + $"&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor" +
         "%2Cram%2Chee%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform";
       Debug.WriteLine("URL: " + URL);
 
@@ -55,5 +54,11 @@ namespace EcommerceApp.Controllers
       string returnData = $"{response.StatusCode} : {content}";
       return Ok(returnData);
     }
-   }
+    [HttpGet("testGamesDB/")]
+    [AllowAnonymous]
+    public async Task<ActionResult<string>> GetSampleGameAPI()
+    {
+      return Ok(TheGamesDBParse.SearchAPI("sample"));
+    }
+  }
 }
