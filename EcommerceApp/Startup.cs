@@ -90,14 +90,16 @@ namespace EcommerceApp
         app.UseDeveloperExceptionPage();
 
       }
-      app.UseStaticFiles();
+      //app.UseStaticFiles();
       app.UseRouting();
       app.UseAuthentication();
       app.UseAuthorization();
       app.UseEndpoints(endpoints =>
       {
         //endpoints.MapRazorPages();
-        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+        //endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+                        
+        endpoints.MapControllers();
       });
 
       app.UseSwagger(options =>
@@ -106,7 +108,7 @@ namespace EcommerceApp
       });
       app.UseSwaggerUI(options =>
       {
-        options.SwaggerEndpoint("api/v1/swagger.json", "Ecommerce Site Template");
+        options.SwaggerEndpoint("v1/swagger.json", "Ecommerce Site Template");
         options.RoutePrefix = "";
       });
     }

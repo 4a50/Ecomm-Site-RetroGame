@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>e94b786d-e225-4133-9b3a-87ab09f63303</UserSecretsId>
   </PropertyGroup>
 
@@ -10,6 +10,10 @@
     <Content Remove="wwwroot\lib\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
     <None Remove="wwwroot\lib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\RazorHomeController.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +31,8 @@
     <PackageReference Include="Microsoft.Extensions.Azure" Version="1.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="SendGrid" Version="9.22.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
