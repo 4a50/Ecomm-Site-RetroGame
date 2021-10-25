@@ -1,9 +1,11 @@
-﻿using EcommerceApp.Models;
+﻿using EcommerceApp.APIParsing;
+using EcommerceApp.Models;
 using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EcommerceApp.Data
@@ -16,11 +18,12 @@ namespace EcommerceApp.Data
     public DbSet<Genre> Genre { get; set; }
     public DbSet<GenreGame> GenreGame { get; set; }
     public DbSet<CartGame> CartGame { get; set; }
+    private List<Game> seedList;
 
 
     public EcommDBContext(DbContextOptions options) : base(options)
     {
-
+      seedList = GamesDBParse.JSONParse();
     }
     protected override void OnModelCreating(ModelBuilder modelbuilder)
     {
@@ -60,38 +63,9 @@ namespace EcommerceApp.Data
           GenreId = 4
         });
 
-      modelbuilder.Entity<Game>().HasData(new Game
-      {
-        Id = 1,
-        Name = "Bubsy: Claws Encounters of the Furred Kind",
-        Description = "A Terrible Sonic Clone",
-        GameSystem = "SNES",
-        ItemPrice = 30.00f
-      },
-      new Game
-      {
-        Id = 2,
-        Name = "Rock N' Roll Racing",
-        Description = "Kick Butt Multiplayer Racing Game",
-        GameSystem = "SNES",
-        ItemPrice = 40.00f,
-      },
-      new Game
-      {
-        Id = 3,
-        Name = "Section Z",
-        Description = "Awesome Side Scroll Action!",
-        GameSystem = "NES",
-        ItemPrice = 40.00f
-      },
-      new Game
-      {
-        Id = 4,
-        Name = "Super Mario Bros 3",
-        Description = "First to Feature Raccoon Mario",
-        GameSystem = "NES",
-        ItemPrice = 10.00f
-      });
+      seedList[0].Id = 1;
+      seedList[1].Id = 2;
+      modelbuilder.Entity<Game>().HasData(seedList[0], seedList[1]);
 
     }
     private int nextId = 1;

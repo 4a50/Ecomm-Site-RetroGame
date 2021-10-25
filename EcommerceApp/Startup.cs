@@ -29,9 +29,10 @@ namespace EcommerceApp
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
+
       services.AddDbContext<EcommDBContext>(options =>
       {
-        string connectionString = Configuration.GetConnectionString("DefaultConnection");
+        string connectionString = Configuration["DatabaseConnection:LocalConnection"];
         options.UseSqlServer(connectionString);
 
       });
@@ -66,10 +67,10 @@ namespace EcommerceApp
       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
       //SWAGGER
-      services.AddSwaggerGen(options => options.SwaggerDoc("v1.2", new Microsoft.OpenApi.Models.OpenApiInfo()
+      services.AddSwaggerGen(options => options.SwaggerDoc("v1.5", new Microsoft.OpenApi.Models.OpenApiInfo()
       {
         Title = "Ecommerce Retro Game Site Template",
-        Version = "v1.2",
+        Version = "v1.5",
       }));
 
       //Implement when Azure Storage becomes available
@@ -90,7 +91,7 @@ namespace EcommerceApp
         app.UseDeveloperExceptionPage();
 
       }
-      app.UseStaticFiles();
+      //app.UseStaticFiles();
       app.UseRouting();
       app.UseAuthentication();
       app.UseAuthorization();
@@ -98,6 +99,8 @@ namespace EcommerceApp
       {
         //endpoints.MapRazorPages();
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+
+        endpoints.MapControllers();
       });
 
       app.UseSwagger(options =>
@@ -106,8 +109,8 @@ namespace EcommerceApp
       });
       app.UseSwaggerUI(options =>
       {
-        options.SwaggerEndpoint("api/v1/swagger.json", "Ecommerce Site Template");
-        options.RoutePrefix = "";
+        options.SwaggerEndpoint("/api/v1.5/swagger.json", "Ecommerce Site Template");
+        options.RoutePrefix = string.Empty;
       });
     }
   }
