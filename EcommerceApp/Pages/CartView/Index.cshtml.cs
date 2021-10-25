@@ -23,7 +23,7 @@ namespace EcommerceApp.Pages.CartView
     [BindProperty]
     public Order CustomerOrder { get; set; }
     [BindProperty]
-    public bool IsDeleted {get; set;}
+    public bool IsDeleted { get; set; }
 
 
     public IndexModel(ICart cartP, IUserService user, IGame gameI, IOrder ord)
@@ -64,7 +64,7 @@ namespace EcommerceApp.Pages.CartView
       {
         await UpdateOrderForm();
       }
-      return Redirect("/OrderView");      
+      return Redirect("/OrderView");
     }
     private async Task PopulateProperties()
     {

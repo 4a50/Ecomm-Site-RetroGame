@@ -1,6 +1,5 @@
 using EcommerceApp.Models.Dto;
 using EcommerceApp.Models.Interfaces;
-using EcommerceApp.Models.Services.Email.Interfaces;
 using EcommerceApp.Models.Services.Email.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -56,14 +55,14 @@ namespace EcommerceApp.Pages.Register
       }
       return Redirect("/Register");
     }
-  public string RegisterEmail(string username)
-  {
-    StringBuilder s = new StringBuilder();
-    s.Append($"<p>Hello {username}!  We wanted to thank you for registering with us.  You can now log in and add items for purchase.  We hope you will enjoy");
-    s.Append($" the wide selection we have available for purchase!  Please let us know if there is anything we can do to assist!</p>");
-    s.Append($"<p>Keep On Gaming!</p>");
-    s.Append($"<p>The <strong>Get This Proj Done Team</strong></p>");
-    return s.ToString();
-  }
+    public string RegisterEmail(string username)
+    {
+      StringBuilder s = new StringBuilder();
+      s.Append($"<p>Hello {username}!  We wanted to thank you for registering with us.  You can now log in and add items for purchase.  We hope you will enjoy");
+      s.Append($" the wide selection we have available for purchase!  Please let us know if there is anything we can do to assist!</p>");
+      s.Append($"<p>Keep On Gaming!</p>");
+      s.Append($"<p>The <strong>Get This Proj Done Team</strong></p>");
+      return s.ToString();
+    }
   }
 }

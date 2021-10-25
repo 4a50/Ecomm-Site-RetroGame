@@ -14,7 +14,7 @@ namespace EcommerceApp.Pages.GameDetail
     public UserDto UserInfo { get; set; }
     private IGame GameRepository;
     private ICart Cart;
-       
+
     [BindProperty]
     public Game Game { get; set; }
     //[BindProperty]
@@ -54,9 +54,9 @@ namespace EcommerceApp.Pages.GameDetail
     /// <returns></returns>
     public async Task<IActionResult> OnPost()
     {
-     
-      int gameid = Game.Id;      
-      UserInfo = await userService.GetUser(this.User);      
+
+      int gameid = Game.Id;
+      UserInfo = await userService.GetUser(this.User);
       string userid = UserInfo.Id == null ? "" : UserInfo.Id;
       var cart = await Cart.AddGameToCart(userid, gameid);
       if (cart == null)

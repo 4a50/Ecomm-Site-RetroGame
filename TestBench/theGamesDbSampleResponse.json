@@ -1,0 +1,580 @@
+{
+  "code": 200,
+  "status": "Success",
+  "data": {
+    "count": 14,
+    "games": [
+      {
+        "id": 299,
+        "game_title": "Super Metroid",
+        "release_date": "1994-04-18",
+        "platform": 6,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Take on a legion of Space Pirates and a new Metroid force as you forge into the covert underworld of Planet Zebes!  It\u2019s up to you and Samus to recapture the long-surviving Metroid hatchling before evil hands unleash its energy.\r\n\r\nAn army of ominous creatures are poised for battle at every turn of Zebes\u2019 twisted, threatening passageways\u2026 including the menacing Ridley and the great lizard Kraid.  Knock down enemies with a killer somersault and swing on an electric beam through narrow passageways!  They\u2019re no match for you and Samus\u2026 but wait!  It seems the Mother Brain has returned\u2026",
+        "last_updated": "2018-08-11 15:01:11",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "yu9GiZjFejE",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          4248
+        ],
+        "genres": [
+          1,
+          2
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 83385,
+        "game_title": "Super Metroid",
+        "release_date": "1994-03-19",
+        "platform": 6,
+        "region_id": 4,
+        "country_id": 0,
+        "players": 1,
+        "overview": "",
+        "last_updated": "2021-08-30 06:28:23",
+        "rating": "T - Teen",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          6037
+        ],
+        "genres": [
+          1,
+          2,
+          8,
+          15
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": [
+          "Metroid 3"
+        ]
+      },
+      {
+        "id": 93835,
+        "game_title": "Super Metroid (Nintendo Switch Online)",
+        "release_date": "1994-04-18",
+        "platform": 4971,
+        "region_id": 9,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Take on a legion of Space Pirates and a new Metroid force as you forge into the covert underworld of Planet Zebes!  It\u2019s up to you and Samus to recapture the long-surviving Metroid hatchling before evil hands unleash its energy.\r\n\r\nAn army of ominous creatures are poised for battle at every turn of Zebes\u2019 twisted, threatening passageways\u2026 including the menacing Ridley and the great lizard Kraid.  Knock down enemies with a killer somersault and swing on an electric beam through narrow passageways!  They\u2019re no match for you and Samus\u2026 but wait!  It seems the Mother Brain has returned\u2026",
+        "last_updated": "2021-10-11 01:16:56",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          1,
+          2,
+          27
+        ],
+        "publishers": null,
+        "alternates": null
+      },
+      {
+        "id": 92483,
+        "game_title": "Super Metroid (Players Choice)",
+        "release_date": "1996-05-01",
+        "platform": 6,
+        "region_id": 2,
+        "country_id": 50,
+        "players": 1,
+        "overview": "\"Super Metroid is a side-scrolling action game containing elements of both platformers and shooters. The game takes place over a massive, interconnected world; in order to progress, Samus must explore and acquire new abilities that will grant her further access to new areas, such as her Morph Ball and High Jump Boots.\"",
+        "last_updated": null,
+        "rating": "Not Rated",
+        "coop": "No",
+        "youtube": "https:\/\/www.youtube.com\/watch?v=0mOsQ8GJJHc",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          6037
+        ],
+        "genres": [
+          1,
+          2
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 67952,
+        "game_title": "Super Metroid (SFC)",
+        "release_date": "1994-03-19",
+        "platform": 6,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Take on a legion of Space Pirates and a new Metroid force as you forge into the covert underworld of Planet Zebes! It\u2019s up to you and Samus to recapture the long-surviving Metroid hatchling before evil hands unleash its energy. An army of ominous creatures are poised for battle at every turn of Zebes\u2019 twisted, threatening passageways\u2026 including the menacing Ridley and the great lizard Kraid. Knock down enemies with a killer somersault and swing on an electric beam through narrow passageways! They\u2019re no match for you and Samus\u2026 but wait! It seems the Mother Brain has returned\u2026",
+        "last_updated": "2020-07-07 17:36:40",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          6037,
+          10202
+        ],
+        "genres": [
+          1,
+          2
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 14573,
+        "game_title": "Super Metroid (Virtual Console)",
+        "release_date": "2007-08-20",
+        "platform": 9,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Super Metroid (\u30b9\u30fc\u30d1\u30fc\u30e1\u30c8\u30ed\u30a4\u30c9 S\u016bp\u0101 Metoroido?)[a] is an action-adventure video game published by Nintendo, developed by its Research & Development 1 (R&D1) division, and programmed by Intelligent Systems for the Super Nintendo Entertainment System. The third game in the Metroid series, it was released in Japan on March 19, 1994, in North America on April 18, and in Europe and Australia on July 28.\r\n\r\nSuper Metroid was directed and written by Yoshio Sakamoto, and produced by Makoto Kano with Gunpei Yokoi serving as general manager. Super Metroid is a direct sequel to the 1991 game Metroid II: Return of Samus. In the game's story, bounty hunter Samus Aran brought a Metroid larva from the planet SR388 to the Ceres space colony, where scientists believed that they could harness its power. After leaving the colony, Samus received a distress call and returned to find that the Metroid larva was stolen by the Space Pirate leader, Ridley. Samus follows him to the planet Zebes in attempts to retrieve a stolen larva. Super Metroid\u200a'\u200bs gameplay focuses on exploration, and its progression revolves around the search for power-ups that are used to reach previously inaccessible areas. The game introduces new concepts to the series, such as the inventory screen, an automapping facility, and the ability to fire in all directions.\r\n\r\nSuper Metroid received critical acclaim, and is considered by critics to be one of the greatest video games of all time, owing to its great use of atmosphere, gameplay, audio, cinematic elements and graphics. Despite this, the game sold poorly in Japan, but fared better in North America and Europe. Super Metroid became popular among players for speedrunning, and its gameplay and design influenced other games, such as Shadow Complex and Axiom Verge. The close releases and similar gameplay concepts of Super Metroid and Konami's Castlevania: Symphony of the Night resulted in the foundations of the \"Metroidvania\" genre. The game was followed by the 2002 release of Metroid Fusion and Metroid Prime, ending the series' eight-year hiatus. Super Metroid became available as a Virtual Console title for the Wii console in 2007, and for the Wii U in 2013.",
+        "last_updated": "2020-07-07 17:36:40",
+        "rating": "Not Rated",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          1,
+          27
+        ],
+        "publishers": null,
+        "alternates": null
+      },
+      {
+        "id": 49283,
+        "game_title": "Super Metroid (Virtual Console)",
+        "release_date": "2013-05-15",
+        "platform": 38,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Team up with the strength of Samus for a Super Metroid clash!\r\n\r\nThe Space Pirates, merciless agents of the evil Mother Brain, have stolen the last Metroid from a research station, and once again Mother Brain threatens the safety of the galaxy! Samus Aran must don her awesome array of high-tech weaponry to retrieve the deadly Metroid hidden deep within the cave-riddled planet Zebes. Super Metroid features excellent graphics, with a huge variety of enemies and worlds to explore. The side-view action will be familiar to many players, only now there are new weapons and items, including the Grappling Beam, which allows Samus to swing across large chasms, and the X-Ray Scope, which reveals secret passages.\r\n\r\nVirtual Console\r\nThis classic game is part of the Virtual Console service, which brings you great games created for consoles such as NES\u2122, Super NES\u2122 and Game Boy\u2122 Advance. We hope you'll enjoy the new features (including off-TV play) that have been added to this title.",
+        "last_updated": "2020-07-07 17:36:40",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "FByXeWTe_50",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          1,
+          2
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 68032,
+        "game_title": "Super Metroid (Virtual Console)",
+        "release_date": "2016-04-14",
+        "platform": 4912,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "VIRTUAL CONSOLE\r\n\r\nThe Space Pirates, merciless agents of the evil Mother Brain, have stolen the last Metroid from a research station, and once again Mother Brain threatens the safety of the galaxy! Samus Aran must don her awesome array of high-tech weaponry to retrieve the deadly Metroid hidden deep within the cave-riddled planet Zebes. Super Metroid features excellent graphics, with a huge variety of enemies and worlds to explore. The side-view action will be familiar to many players, only now there are new weapons and items, including the Grappling Beam, which allows Samus to swing across large chasms, and the X-Ray Scope, which reveals secret passages.",
+        "last_updated": "2020-12-25 20:18:44",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          6037
+        ],
+        "genres": [
+          2,
+          27
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 83178,
+        "game_title": "Super Metroid Eris",
+        "release_date": "1970-01-01",
+        "platform": 6,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "A ROM hack of Super Metroid",
+        "last_updated": "2021-03-08 04:33:00",
+        "rating": "T - Teen",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          15
+        ],
+        "publishers": null,
+        "alternates": [
+          "Metroid - Eris 2012",
+          "Super Metroid Eris 2012"
+        ]
+      },
+      {
+        "id": 83177,
+        "game_title": "Super Metroid Eris 2012",
+        "release_date": "1970-01-01",
+        "platform": 6,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "A ROM hack of Super Metroid",
+        "last_updated": null,
+        "rating": "T - Teen",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          15
+        ],
+        "publishers": null,
+        "alternates": null
+      },
+      {
+        "id": 79492,
+        "game_title": "Super Metroid Phazon",
+        "release_date": "2011-12-28",
+        "platform": 6,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Super Metroid Phazon  is a Super Metroid hack. it features:\r\n\r\nNew rooms, items, enemies and graphics.\r\nThe difficultly level is easier than most SM hacks.",
+        "last_updated": null,
+        "rating": "Not Rated",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          1,
+          2,
+          15,
+          28
+        ],
+        "publishers": null,
+        "alternates": [
+          "Metroid Phazon"
+        ]
+      },
+      {
+        "id": 92658,
+        "game_title": "Super Metroid: Ancient Chozo",
+        "release_date": "2018-01-18",
+        "platform": 6,
+        "region_id": 2,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Ancient Chozo is an expansion of the original Game\r\nthat contains the original Super Metroid Map layout with\r\nextra largest new rooms and areas locations, plus new routes to find.\r\n\r\nAncient Chozo started from Project Base Hack, but it's not the same,\r\nit has new color palette for the entire game, and even more places to explore plus\r\nnew custom enemies, moves, puzzles, music, and some few more stuff\r\nThe new routes makes the game more interesting and more fun to explore.\r\nMy intention was to keep the original route of Vanilla and add some new routes that can curious players could find,\r\nand also the players with good skills can break the Game Sequence.\r\nThe gameplay now rewards both types of players,\r\nthose who likes going faster, can now beat the game faster than cause they have new shortcuts and new routes to travel between each area much faster!\r\nOn the other hand, those who like exploring or breaking the game sequence, now gets most of the upgrades and power ups! Although it's a task not to easy to perform!\r\n\r\nChozo Hack focused on Explorations and most of the original items locations has been changed!\r\nThere's a lot of new secrets to discover, new areas, new rooms and no longer have the help of the X-Ray vision, but there's a new feature find them, so the players can feel curious finding new secrets and upgrades using a different method, so that makes the adventure even more interesting and enjoyable.\r\nI've have added more rooms and more areas also new gfx and I'll be adding some more in future versions.",
+        "last_updated": null,
+        "rating": "Not Rated",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          1,
+          15
+        ],
+        "publishers": null,
+        "alternates": null
+      },
+      {
+        "id": 92657,
+        "game_title": "Super Metroid: Ascent",
+        "release_date": "2019-05-27",
+        "platform": 6,
+        "region_id": 2,
+        "country_id": 50,
+        "players": 1,
+        "overview": "Unleash the colors !!!\r\n\r\nAscent is a full hack of super metroid.\r\nMore super metroid with same gameplay but whole new level design, new visuals and even some new mechanics. It has approximately the same amount of rooms as original game but bigger rooms and the difficulty is harder than original but not too much. The hack gameplay focus on puzzles, exploration and challenges. The focus on puzzles is stronger than most hacks. However there is multiple ways to advance or solve a problem. This is my first real attempt at hacking, there could be some weird moments of me trying stuff :D, but nothing will be out of place assets or ideas. Metroid for me is a huge alien underground isolated maze and this is what it will be about.\r\n\r\nThe main idea of this hack is like multiple small hacks put into one with a connected progression and world. So its more levels based. (multiple zones)\r\nWith map portions closing behind you at the end of the zone.\r\nYou will see where it ends on the map ingame.\r\nStart at the abyss of the planet and ascend your way up to the surface.\r\n\r\nWill you be able to defeat the black parasites and reach the extraction point ? find out in ascent",
+        "last_updated": null,
+        "rating": "Not Rated",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          1,
+          15
+        ],
+        "publishers": null,
+        "alternates": null
+      },
+      {
+        "id": 92459,
+        "game_title": "Super Metroid: Justin Bailey",
+        "release_date": "1970-01-01",
+        "platform": 6,
+        "region_id": 1,
+        "country_id": 0,
+        "players": 1,
+        "overview": "\"Super Metroid: Justin Bailey\" is a homebrew release of Super Metroid. \"Justin Bailey\" allows gameplay without the traditional Samus armor, wearing the clothing popularly known as Justin Bailey.",
+        "last_updated": null,
+        "rating": "Not Rated",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          1,
+          2,
+          28
+        ],
+        "publishers": null,
+        "alternates": null
+      }
+    ]
+  },
+  "include": {
+    "boxart": {
+      "base_url": {
+        "original": "https:\/\/cdn.thegamesdb.net\/images\/original\/",
+        "small": "https:\/\/cdn.thegamesdb.net\/images\/small\/",
+        "thumb": "https:\/\/cdn.thegamesdb.net\/images\/thumb\/",
+        "cropped_center_thumb": "https:\/\/cdn.thegamesdb.net\/images\/cropped_center_thumb\/",
+        "medium": "https:\/\/cdn.thegamesdb.net\/images\/medium\/",
+        "large": "https:\/\/cdn.thegamesdb.net\/images\/large\/"
+      },
+      "data": {
+        "299": [
+          {
+            "id": 639,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/299-1.jpg",
+            "resolution": "1500x1047"
+          },
+          {
+            "id": 83222,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/299-1.jpg",
+            "resolution": "2100x1532"
+          }
+        ],
+        "14573": [
+          {
+            "id": 45987,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/14573-1.png",
+            "resolution": "160x225"
+          }
+        ],
+        "49283": [
+          {
+            "id": 126224,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/49283-1.png",
+            "resolution": "140x134"
+          }
+        ],
+        "67952": [
+          {
+            "id": 220329,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/67952-1.jpg",
+            "resolution": null
+          }
+        ],
+        "68032": [
+          {
+            "id": 220463,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/68032-1.jpg",
+            "resolution": null
+          }
+        ],
+        "79492": [
+          {
+            "id": 255623,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/79492-1.jpg",
+            "resolution": null
+          }
+        ],
+        "83178": [
+          {
+            "id": 272540,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/83178-1.jpg",
+            "resolution": null
+          }
+        ],
+        "83385": [
+          {
+            "id": 273011,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/83385-1.jpg",
+            "resolution": null
+          }
+        ],
+        "92459": [
+          {
+            "id": 307578,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/92459-1.jpg",
+            "resolution": null
+          }
+        ],
+        "92483": [
+          {
+            "id": 307605,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/92483-1.jpg",
+            "resolution": null
+          }
+        ],
+        "92657": [
+          {
+            "id": 308322,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/92657-1.jpg",
+            "resolution": null
+          }
+        ],
+        "92658": [
+          {
+            "id": 308323,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/92658-1.jpg",
+            "resolution": null
+          }
+        ],
+        "93835": [
+          {
+            "id": 314051,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/93835-1.jpg",
+            "resolution": null
+          }
+        ]
+      }
+    },
+    "platform": {
+      "4912": {
+        "id": 4912,
+        "name": "Nintendo 3DS",
+        "alias": "nintendo-3ds"
+      },
+      "4971": {
+        "id": 4971,
+        "name": "Nintendo Switch",
+        "alias": "nintendo-switch"
+      },
+      "9": {
+        "id": 9,
+        "name": "Nintendo Wii",
+        "alias": "nintendo-wii"
+      },
+      "38": {
+        "id": 38,
+        "name": "Nintendo Wii U",
+        "alias": "nintendo-wii-u"
+      },
+      "6": {
+        "id": 6,
+        "name": "Super Nintendo (SNES)",
+        "alias": "super-nintendo-snes"
+      }
+    }
+  },
+  "pages": {
+    "previous": null,
+    "current": "https:\/\/api.thegamesdb.net\/v1\/Games\/ByGameName?apikey=4c9d180c15bf5fe3e896c204472a85c752dddb4fcdf0ba291b00b037af1c1910&name=Super+Metroid&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chee%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1",
+    "next": null
+  },
+  "remaining_monthly_allowance": 0,
+  "extra_allowance": 5851,
+  "allowance_refresh_timer": null
+}

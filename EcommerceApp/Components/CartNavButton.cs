@@ -29,18 +29,19 @@ namespace EcommerceApp.Components
     /// <returns></returns>
     public async Task<IViewComponentResult> InvokeAsync()
     {
-      
-        UserInfo = await userService.GetUser(this.UserClaimsPrincipal);
+
+      UserInfo = await userService.GetUser(this.UserClaimsPrincipal);
       if (UserInfo != null)
       {
         CartItems = await Cart.GetCartWithId(UserInfo.Id);
-      }else 
+      }
+      else
       {
-        CartItems = new Cart { CartGames = new List<CartGame> ()};      
+        CartItems = new Cart { CartGames = new List<CartGame>() };
       }
       return View(CartItems);
     }
-    
+
 
   }
 }
