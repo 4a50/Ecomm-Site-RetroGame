@@ -29,9 +29,10 @@ namespace EcommerceApp
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
+
       services.AddDbContext<EcommDBContext>(options =>
       {
-        string connectionString = Configuration.GetConnectionString("DefaultConnection");
+        string connectionString = Configuration["DatabaseConnection:LocalConnection"];
         options.UseSqlServer(connectionString);
 
       });
@@ -98,7 +99,7 @@ namespace EcommerceApp
       {
         //endpoints.MapRazorPages();
         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
-                        
+
         endpoints.MapControllers();
       });
 

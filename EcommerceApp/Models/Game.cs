@@ -24,7 +24,7 @@ namespace EcommerceApp.Models
     public string BoxArtUrlThumb { get; set; }
     public string VideoUrl { get; set; }
     public DateTime ReleaseDate { get; set; }
-
+    public DateTime APIRetrieval { get; set; }
     //Navigation Properties
     public List<GenreGame> GenreGames { get; set; }
   }

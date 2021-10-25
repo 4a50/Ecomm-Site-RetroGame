@@ -5,12 +5,10 @@ using System.Collections.Generic;
 
 namespace EcommerceApp.APIParsing
 {
-  public static class TheGamesDBParse
-  {
-    public static List<Game> SearchAPI(string queryString)
+  public static class GamesDBParse
+  {    
+    public static List<Game> JSONParse()
     {
-
-      //From File
       string jsonResponse = System.IO.File.ReadAllText(@"E:\repos\CSharp\Ecomm-Site-RetroGame\TestBench\theGamesDbSampleResponse.json");
       List<Game> gameObjList = new List<Game>();
       JObject jsonObj = JObject.Parse(jsonResponse);
@@ -25,15 +23,16 @@ namespace EcommerceApp.APIParsing
           ReleaseDate = (DateTime)g["release_date"],
           GameSystem = (string)g["platform"]
         });
-        //populates the boxartUrls
-        UpdateBoxArt(jsonObj, gameObjList);
-        UpdateGameSystem(jsonObj, gameObjList);
-
-
-        var findObj = gameObjList.Find((g) => g.Name == "Super Metroid");
-        Console.WriteLine(findObj);
       }
-        return gameObjList;
+
+      //populates the boxartUrls
+      UpdateBoxArt(jsonObj, gameObjList);
+      UpdateGameSystem(jsonObj, gameObjList);
+
+
+      var findObj = gameObjList.Find((g) => g.Name == "Super Metroid");
+      Console.WriteLine(findObj);
+      return gameObjList;
     }
 
     public static void UpdateBoxArt(JObject jsonObj, List<Game> gameObjList)
