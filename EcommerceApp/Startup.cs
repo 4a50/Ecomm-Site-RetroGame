@@ -70,7 +70,7 @@ namespace EcommerceApp
         options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
       });
       services.AddControllers().AddNewtonsoftJson(options =>
-      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);     
+      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
       //Implement when Azure Storage becomes available
       //
@@ -103,10 +103,10 @@ namespace EcommerceApp
       app.UseAuthentication();
       app.UseAuthorization();
       app.UseEndpoints(endpoints =>
-      {        
+      {
         endpoints.MapControllerRoute(
-      name: "default", 
-      pattern:  "{controller=Home}/{action=Index}");        
+      name: "default",
+      pattern: "{controller=Home}/{action=Index}");
       });
 
       app.UseSpa(spa =>

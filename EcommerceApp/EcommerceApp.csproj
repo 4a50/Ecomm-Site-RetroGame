@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\lib\**" />
-    <Content Remove="wwwroot\lib\**" />
-    <EmbeddedResource Remove="wwwroot\lib\**" />
-    <None Remove="wwwroot\lib\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Controllers\RazorHomeController.cs" />
   </ItemGroup>
 
@@ -40,10 +33,6 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Models\Services\Email\Services\" />
-    <Folder Include="ClientApp\" />
-    <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
   <ItemGroup>
