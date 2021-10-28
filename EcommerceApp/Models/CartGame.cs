@@ -10,7 +10,7 @@ namespace EcommerceApp.Models
     [Required]
     public int CartId { get; set; }
     //Navigation Properties
-    public Game Game { get; set; }
+    public GameInv Game { get; set; }
     public Cart Cart { get; set; }
 
   }

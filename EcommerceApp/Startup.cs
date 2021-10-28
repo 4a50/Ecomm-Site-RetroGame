@@ -46,6 +46,8 @@ namespace EcommerceApp
         options.UseSqlServer(connectionString);
 
       });
+
+      services.AddTransient<IInventory, InventoryRepository>();
       services.AddTransient<IGame, GameRepository>();
       services.AddTransient<ICart, CartRepository>();
       services.AddTransient<IGenre, GenreRepository>();
@@ -53,6 +55,7 @@ namespace EcommerceApp
       services.AddTransient<IUserService, IdentityUserService>();
       services.AddTransient<IUploadService, UploadService>();
       services.AddTransient<IAdminService, AdminService>();
+
 
 
 

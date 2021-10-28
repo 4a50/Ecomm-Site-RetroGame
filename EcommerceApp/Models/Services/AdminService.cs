@@ -20,7 +20,7 @@ namespace EcommerceApp.Models.Services
     public async Task<AdminVm> IndexUpdate(string gameId, string genreId)
     {
       // Create a list of Genres
-      Game game = new Game();
+      GameInv game = new GameInv();
       Genre genre = new Genre();
       if (gameId != "")
       {
@@ -54,7 +54,7 @@ namespace EcommerceApp.Models.Services
         Genre = genre
       };
       List<SelectListItem> listboxList = new List<SelectListItem>();
-      foreach (Game g in adminVm.GameList)
+      foreach (GameInv g in adminVm.GameList)
       {
         listboxList.Add(
           new SelectListItem

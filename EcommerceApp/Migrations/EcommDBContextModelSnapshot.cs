@@ -16,7 +16,7 @@ namespace EcommerceApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.3")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("EcommerceApp.Models.Cart", b =>
@@ -75,10 +75,31 @@ namespace EcommerceApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("APIRetrieval")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("BoxArtUrlBack")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BoxArtUrlFront")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BoxArtUrlThumb")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Developer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GameIDAPI")
+                        .HasColumnType("int");
+
                     b.Property<string>("GameSystem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
@@ -91,42 +112,109 @@ namespace EcommerceApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Publisher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VideoUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Game");
+                });
+
+            modelBuilder.Entity("EcommerceApp.Models.GameInv", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("APIRetrieval")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Condition")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Developer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameSystem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Genre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("ItemPrice")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Publisher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GameInventory");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Description = "A Terrible Sonic Clone",
-                            GameSystem = "SNES",
+                            APIRetrieval = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Condition = 3,
+                            Description = "Take on a legion of Space Pirates and a new Metroid force as you forge into the covert underworld of Planet Zebes!  It’s up to you and Samus to recapture the long-surviving Metroid hatchling before evil hands unleash its energy.\r\n\r\nAn army of ominous creatures are poised for battle at every turn of Zebes’ twisted, threatening passageways… including the menacing Ridley and the great lizard Kraid.  Knock down enemies with a killer somersault and swing on an electric beam through narrow passageways!  They’re no match for you and Samus… but wait!  It seems the Mother Brain has returned…",
+                            ImageUrl = "https://cdn.thegamesdb.net/images/original/boxart/front/299-1.jpg",
                             ItemPrice = 30f,
-                            Name = "Bubsy: Claws Encounters of the Furred Kind"
+                            Name = "Super Metroid",
+                            ReleaseDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Kick Butt Multiplayer Racing Game",
-                            GameSystem = "SNES",
-                            ItemPrice = 40f,
-                            Name = "Rock N' Roll Racing"
+                            APIRetrieval = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Condition = 1,
+                            Description = "Sonic and the All-Stars cast line up on the starting grid once again to battle for supremacy in the ultimate race. Compete across land, water and air in incredible transforming vehicles that change from cars to boats to planes mid-race. Master your driving skills as you drift, barrel role and boost to overtake your rivals, or use your weapons tactically and unleash your All-Star move to gain the winning advantage. It's not just your fellow racers you need to watch out for, as the road falls away beneath you, or the river runs dry, new routes emerge and your vehicle transforms to take advantage of the terrain. Discover alternative routes and short cuts as you perfect the course in this adrenaline fuelled dash to the finish line - racing will never be the same again. This is not just racing, it's racing transformed!",
+                            ImageUrl = "https://cdn.thegamesdb.net/images/original/boxart/front/12102-1.jpg",
+                            ItemPrice = 50f,
+                            Name = "Sonic & All-Stars Racing Transformed!",
+                            ReleaseDate = new DateTime(2012, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Awesome Side Scroll Action!",
-                            GameSystem = "NES",
-                            ItemPrice = 40f,
-                            Name = "Section Z"
+                            APIRetrieval = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Condition = 4,
+                            Description = "Mario and Luigi embark on the adventure of their dreams in a hilarious action RPG that combines the resort world of Pi'illo Island with the wild landscapes of Luigi's imagination, where anything can happen. Meet a host of hilarious characters as you strive to rescue Princess Peach and help Prince Dreambert free his petrified Pi'illo people from the bat-king Antasma's curse.",
+                            ImageUrl = "https://cdn.thegamesdb.net/images/original/boxart/front/17217-1.jpg",
+                            ItemPrice = 15.25f,
+                            Name = "Mario & Luigi: Dream Team",
+                            ReleaseDate = new DateTime(2013, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
-                            Description = "First to Feature Raccoon Mario",
-                            GameSystem = "NES",
-                            ItemPrice = 10f,
-                            Name = "Super Mario Bros 3"
+                            APIRetrieval = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Condition = 0,
+                            Description = "Sonic & Knuckles features Sega's \"lock-on technology\" that when combined with Sonic the Hedgehog 3, allows players to access Sonic the Hedgehog 3 as Sega originally intended, dubbed Sonic 3 & Knuckles. \r\nAll Zones from both Sonic the Hedgehog 3 and Sonic & Knuckles are present, bringing the total up to 14. Sonic the Hedgehog 3's Competition Mode also makes a return.\r\nKnuckles is now able to explore Zones from Sonic the Hedgehog 3, allowing him to access routes that were previously inaccessible. Tails is now also able to explore Zones present in Sonic & Knuckles, whether alone or alongside Sonic.\r\nIn addition to the Chaos Emeralds, Sonic 3 & Knuckles introduces Super Emeralds, which when collected allow for Sonic and Knuckles to access new \"Hyper\" forms, as well as give Tails his own \"Super\" form that he previously lacked. \r\nThe Data Select now features eight save slots instead of six. Extra lives and continues are now tracked alongside Zone progress and any collected Emeralds.",
+                            ImageUrl = "https://cdn.thegamesdb.net/images/original/boxart/front/60245-1.jpg",
+                            ItemPrice = 22.56f,
+                            Name = "Sonic 3 & Knuckles",
+                            ReleaseDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -143,28 +231,6 @@ namespace EcommerceApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genre");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            GenreName = "Platformer"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            GenreName = "Racing"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            GenreName = "Puzzle"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            GenreName = "Side Scroll"
-                        });
                 });
 
             modelBuilder.Entity("EcommerceApp.Models.GenreGame", b =>
@@ -180,23 +246,6 @@ namespace EcommerceApp.Migrations
                     b.HasIndex("GenreId");
 
                     b.ToTable("GenreGame");
-
-                    b.HasData(
-                        new
-                        {
-                            GameId = 1,
-                            GenreId = 1
-                        },
-                        new
-                        {
-                            GameId = 2,
-                            GenreId = 2
-                        },
-                        new
-                        {
-                            GameId = 3,
-                            GenreId = 4
-                        });
                 });
 
             modelBuilder.Entity("EcommerceApp.Models.Order", b =>
@@ -531,7 +580,7 @@ namespace EcommerceApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EcommerceApp.Models.Game", "Game")
+                    b.HasOne("EcommerceApp.Models.GameInv", "Game")
                         .WithMany()
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -544,7 +593,7 @@ namespace EcommerceApp.Migrations
 
             modelBuilder.Entity("EcommerceApp.Models.GenreGame", b =>
                 {
-                    b.HasOne("EcommerceApp.Models.Game", "Game")
+                    b.HasOne("EcommerceApp.Models.GameInv", "Game")
                         .WithMany("GenreGames")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -617,7 +666,7 @@ namespace EcommerceApp.Migrations
                     b.Navigation("CartGames");
                 });
 
-            modelBuilder.Entity("EcommerceApp.Models.Game", b =>
+            modelBuilder.Entity("EcommerceApp.Models.GameInv", b =>
                 {
                     b.Navigation("GenreGames");
                 });

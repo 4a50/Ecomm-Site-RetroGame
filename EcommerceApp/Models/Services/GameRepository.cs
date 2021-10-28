@@ -19,7 +19,7 @@ namespace EcommerceApp.Models.Services
     /// </summary>
     /// <param name="game"></param>
     /// <returns></returns>
-    public async Task<Game> CreateGame(Game game)
+    public async Task<GameInv> CreateGame(GameInv game)
     {
       _context.Entry(game).State = EntityState.Added;
       await _context.SaveChangesAsync();
@@ -30,12 +30,12 @@ namespace EcommerceApp.Models.Services
     /// </summary>
     /// <param name="genreId"></param>
     /// <returns></returns>
-    public async Task<List<Game>> GetGamesByGenre(int genreId)
+    public async Task<List<GameInv>> GetGamesByGenre(int genreId)
     {
-      List<Game> allGames = await GetAllGames();
-      List<Game> filteredList = new List<Game>();
+      List<GameInv> allGames = await GetAllGames();
+      List<GameInv> filteredList = new List<GameInv>();
       //TODO: Figure out the LINQ Query to Handle this.
-      foreach (Game g in allGames)
+      foreach (GameInv g in allGames)
       {
         foreach (GenreGame gen in g.GenreGames)
         {
@@ -48,9 +48,9 @@ namespace EcommerceApp.Models.Services
     /// Retrieves All Games in the database
     /// </summary>
     /// <returns></returns>
-    public async Task<List<Game>> GetAllGames()
+    public async Task<List<GameInv>> GetAllGames()
     {
-      return await _context.Game
+      return await _context.GameInventory
         .Include(s => s.GenreGames)
         .ThenInclude(g => g.Genre)
         .ToListAsync();
@@ -60,9 +60,9 @@ namespace EcommerceApp.Models.Services
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public async Task<Game> GetGame(int id)
+    public async Task<GameInv> GetGame(int id)
     {
-      var gameData = await _context.Game
+      var gameData = await _context.GameInventory
         .Include(s => s.GenreGames)
         .ThenInclude(g => g.Genre)
       .FirstOrDefaultAsync(s => s.Id == id);
@@ -90,7 +90,7 @@ namespace EcommerceApp.Models.Services
     /// <param name="id"></param>
     /// <param name="game"></param>
     /// <returns></returns>
-    public async Task<Game> UpdateGame(int id, Game game)
+    public async Task<GameInv> UpdateGame(int id, GameInv game)
     {
       _context.Entry(game).State = EntityState.Modified;
       await _context.SaveChangesAsync();
@@ -115,7 +115,7 @@ namespace EcommerceApp.Models.Services
     /// <returns></returns>
     public async Task DeleteGame(int id)
     {
-      Game game = await GetGame(id);
+      GameInv game = await GetGame(id);
       _context.Entry(game).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
     }
