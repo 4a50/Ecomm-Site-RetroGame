@@ -1,4 +1,5 @@
 ﻿using EcommerceApp.APIParsing;
+using EcommerceApp.HelperClasses;
 using EcommerceApp.Models;
 using EcommerceApp.Models.Users;
 using Microsoft.AspNetCore.Identity;
@@ -18,12 +19,14 @@ namespace EcommerceApp.Data
     public DbSet<Genre> Genre { get; set; }
     public DbSet<GenreGame> GenreGame { get; set; }
     public DbSet<CartGame> CartGame { get; set; }
-    private List<Game> seedList;
+    public DbSet<GameInv> GameInventory { get; set; }
+
+    
 
 
     public EcommDBContext(DbContextOptions options) : base(options)
     {
-      seedList = GamesDBParse.JSONParse();
+      
     }
     protected override void OnModelCreating(ModelBuilder modelbuilder)
     {
@@ -32,11 +35,11 @@ namespace EcommerceApp.Data
       SeedRole(modelbuilder, "Editor", "read", "update");
       SeedRole(modelbuilder, "Guest", "read");
 
-      modelbuilder.Entity<Genre>().HasData(
-        new Genre { Id = 1, GenreName = "Platformer" },
-        new Genre { Id = 2, GenreName = "Racing" },
-        new Genre { Id = 3, GenreName = "Puzzle" },
-        new Genre { Id = 4, GenreName = "Side Scroll" });
+      //modelbuilder.Entity<Genre>().HasData(
+      //  new Genre { Id = 1, GenreName = "Platformer" },
+      //  new Genre { Id = 2, GenreName = "Racing" },
+      //  new Genre { Id = 3, GenreName = "Puzzle" },
+      //  new Genre { Id = 4, GenreName = "Side Scroll" });
 
       modelbuilder.Entity<GenreGame>().HasKey(
         genreGame => new { genreGame.GameId, genreGame.GenreId });
@@ -46,27 +49,26 @@ namespace EcommerceApp.Data
       modelbuilder.Entity<CartGame>().HasKey(
         cartGame => new { cartGame.CartId, cartGame.GameId });
 
-      modelbuilder.Entity<GenreGame>().HasData(
-        new GenreGame
-        {
-          GameId = 1,
-          GenreId = 1
-        },
-        new GenreGame
-        {
-          GameId = 2,
-          GenreId = 2
-        },
-        new GenreGame
-        {
-          GameId = 3,
-          GenreId = 4
-        });
+      //modelbuilder.Entity<GenreGame>().HasData(
+      //  new GenreGame
+      //  {
+      //    GameId = 1,
+      //    GenreId = 1
+      //  },
+      //  new GenreGame
+      //  {
+      //    GameId = 2,
+      //    GenreId = 2
+      //  },
+      //  new GenreGame
+      //  {
+      //    GameId = 3,
+      //    GenreId = 4
+      //  });
+     
+     // modelbuilder.Entity<Game>().HasData(seedList[0], seedList[1]);
 
-      seedList[0].Id = 1;
-      seedList[1].Id = 2;
-      modelbuilder.Entity<Game>().HasData(seedList[0], seedList[1]);
-
+      modelbuilder.Entity<GameInv>().HasData(DataBaseSeedData.GameInvSeedData());      
     }
     private int nextId = 1;
     private void SeedRole(ModelBuilder modelbuilder, string roleName, params string[] permissions)

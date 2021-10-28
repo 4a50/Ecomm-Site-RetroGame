@@ -26,6 +26,6 @@ namespace EcommerceApp.Models
     public DateTime ReleaseDate { get; set; }
     public DateTime APIRetrieval { get; set; }
     //Navigation Properties
-    public List<GenreGame> GenreGames { get; set; }
+    //public List<GenreGame> GenreGames { get; set; }
   }
 }

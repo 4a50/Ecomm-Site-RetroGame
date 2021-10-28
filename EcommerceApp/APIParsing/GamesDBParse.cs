@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace EcommerceApp.APIParsing
 {
   public static class GamesDBParse
-  {    
+  {
     public static List<Game> JSONParse()
     {
       string jsonResponse = System.IO.File.ReadAllText(@"E:\repos\CSharp\Ecomm-Site-RetroGame\TestBench\theGamesDbSampleResponse.json");

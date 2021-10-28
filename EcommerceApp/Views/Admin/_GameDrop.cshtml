@@ -1,7 +1,0 @@
-﻿@model EcommerceApp.Models.Vm.AdminVm
-<select asp-for="@Model.SelectedAnswer">
-    @foreach (var game in Model.GameList)
-    {
-        <option value="@game.Id">@game.Name</option>
-    }
-</select>

@@ -1,0 +1,925 @@
+{
+  "code": 200,
+  "status": "Success",
+  "data": {
+    "count": 20,
+    "games": [
+      {
+        "id": 6691,
+        "game_title": "Mario & Luigi: Superstar Saga",
+        "release_date": "2003-11-17",
+        "platform": 5,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "An evil witch has replaced Princess Peach's fair speech with explosives! Mario and Luigi must once again come to her rescue, but this time they employ the help of Bowser, their sworn enemy. Mario and Luigi must learn new moves and combine powers to fight off enemies and move closer to the witch's castle. Guide this unlikely bunch through an abundance of minigames such as Border Jump and Mystery Carts. Combine the powers of Mario and Luigi to pull off special tag-team moves. Immerse yourself in this bright, cartoonish, and humorous world, complete with hit music featured in previous Mario games.",
+        "last_updated": "2018-07-11 21:46:00",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "KpirReZ1iOE",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          389
+        ],
+        "genres": [
+          4
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": [
+          "Mario & Luigi RPG",
+          "Mario and Luigi Superstar Saga"
+        ]
+      },
+      {
+        "id": 17217,
+        "game_title": "Mario & Luigi: Dream Team",
+        "release_date": "2013-08-11",
+        "platform": 4912,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Mario and Luigi embark on the adventure of their dreams in a hilarious action RPG that combines the resort world of Pi'illo Island with the wild landscapes of Luigi's imagination, where anything can happen. Meet a host of hilarious characters as you strive to rescue Princess Peach and help Prince Dreambert free his petrified Pi'illo people from the bat-king Antasma's curse.",
+        "last_updated": "2018-07-11 21:51:45",
+        "rating": "E10+ - Everyone 10+",
+        "coop": "No",
+        "youtube": "bAEAUQEhNFQ",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          389
+        ],
+        "genres": [
+          4
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": [
+          "Mario & Luigi: Dream Team Bros."
+        ]
+      },
+      {
+        "id": 48912,
+        "game_title": "Mario & Luigi: Superstar Saga",
+        "release_date": "2014-04-03",
+        "platform": 38,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "An adventure so big, you'll need both Bros.!\r\n\r\nPrepare for an epic journey beyond the borders of the Mushroom Kingdom as Mario and Luigi team up for a hilarious, action-filled adventure!\r\n\r\nDuring a normal day of royal duties, Princess Peach meets with the ambassador of the neighboring Beanbean Kingdom. However, an act of amnesty turns into an act of theft! The evil Cackletta and her awful assistant, Fawful, disguised themselves for the chance to steal Princess Peach's voice. Before the Mushroom Kingdom can fall under Princess Peach's despair, Mario and Luigi will need to work together as they cross the border to the lands of Beanbean Kingdom. Take a break from the adventure and play a quick game in Mario Bros. mode, featuring an enhanced version of the original NES game. With all this awesome action, you'll have hours of fun!\r\n\r\nVirtual Console\r\nThis classic game is part of the Virtual Console service, which brings you great games created for consoles such as NES™, Super NES™ and Game Boy™ Advance. We hope you'll enjoy the new features (including off-TV play) that have been added to this title.",
+        "last_updated": "2021-03-14 08:50:42",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "nWAR2ybySCI",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          6037
+        ],
+        "genres": [
+          4,
+          27
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": [
+          "Mario & Luigi: Superstar Saga (Virtual Console)"
+        ]
+      },
+      {
+        "id": 1279,
+        "game_title": "Yoshi",
+        "release_date": "1992-06-01",
+        "platform": 7,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 2,
+        "overview": "An airborne puzzle invasion! It's raining Goombas, Bloobers and Boo Buddies! You have to help Mario cope with the airborne invasion! As the critters fall, catch them on trays. Switch and shuffle to save the day! Stack two of a kind and they both disappear. Or, capture the whole bunch in-between egg shells. When the egg shells match, out hatches Yoshi and up goes your score! The action heats up as the characters fall faster and faster. If your piles get too high, the game is over. Choose your difficulty level and play for a high score or challenge a friend in a head-to-head hatch-off! If you like Dr. Mario, but you're ready for a whole new kind of challenge, you'll love this quick-shuffle action puzzle game!",
+        "last_updated": "2020-11-13 03:52:12",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          3314
+        ],
+        "genres": [
+          5
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": [
+          "Mario & Yoshi"
+        ]
+      },
+      {
+        "id": 13129,
+        "game_title": "Yoshi",
+        "release_date": "1992-07-01",
+        "platform": 4,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "In Yoshi, the player is tasked with clearing monsters from the on-screen playing field. The monsters fall in from the top of the screen to build vertical stacks; the player must prevent a stack from growing too high such that it exits the play field. In order to so, the player swaps and moves the stacks about such that falling monsters collide with identical monsters stationed atop the stacks, causing them to be removed from play.",
+        "last_updated": "2018-07-11 21:50:08",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          3314
+        ],
+        "genres": [
+          5
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": [
+          "Mario & Yoshi ",
+          "Yoshi no Tamago"
+        ]
+      },
+      {
+        "id": 82729,
+        "game_title": "Mario & Luigi RPG (JPN)",
+        "release_date": "1970-01-01",
+        "platform": 5,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "",
+        "last_updated": "2021-02-25 03:13:29",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          389
+        ],
+        "genres": [
+          4
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 438,
+        "game_title": "Mario & Luigi: Bowser's Inside Story",
+        "release_date": "2009-09-14",
+        "platform": 8,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Mario & Luigi: Bowser's Inside Story is the third game in the Mario & Luigi series of games. Players control Mario and Luigi simultaneously in the side-scrolling platform environment of Bowser's body, while also controlling the Koopa King himself in the top-down world of the Mushroom Kingdom. Similar to games like Earthbound, enemy encounters are seen as actual enemies that players can avoid or attempt to strike early. The actual battles are a combination of turn-based menu attacks, and timed reactions to enemies during battle. By watching the way an enemy reacts, you can anticipate their attack and avoid it or counterattack.",
+        "last_updated": "2019-03-02 12:21:15",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          389
+        ],
+        "genres": [
+          4
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 61020,
+        "game_title": "Mario & Luigi: Bowser's Inside Story + Bowser Jr.'s Journey",
+        "release_date": "2019-01-25",
+        "platform": 4912,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Laugh your way through a story told from three perspectives. Search the Mushroom Kingdom for a cure as Bowser, explore his innards as the Mario Bros., and discover the untold story of Bowser Jr.’s Journey. Overcome the fury of Fawful, action-packed battles, puzzling tasks, and giant bosses in a classic action RPG—stuffed with new content! Mario and Luigi are stuck inside Bowser, forced to accomplish unusual tasks to assist their arch nemesis with hero stuff across the land. The scenes and dialogue that ensue will have you cackling like Fawful, even in battle! Time your button presses and keep up with the action: turn the system sideways, blow into the mic, or tap the touch screen. In an all-new mode, Bowser Jr. will cross paths with our unlikely allies as he recruits Ranged, Flying, and Melee troopers to fight for his cause. Strategically form teams and pit them against enemies to reign supreme in frenetic combat.",
+        "last_updated": "2019-07-30 22:04:24",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "oMZA427FTx8",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          390
+        ],
+        "genres": [
+          4
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 34539,
+        "game_title": "Mario & Luigi: Paper Jam",
+        "release_date": "2015-12-03",
+        "platform": 4912,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Mario & Luigi: Paper Jam is a game in the Mario & Luigi series for Nintendo 3DS that crosses over with the Paper Mario series. As a result, the game uses the same graphics and engine as its predecessor and contains elements from Paper Mario: Sticker Star. The plot revolves around Mario, Luigi, and Paper Mario trying to stop the two Bowsers from taking over the Mushroom Kingdom using their combined armies. It is the second Mario & Luigi game for the Nintendo 3DS and the fifth game overall in the series.",
+        "last_updated": "2019-09-05 22:30:10",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "OGxJqEsgDIw",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          390,
+          6037
+        ],
+        "genres": [
+          4
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 6835,
+        "game_title": "Mario & Luigi: Partners in Time",
+        "release_date": "2005-11-28",
+        "platform": 8,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "The famous Mario Brothers return in this sequel to the humorous Superstar Saga. In this adventure, Princess Peach takes a trip in a time machine, but when it returns, there's only a monster inside! The heroic brothers travel back in time only to discover that evil alien life forms known as the Shroobs have taken over the Mushroom Kingdom, and no-one is safe! They soon meet up with their younger selves, and set out to stop the alien menace, not to mention rescue the Princess!",
+        "last_updated": "2018-07-11 21:05:25",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          389
+        ],
+        "genres": [
+          4
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 48911,
+        "game_title": "Mario & Luigi: Partners in Time",
+        "release_date": "2015-06-25",
+        "platform": 38,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Twice the Bros., twice the insanity!\r\n\r\nIn this quest of lunatic proportions, the Mario bros. team up with none other than… their younger selves! Control both sets of bros. at once in this intriguing action RPG, where comedy is king and the story leads you beyond the Mushroom Kingdom. Explore Mario’s world across space and time as you take down the evil alien invaders, the Shroobs!\r\n\r\nIn this precursor to the Mario & Luigi™: Bowser's Inside Story game, the brothers travel back in time to retrieve Princess Peach™, only to come face-to-face with baby versions of themselves, the princess, and Bowser™. While controlling both the adult AND baby versions of the Mushroom Kingdom heroes, you’ll unleash powerful attacks and cross environments using special techniques to solve puzzles in creative ways. With four brothers to control, this adventure is bound to get out of control!\r\n\r\nVirtual Console\r\nThis classic game is part of the Virtual Console service, which brings you great games created for consoles such as NES™, Super NES™ and Game Boy™ Advance. We hope you'll enjoy the new features (including off-TV play) that have been added to this title.",
+        "last_updated": "2018-08-11 15:01:11",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "Ia_i-BlctkM",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          389
+        ],
+        "genres": [
+          4
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 92853,
+        "game_title": "Mario & Luigi: Superstar Saga (Virtual Console)",
+        "release_date": "2003-01-01",
+        "platform": 4912,
+        "region_id": 9,
+        "country_id": 0,
+        "players": 1,
+        "overview": "",
+        "last_updated": "2021-09-16 18:41:56",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          6037
+        ],
+        "genres": [
+          27
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 46997,
+        "game_title": "Mario & Luigi: Superstar Saga + Bowser's Minions",
+        "release_date": "2017-10-06",
+        "platform": 4912,
+        "region_id": 9,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Save Princess Peach's voice, the Beanbean Kingdom and ... Bowser?!\r\n\r\nThe game that launched the Mario & Luigi series returns looking better than ever before. In this renewed classic, Mario and Luigi journey to the Beanbean Kingdom with Bowser to restore Princess Peach’s voice. Control Mario and Luigi simultaneously, making use of their unique Bros. Moves to solve puzzles and emerge victorious in action-packed battles. Pay heed to the enemy’s patterns and time your reactions right to land satisfying counterblows. Included in this remake is the Minion Quest: The Search for Bowser mode, which tells the story of the game from the perspective of Bowser’s minions. Recruit characters to grow your own Minion army as you fight to locate your missing leader!",
+        "last_updated": "2021-10-24 02:22:48",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "OI54_yxpwkY",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          389
+        ],
+        "genres": [
+          4,
+          15
+        ],
+        "publishers": [
+          3
+        ],
+        "alternates": null
+      },
+      {
+        "id": 8842,
+        "game_title": "Mario & Sonic at the London 2012 Olympic Games",
+        "release_date": "2011-11-15",
+        "platform": 9,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 4,
+        "overview": "Mario & Sonic at the London 2012 Olympic Games is a collection of numerous events based on the Olympic Games. Mario & Sonic brings together the two titular characters and eighteen more from both franchises to participate in environments based on the official venues of the 2012 Summer Olympics in London. The characters are divided into four categories: all-around, speed, power, and skill.",
+        "last_updated": "2018-07-11 21:05:26",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "RQu3T5Xy8TI",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          11
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 13819,
+        "game_title": "Mario & Sonic at the London 2012 Olympic Games",
+        "release_date": "2012-02-14",
+        "platform": 4912,
+        "region_id": 0,
+        "country_id": 0,
+        "players": null,
+        "overview": "Arriving on Nintendo's new handheld system for the first time ever Mario & Sonic at the London 2012 Olympic Games contains over 50 original Olympic themed events playable in both single and multiplayer modes. Bringing a whole new dimension to the Mario & Sonic universe, the glasses-free 3D visuals and the unique control systems mean there are plenty of new and exciting ways to compete for a coveted gold medal!",
+        "last_updated": "2018-07-11 21:05:28",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": null,
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 5233,
+        "game_title": "Mario & Sonic at the Olympic Games",
+        "release_date": "2007-11-06",
+        "platform": 9,
+        "region_id": 0,
+        "country_id": 0,
+        "players": null,
+        "overview": "Mario & Sonic on the Wii is a collection of twenty-four events based on the Olympic Games. Players can assume the role of a Nintendo or Sega character while competing against the others in these events. Players use the Wii Remote to mimic actions performed in real life sports, such as swinging a paddle.",
+        "last_updated": "2018-07-06 22:32:55",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          11
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": [
+          "RWSP8P"
+        ]
+      },
+      {
+        "id": 11334,
+        "game_title": "Mario & Sonic at the Olympic Games",
+        "release_date": "2008-01-22",
+        "platform": 8,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 4,
+        "overview": "Two of the biggest icons in the entertainment industry, Mario and Sonic, are joining forces to star in Mario and Sonic at the Olympic Games. Developed exclusively for the Wii video game system and the Nintendo DS system, this momentous agreement marks the first time these two renowned stars have appeared together in a game. Featuring an all-star cast of characters from the amazing worlds of both Mario and Sonic, players will be able to compete as or against a range of familiar characters including Mario, Sonic, Luigi, Knuckles, Yoshi, Tails and more.",
+        "last_updated": "2018-07-11 21:05:27",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          11
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 65349,
+        "game_title": "Mario & Sonic at the Olympic Games Tokyo 2020",
+        "release_date": "2019-11-08",
+        "platform": 4971,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 4,
+        "overview": "It’s party time, and everyone’s invited!\r\nTeam up with Mario, Sonic, and friends on Nintendo Switch in action-packed sporting events! Bring your best moves to the track, the gym, the ring, or the water in dozens of different party games everyone will enjoy.\r\n\r\nSkateboard, surf, and race your way to the top! With more than 30 events to master in this fun-filled Olympic Games contest, there are plenty of ways to prove your skills to your friends in multiplayer mode.\r\n\r\nThe team’s all here! Play as Mario, Sonic, or choose from a star-studded cast of colorful characters from your favorite games.\r\n\r\nDive into unique Dream Events that layer fantastical chaos with reality. Zip through a downhill obstacle course on your hoverboard, throwdown for territorial control with lightning-fast karate action, or smash the most targets inside a traditional Japanese manor!\r\n\r\nAnd you won’t want to miss an epic story mode that sends you to 1964 to compete in classic, retro 2D sports events.\r\n\r\nPlay any way you want on your Nintendo Switch. We’re talking motion and button controls, single and dual Joy-Con, single-player and multiplayer, local split-screen and online!",
+        "last_updated": "2021-05-17 16:11:54",
+        "rating": "E10+ - Everyone 10+",
+        "coop": "Yes",
+        "youtube": "https:\/\/youtu.be\/_hDzyvQIJb0",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          11
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 5163,
+        "game_title": "Mario & Sonic at the Olympic Winter Games",
+        "release_date": "2009-10-13",
+        "platform": 9,
+        "region_id": 0,
+        "country_id": 0,
+        "players": null,
+        "overview": "Mario & Sonic at the Olympic Winter Games  controlling an on-screen character through authentic Olympic events with the specific tailored controls for the Wii",
+        "last_updated": "2018-07-11 21:05:24",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          11
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 11335,
+        "game_title": "Mario & Sonic at the Olympic Winter Games",
+        "release_date": "2009-10-13",
+        "platform": 8,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 4,
+        "overview": "Mario & Sonic at the Olympic Winter Games will take players to Vancouver, Canada, host city of the official 2010 Olympic Winter Games. This gaming experience invites players of all ages and skill sets to face-off in some of the most intense winter competitions. The Nintendo DS brings an intense competitive element using the Nintendo DS wireless capabilities.",
+        "last_updated": "2018-07-11 21:05:27",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          11
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      }
+    ]
+  },
+  "include": {
+    "boxart": {
+      "base_url": {
+        "original": "https:\/\/cdn.thegamesdb.net\/images\/original\/",
+        "small": "https:\/\/cdn.thegamesdb.net\/images\/small\/",
+        "thumb": "https:\/\/cdn.thegamesdb.net\/images\/thumb\/",
+        "cropped_center_thumb": "https:\/\/cdn.thegamesdb.net\/images\/cropped_center_thumb\/",
+        "medium": "https:\/\/cdn.thegamesdb.net\/images\/medium\/",
+        "large": "https:\/\/cdn.thegamesdb.net\/images\/large\/"
+      },
+      "data": {
+        "438": [
+          {
+            "id": 17575,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/438-1.jpg",
+            "resolution": "1520x1379"
+          },
+          {
+            "id": 17576,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/438-1.jpg",
+            "resolution": "1533x1379"
+          }
+        ],
+        "1279": [
+          {
+            "id": 3098,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/1279-1.jpg",
+            "resolution": "1537x2100"
+          },
+          {
+            "id": 3099,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/1279-1.jpg",
+            "resolution": "1540x2100"
+          }
+        ],
+        "5163": [
+          {
+            "id": 12750,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/5163-1.jpg",
+            "resolution": "1525x2175"
+          },
+          {
+            "id": 12752,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/5163-1.jpg",
+            "resolution": "1566x2175"
+          }
+        ],
+        "5233": [
+          {
+            "id": 19903,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/5233-1.jpg",
+            "resolution": "1529x2156"
+          },
+          {
+            "id": 19904,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/5233-1.jpg",
+            "resolution": "1528x2156"
+          }
+        ],
+        "6691": [
+          {
+            "id": 33346,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/6691-1.jpg",
+            "resolution": "1530x1370"
+          },
+          {
+            "id": 100207,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/6691-1.png",
+            "resolution": "1000x1001"
+          }
+        ],
+        "6835": [
+          {
+            "id": 17577,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/6835-1.jpg",
+            "resolution": "1529x1370"
+          },
+          {
+            "id": 17578,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/6835-1.jpg",
+            "resolution": "1539x1370"
+          }
+        ],
+        "8842": [
+          {
+            "id": 25090,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/8842-1.jpg",
+            "resolution": "714x1007"
+          },
+          {
+            "id": 25091,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/8842-1.jpg",
+            "resolution": "713x1007"
+          }
+        ],
+        "11334": [
+          {
+            "id": 31993,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/11334-1.jpg",
+            "resolution": "1051x947"
+          },
+          {
+            "id": 31994,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/11334-1.jpg",
+            "resolution": "1036x947"
+          }
+        ],
+        "11335": [
+          {
+            "id": 31996,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/11335-1.jpg",
+            "resolution": "1500x1336"
+          },
+          {
+            "id": 32000,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/11335-1.jpg",
+            "resolution": "2236x2000"
+          }
+        ],
+        "13129": [
+          {
+            "id": 123889,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/13129-1.jpg",
+            "resolution": "271x266"
+          }
+        ],
+        "13819": [
+          {
+            "id": 39914,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/13819-1.jpg",
+            "resolution": "640x570"
+          }
+        ],
+        "17217": [
+          {
+            "id": 51259,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/17217-1.jpg",
+            "resolution": "600x540"
+          },
+          {
+            "id": 123427,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/17217-1.jpg",
+            "resolution": "1796x1595"
+          }
+        ],
+        "34539": [
+          {
+            "id": 123428,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/34539-1.jpg",
+            "resolution": "717x641"
+          }
+        ],
+        "46997": [
+          {
+            "id": 236278,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/46997-1.jpg",
+            "resolution": null
+          }
+        ],
+        "48911": [
+          {
+            "id": 125551,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/48911-1.png",
+            "resolution": "140x134"
+          }
+        ],
+        "48912": [
+          {
+            "id": 125555,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/48912-1.png",
+            "resolution": "140x134"
+          }
+        ],
+        "61020": [
+          {
+            "id": 234243,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/61020-1.jpg",
+            "resolution": null
+          }
+        ],
+        "65349": [
+          {
+            "id": 255373,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/65349-1.jpg",
+            "resolution": null
+          },
+          {
+            "id": 255374,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/65349-1.jpg",
+            "resolution": null
+          }
+        ],
+        "82729": [
+          {
+            "id": 270229,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/82729-1.jpg",
+            "resolution": null
+          }
+        ],
+        "92853": [
+          {
+            "id": 309072,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/92853-1.jpg",
+            "resolution": null
+          }
+        ]
+      }
+    },
+    "platform": {
+      "4912": {
+        "id": 4912,
+        "name": "Nintendo 3DS",
+        "alias": "nintendo-3ds"
+      },
+      "8": {
+        "id": 8,
+        "name": "Nintendo DS",
+        "alias": "nintendo-ds"
+      },
+      "7": {
+        "id": 7,
+        "name": "Nintendo Entertainment System (NES)",
+        "alias": "nintendo-entertainment-system-nes"
+      },
+      "4": {
+        "id": 4,
+        "name": "Nintendo Game Boy",
+        "alias": "nintendo-gameboy"
+      },
+      "5": {
+        "id": 5,
+        "name": "Nintendo Game Boy Advance",
+        "alias": "nintendo-gameboy-advance"
+      },
+      "4971": {
+        "id": 4971,
+        "name": "Nintendo Switch",
+        "alias": "nintendo-switch"
+      },
+      "9": {
+        "id": 9,
+        "name": "Nintendo Wii",
+        "alias": "nintendo-wii"
+      },
+      "38": {
+        "id": 38,
+        "name": "Nintendo Wii U",
+        "alias": "nintendo-wii-u"
+      }
+    }
+  },
+  "pages": {
+    "previous": null,
+    "current": "https:\/\/api.thegamesdb.net\/v1\/Games\/ByGameName?apikey=4c9d180c15bf5fe3e896c204472a85c752dddb4fcdf0ba291b00b037af1c1910&name=mario&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chee%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1",
+    "next": "https:\/\/api.thegamesdb.net\/v1\/Games\/ByGameName?apikey=4c9d180c15bf5fe3e896c204472a85c752dddb4fcdf0ba291b00b037af1c1910&name=mario&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chee%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=2"
+  },
+  "remaining_monthly_allowance": 0,
+  "extra_allowance": 5845,
+  "allowance_refresh_timer": null
+}

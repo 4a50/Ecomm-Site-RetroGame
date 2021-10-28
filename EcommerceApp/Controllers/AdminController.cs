@@ -55,14 +55,14 @@ namespace EcommerceApp.Controllers
       {
         return View(adminvm);
       }
-      Game game = new Game
+      GameInv game = new GameInv
       {
         Name = adminvm.Game.Name,
         Description = adminvm.Game.Description,
         ItemPrice = adminvm.Game.ItemPrice,
         GameSystem = adminvm.Game.GameSystem
       };
-      Game saveGame = await _game.CreateGame(game);
+      GameInv saveGame = await _game.CreateGame(game);
 
       //await _game.CreateGenreGame(saveGame.Id, adminvm.Genre.Id);
       return Redirect("/admin");
@@ -133,7 +133,7 @@ namespace EcommerceApp.Controllers
     public async Task<IActionResult> SelectGameToMod(AdminVm adminvm)
     {
       int idNum = int.Parse(adminvm.SelectedAnswers.First());
-      Game gDisp = await _game.GetGame(idNum);
+      GameInv gDisp = await _game.GetGame(idNum);
       Debug.WriteLine(gDisp.Name);
       return Redirect($"/admin?gmid={idNum}");
     }
@@ -158,7 +158,7 @@ namespace EcommerceApp.Controllers
     [HttpPost]
     public async Task<IActionResult> UpdateGame(AdminVm adminvm)
     {
-      await _game.UpdateGame(adminvm.Game.Id, adminvm.Game);
+      await _game.UpdateGame((int)adminvm.Game.Id, adminvm.Game);
       return Redirect($"/admin");
     }
     /// <summary>
@@ -223,7 +223,7 @@ namespace EcommerceApp.Controllers
     {
       Debug.WriteLine(admin.SelectedAnswer);
       var fileUp = await UploadService.Upload(file);
-      Game getGame = await _game.GetGame(int.Parse(admin.SelectedAnswer));
+      GameInv getGame = await _game.GetGame(int.Parse(admin.SelectedAnswer));
       getGame.ImageUrl = fileUp.Url;
       await _game.UpdateGame(int.Parse(admin.SelectedAnswer), getGame);
 

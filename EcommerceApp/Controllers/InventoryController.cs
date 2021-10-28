@@ -1,4 +1,5 @@
 ﻿using EcommerceApp.APIParsing;
+using EcommerceApp.HelperClasses;
 using EcommerceApp.Models;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -6,44 +7,38 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("[controller]")]
   [ApiController]
   public class InventoryController : Controller
   {
-    private readonly IGame _gameRepository;
+    private readonly IInventory _inventory;
     private readonly IConfiguration _config;
     private HttpClient httpClient = new HttpClient();
-    public InventoryController(IGame gamerepo, IConfiguration config)
+    public InventoryController(IInventory invrepo, IConfiguration config)
     {
-      _gameRepository = gamerepo;
+      _inventory = invrepo;
       _config = config;
 
     }
-
-    [HttpGet]
+    
+    [HttpGet("allInventory/")]
     [AllowAnonymous]
-    public IActionResult RootRoute()
+    public async Task<ActionResult<IEnumerable<GameInv>>> GetAllGames()
     {
-      return RedirectToPage("/Index");
-    }
-
-    [HttpGet("allgames/")]
-    [AllowAnonymous]
-    public async Task<ActionResult<IEnumerable<Game>>> GetAllGames()
-    {
-      List<Game> getGames = await _gameRepository.GetAllGames();
+      List<GameInv> getGames = await _inventory.ReadAllGames();
       return Ok(getGames);
     }
     [HttpGet("{id}")]
     [AllowAnonymous]
-    public async Task<ActionResult<Game>> GetGame(int id)
+    public async Task<ActionResult<GameInv>> GetGame(int id)
     {
-      Game game = await _gameRepository.GetGame(id);
+      GameInv game = await _inventory.ReadGame(id);
       return Ok(game);
     }
 
@@ -72,6 +67,15 @@ namespace EcommerceApp.Controllers
       List<Game> gamesList = GamesDBParse.JSONParse();
       Game game = gamesList[0];
       return Ok(gamesList);
+    }
+    
+    [HttpGet("initialfrontend")]    
+    public async Task<ActionResult<List<GameInv>>> GetCarousel()
+    {
+      List<GameInv> getGames = await _inventory.ReadAllGames();
+      List <List<GameInv>> returnList = ClientDataFormatter.CarouselList(getGames);
+      Debug.WriteLine("init Route hit");
+      return Ok(returnList);
     }
   }
 }
