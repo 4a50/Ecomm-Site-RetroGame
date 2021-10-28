@@ -1,46 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home';
+import Main from './components/Main.js';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import sampleData from './sampleData/sampleServerResponse.json';
 
 import './custom.css'
-import Carousel from 'react-bootstrap/Carousel';
-import CarouselItem from './Carousel/CarouselItem.js';
-import CarouselCard from './Carousel/CarouselCard.js'
 
-export default function App(props) {
-  const [inventoryData, setInventoryData] = useState([]);
-  useEffect(() => {
-    setInventoryData(sampleData);
-  }, []);
-
-  const populateInvData = () => {
-    let arr = inventoryData;
-    let carouselItemArr = [];
-    let cardArr = []
-    let counter = -1
-    while (++counter < arr.length) {
-      cardArr.push(arr[counter]);
-      if (counter !== 0 && (counter + 1) % 3 === 0) {
-        // console.log(counter);
-        carouselItemArr.push(cardArr);
-        // console.log('arrarr', carouselItemArr);
-        cardArr = [];
-      }
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inventoryData: []
     }
-    if (cardArr.length > 0) carouselItemArr.push(cardArr);
-    console.log(carouselItemArr);
   }
-  populateInvData();
-  return (
-    <Layout>
-      <h1>{inventoryData.length}</h1>
-      <Route exact path='/' component={Home} />
-      <Route path='/counter' component={Counter} />
-      <Route path='/fetch-data' component={FetchData} />
-    </Layout>
-  );
+
+  componentDidMount() {
+    this.setState({
+      inventoryData: sampleData
+    });
+
+  }
+
+
+  render() {
+    // console.log('APP STATE:', this.state);
+    return (
+      <Layout>
+        <h1>{this.state.inventoryData.length}</h1>
+        <Route exact path='/'>
+          <Main invData={this.state.inventoryData} />
+        </Route>
+        <Route path='/counter' component={Counter} />
+        <Route path='/fetch-data' component={FetchData} />
+      </Layout>
+    );
+  }
 }

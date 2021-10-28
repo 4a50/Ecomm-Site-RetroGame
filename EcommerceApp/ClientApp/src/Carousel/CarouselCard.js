@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 export default function CarouselCard(props) {
+  console.log('cardProps:', props)
   return (
     <Card className="m-2">
       <Card.Title className="text-center">{props.item.name}</Card.Title>
