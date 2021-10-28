@@ -1,4 +1,5 @@
 ﻿using EcommerceApp.APIParsing;
+using EcommerceApp.HelperClasses;
 using EcommerceApp.Models;
 using EcommerceApp.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceApp.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("[controller]")]
   [ApiController]
   public class InventoryController : Controller
   {
@@ -25,14 +26,7 @@ namespace EcommerceApp.Controllers
       _config = config;
 
     }
-
-    [HttpGet]
-    [AllowAnonymous]
-    public IActionResult RootRoute()
-    {
-      return RedirectToPage("/Index");
-    }
-
+    
     [HttpGet("allInventory/")]
     [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<GameInv>>> GetAllGames()
@@ -79,8 +73,9 @@ namespace EcommerceApp.Controllers
     public async Task<ActionResult<List<GameInv>>> GetCarousel()
     {
       List<GameInv> getGames = await _inventory.ReadAllGames();
-      Debug.WriteLine(getGames);
-      return Ok("OK!");
+      List <List<GameInv>> returnList = ClientDataFormatter.CarouselList(getGames);
+      Debug.WriteLine("init Route hit");
+      return Ok(returnList);
     }
   }
 }

@@ -1,46 +1,49 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { CardGroup, Container } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel'
-import CarouselItem from '../Carousel/CarouselItem.js'
+import CarouselCard from '../Carousel/CarouselCard.js'
 export default function CarouselDisplay(props) {
 
   // console.log('invDataCD', props);
-  const populateInvData = () => {
-    // console.log('popData');
-    let dataArray = props.invData;
-    // console.log('dataArray:', dataArray)
-    let finalArray = [];
-    let subArray = [];
-    let counter = -1;
 
-    while (++counter < dataArray.length) {
-      subArray.push(dataArray[counter]);
-      if (counter !== 0 && (counter + 1) % 3 === 0) {
-        finalArray.push(subArray);
-        subArray = [];
-      }
-    }
-    if (counter <= finalArray.length - 1) finalArray.push(subArray);
-    console.log('finalArray:', finalArray);
-    return finalArray;
-
-  }
 
   const [carouselData, setCarouselData] = useState([]);
 
-  //TODO: Move the list of games information to the server.  Grab it on load and that's it.
+  const mapItems = () => {
+    return carouselData.map((item, idx) => {
+      console.log(item);
+      return <Carousel.Item key={idx}>
+        <CardGroup>
+          {item.map((itemCard, idx) => <CarouselCard key={`cc-${idx}`} item={itemCard} />)}
+        </CardGroup>
+      </Carousel.Item>
+    })
+  }
 
+  useEffect(() => {
+    let getCarouselData = async () => {
+      try {
+        let res = await fetch('inventory/initialfrontend');
+        let data = await res.json();
+        console.log('DATA:', data);
+        setCarouselData(data);
+      }
+      catch (e) {
+        console.log('error retrieving data:', e.message)
+      }
+    }
+    getCarouselData();
+  }, [])
   return (
     <>
-      <h1>Carousel</h1>
-      <h2>{carouselData.length} {props.invData.length}</h2>
-      {carouselData.length > 0 &&
+      <h1>CarouselDisplay</h1>
+      <h2>{carouselData.length}</h2>
+      <Container>
         <Carousel>
-          {carouselData.map((collection, idx) =>
-            <CarouselItem key={`ci-${idx}`} data={collection} />
-          )}
+          {carouselData.length > 0 ? mapItems() : 'Nothing to add'}
         </Carousel>
-      }
+      </Container>
     </>
   )
 }
