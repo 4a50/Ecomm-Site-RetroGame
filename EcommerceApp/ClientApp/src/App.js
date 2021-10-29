@@ -5,6 +5,7 @@ import Main from './components/Main.js';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import sampleData from './sampleData/sampleServerResponse.json';
+import AdminPanel from './components/AdminPanel/AdminPanel.js'
 
 import './custom.css'
 
@@ -34,6 +35,9 @@ export default class App extends React.Component {
         </Route>
         <Route path='/counter' component={Counter} />
         <Route path='/fetch-data' component={FetchData} />
+        <Route path='/admin' component={AdminPanel}>
+          <AdminPanel inventoryData={this.state.inventoryData} />
+        </Route>
       </Layout>
     );
   }
