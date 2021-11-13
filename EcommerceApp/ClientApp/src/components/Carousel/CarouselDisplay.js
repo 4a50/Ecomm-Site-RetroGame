@@ -2,11 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { CardGroup, Container } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel'
-import CarouselCard from '../Carousel/CarouselCard.js'
+import CarouselCard from './CarouselCard.js'
 export default function CarouselDisplay(props) {
-
-  // console.log('invDataCD', props);
-
 
   const [carouselData, setCarouselData] = useState([]);
 
@@ -37,8 +34,7 @@ export default function CarouselDisplay(props) {
   }, [])
   return (
     <>
-      <h1>CarouselDisplay</h1>
-      <h2>{carouselData.length}</h2>
+      <h1>CarouselDisplay</h1>      
       <Container>
         <Carousel>
           {carouselData.length > 0 ? mapItems() : 'Nothing to add'}

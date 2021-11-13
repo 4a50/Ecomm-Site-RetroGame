@@ -1,5 +1,5 @@
 import React from 'react';
-import CarouselDisplay from '../Carousel/CarouselDisplay';
+import CarouselDisplay from './Carousel/CarouselDisplay';
 
 const Main = (props) => {
   return (
