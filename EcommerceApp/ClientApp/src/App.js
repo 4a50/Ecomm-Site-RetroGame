@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import { Layout } from './components/Layout';
 import Main from './components/Main.js';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
 import sampleData from './sampleData/sampleServerResponse.json';
 import AdminPanel from './components/AdminPanel/AdminPanel.js'
 
