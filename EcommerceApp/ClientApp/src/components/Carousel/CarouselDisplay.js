@@ -2,11 +2,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { CardGroup, Container } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel'
-import CarouselCard from '../Carousel/CarouselCard.js'
+import CarouselCard from './CarouselCard.js'
+import initFrontData from '../../sampleData/sampleInitialResponse.json'
 export default function CarouselDisplay(props) {
-
-  // console.log('invDataCD', props);
-
 
   const [carouselData, setCarouselData] = useState([]);
 
@@ -24,10 +22,14 @@ export default function CarouselDisplay(props) {
   useEffect(() => {
     let getCarouselData = async () => {
       try {
-        let res = await fetch('inventory/initialfrontend');
-        let data = await res.json();
-        console.log('DATA:', data);
-        setCarouselData(data);
+        //local data
+        let res = initFrontData
+        setCarouselData(res)
+        //server call
+        //let res = await fetch('inventory/initialfrontend');
+        // let data = await res.json();
+        // console.log('DATA:', data);
+        // setCarouselData(data);
       }
       catch (e) {
         console.log('error retrieving data:', e.message)
@@ -38,7 +40,6 @@ export default function CarouselDisplay(props) {
   return (
     <>
       <h1>CarouselDisplay</h1>
-      <h2>{carouselData.length}</h2>
       <Container>
         <Carousel>
           {carouselData.length > 0 ? mapItems() : 'Nothing to add'}

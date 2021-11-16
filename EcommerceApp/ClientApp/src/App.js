@@ -1,40 +1,29 @@
-import React from 'react';
-import { Route } from 'react-router';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router';
 import { Layout } from './components/Layout';
 import Main from './components/Main.js';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
 import sampleData from './sampleData/sampleServerResponse.json';
+import AdminPanel from './components/AdminPanel/AdminPanel.js'
 
 import './custom.css'
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inventoryData: []
-    }
-  }
+function App(props) {
 
-  componentDidMount() {
-    this.setState({
-      inventoryData: sampleData
-    });
+  const [inventoryData, setInventoryData] = useState([sampleData]);
 
-  }
-
-
-  render() {
-    // console.log('APP STATE:', this.state);
-    return (
-      <Layout>
-        <h1>{this.state.inventoryData.length}</h1>
-        <Route exact path='/'>
-          <Main invData={this.state.inventoryData} />
+  return (
+    <Layout>
+      <Switch>
+        <Route exact path="/">
+          <Main invData={inventoryData} />
         </Route>
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-      </Layout>
-    );
-  }
+        <Route exact path="/admin">
+          <AdminPanel inventoryData={inventoryData} />
+        </Route>
+      </Switch>
+
+    </Layout>
+  );
+
 }
+export default App
