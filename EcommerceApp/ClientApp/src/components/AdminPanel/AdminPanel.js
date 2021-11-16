@@ -24,15 +24,16 @@ const AdminPanel = (props) => {
         <Col>
           <InventoryListGroup currentItem={setCurrentItem} inventory={inventory} />
         </Col>
-        <Col>
-          {currentItem &&
+        {currentItem &&
+          <Col>
             <Card>
               <Card.Header>{currentItem.name}
                 <Button>Edit</Button></Card.Header>
               <Card.Img style={{ height: '20rem' }} src={currentItem.boxArtUrlFront} />
               <Card.Body>{currentItem.description}</Card.Body>
-            </Card>}
-        </Col>
+            </Card>
+          </Col>
+        }
       </Row>
       <Row>
         <Button onClick={handleOpen}>ShowModal</Button>
