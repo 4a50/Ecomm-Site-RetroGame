@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 const InputModal = (props) => {
   console.log('IMProps', props);
   return (
@@ -28,7 +30,17 @@ const InputModal = (props) => {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.handleClose}>Close</Button>
+          <Row>
+            <Col>
+              <Button onClick={props.handleClose} variant="dark">Close</Button>
+            </Col>
+            <Col>
+              <Button onClick={props.handleClose} variant="success">Update</Button>
+            </Col>
+            <Col>
+              <Button onClick={props.handleClose} variant="danger">Remove</Button>
+            </Col>
+          </Row>
         </Modal.Footer>
       </Modal>
     </>
