@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListGroup, Col, Row, Tab } from 'react-bootstrap'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 function InventoryListGroupItem(props) {
 
