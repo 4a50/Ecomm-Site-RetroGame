@@ -34,8 +34,16 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Models\Services\CreditCard\**" />
+    <Compile Remove="Models\Services\Email\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Models\Services\CreditCard\**" />
+    <Content Remove="Models\Services\Email\**" />
+    <EmbeddedResource Remove="Models\Services\CreditCard\**" />
+    <EmbeddedResource Remove="Models\Services\Email\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Models\Services\CreditCard\**" />
+    <None Remove="Models\Services\Email\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
   
@@ -48,9 +56,6 @@
     <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
   </Target>
-  <ItemGroup>
-    <Folder Include="Models\Services\Email\Services\" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\APIHelperFunctions\APIHelperFunctions.csproj" />
