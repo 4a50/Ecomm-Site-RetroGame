@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router';
+import {
+    BrowserRouter as Router,
+    Routes,
+  Route
+} from "react-router-dom";
 import { Layout } from './components/Layout';
 import Main from './components/Main.js';
 import sampleData from './sampleData/sampleServerResponse.json';
@@ -13,15 +17,12 @@ function App(props) {
 
   return (
     <Layout>
-      <Switch>
-        <Route exact path="/">
-          <Main invData={inventoryData} />
-        </Route>
-        <Route exact path="/admin">
-          <AdminPanel inventoryData={inventoryData} />
-        </Route>
-      </Switch>
-
+   
+        <Routes>
+          <Route exact path="/" element={<Main invData={inventoryData} />} />
+          <Route exact path="/admin-panel" element={<AdminPanel inventoryData={inventoryData} />} />
+        </Routes>
+      
     </Layout>
   );
 
