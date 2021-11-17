@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EcommerceApp.Models.Services.CreditCard.Models
+﻿namespace EcommerceApp.Models.Services.CreditCard.Models
 {
   public class CCInfo
   {

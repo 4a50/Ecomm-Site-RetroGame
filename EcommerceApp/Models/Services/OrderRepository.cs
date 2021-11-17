@@ -40,10 +40,10 @@ namespace EcommerceApp.Models.Services
     /// <returns></returns>
     public async Task<Order> GetCurrentOrder(string userId)
     {
-      var order = await _context.Order     
+      var order = await _context.Order
         .Where(o => o.UserId == userId && o.PaymentComplete == false)
         .Include(c => c.Cart)
-        .ThenInclude(c =>c.CartGames)
+        .ThenInclude(c => c.CartGames)
         .ThenInclude(g => g.Game)
         .FirstOrDefaultAsync();
       return order;
@@ -54,7 +54,7 @@ namespace EcommerceApp.Models.Services
     /// <returns></returns>
     public async Task<List<Order>> GetOrderAll()
     {
-      var order = await _context.Order        
+      var order = await _context.Order
         .Include(c => c.Cart)
         .ThenInclude(c => c.CartGames)
         .ThenInclude(g => g.Game)
@@ -84,12 +84,12 @@ namespace EcommerceApp.Models.Services
     /// <returns></returns>
     public async Task<List<Order>> GetOrderArchiveAll()
     {
-        return await _context.Order
-        .Include(c => c.Cart)
-        .ThenInclude(c => c.CartGames)
-        .ThenInclude(g => g.Game)
-        .Where(o => o.PaymentComplete == true)
-        .ToListAsync();
+      return await _context.Order
+      .Include(c => c.Cart)
+      .ThenInclude(c => c.CartGames)
+      .ThenInclude(g => g.Game)
+      .Where(o => o.PaymentComplete == true)
+      .ToListAsync();
     }
     public Task<Order> RemoveOrder(int Id)
     {

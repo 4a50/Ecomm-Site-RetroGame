@@ -1,0 +1,889 @@
+{
+  "code": 200,
+  "status": "Success",
+  "data": {
+    "count": 20,
+    "games": [
+      {
+        "id": 42342,
+        "game_title": "Sonic & Knuckles + Sonic the Hedgehog 2",
+        "release_date": "1994-10-18",
+        "platform": 36,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Knuckles in Sonic 2 is the resulting game when Sonic the Hedgehog 2 is locked onto Sonic & Knuckles with its passthrough port. Sonic is replaced by Knuckles and Tails is not playable whatsoever. The title screen features Knuckles also but removes the two player mode and options selections from it. This game is identical to Sonic 2 (aside from a few changes to make it more playable with Knuckles) but with Knuckles now playable instead of Sonic or Tails.\r\n\r\nSega, though adjusting Knuckles' physics to match those of Sonic & Knuckles in-game, ran into issues with those same physics in the Sonic the Hedgehog 2 pre-game demos. A fix was created to keep Knuckles' jump height consistent with that of the jump height from Sonic & Knuckles but also make the demos function properly. Knuckles' jump was modified so that it reached the same height as Sonic would reach in Sonic the Hedgehog 2, but his mid-air mobility was slowed to give the gimped feeling his jumps had in Sonic & Knuckles. This fix corrected most of these issues; however, the mid-air speed cap caused Emerald Hill and Aquatic Ruin Zone's demos to be left in a sub par state.",
+        "last_updated": "2018-07-11 22:10:04",
+        "rating": null,
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7979
+        ],
+        "genres": [
+          15
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": [
+          "Sonic & Knuckles + Sonic 2"
+        ]
+      },
+      {
+        "id": 60245,
+        "game_title": "Sonic 3 & Knuckles",
+        "release_date": "1994-10-18",
+        "platform": 18,
+        "region_id": 1,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Sonic & Knuckles features Sega's \"lock-on technology\" that when combined with Sonic the Hedgehog 3, allows players to access Sonic the Hedgehog 3 as Sega originally intended, dubbed Sonic 3 & Knuckles. \r\nAll Zones from both Sonic the Hedgehog 3 and Sonic & Knuckles are present, bringing the total up to 14. Sonic the Hedgehog 3's Competition Mode also makes a return.\r\nKnuckles is now able to explore Zones from Sonic the Hedgehog 3, allowing him to access routes that were previously inaccessible. Tails is now also able to explore Zones present in Sonic & Knuckles, whether alone or alongside Sonic.\r\nIn addition to the Chaos Emeralds, Sonic 3 & Knuckles introduces Super Emeralds, which when collected allow for Sonic and Knuckles to access new \"Hyper\" forms, as well as give Tails his own \"Super\" form that he previously lacked. \r\nThe Data Select now features eight save slots instead of six. Extra lives and continues are now tracked alongside Zone progress and any collected Emeralds.",
+        "last_updated": "2021-08-18 07:02:01",
+        "rating": "E - Everyone",
+        "coop": "Yes",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          1,
+          2,
+          15,
+          27
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": [
+          "Sonic & Knuckles and Sonic the Hedgehog 3",
+          "Sonic the Hedgehog 3C"
+        ]
+      },
+      {
+        "id": 12331,
+        "game_title": "Sonic & SEGA All-Stars Racing with Banjo-Kazooie",
+        "release_date": "2010-02-23",
+        "platform": 15,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 2,
+        "overview": "In a frantic battle to the checkered flag, Sonic and friends speed around tracks set in medieval castle ramparts, lush rainforests and bustling cities, all taken from the visually rich and varied universes of Sonic and SEGA. Fan favorites such as Dr. Eggman, Tails, AiAi, Amigo and many more will join Sonic in their custom built vehicles, revving their engines and jostling to stay ahead of the pack. Each character will speed around the track in cars, planes, motorbikes, and in Aiai’s case – a banana mobile! Secret short cuts, swift handling and avoiding strategically placed obstacles are certainly the best way to get to the top of the podium.",
+        "last_updated": "2020-05-10 09:35:14",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          7
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": [
+          "Sonic & SEGA All-Stars Racing"
+        ]
+      },
+      {
+        "id": 12102,
+        "game_title": "Sonic & All-Stars Racing Transformed",
+        "release_date": "2012-11-18",
+        "platform": 38,
+        "region_id": 0,
+        "country_id": 0,
+        "players": null,
+        "overview": "Sonic and the All-Stars cast line up on the starting grid once again to battle for supremacy in the ultimate race. Compete across land, water and air in incredible transforming vehicles that change from cars to boats to planes mid-race. Master your driving skills as you drift, barrel role and boost to overtake your rivals, or use your weapons tactically and unleash your All-Star move to gain the winning advantage. It's not just your fellow racers you need to watch out for, as the road falls away beneath you, or the river runs dry, new routes emerge and your vehicle transforms to take advantage of the terrain. Discover alternative routes and short cuts as you perfect the course in this adrenaline fuelled dash to the finish line - racing will never be the same again. This is not just racing, it's racing transformed!",
+        "last_updated": "2018-07-11 21:05:27",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          7,
+          11
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 12843,
+        "game_title": "Sonic & All-Stars Racing Transformed",
+        "release_date": "2012-11-20",
+        "platform": 15,
+        "region_id": 0,
+        "country_id": 0,
+        "players": null,
+        "overview": "Sonic & All-Stars Racing Transformed is a kart racing video game developed by Sumo Digital and published by Sega. It was released for the PlayStation 3, Xbox 360, and Wii U in November 2012, for PlayStation Vita in December 2012,[9] for Microsoft Windows in January 2013,[7] for Nintendo 3DS in February 2013, and for iOS and Android in January 2014.[8][10][11] The PS3 and Wii U versions of the game were released in Japan on May 15, 2014.[12]\r\n\r\nSonic & All-Stars Racing Transformed is the sequel to Sonic & Sega All-Stars Racing, the fourth installment in the Sega Superstars series, and the eighth racing game in the Sonic the Hedgehog series. The game was a launch title for the Wii U in North America and Europe.",
+        "last_updated": "2018-07-11 21:05:28",
+        "rating": "E10+ - Everyone 10+",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          7
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 12873,
+        "game_title": "Sonic & All-Stars Racing Transformed",
+        "release_date": "2012-11-18",
+        "platform": 12,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 4,
+        "overview": "Sonic and the All-Stars cast line up on the starting grid once again to battle for supremacy in the ultimate race. Compete across land, water and air in incredible transforming vehicles that change from cars to boats to planes mid-race. Master your driving skills as you drift, barrel role and boost to overtake your rivals, or use your weapons tactically and unleash your All-Star move to gain the winning advantage. It's not just your fellow racers you need to watch out for, as the road falls away beneath you, or the river runs dry, new routes emerge and your vehicle transforms to take advantage of the terrain. Discover alternative routes and short cuts as you perfect the course in this adrenaline fuelled dash to the finish line - racing will never be the same again. This is not just racing, it's racing transformed!",
+        "last_updated": "2018-07-11 21:05:28",
+        "rating": "E10+ - Everyone 10+",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          9955
+        ],
+        "genres": [
+          7
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 12874,
+        "game_title": "Sonic & All-Stars Racing Transformed",
+        "release_date": "2012-12-11",
+        "platform": 39,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 4,
+        "overview": "Sonic & All-Stars Racing Transformed™ is a thrilling new racing experience featuring Sonic the Hedgehog and a fantastic cast of SEGA All-Stars competing across land, air and water in vehicles that fully transform from cars, to planes to boats.",
+        "last_updated": "2018-08-11 15:01:11",
+        "rating": "E10+ - Everyone 10+",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          9955
+        ],
+        "genres": [
+          7
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 12876,
+        "game_title": "Sonic & All-Stars Racing Transformed",
+        "release_date": "2012-12-11",
+        "platform": 4912,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 4,
+        "overview": "Sonic and the All-Stars cast line up on the starting grid once again to battle for supremacy in the ultimate race. Compete across land, water and air in incredible transforming vehicles that change from cars to boats to planes mid-race. Master your driving skills as you drift, barrel role and boost to overtake your rivals, or use your weapons tactically and unleash your All-Star move to gain the winning advantage. It's not just your fellow racers you need to watch out for, as the road falls away beneath you, or the river runs dry, new routes emerge and your vehicle transforms to take advantage of the terrain. Discover alternative routes and short cuts as you perfect the course in this adrenaline fuelled dash to the finish line - racing will never be the same again. This is not just racing, it's racing transformed!",
+        "last_updated": "2018-07-11 21:05:28",
+        "rating": "E10+ - Everyone 10+",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          9955
+        ],
+        "genres": [
+          7
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 15012,
+        "game_title": "Sonic & All-Stars Racing Transformed",
+        "release_date": "2013-02-01",
+        "platform": 1,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 4,
+        "overview": "Sonic and the All-Stars cast line up on the starting grid once again to battle for supremacy in the ultimate race. Compete across land, water and air in incredible transforming vehicles that change from cars to boats to planes mid-race. Master your driving skills as you drift, barrel role and boost to overtake your rivals, or use your weapons tactically and unleash your All-Star move to gain the winning advantage. It's not just your fellow racers you need to watch out for, as the road falls away beneath you, or the river runs dry, new routes emerge and your vehicle transforms to take advantage of the terrain. Discover alternative routes and short cuts as you perfect the course in this adrenaline fuelled dash to the finish line - racing will never be the same again. This is not just racing, it's racing transformed!",
+        "last_updated": "2018-07-11 21:05:29",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "YVjKx0rS1OE",
+        "os": "Windows XP, Windows Vista, Windows 7, Windows 8",
+        "processor": "2.4GHz Intel i5 or equivalent",
+        "ram": "2GB Ram (Windows XP), 4GB Ram (Windows Vista, Windows 7, Windows 8)",
+        "video": "512MB with Shader Model 3.0 support",
+        "sound": "DirectX 9 Compatible",
+        "developers": [
+          9955
+        ],
+        "genres": [
+          7
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 88833,
+        "game_title": "Sonic & All-Stars Racing Transformed Collection",
+        "release_date": "2013-01-31",
+        "platform": 1,
+        "region_id": 2,
+        "country_id": 50,
+        "players": 1,
+        "overview": "Sonic and the All-Stars cast line up on the starting grid once again to battle for supremacy in the ultimate race. Compete across land, water and air in incredible transforming vehicles that change from cars to boats to planes mid-race. It’s Not Just Racing. It’s Racing Transformed!\r\nKey Features:\r\nPlay as over 20 legendary All-Stars each with their own transforming vehicle.\r\nRace across 25 tracks and arenas.\r\nWorld Tour, Grand Prix, Battle Arenas, and more.\r\nUnleash ingenious weapons or utilise your character’s unique All-Star Move.\r\n4 Player split screen and up to 10 player online events. Plus even take split screen gaming online.\r\n\r\nSonic & All-Stars Racing Collection includes Metal Sonic & Ryo Hazuki DLC for free.\r\n\r\nCompete across land, water and air in incredible transforming vehicles that change from cars to boats to planes mid-race.",
+        "last_updated": null,
+        "rating": "E10+ - Everyone 10+",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          9955
+        ],
+        "genres": [
+          7
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 733,
+        "game_title": "Sonic & Knuckles",
+        "release_date": "1994-10-18",
+        "platform": 18,
+        "region_id": 2,
+        "country_id": 50,
+        "players": 1,
+        "overview": "Sonic and Knuckles join forces to defeat rotten Dr. Robotnik's Death Egg invasion! Play Sonic & Knuckles by itself or Lock-on with other Sonic games. This game's revolutionary Lock-on technology adds all new features to your other Sonic games for ultimate replays! Play as Sonic and let loose on Robotnik with amazing new powers. Play as Knuckles and tackle Robotnik and Metal Sonic with bare-fisted attacks, high-speed glides and wall-climbing power! Lock-on with Sonic 3 and transform Floating Island into a huge 34 meg Sonic-epic loaded with new secrets! Play as Sonic, Knuckles, and even Tails - with Game Save! Lock-on with Sonic 2 and play as Knuckles with all his signature moves!",
+        "last_updated": "2021-10-04 21:49:01",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7574,
+          7979
+        ],
+        "genres": [
+          15
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": [
+          "Sonic and Knuckles"
+        ]
+      },
+      {
+        "id": 23869,
+        "game_title": "Sonic & Knuckles",
+        "release_date": "1994-10-18",
+        "platform": 36,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 2,
+        "overview": "The story picks up from the ending of Sonic 3 - Dr. Robotnik's orbital weapon, the Death Egg, has been badly damaged in the climactic battle between himself and Sonic The Hedgehog. As the satellite falls back to the Floating Island, landing in a volcanic crater, Sonic jumps off, landing in a mushroom filled woodland.\r\nSonic knows there are many Chaos Emeralds hidden on the island, including the powerful Super Emeralds and the Master Emerald, the secret to the island's levitation powers. Worried that Robotnik may try to harness this power to fuel a repaired Death Egg, he sets off to try and destroy the Death Egg once and for all, keeping an eye out for Knuckles the Echidna, still smarting from his Launch Base defeat.\r\nAt Hidden Palace, Sonic finds Knuckles there waiting for him. They fight and Sonic seems to emerge victorious when Knuckles flees from the duel after sensing someone is trying to steal the Master Emerald. Knuckles races ahead closely followed by Sonic to find Robotnik trying to steal the Master Emerald: It had been his plan all along to snatch it while Sonic and Knuckles were too busy dealing with each other. Realizing he had been tricked, Knuckles reacts by attacking Robotnik, which fails when Robotnik electrocutes Knuckles. Sonic tries to intervene but Robotnik stills manages to escape. Knuckles now realizes his mistake and that Sonic is in fact on his side. They join forces and teleport to Sky Sanctuary.\r\nAt Sky Sanctuary, Knuckles and Sonic watch the Death Egg launching in the background. Knuckles activates a bridge so Sonic can cross over. Sonic defeats a rebuilt Metal Sonic on the way to the Death Egg, and manages to board it before it leaves the atmosphere. Onboard the Death Egg, Sonic defeats Robotnik and destroys the ship once and for all, only for Robotnik to get away with the Master Emerald in one of his giant robots. If Sonic hasn't collected all seven Chaos Emeralds and\/or Super Emeralds, the game ends here, and the ending in which the Master Emerald does not return to Angel Island occurs. After the credits, the player sees a scene with Robotnik still in possession of the Master Emerald.\r\nIf all the seven Chaos Emeralds and\/or Super Emeralds are collected, Sonic transforms into Super Sonic or Hyper Sonic and chases Robotnik into the Doomsday Zone. After failing to lose him in an asteroid belt, Robotnik's machine is destroyed, Sonic and Tails return the Master Emerald, and the Floating Island becomes airborne once again. If the player didn't collect all the Super Emeralds, a scene occurs which shows an Egg Robo emerging from a pile of metal. If all Emeralds are collected, the player sees the Sonic 3 and Knuckles logo featuring Sonic, Tails, and Knuckles.",
+        "last_updated": "2018-07-11 21:05:33",
+        "rating": null,
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          15
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 54795,
+        "game_title": "Sonic & Knuckles",
+        "release_date": "2009-09-09",
+        "platform": 15,
+        "region_id": 0,
+        "country_id": 0,
+        "players": null,
+        "overview": "The blue hedgehog and the red echidna were sworn adversaries in Sonic 3, but in the platform adventure Sonic & Knuckles, Knuckles realizes that he's been just a pawn in the schemes of Dr. Eggman (aka Dr. Robotnik). Knuckles, the former adversary, now supports Sonic to chase the common enemy, and each must use their strengths to acquire the priceless Master Emerald and save Angel Island.",
+        "last_updated": "2018-07-11 21:05:44",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7979
+        ],
+        "genres": [
+          1,
+          15
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 76956,
+        "game_title": "Sonic & Knuckles",
+        "release_date": "1994-10-18",
+        "platform": 4920,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "",
+        "last_updated": null,
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          1
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 82244,
+        "game_title": "SONIC & KNUCKLES",
+        "release_date": "1994-10-18",
+        "platform": 36,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 2,
+        "overview": "Sonic and Knuckles continua la storia direttamente da dove Sonic the Hedgehog 3 si è interrotto. L'esplosione del Death Egg fa volare Sonic in profondità nelle Mushroom Hills dell'Isola Galleggiante. Sonic sa del Master Emerald nascosto da qualche parte su Floating Island, ed è sicuro che il Dr. Robotnik voglia che dia al suo Death Egg un potere illimitato. Knuckles probabilmente sa dove si trova, ma riuscirà Sonic a fermare i piani di Robotnik e a trovare il Master Emerald mentre combatte contro Knuckles? Nel frattempo, Knuckles è a guardia dell'isola galleggiante quando viene attaccato da uno dei robot di Robotnik! Inizia rapidamente una caccia alla vendetta.\r\n\r\nSonic & Knuckles è il quarto gioco della serie Sonic. Mantiene le stesse caratteristiche di base dei precedenti giochi di Sonic (velocità, anelli di protezione, Stage speciali con Chaos Emerald) così come i tre diversi tipi di scudi introdotti in Sonic 3 (Fuoco, Acqua ed Elettrico). I giocatori possono selezionare uno dei due personaggi del titolo per giocare: Sonic o il nuovissimo Knuckles the Echidna. Knuckles non può saltare in alto come Sonic, ma può planare tenendo premuto il pulsante di salto mentre è in aria. Se scivoli contro un muro, anche Knuckles sarà in grado di scalarlo. Può anche sfondare muri che Sonic non può. Con queste abilità, Knuckles può accedere a diverse aree di Sonic, rendendo ogni livello un'esperienza completamente nuova.\r\n\r\nA differenza di Sonic 3, Sonic & Knuckles presenta tre livelli bonus: due sono disponibili saltando nelle stelle del checkpoint del lampione (come in Sonic the Hedgehog 2. Questi livelli ti danno la possibilità di guadagnare anelli bonus, vite e potenziamenti. Il primo è un livello a tema casinò in cui puoi saltare in una slot machine e guadagnare (o perdere!) anelli. Il secondo è un livello più basato sulle abilità in cui devi cronometrare i tuoi salti dalle sfere per lanciarti più in alto e raccogliere bonus. Se colpisci il barriera nella parte inferiore del livello, finisce. L'altro tipo di livello bonus è lo \"Special Stage\" visto in Sonic 3, a cui, come in precedenza, è possibile accedere saltando in anelli giganti nascosti all'interno dei livelli stessi. Se il giocatore raccoglie tutte le sfere blu in queste fasi (evitando tutte quelle rosse) guadagneranno un Chaos Emerald.\r\n\r\nUna caratteristica unica del carrello di Sonic & Knuckles è la capacità di \"bloccare\" i precedenti giochi di Sonic in uno slot per cartucce nella parte superiore. L'aggiunta di Sonic 3 combinerà sia Sonic 3 che Sonic & Knuckles in un unico lungo gioco, oltre ad aggiungere la possibilità di salvare e utilizzare Tails nei livelli di Sonic & Knuckles. Il collegamento di Sonic 2 consente ai giocatori di utilizzare Knuckles in Sonic 2, oltre a consentire l'uso delle sue abilità di scorrimento e di arrampicata su muro. Infine, collegando il carrello originale di Sonic the Hedgehog, il giocatore può accedere a variazioni di livello illimitate del livello bonus Blue Sphere. Anche le successive riedizioni di Sonic & Knuckles hanno incluso la maggior parte di queste funzionalità bonus.",
+        "last_updated": "2021-05-30 11:41:53",
+        "rating": "E - Everyone",
+        "coop": "Yes",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7979
+        ],
+        "genres": [
+          1,
+          2,
+          15
+        ],
+        "publishers": [
+          4194
+        ],
+        "alternates": null
+      },
+      {
+        "id": 74459,
+        "game_title": "Sonic & Knuckles (Virtual Console)",
+        "release_date": "2010-02-12",
+        "platform": 9,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 2,
+        "overview": "Sonic and Knuckles join forces to defeat rotten Dr. Robotnik's Death Egg invasion! Play Sonic & Knuckles by itself or Lock-on with other Sonic games. This game's revolutionary Lock-on technology adds all new features to your other Sonic games for ultimate replays! Play as Sonic and let loose on Robotnik with amazing new powers. Play as Knuckles and tackle Robotnik and Metal Sonic with bare-fisted attacks, high-speed glides and wall-climbing power! Lock-on with Sonic 3 and transform Floating Island into a huge 34 meg Sonic-epic loaded with new secrets! Play as Sonic, Knuckles, and even Tails - with Game Save! Lock-on with Sonic 2 and play as Knuckles with all his signature moves!",
+        "last_updated": "2020-12-25 21:40:17",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          1,
+          15,
+          27
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": [
+          "Sonic and Knuckles"
+        ]
+      },
+      {
+        "id": 20943,
+        "game_title": "Sonic & Knuckles + Sonic the Hedgehog",
+        "release_date": "1994-10-18",
+        "platform": 36,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "'Sonic & Knuckles' is locked-on to the original Sonic the Hedgehog or Sonic Compilation via Lock-On Technology, the result is a deceptive \"No Way!\" screen. However, by pressing the A, B and C buttons together players can access Special Stage levels, commonly known as the \"Blue Sphere\" levels. Levels can be accessed by inputting a twelve digit code, every number combination a different variation of a Special Stage level.",
+        "last_updated": "2018-07-11 21:05:32",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          15
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": null
+      },
+      {
+        "id": 24076,
+        "game_title": "Sonic & Knuckles + Sonic the Hedgehog",
+        "release_date": "1994-10-18",
+        "platform": 18,
+        "region_id": 0,
+        "country_id": 0,
+        "players": 1,
+        "overview": "When Sonic 3 is locked-on to the original Sonic the Hedgehog or Sonic Compilation via Lock-On Technology, the result is a deceptive \"No Way!\" screen. However, by pressing the A, B and C buttons together players can access Special Stage levels, commonly known as the \"Blue Sphere\" levels. Levels can be accessed by inputting a twelve digit code, every number combination a different variation of a Special Stage level.",
+        "last_updated": "2020-04-01 05:55:17",
+        "rating": "E - Everyone",
+        "coop": "No",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          15
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": [
+          "Sonic and Knuckles & Sonic 1"
+        ]
+      },
+      {
+        "id": 39170,
+        "game_title": "Sonic & Knuckles + Sonic the Hedgehog 3",
+        "release_date": "1994-10-18",
+        "platform": 36,
+        "region_id": 4,
+        "country_id": 0,
+        "players": 1,
+        "overview": "Sonic & Knuckles features Sega's \"lock-on technology\" that when combined with Sonic the Hedgehog 3, allows players to access Sonic the Hedgehog 3 as Sega originally intended, dubbed Sonic 3 & Knuckles. \r\nAll Zones from both Sonic the Hedgehog 3 and Sonic & Knuckles are present, bringing the total up to 14. Sonic the Hedgehog 3's Competition Mode also makes a return.\r\nKnuckles is now able to explore Zones from Sonic the Hedgehog 3, allowing him to access routes that were previously inaccessible. Tails is now also able to explore Zones present in Sonic & Knuckles, whether alone or alongside Sonic.\r\nIn addition to the Chaos Emeralds, Sonic 3 & Knuckles introduces Super Emeralds, which when collected allow for Sonic and Knuckles to access new \"Hyper\" forms, as well as give Tails his own \"Super\" form that he previously lacked. \r\nThe Data Select now features eight save slots instead of six. Extra lives and continues are now tracked alongside Zone progress and any collected Emeralds.",
+        "last_updated": "2021-08-26 08:40:34",
+        "rating": "E - Everyone",
+        "coop": "Yes",
+        "youtube": "",
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": [
+          7549
+        ],
+        "genres": [
+          1,
+          2,
+          15,
+          27
+        ],
+        "publishers": [
+          15
+        ],
+        "alternates": [
+          "Sonic the Hedgehog 3C",
+          "Sonic 3 & Knuckles"
+        ]
+      },
+      {
+        "id": 14464,
+        "game_title": "Sonic & Knuckles Collection",
+        "release_date": "1997-03-20",
+        "platform": 1,
+        "region_id": 0,
+        "country_id": 0,
+        "players": null,
+        "overview": "Sonic & Knuckles Collection[edit]\r\nSonic & Knuckles Collection is a Sonic the Hedgehog compilation game for Microsoft Windows-based PCs, released in 1997.[2]\r\n\r\nThis collection includes:\r\n\r\nSonic the Hedgehog 3\r\nSonic & Knuckles\r\nSonic 3 & Knuckles\r\nBlue Sphere\r\nThe European and North American versions of the collection also includes Sonic the Screensaver which the player can customize Windows with Sonic themes, wallpapers, icons, and music from Sonic 1, 2, 3 and Sonic & Knuckles, and the Japanese & European soundtrack of Sonic the Hedgehog CD in 11 kHz WAV format. However, in Japan, Sonic & Knuckles Collection and Sonic the Screensaver were released separately, on the same day. Some tracks in Sonic the Hedgehog 3 were replaced due to sound card limitations.\r\n\r\nThis game is virtually impossible to play in windowed mode on any system with a CPU faster than 350 MHz, because the game does not have speed-limiting routines enabled in this mode. The timings used by the game are based on the monitor's refresh rate. Switching the game to fullscreen mode lets the game play properly, no matter what the system speed is. In windowed mode, the game can be played at the correct speed whenever the screen refresh rate is at 60Hz. Sega has also provided a patch to fix this problem without reducing the refresh rate. The patch adds the following lines in the \"S3K.ini\" file in the Windows directory:",
+        "last_updated": "2018-07-11 21:05:28",
+        "rating": null,
+        "coop": "No",
+        "youtube": null,
+        "os": null,
+        "processor": null,
+        "ram": null,
+        "video": null,
+        "sound": null,
+        "developers": null,
+        "genres": [
+          15
+        ],
+        "publishers": null,
+        "alternates": null
+      }
+    ]
+  },
+  "include": {
+    "boxart": {
+      "base_url": {
+        "original": "https:\/\/cdn.thegamesdb.net\/images\/original\/",
+        "small": "https:\/\/cdn.thegamesdb.net\/images\/small\/",
+        "thumb": "https:\/\/cdn.thegamesdb.net\/images\/thumb\/",
+        "cropped_center_thumb": "https:\/\/cdn.thegamesdb.net\/images\/cropped_center_thumb\/",
+        "medium": "https:\/\/cdn.thegamesdb.net\/images\/medium\/",
+        "large": "https:\/\/cdn.thegamesdb.net\/images\/large\/"
+      },
+      "data": {
+        "733": [
+          {
+            "id": 89058,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/733-1.png",
+            "resolution": "483x679"
+          },
+          {
+            "id": 273630,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/733-1.jpg",
+            "resolution": null
+          }
+        ],
+        "12102": [
+          {
+            "id": 35690,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/12102-1.jpg",
+            "resolution": "359x507"
+          }
+        ],
+        "12331": [
+          {
+            "id": 36844,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/12331-1.jpg",
+            "resolution": "640x904"
+          }
+        ],
+        "12843": [
+          {
+            "id": 37565,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/12843-1.jpg",
+            "resolution": "1065x1500"
+          }
+        ],
+        "12873": [
+          {
+            "id": 37650,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/12873-1.jpg",
+            "resolution": "640x740"
+          }
+        ],
+        "12874": [
+          {
+            "id": 37657,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/12874-1.jpg",
+            "resolution": "640x819"
+          }
+        ],
+        "12876": [
+          {
+            "id": 37659,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/12876-1.jpg",
+            "resolution": "640x569"
+          }
+        ],
+        "14464": [
+          {
+            "id": 41769,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/14464-1.jpg",
+            "resolution": "639x640"
+          }
+        ],
+        "15012": [
+          {
+            "id": 42905,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/15012-1.jpg",
+            "resolution": "1000x1240"
+          }
+        ],
+        "20943": [
+          {
+            "id": 61148,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/20943-1.jpg",
+            "resolution": "300x408"
+          }
+        ],
+        "23869": [
+          {
+            "id": 69831,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/23869-1.jpg",
+            "resolution": "729x998"
+          }
+        ],
+        "24076": [
+          {
+            "id": 109369,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/24076-1.jpg",
+            "resolution": "713x1021"
+          }
+        ],
+        "39170": [
+          {
+            "id": 304718,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/39170-1.jpg",
+            "resolution": null
+          }
+        ],
+        "42342": [
+          {
+            "id": 113878,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/42342-1.png",
+            "resolution": "350x479"
+          }
+        ],
+        "54795": [
+          {
+            "id": 136813,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/54795-1.jpg",
+            "resolution": "219x300"
+          }
+        ],
+        "60245": [
+          {
+            "id": 303167,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/60245-1.jpg",
+            "resolution": null
+          }
+        ],
+        "74459": [
+          {
+            "id": 260920,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/74459-1.jpg",
+            "resolution": null
+          }
+        ],
+        "76956": [
+          {
+            "id": 249126,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/76956-1.jpg",
+            "resolution": null
+          },
+          {
+            "id": 249127,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/76956-1.jpg",
+            "resolution": null
+          }
+        ],
+        "82244": [
+          {
+            "id": 287630,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/82244-1.jpg",
+            "resolution": null
+          },
+          {
+            "id": 287631,
+            "type": "boxart",
+            "side": "back",
+            "filename": "boxart\/back\/82244-1.jpg",
+            "resolution": null
+          }
+        ],
+        "88833": [
+          {
+            "id": 295189,
+            "type": "boxart",
+            "side": "front",
+            "filename": "boxart\/front\/88833-1.jpg",
+            "resolution": null
+          }
+        ]
+      }
+    },
+    "platform": {
+      "15": {
+        "id": 15,
+        "name": "Microsoft Xbox 360",
+        "alias": "microsoft-xbox-360"
+      },
+      "4920": {
+        "id": 4920,
+        "name": "Microsoft Xbox One",
+        "alias": "microsoft-xbox-one"
+      },
+      "4912": {
+        "id": 4912,
+        "name": "Nintendo 3DS",
+        "alias": "nintendo-3ds"
+      },
+      "9": {
+        "id": 9,
+        "name": "Nintendo Wii",
+        "alias": "nintendo-wii"
+      },
+      "38": {
+        "id": 38,
+        "name": "Nintendo Wii U",
+        "alias": "nintendo-wii-u"
+      },
+      "1": {
+        "id": 1,
+        "name": "PC",
+        "alias": "pc"
+      },
+      "18": {
+        "id": 18,
+        "name": "Sega Genesis",
+        "alias": "sega-genesis"
+      },
+      "36": {
+        "id": 36,
+        "name": "Sega Mega Drive",
+        "alias": "sega-mega-drive"
+      },
+      "12": {
+        "id": 12,
+        "name": "Sony Playstation 3",
+        "alias": "sony-playstation-3"
+      },
+      "39": {
+        "id": 39,
+        "name": "Sony Playstation Vita",
+        "alias": "sony-playstation-vita"
+      }
+    }
+  },
+  "pages": {
+    "previous": null,
+    "current": "https:\/\/api.thegamesdb.net\/v1\/Games\/ByGameName?apikey=4c9d180c15bf5fe3e896c204472a85c752dddb4fcdf0ba291b00b037af1c1910&name=sonic&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chee%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1",
+    "next": "https:\/\/api.thegamesdb.net\/v1\/Games\/ByGameName?apikey=4c9d180c15bf5fe3e896c204472a85c752dddb4fcdf0ba291b00b037af1c1910&name=sonic&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chee%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=2"
+  },
+  "remaining_monthly_allowance": 0,
+  "extra_allowance": 5846,
+  "allowance_refresh_timer": null
+}

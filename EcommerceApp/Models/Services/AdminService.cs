@@ -1,18 +1,16 @@
 ﻿using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Vm;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EcommerceApp.Models.Services
 {
   public class AdminService : IAdminService
   {
-  private readonly IGenre _genre;
-  private readonly IGame _game;
+    private readonly IGenre _genre;
+    private readonly IGame _game;
     public AdminService(IGenre genre, IGame game)
     {
       _genre = genre;
@@ -22,7 +20,7 @@ namespace EcommerceApp.Models.Services
     public async Task<AdminVm> IndexUpdate(string gameId, string genreId)
     {
       // Create a list of Genres
-      Game game = new Game();
+      GameInv game = new GameInv();
       Genre genre = new Genre();
       if (gameId != "")
       {
@@ -56,7 +54,7 @@ namespace EcommerceApp.Models.Services
         Genre = genre
       };
       List<SelectListItem> listboxList = new List<SelectListItem>();
-      foreach (Game g in adminVm.GameList)
+      foreach (GameInv g in adminVm.GameList)
       {
         listboxList.Add(
           new SelectListItem

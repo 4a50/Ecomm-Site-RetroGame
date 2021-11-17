@@ -12,9 +12,9 @@
     public string State { get; set; }
     public string ZipCode { get; set; }
     public string PhoneNumber { get; set; }
-    public bool PaymentComplete {get; set;}
+    public bool PaymentComplete { get; set; }
     public bool HasShipped { get; set; }
-    public bool IsActive { get; set; }    
+    public bool IsActive { get; set; }
     //Navigation Properties
     public Cart Cart { get; set; }
   }
