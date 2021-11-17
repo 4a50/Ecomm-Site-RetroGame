@@ -8,12 +8,13 @@ import InventoryListGroup from './InventoryListGroup.js';
 import inventoryList from '../../sampleData/sampleServerResponse.json'
 
 const AdminPanel = (props) => {
-  const [currentItem, setCurrentItem] = useState([]);
+  const [currentItem, setCurrentItem] = useState({});
   const [inventory, setInventory] = useState(inventoryList);
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);
   const handleOpen = () => setShowModal(true);
+  console.log('currentItem:', currentItem);
   return (
     <>
       <Row>
@@ -24,7 +25,7 @@ const AdminPanel = (props) => {
         <Col>
           <InventoryListGroup currentItem={setCurrentItem} inventory={inventory} />
         </Col>
-        {currentItem &&
+        {currentItem.id &&
           <Col>
             <Card>
               <Card.Header>{currentItem.name}
@@ -37,7 +38,7 @@ const AdminPanel = (props) => {
       </Row>
       <Row>
         <Button onClick={handleOpen}>ShowModal</Button>
-        {showModal && <InputModal showmodal={showModal} handleClose={handleClose} />}
+        {showModal && <InputModal item={currentItem} showmodal={showModal} handleClose={handleClose} />}
 
       </Row>
 

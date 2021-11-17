@@ -1,21 +1,19 @@
-﻿## Project ECommerce Store - Demonstration of Technologies
-### Retro Video Game Store!
+﻿## ECommerce Store Template
+### 5-Up Retro Video Game Store!
 
-[Azure Deployed Site](https://ecommerceappretrogame.azurewebsites.net)
+[Azure Deployed Site](https://5up-retro-games-site-template.azurewebsites.net/)
 
 ---
 ## Web Application
 
 This is retro game store web application Client composed using:
-+ Razor Pages
-+ HTML
-+ CSS
-+ Bootstrap. 
++ ReactJS
++ Bootstrap
 
 Server was written in C# using:
 + ASP.NET Core 3.1
 + Entity Framework Core
-+ MVC framework.
++ MVC framework
 
 This is a store front that specializes in the selling of retro video games.  It is a demostration in utilization listed 
 packages and frameworks.  It contains a database of example video games with full CRUD capabilities, and RESTful API calls.
