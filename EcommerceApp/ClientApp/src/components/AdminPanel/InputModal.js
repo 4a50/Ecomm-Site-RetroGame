@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import CarouselCard from '../Carousel/CarouselCard.js'
 import Button from 'react-bootstrap/Button';
