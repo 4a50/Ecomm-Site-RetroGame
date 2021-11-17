@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import InputModal from './InputModal.js'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Card from 'react-bootstrap/Card';
+import SelectedCard from './AdminItemCard.js'
 import InventoryListGroup from './InventoryListGroup.js';
 import inventoryList from '../../sampleData/sampleServerResponse.json'
 
@@ -25,23 +25,21 @@ const AdminPanel = (props) => {
         <Col>
           <InventoryListGroup currentItem={setCurrentItem} inventory={inventory} />
         </Col>
-        {currentItem.id &&
-          <Col>
-            <Card>
-              <Card.Header>{currentItem.name}
-                <Button>Edit</Button></Card.Header>
-              <Card.Img style={{ height: '20rem' }} src={currentItem.boxArtUrlFront} />
-              <Card.Body>{currentItem.description}</Card.Body>
-            </Card>
-          </Col>
-        }
+        <Col>
+          <SelectedCard
+            currentItem={currentItem}
+            handleShowModal={handleOpen}
+          />
+        </Col>
       </Row>
       <Row>
         <Button onClick={handleOpen}>ShowModal</Button>
-        {showModal && <InputModal item={currentItem} showmodal={showModal} handleClose={handleClose} />}
-
+        {showModal &&
+          <InputModal
+            item={currentItem}
+            showmodal={showModal}
+            handleClose={handleClose} />}
       </Row>
-
     </>
   )
 }

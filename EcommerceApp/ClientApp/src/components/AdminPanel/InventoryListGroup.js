@@ -9,7 +9,7 @@ function InventoryListGroup(props) {
   console.log('InvListProps:', props);
   const itemClicker = (e) => { console.log(e) }
   return (
-    <ListGroup style={{ height: '20rem', overflow: 'scroll', scrollBehavior: 'smooth' }}>
+    <ListGroup style={{ height: '40rem', overflow: 'scroll', scrollBehavior: 'smooth' }}>
       {props.inventory.map((item, idx) =>
         <InventoryListGroupItem
           currentItem={props.currentItem}
