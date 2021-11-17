@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-    BrowserRouter as Router,
-    Routes,
+  Routes,
   Route
 } from "react-router-dom";
 import { Layout } from './components/Layout';
@@ -13,16 +12,14 @@ import './custom.css'
 
 function App(props) {
 
-  const [inventoryData, setInventoryData] = useState([sampleData]);
+  const [inventoryData] = useState([sampleData]);
 
   return (
     <Layout>
-   
-        <Routes>
-          <Route exact path="/" element={<Main invData={inventoryData} />} />
-          <Route exact path="/admin-panel" element={<AdminPanel inventoryData={inventoryData} />} />
-        </Routes>
-      
+      <Routes>
+        <Route exact path="/" element={<Main invData={inventoryData} />} />
+        <Route exact path="/admin-panel" element={<AdminPanel inventoryData={inventoryData} />} />
+      </Routes>
     </Layout>
   );
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import InputModal from './InputModal.js'
 import Col from 'react-bootstrap/Col';
@@ -9,7 +9,7 @@ import inventoryList from '../../sampleData/sampleServerResponse.json'
 
 const AdminPanel = (props) => {
   const [currentItem, setCurrentItem] = useState({});
-  const [inventory, setInventory] = useState(inventoryList);
+  const [inventory] = useState(inventoryList);
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);

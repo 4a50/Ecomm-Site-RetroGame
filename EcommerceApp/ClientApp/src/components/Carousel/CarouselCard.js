@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import { Alert, ListGroup } from 'react-bootstrap';
 
 export default function CarouselCard(props) {
