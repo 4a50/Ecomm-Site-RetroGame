@@ -20,11 +20,11 @@ export default function InventoryCardCore(props) {
   const formatPrice = (price) => {
     return (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', currencyDisplay: 'narrowSymbol' }).format(price))
   }
-
+  console.log('invCore', props);
   return (
     <>
       <Card.Title className="text-center">{props.item.name}</Card.Title>
-      <Card.Img variant="bottom" src={props.item.boxArtUrlFront} />
+      <Card.Img variant="bottom" src={props.item.boxArtUrlFront ? props.item.boxArtUrlFront : props.image_url} />
       <ListGroup variant="flush">
         <ListGroup.Item><strong>Price: </strong>{formatPrice(props.item.itemPrice)}</ListGroup.Item>
         <ListGroup.Item><strong>Condition: </strong>{findConditionCode(props.item.condition)}</ListGroup.Item>
