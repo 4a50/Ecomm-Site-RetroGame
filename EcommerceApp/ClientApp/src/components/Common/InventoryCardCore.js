@@ -13,7 +13,6 @@ export default function InventoryCardCore(props) {
       Poor: 4
     }
     let val = Object.keys(ConditionCode).find(key => ConditionCode[key] === code);
-    console.log(val)
     return val;
   }
 
@@ -24,12 +23,12 @@ export default function InventoryCardCore(props) {
   return (
     <>
       <Card.Title className="text-center">{props.item.name}</Card.Title>
-      <Card.Img variant="bottom" src={props.item.boxArtUrlFront ? props.item.boxArtUrlFront : props.image_url} />
+      <Card.Img style={{ height: '20rem' }} variant="bottom" src={props.item.boxArtUrlFront ? props.item.boxArtUrlFront : props.item.imageUrl} />
       <ListGroup variant="flush">
         <ListGroup.Item><strong>Price: </strong>{formatPrice(props.item.itemPrice)}</ListGroup.Item>
         <ListGroup.Item><strong>Condition: </strong>{findConditionCode(props.item.condition)}</ListGroup.Item>
       </ListGroup>
-      <Card.Text>{props.item.description}</Card.Text>
+      <Card.Text style={{ overflow: 'scroll' }}>{props.item.description}</Card.Text>
     </>
   )
 }

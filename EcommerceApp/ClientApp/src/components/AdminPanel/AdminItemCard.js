@@ -1,18 +1,24 @@
 
 import React from 'react';
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import InventoryCardCore from '../Common/InventoryCardCore';
 function AdminItemCard(props) {
-
+  console.log('AdminCardProps:', props);
+  const selectItemObj = {
+    name: props.currentItem.name ? props.currentItem.name : 'No Game Selected',
+    boxArtUrlFront: props.currentItem.boxArtUrlFront ? props.currentItem.boxArtUrlFront : 'https://via.placeholder.com/280x150',
+    description: props.currentItem.description ? props.currentItem.description : 'No Description Available',
+    itemPrice: props.currentItem.itemPrice ? props.currentItem.itemPrice : -1.0,
+    condition: props.currentItem.condition ? props.currentItem.condition : 0
+  }
   return (
-    <Card style={{ height: '40rem' }}>
-      <Card.Header className='d-flex justify-content-between'><Card.Title className="align-middle">
-        {props.currentItem.name ? props.currentItem.name : 'No Game Selected'}</Card.Title>
-        <Button onClick={props.handleShowModal}>Edit</Button>
-      </Card.Header>
-      <Card.Img style={{ height: '20rem' }} src={props.currentItem.boxArtUrlFront ? props.currentItem.boxArtUrlFront : 'https://via.placeholder.com/280x150'} />
-      <Card.Body style={{ overflow: 'scroll' }}>{props.currentItem.description ? props.currentItem.description : 'No Description Available'}</Card.Body>
-    </Card>
+    <>
+      <Card style={{ height: '40rem' }} onClick={props.handleEditInventory}>
+        <InventoryCardCore item={selectItemObj} />
+        <Card.Footer>
+        </Card.Footer>
+      </Card>
+    </>
   )
 }
 

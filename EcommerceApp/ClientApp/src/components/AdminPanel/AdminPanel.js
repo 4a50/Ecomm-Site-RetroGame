@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import InputModal from './InputModal.js'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import SelectedCard from './AdminItemCard.js'
+import SelectedCard from './AdminItemCard.js';
+import EditInventoryCard from './EditInventoryCard.js'
 import InventoryListGroup from './InventoryListGroup.js';
-import inventoryList from '../../sampleData/sampleServerResponse.json'
+import inventoryList from '../../sampleData/sampleServerResponse.json';
+import defaultObj from '../../data/noData.json'
+
 
 const AdminPanel = (props) => {
   const [currentItem, setCurrentItem] = useState({});
-  const [inventory] = useState(inventoryList);
-  const [showModal, setShowModal] = useState(false);
+  const [inventory, setInventory] = useState([]);
+  const [editInventory, setEditInventory] = useState(false);
+  useEffect(() => {
+    let invList = inventoryList;
+    invList.unshift(defaultObj);
+    setInventory(invList);
+  }, []);
 
-  const handleClose = () => setShowModal(false);
-  const handleOpen = () => setShowModal(true);
+  const handleCloseEditInv = () => setEditInventory(false);
+  const handleEditInv = () => setEditInventory(true);
   console.log('currentItem:', currentItem);
   return (
     <>
@@ -26,19 +34,19 @@ const AdminPanel = (props) => {
           <InventoryListGroup currentItem={setCurrentItem} inventory={inventory} />
         </Col>
         <Col>
-          <SelectedCard
+          {editInventory ? <EditInventoryCard
             currentItem={currentItem}
-            handleShowModal={handleOpen}
-          />
+            handleCloseEditInv={handleCloseEditInv} /> :
+            <SelectedCard
+              currentItem={currentItem}
+              handleEditInventory={handleEditInv}
+              handleCloseEditInv={handleCloseEditInv}
+            />}
         </Col>
       </Row>
       <Row>
-        <Button onClick={handleOpen}>ShowModal</Button>
-        {showModal &&
-          <InputModal
-            item={currentItem}
-            showmodal={showModal}
-            handleClose={handleClose} />}
+
+
       </Row>
     </>
   )

@@ -1,9 +1,8 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import CarouselCard from '../Carousel/CarouselCard.js'
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card';
+import InventoryCardCore from '../Common/InventoryCardCore.js';
+
 const InputModal = (props) => {
   console.log('IMProps', props);
   return (
@@ -16,7 +15,10 @@ const InputModal = (props) => {
         onHide={props.handleClose}
         show={`${props.showmodal}`}
       >
-        <CarouselCard item={props.item} />
+        <Card>
+          <InventoryCardCore item={props.item} />
+
+        </Card>
 
       </Modal>
     </>
