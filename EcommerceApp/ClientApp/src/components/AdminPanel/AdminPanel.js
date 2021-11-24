@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-import InputModal from './InputModal.js'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import SelectedCard from './AdminItemCard.js';
-import EditInventoryCard from './EditInventoryCard.js'
+import EditInventoryCard from './ItemEdit/EditInventoryCard.js'
 import InventoryListGroup from './InventoryListGroup.js';
 import inventoryList from '../../sampleData/sampleServerResponse.json';
 import defaultObj from '../../data/noData.json'
