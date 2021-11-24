@@ -1,0 +1,18 @@
+{
+  "id": 0,
+  "gameIDAPI": 0,
+  "name": "None Selected",
+  "description": "No Description Available",
+  "itemPrice": -1.0,
+  "gameSystem": "None",
+  "genre": null,
+  "imageUrl": null,
+  "publisher": null,
+  "developer": null,
+  "boxArtUrlFront": "https://via.placeholder.com/280x150",
+  "boxArtUrlBack": "https://via.placeholder.com/280x150",
+  "boxArtUrlThumb": "https://via.placeholder.com/280x150",
+  "videoUrl": null,
+  "releaseDate": "1994-04-18T00:00:00",
+  "genreGames": null
+}
