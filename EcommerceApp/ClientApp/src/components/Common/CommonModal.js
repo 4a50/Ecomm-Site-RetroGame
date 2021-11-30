@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 const CommonModal = (props) => {
   console.log('CommonModalProps:', props);
   //Required props: 
+  //  confirmAction <- Confirm Button pressed
   //  contentObj={title, description, buttons[2,3...] }   
   //  displayModal=bool
   //  hideModal=function
@@ -14,7 +15,7 @@ const CommonModal = (props) => {
     return props.contentobj.buttons.map((btn, idx) => {
       switch (btn) {
         case 1:
-          return <Button key={idx} variant="danger" onClick={props.hidemodal}>Confirm</Button>
+          return <Button key={idx} variant="danger" onClick={props.confirmAction}>Confirm</Button>
         case 2:
           return <Button key={idx} variant="dark" onClick={props.hidemodal}>Cancel</Button>
         case 3:
@@ -26,7 +27,7 @@ const CommonModal = (props) => {
 
     })
   }
-
+  console.log('Common Modal Props:', props);
   return (
     <>
       <Modal
