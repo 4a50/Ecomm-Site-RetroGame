@@ -10,12 +10,13 @@ export default function CarouselDisplay(props) {
 
   const mapItems = () => {
     return carouselData.map((item, idx) => {
-      console.log(item);
       return <Carousel.Item key={idx}>
         <CardGroup>
-          {item.map((itemCard, idx) => <CarouselCard key={`cc-${idx}`} item={itemCard} />)}
+          {item.map((itemCard, idx) => <CarouselCard key={`cc-${idx}`} item={itemCard} len={item.length} />)}
         </CardGroup>
+
       </Carousel.Item>
+
     })
   }
 

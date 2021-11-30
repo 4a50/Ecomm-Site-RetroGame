@@ -2,7 +2,6 @@ import { React, useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import SearchForm from './SearchForm.js';
 function Header(props) {
-  console.log("Header.name: ", Header.name);
   return (
     <>
       <Navbar className="p-2" bg="dark" variant="dark">

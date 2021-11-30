@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import InputModal from './InputModal.js'
+import React, { useState, useEffect } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Card from 'react-bootstrap/Card';
+import SelectedCard from './AdminItemCard.js';
+import EditInventoryCard from './ItemEdit/EditInventoryCard.js'
 import InventoryListGroup from './InventoryListGroup.js';
-import inventoryList from '../../sampleData/sampleServerResponse.json'
+import inventoryList from '../../sampleData/sampleServerResponse.json';
+import defaultObj from '../../data/noData.json'
+
 
 const AdminPanel = (props) => {
   const [currentItem, setCurrentItem] = useState({});
-  const [inventory] = useState(inventoryList);
-  const [showModal, setShowModal] = useState(false);
+  const [inventory, setInventory] = useState([]);
+  const [editInventory, setEditInventory] = useState(false);
+  useEffect(() => {
+    let invList = inventoryList;
+    invList.unshift(defaultObj);
+    setInventory(invList);
+  }, []);
 
-  const handleClose = () => setShowModal(false);
-  const handleOpen = () => setShowModal(true);
+  const handleCloseEditInv = () => setEditInventory(false);
+  const handleEditInv = () => setEditInventory(true);
   console.log('currentItem:', currentItem);
   return (
     <>
@@ -25,23 +31,21 @@ const AdminPanel = (props) => {
         <Col>
           <InventoryListGroup currentItem={setCurrentItem} inventory={inventory} />
         </Col>
-        {currentItem.id &&
-          <Col>
-            <Card>
-              <Card.Header>{currentItem.name}
-                <Button>Edit</Button></Card.Header>
-              <Card.Img style={{ height: '20rem' }} src={currentItem.boxArtUrlFront} />
-              <Card.Body>{currentItem.description}</Card.Body>
-            </Card>
-          </Col>
-        }
+        <Col>
+          {editInventory ? <EditInventoryCard
+            currentItem={currentItem}
+            handleCloseEditInv={handleCloseEditInv} /> :
+            <SelectedCard
+              currentItem={currentItem}
+              handleEditInventory={handleEditInv}
+              handleCloseEditInv={handleCloseEditInv}
+            />}
+        </Col>
       </Row>
       <Row>
-        <Button onClick={handleOpen}>ShowModal</Button>
-        {showModal && <InputModal item={currentItem} showmodal={showModal} handleClose={handleClose} />}
+
 
       </Row>
-
     </>
   )
 }
