@@ -5,18 +5,16 @@ using System.ComponentModel.DataAnnotations;
 namespace EcommerceApp.Models
 {
   public class Game
-  {
+  {    
     //Table Properties
     [Required]
     public int Id { get; set; }
     public int GameIDAPI { get; set; }
     [Required]
     public string Name { get; set; }
-    public string Description { get; set; }
-    public float ItemPrice { get; set; }
+    public string Description { get; set; }    
     public string GameSystem { get; set; }
-    public string Genre { get; set; }
-    public string ImageUrl { get; set; }
+    public string Genre { get; set; }   
     public string Publisher { get; set; }
     public string Developer { get; set; }
     public string BoxArtUrlFront { get; set; }

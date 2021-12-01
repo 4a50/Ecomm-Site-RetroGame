@@ -8,7 +8,45 @@ namespace EcommerceApp.HelperClasses
 {
   public static class DataBaseSeedData
   {
-    public static List<GameInv> GameInvSeedData() 
+    public static List<Game> GameSeedData()
+    {
+      return new List<Game>
+      {
+        new Game
+        {
+          Id = 1,
+          GameIDAPI = 49901,
+          Name = "Ghostbusters",
+          Description = "Have you and your friends been experiencing paranormal activity? Grab your Proton Pack and join the Ghostbusters as you explore Manhattan, blasting ghosts, and trapping those runaway ghouls.",
+          BoxArtUrlFront = "https://cdn.thegamesdb.net/images/original/boxart/front/49901-1.jpg",
+          ReleaseDate = DateTime.Parse("2016-07-12"),
+          APIRetrieval = DateTime.Parse("2021-12-01")
+        },
+        new Game
+        {
+          Id = 2,
+          GameIDAPI = 12874,
+          Name = "Sonic & All-Stars Racing Transformed",
+          Description = "Sonic & All-Stars Racing Transformed™ is a thrilling new racing experience featuring Sonic the Hedgehog and a fantastic cast of SEGA All-Stars competing across land, air and water in vehicles that fully transform from cars, to planes to boats.",
+          BoxArtUrlFront = "https://cdn.thegamesdb.net/images/original/boxart/front/12874-1.jpg",
+          ReleaseDate = DateTime.Parse("2012-12-11"),
+          APIRetrieval = DateTime.Parse("2021-12-01")
+        },
+        new Game
+        {
+          Id = 3,
+          GameIDAPI = 10009,
+          Name = "Super Air Zonk",
+          Description = "Zonk is back in Super Air Zonk!!\r\n\r\nNow moving to a rockabilly beat and able to transform into nine different characters, Zonk lets loose through seven action-packed stages in another battle against his arch nemesis, Sandro Vitch. Power up Zonk with the classic Meat item, eventually turning him into the champion of justice, Ultra Zonk, or the fearsome Tyrano Zonk in the latter stages of the game.\r\nRead More>>\r\n\r\nAfter rescuing his friends from enemies, Zonk can also morph with them to combine powers. Fight enemies with killer tunes belted out from a trusty microphone. Hurl freshly made sushi at them. With its variety of wacky attacks, Super Air Zonk has a sense of humor all its own.",
+          BoxArtUrlFront = "https://cdn.thegamesdb.net/images/original/boxart/front/10009-1.jpg",
+          BoxArtUrlBack = "https://cdn.thegamesdb.net/images/original/boxart/back/10009-1.jpg",
+          ReleaseDate = DateTime.Parse("1993-07-30"),
+          APIRetrieval = DateTime.Parse("2021-12-01")
+        },
+
+      };
+    }
+    public static List<GameInv> GameInvSeedData()
     {
       return new List<GameInv>() {
         new GameInv
@@ -18,7 +56,6 @@ namespace EcommerceApp.HelperClasses
           Description = "Take on a legion of Space Pirates and a new Metroid force as you forge into the covert underworld of Planet Zebes!  It’s up to you and Samus to recapture the long-surviving Metroid hatchling before evil hands unleash its energy.\r\n\r\nAn army of ominous creatures are poised for battle at every turn of Zebes’ twisted, threatening passageways… including the menacing Ridley and the great lizard Kraid.  Knock down enemies with a killer somersault and swing on an electric beam through narrow passageways!  They’re no match for you and Samus… but wait!  It seems the Mother Brain has returned…",
           ItemPrice = 30.00f,
           ImageUrl = "https://cdn.thegamesdb.net/images/original/boxart/front/299-1.jpg",
-          Condition = GameInv.Status.Fair,
         },
         new GameInv
         {
@@ -28,7 +65,7 @@ namespace EcommerceApp.HelperClasses
           ItemPrice = 50.00f,
           ImageUrl = "https://cdn.thegamesdb.net/images/original/boxart/front/12102-1.jpg",
           ReleaseDate = DateTime.Parse("2012-11-20"),
-          Condition = GameInv.Status.Excellent,
+
         },
         new GameInv
         {
@@ -38,7 +75,7 @@ namespace EcommerceApp.HelperClasses
           ItemPrice = 15.25f,
           ImageUrl = "https://cdn.thegamesdb.net/images/original/boxart/front/17217-1.jpg",
           ReleaseDate = DateTime.Parse("2013-08-11"),
-          Condition = GameInv.Status.Poor,
+
         },
         new GameInv
         {
@@ -50,5 +87,50 @@ namespace EcommerceApp.HelperClasses
         }
       };
     }
+  public static List<InventoryItem> InventoryItemSeedData()
+  {
+    return new List<InventoryItem> {
+      new InventoryItem
+      {
+        Id = 1,
+        GameId = 1,
+        Type = InventoryItem.InvType.Game,
+        Condition = InventoryItem.InvCondition.Excellent,
+        Status = InventoryItem.InvStatus.Complete,
+        Price = 30.00f,
+        Quantity = 2
+      },
+      new InventoryItem
+      {
+        Id = 2,
+        GameId = 1,
+        Type = InventoryItem.InvType.Game,
+        Condition = InventoryItem.InvCondition.Poor,
+        Status = InventoryItem.InvStatus.Loose,
+        Price = 10.00f,
+        Quantity = 3
+      },
+      new InventoryItem
+      {
+        Id = 3,
+        GameId = 3,
+        Type = InventoryItem.InvType.Game,
+        Condition = InventoryItem.InvCondition.Fair,
+        Status = InventoryItem.InvStatus.Box,
+        Price = 150.25f,
+        Quantity = 1
+      },
+      new InventoryItem
+      {
+        Id = 4,
+        GameId = 2,
+        Type = InventoryItem.InvType.Game,
+        Condition = InventoryItem.InvCondition.Good,
+        Status = InventoryItem.InvStatus.Manual,
+        Price = 12.43f,
+        Quantity = 1
+      }
+    };
+  }
   }
 }

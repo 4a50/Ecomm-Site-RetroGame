@@ -7,14 +7,7 @@ using System.Threading.Tasks;
 namespace EcommerceApp.Models
 {
   public class GameInv
-  {
-    public enum Status {
-      Excellent = 1,
-        Good, 
-        Fair,
-        Poor
-
-    }
+  {    
     //Table Properties
     [Required]
     public int Id { get; set; }    
@@ -26,8 +19,7 @@ namespace EcommerceApp.Models
     public string Genre { get; set; }
     public string ImageUrl { get; set; }
     public string Publisher { get; set; }
-    public string Developer { get; set; }    
-    public Status Condition { get; set; }
+    public string Developer { get; set; }        
     public DateTime ReleaseDate { get; set; }
     public DateTime APIRetrieval { get; set; }
     //Navigation Properties

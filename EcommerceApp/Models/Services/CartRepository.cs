@@ -60,8 +60,8 @@ namespace EcommerceApp.Models.Services
         await _context.SaveChangesAsync();
 
         //Add to the total price and Qty of the Cart and Update
-        cart.CartTotalPrice += game.ItemPrice;
-        cart.Quantity += 1;
+        //cart.CartTotalPrice += game.ItemPrice;
+        //cart.Quantity += 1;
         _context.Entry(cart).State = EntityState.Modified;
         await _context.SaveChangesAsync();
 

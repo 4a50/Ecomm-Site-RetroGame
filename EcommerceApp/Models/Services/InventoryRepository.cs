@@ -17,48 +17,54 @@ namespace EcommerceApp.Models.Services
       _context = context;
     }
 
-    public async Task<GameInv> CreateGame(GameInv game)
+    public async Task<InventoryItem> CreateInventoryItem(InventoryItem item)
     {
-      _context.Entry(game).State = EntityState.Added;
+      _context.Entry(item).State = EntityState.Added;
       await _context.SaveChangesAsync();
-      return game;
+      return item;
     }
 
 
-    public async Task<List<GameInv>> ReadAllGames()
+    public async Task<List<InventoryItem>> ReadAllInventoryItems()
     {
-      return await _context.GameInventory.ToListAsync();    
+      return await _context.InventoryItem
+        //Use the Game Nav Prop in the Model
+        .Include(item => item.Game)
+        //Only where the gameId matches a record in the game table
+        .Where(g => g.Game.Id == g.GameId)
+        //Put it all to a list
+        .ToListAsync();    
     }
 
-    public async Task<GameInv> ReadGame(int id)
+    public async Task<InventoryItem> ReadInventoryItem(int id)
     {
-      return await _context.GameInventory.FirstOrDefaultAsync();
+      return await _context.InventoryItem.FirstOrDefaultAsync();
     }
 
-    public async Task<GameInv> UpdateGame(int id, GameInv game)
+    public async Task<InventoryItem> UpdateGame(int id, InventoryItem item)
     {
-      _context.Entry(game).State = EntityState.Modified;
+      _context.Entry(item).State = EntityState.Modified;
         await _context.SaveChangesAsync();
-        return game;
+        return item;
     }        
-    public void  DeleteAllGames()
-    {
-      _context.Database.ExecuteSqlRaw("TRUNCATE TABLE INVENTORY");
-    }   
 
-    public async Task<GameInv> DeleteGame(int id)
+    public async Task<InventoryItem> DeleteInventoryItem(int id)
     {
       try
       {
-        GameInv game = await ReadGame(id);
-        _context.Entry(game).State = EntityState.Deleted;
+        InventoryItem item = await ReadInventoryItem(id);
+        _context.Entry(item).State = EntityState.Deleted;
         await _context.SaveChangesAsync();
-      return game;
+      return item;
       }
       catch(Exception e)
       {
         return null;
       }
     }
+    public void PurgeAllInventoryItems()
+    {
+     _context.Database.ExecuteSqlRaw("TRUNCATE TABLE INVENTORY");
+    }   
   }
 }

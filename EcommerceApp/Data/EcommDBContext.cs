@@ -20,6 +20,7 @@ namespace EcommerceApp.Data
     public DbSet<GenreGame> GenreGame { get; set; }
     public DbSet<CartGame> CartGame { get; set; }
     public DbSet<GameInv> GameInventory { get; set; }
+    public DbSet<InventoryItem> InventoryItem { get; set; }
 
     
 
@@ -49,25 +50,8 @@ namespace EcommerceApp.Data
       modelbuilder.Entity<CartGame>().HasKey(
         cartGame => new { cartGame.CartId, cartGame.GameId });
 
-      //modelbuilder.Entity<GenreGame>().HasData(
-      //  new GenreGame
-      //  {
-      //    GameId = 1,
-      //    GenreId = 1
-      //  },
-      //  new GenreGame
-      //  {
-      //    GameId = 2,
-      //    GenreId = 2
-      //  },
-      //  new GenreGame
-      //  {
-      //    GameId = 3,
-      //    GenreId = 4
-      //  });
-     
-     // modelbuilder.Entity<Game>().HasData(seedList[0], seedList[1]);
-
+      modelbuilder.Entity<InventoryItem>().HasData(DataBaseSeedData.InventoryItemSeedData());
+      modelbuilder.Entity<Game>().HasData(DataBaseSeedData.GameSeedData());
       modelbuilder.Entity<GameInv>().HasData(DataBaseSeedData.GameInvSeedData());      
     }
     private int nextId = 1;

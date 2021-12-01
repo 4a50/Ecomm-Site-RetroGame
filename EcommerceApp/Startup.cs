@@ -2,6 +2,7 @@ using Azure.Core.Extensions;
 using Azure.Storage.Blobs;
 using Azure.Storage.Queues;
 using EcommerceApp.Data;
+using EcommerceApp.Models;
 using EcommerceApp.Models.Interfaces;
 using EcommerceApp.Models.Services;
 using EcommerceApp.Models.Users;
@@ -60,6 +61,7 @@ namespace EcommerceApp
       services.AddTransient<IUserService, IdentityUserService>();
       services.AddTransient<IUploadService, UploadService>();
       services.AddTransient<IAdminService, AdminService>();
+      //services.AddTransient<IInventoryItem, InventoryItem>();
 
 
 
