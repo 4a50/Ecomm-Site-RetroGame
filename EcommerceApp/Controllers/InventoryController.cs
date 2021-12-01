@@ -32,14 +32,14 @@ namespace EcommerceApp.Controllers
     {
       List<InventoryItem> getInventoryItems = await _inventory.ReadAllInventoryItems();
       return Ok(getInventoryItems);
-    }    
-    //[HttpGet("{id}")]
-    //[AllowAnonymous]
-    //public async Task<ActionResult<GameInv>> GetGame(int id)
-    //{
-    //  GameInv game = await _inventory.ReadGame(id);
-    //  return Ok(game);
-    //}
+    }
+    [HttpGet("{id}")]
+    [AllowAnonymous]
+    public async Task<ActionResult<InventoryItem>> GetInventoryItem(int id)
+    {
+      InventoryItem item = await _inventory.ReadInventoryItem(id);
+      return Ok(item);
+    }
 
     //[HttpGet("gamesdb/")]
     //[AllowAnonymous]
@@ -67,7 +67,7 @@ namespace EcommerceApp.Controllers
     //  Game game = gamesList[0];
     //  return Ok(gamesList);
     //}
-    
+
     //[HttpGet("initialfrontend")]    
     //public async Task<ActionResult<List<GameInv>>> GetCarousel()
     //{

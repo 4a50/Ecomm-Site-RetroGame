@@ -38,7 +38,10 @@ namespace EcommerceApp.Models.Services
 
     public async Task<InventoryItem> ReadInventoryItem(int id)
     {
-      return await _context.InventoryItem.FirstOrDefaultAsync();
+      return await _context.InventoryItem        
+        .Include(item => item.Game)
+        .Where(g => g.Game.Id == g.GameId)
+        .FirstOrDefaultAsync(item => item.Id == id);
     }
 
     public async Task<InventoryItem> UpdateGame(int id, InventoryItem item)
