@@ -21,6 +21,7 @@ namespace EcommerceApp
 {
   public class Startup
   {
+    public bool useSPA = false;
     public IConfiguration Configuration { get; set; }
 
     public Startup(IConfiguration configuration)
@@ -34,13 +35,15 @@ namespace EcommerceApp
 
       //services.AddMvc();
       services.AddControllersWithViews();
-
-      // In production, the React files will be served from this directory
-      services.AddSpaStaticFiles(configuration =>
+      //SPA
+      if (useSPA)
       {
-        configuration.RootPath = "ClientApp/build";
-      });
-
+        // In production, the React files will be served from this directory
+        services.AddSpaStaticFiles(configuration =>
+        {
+          configuration.RootPath = "ClientApp/build";
+        });
+      }
       services.AddDbContext<EcommDBContext>(options =>
       {
         string connectionString = Configuration.GetConnectionString("DatabaseConnectionString");
@@ -76,6 +79,19 @@ namespace EcommerceApp
       });
       services.AddControllers().AddNewtonsoftJson(options =>
       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+      
+      //Swagger 
+      if (!useSPA)
+      {
+        services.AddSwaggerGen(options => options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+        {
+          Title = "Async Inn",
+          Version = "v1",
+        }));
+        services.AddControllers();
+      }
+
+
 
       //Implement when Azure Storage becomes available
       //
@@ -100,29 +116,46 @@ namespace EcommerceApp
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
       }
-      app.UseHttpsRedirection();
-      app.UseStaticFiles();
-      app.UseSpaStaticFiles();
-      app.UseRouting();
-
+      //SPA
+        app.UseRouting();
+      if (useSPA)
+      {
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseSpaStaticFiles();
       //app.UseAuthentication();
       //app.UseAuthorization();
+      }
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute(
       name: "default",
       pattern: "{controller=Home}/{action=Index}");
       });
-
-      app.UseSpa(spa =>
+      //SPA
+      if (useSPA)
       {
-        spa.Options.SourcePath = "ClientApp";
-        if (env.IsDevelopment())
+        app.UseSpa(spa =>
         {
-          spa.UseReactDevelopmentServer(npmScript: "start");
-        }
-      });
-
+          spa.Options.SourcePath = "ClientApp";
+          if (env.IsDevelopment())
+          {
+            spa.UseReactDevelopmentServer(npmScript: "start");
+          }
+        });
+      }
+      else
+      {
+        app.UseSwagger(options =>
+        {
+          options.RouteTemplate = "/api/{documentName}/swagger.json";
+        });
+        app.UseSwaggerUI(options =>
+        {
+          options.SwaggerEndpoint("api/v1/swagger.json", "5-Up Retro Game Store");
+          options.RoutePrefix = "";
+        });
+      }
     }
   }
   //internal static class StartupExtensions
